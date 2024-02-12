@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")] 
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    private RaycastHit _hit;
     
     [Header("Properties")] 
     [SerializeField] private float _moveVelocity = 7f;
@@ -21,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Lifecycle Methods
+
+    private void Start()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
     private void Update()
     {
