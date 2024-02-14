@@ -756,11 +756,11 @@
      <Reference Include="Unity.VisualScripting.State">
      <HintPath>C:\Users\xtxgo\OneDrive\Escritorio\TFG\TFG_Unity\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VSCode.Editor">
-     <HintPath>C:\Users\xtxgo\OneDrive\Escritorio\TFG\TFG_Unity\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
      <HintPath>C:\Users\xtxgo\OneDrive\Escritorio\TFG\TFG_Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VSCode.Editor">
+     <HintPath>C:\Users\xtxgo\OneDrive\Escritorio\TFG\TFG_Unity\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

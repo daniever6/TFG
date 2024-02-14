@@ -27,11 +27,16 @@ namespace Player
         private void OnDisable()
         {
             _walkToClick.action.performed -= WalkToPoint;
+            PlayerMovement.OnWalking -= ClearNavMeshAgentPath;
             _walkToClick.action.Disable();
         }
         
         public void WalkToPoint(InputAction.CallbackContext context)
         {
+            _navMeshAgent.isStopped = false;
+
+            PlayerMovement.OnWalking += ClearNavMeshAgentPath;
+            
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
@@ -43,6 +48,11 @@ namespace Player
             }
         }
 
+        public void ClearNavMeshAgentPath()
+        {
+            PlayerMovement.OnWalking -= ClearNavMeshAgentPath;
+            if(_navMeshAgent.hasPath) _navMeshAgent.isStopped = true;
+        }
         #endregion
     }
 }
