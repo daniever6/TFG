@@ -45,15 +45,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Command\PlayerCommands.cs" />
+     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
+     <Compile Include="Assets\Scripts\Command\ICommand.cs" />
+     <Compile Include="Assets\Scripts\Command\ACommand.cs" />
+     <Compile Include="Assets\Scripts\Command\CommandInvoker.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovementOnClick.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scripts\Player" />
+     <Folder Include="Assets\Scripts\Command" />
      <Folder Include="Assets\Prefabs" />
-     <Folder Include="Assets\Temporal" />
-     <Folder Include="Assets\Scenes\SampleScene" />
+     <Folder Include="Assets\Scripts\Utilities" />
+     <Folder Include="Assets\ArchivosTemporales" />
+     <Folder Include="Assets\Scenes\Level" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

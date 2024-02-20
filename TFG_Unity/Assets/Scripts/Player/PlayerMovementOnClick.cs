@@ -6,6 +6,14 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Player
 {
+    public enum Iteractables
+    {
+        None,
+        Ground,
+        Npc,
+        Element
+    }
+    
     public class PlayerMovementOnClick:MonoBehaviour
     {
         [SerializeField] private Camera _camera;
@@ -27,7 +35,7 @@ namespace Player
         private void OnDisable()
         {
             _walkToClick.action.performed -= WalkToPoint;
-            PlayerMovement.OnWalking -= ClearNavMeshAgentPath;
+            UserInput.OnWalking -= ClearNavMeshAgentPath;
             _walkToClick.action.Disable();
         }
         
@@ -35,22 +43,35 @@ namespace Player
         {
             _navMeshAgent.isStopped = false;
 
-            PlayerMovement.OnWalking += ClearNavMeshAgentPath;
+            UserInput.OnWalking += ClearNavMeshAgentPath;
             
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {
-                if (_hit.collider.tag.Equals(_groundTag))
+                string colliderTag = _hit.collider.tag;
+                Iteractables parsedEnum = (Iteractables)Enum.Parse(typeof(Iteractables), colliderTag);
+                switch(parsedEnum)
                 {
-                    _navMeshAgent.SetDestination(_hit.point);
+                    case Iteractables.None:
+                        break;
+                    case Iteractables.Ground:
+                        _navMeshAgent.SetDestination(_hit.point);
+                        break;
+                    case Iteractables.Npc:
+                        _navMeshAgent.SetDestination(_hit.point);
+                        Debug.Log("NPC clicked");
+                        break;
+                    case Iteractables.Element:
+                        _navMeshAgent.SetDestination(_hit.point);
+                        break;
                 }
             }
         }
 
         public void ClearNavMeshAgentPath()
         {
-            PlayerMovement.OnWalking -= ClearNavMeshAgentPath;
+            UserInput.OnWalking -= ClearNavMeshAgentPath;
             if(_navMeshAgent.hasPath) _navMeshAgent.isStopped = true;
         }
         #endregion

@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Command;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Utilities;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,38 +23,21 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Actions")] 
     [SerializeField] private InputActionReference _move;
 
-    public static event Action OnWalking;
 
     #endregion
 
     #region Lifecycle Methods
-
-    private void OnEnable()
-    {
-        _move.action.performed += ctx => { OnWalking?.Invoke(); }; 
-    }
-
-    private void OnDisable()
-    {
-        _move.action.performed -= ctx => { OnWalking?.Invoke(); }; 
-    }
-
-    private void Update()
-    {
-        _moveDirection = _move.action.ReadValue<Vector2>();
-
-    }
-
-    private void FixedUpdate()
-    {
-        _rigidbody.velocity = new Vector3(_moveDirection.x * _moveVelocity, 0, _moveDirection.y * _moveVelocity);
-    }
 
     private void LateUpdate()
     {
         _camera.transform.position = this.transform.position + new Vector3(0, 7.5f, -5);
     }
 
+    public void Move(Vector2 direction)
+    {
+        _rigidbody.velocity = new Vector3(direction.x * _moveVelocity, 0, direction.y * _moveVelocity);
+    }
+
     #endregion
-    
+
 }
