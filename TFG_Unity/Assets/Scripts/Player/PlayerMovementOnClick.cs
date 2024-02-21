@@ -18,7 +18,7 @@ namespace Player
         #region Properties
 
         [SerializeField] private Camera _camera;
-        [SerializeField]private NavMeshAgent _navMeshAgent;
+        [SerializeField] private NavMeshAgent _navMeshAgent;
         private RaycastHit _hit;
 
         #endregion
@@ -46,7 +46,8 @@ namespace Player
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {
                 string colliderTag = _hit.collider.tag;
-                Iteractables parsedEnum = (Iteractables)Enum.Parse(typeof(Iteractables), colliderTag);
+                Iteractables parsedEnum;
+                Enum.TryParse<Iteractables>(colliderTag, out parsedEnum);
                 switch(parsedEnum)
                 {
                     case Iteractables.None:
@@ -59,6 +60,8 @@ namespace Player
                         break;
                     case Iteractables.Element:
                         _navMeshAgent.SetDestination(_hit.point);
+                        break;
+                    default:
                         break;
                 }
             }

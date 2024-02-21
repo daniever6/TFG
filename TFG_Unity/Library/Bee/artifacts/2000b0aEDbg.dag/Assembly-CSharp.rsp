@@ -345,6 +345,7 @@
 "Assets/Scripts/Command/ACommand.cs"
 "Assets/Scripts/Command/ICommand.cs"
 "Assets/Scripts/Command/PlayerCommands.cs"
+"Assets/Scripts/Managers/GameManager.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/Player/PlayerMovementOnClick.cs"
 "Assets/Scripts/Player/UserInput.cs"

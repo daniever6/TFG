@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\Scripts\Command\ICommand.cs" />
      <Compile Include="Assets\Scripts\Command\ACommand.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovementOnClick.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
@@ -63,6 +64,7 @@
      <Folder Include="Assets\Art" />
      <Folder Include="Assets\ArchivosTemporales" />
      <Folder Include="Assets\Scenes\Level" />
+     <Folder Include="Assets\Scripts\Managers" />
      <Folder Include="Assets\Art\2D Art" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

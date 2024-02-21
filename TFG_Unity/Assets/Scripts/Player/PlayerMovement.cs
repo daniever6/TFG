@@ -17,12 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit _hit;
     
     [Header("Properties")] 
-    [SerializeField] private float _moveVelocity = 7f;
+    [SerializeField] private float _moveSpeed = 6f;
+    [SerializeField] private float _rotationSpeed = 200f;
     private Vector2 _moveDirection;
-
-    [Header("Input Actions")] 
-    [SerializeField] private InputActionReference _move;
-
 
     #endregion
 
@@ -43,7 +40,23 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="direction">Direccion recibida mediante inputActionReference Move(WASD)</param>
     public void Move(Vector2 direction)
     {
-        _rigidbody.velocity = new Vector3(direction.x * _moveVelocity, 0, direction.y * _moveVelocity);
+        _rigidbody.velocity = new Vector3(direction.x * _moveSpeed, 0, direction.y * _moveSpeed);
+        if (direction != Vector2.zero)
+        {
+            Rotate(direction);
+        }
+    }
+
+    /// <summary>
+    /// Gira al jugador hacia la direccion de su movimiento
+    /// </summary>
+    /// <param name="direction">Direccion a la que se dirige el jugador</param>
+    public void Rotate(Vector2 direction)
+    {
+        Vector3 forwardPlayerDirection = new Vector3(direction.x, 0, direction.y);
+        Quaternion toRotation = Quaternion.LookRotation(forwardPlayerDirection, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation,
+            _rotationSpeed * Time.deltaTime);
     }
 
     #endregion

@@ -13,6 +13,7 @@ namespace Player
     {
         #region Properties
         
+        [Header("Component's References")]
         [SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
         [SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
         
