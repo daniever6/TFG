@@ -70,7 +70,13 @@ namespace Player
         public void ClearNavMeshAgentPath()
         {
             UserInput.OnWalking -= ClearNavMeshAgentPath;
-            if(_navMeshAgent.hasPath) _navMeshAgent.isStopped = true;
+            if (_navMeshAgent.hasPath)
+            {
+                _navMeshAgent.isStopped = true;
+            }
+            _navMeshAgent.ResetPath();
+            _navMeshAgent.path.ClearCorners();
+
         }
         #endregion
     }

@@ -57,10 +57,13 @@
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scripts\Player" />
      <Folder Include="Assets\Scripts\Command" />
+     <Folder Include="Assets\Art\3D Art" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Scripts\Utilities" />
+     <Folder Include="Assets\Art" />
      <Folder Include="Assets\ArchivosTemporales" />
      <Folder Include="Assets\Scenes\Level" />
+     <Folder Include="Assets\Art\2D Art" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
