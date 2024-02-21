@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
 
 namespace Player
 {
@@ -16,29 +15,26 @@ namespace Player
     
     public class PlayerMovementOnClick:MonoBehaviour
     {
+        #region Properties
+
         [SerializeField] private Camera _camera;
         [SerializeField]private NavMeshAgent _navMeshAgent;
         private RaycastHit _hit;
-        private string _groundTag = "Ground";
-        
-        [Header("Input Actions")] 
-        [SerializeField] private InputActionReference _walkToClick;
+
+        #endregion
 
         #region Methods
 
-        private void OnEnable()
-        {
-            _walkToClick.action.Enable();
-            _walkToClick.action.performed += WalkToPoint;
-        }
-
         private void OnDisable()
         {
-            _walkToClick.action.performed -= WalkToPoint;
             UserInput.OnWalking -= ClearNavMeshAgentPath;
-            _walkToClick.action.Disable();
         }
         
+        /// <summary>
+        /// Mueve el personaje a través de su navMeshAgent a la posicion indicada cuando se hace click con el ratón.
+        /// Comprueba el objeto con el que interactuar y llama al evento correspondiente si hace falta.
+        /// </summary>
+        /// <param name="context"></param>
         public void WalkToPoint(InputAction.CallbackContext context)
         {
             _navMeshAgent.isStopped = false;
@@ -60,7 +56,6 @@ namespace Player
                         break;
                     case Iteractables.Npc:
                         _navMeshAgent.SetDestination(_hit.point);
-                        Debug.Log("NPC clicked");
                         break;
                     case Iteractables.Element:
                         _navMeshAgent.SetDestination(_hit.point);
@@ -69,6 +64,9 @@ namespace Player
             }
         }
 
+        /// <summary>
+        /// Detiene el movimiento del navMeshAgent. Se detiene cuando llamamos el evento OnWalking.
+        /// </summary>
         public void ClearNavMeshAgentPath()
         {
             UserInput.OnWalking -= ClearNavMeshAgentPath;

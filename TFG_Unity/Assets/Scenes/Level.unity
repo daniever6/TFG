@@ -507,7 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 8888772230277726742}
   _navMeshAgent: {fileID: 565296308}
-  _walkToClick: {fileID: -2926397881720576710, guid: 326ae2be04c524744a333ee2c7aece18, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 97238681221374142}
+  _playerMovementOnClick: {fileID: 565296309}
   _move: {fileID: -5766548590536464799, guid: 326ae2be04c524744a333ee2c7aece18, type: 3}
+  _walkOnClick: {fileID: -2926397881720576710, guid: 326ae2be04c524744a333ee2c7aece18, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

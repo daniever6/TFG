@@ -1,13 +1,19 @@
-﻿namespace Command
+﻿using UnityEngine;
+
+namespace Command
 {
+    /// <summary>
+    /// Clase abstracta de comandos
+    /// </summary>
     public abstract class ACommand : ICommand
     {
-        protected PlayerMovement _playerMovement;
+        protected MonoBehaviour _playerReciver;
 
-        public ACommand(PlayerMovement playerMovement)
+        public ACommand(MonoBehaviour playerReciver)
         {
-            _playerMovement = playerMovement;
+            _playerReciver = playerReciver;
         }
+
         public abstract void Execute();
         
         public abstract void Execute(object data);
