@@ -46,10 +46,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Command\PlayerCommands.cs" />
+     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\Scripts\Command\ICommand.cs" />
+     <Compile Include="Assets\Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\Command\ACommand.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\DialogueManager.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Trigger.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovementOnClick.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
@@ -58,6 +62,7 @@
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scripts\Player" />
      <Folder Include="Assets\Scripts\Command" />
+     <Folder Include="Assets\Scripts\Dialogues" />
      <Folder Include="Assets\Art\3D Art" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Scripts\Utilities" />

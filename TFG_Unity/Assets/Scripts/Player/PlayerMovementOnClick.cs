@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
+using Dialogues;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Utilities;
 
 namespace Player
 {
@@ -57,6 +60,7 @@ namespace Player
                         break;
                     case Iteractables.Npc:
                         _navMeshAgent.SetDestination(_hit.point);
+                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
                         break;
                     case Iteractables.Element:
                         _navMeshAgent.SetDestination(_hit.point);
@@ -80,6 +84,25 @@ namespace Player
             _navMeshAgent.ResetPath();
             _navMeshAgent.path.ClearCorners();
 
+        }
+        
+        /// <summary>
+        /// Espera a que el jugador llegue al destino para realizar la accion
+        /// </summary>
+        /// <param name="trigger">Referencia a la clase que ejecutara el metodo TriggerEvent</param>
+        /// <typeparam name="T">Generico que hereda de la clase abstracta Trigger</typeparam>
+        /// <returns>Acaba la corrutina si la distancia restante <= 0.1f</returns>
+        IEnumerator WaitForDestination<T> (T trigger) where T : Trigger
+        {
+            while (_navMeshAgent.remainingDistance > 0f)
+            {
+                if (_navMeshAgent.remainingDistance <= 0.1f)
+                {
+                    trigger.TriggerEvent();
+                    yield break;
+                }
+                yield return null;
+            }
         }
         #endregion
     }
