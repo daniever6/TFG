@@ -782,6 +782,51 @@ MonoBehaviour:
   _unitNameText: {fileID: 0}
   _dialogText: {fileID: 0}
   _lettersWaitVelocity: 0.02
+--- !u!1 &1245291444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245291445}
+  - component: {fileID: 1245291446}
+  m_Layer: 0
+  m_Name: PauseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1245291445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245291444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1909903334}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1245291446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245291444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0f865dbd2349b4f9d1c72c03578b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseCanvas: {fileID: 338705764}
 --- !u!1 &1273757722
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1039,7 @@ MonoBehaviour:
   _playerMovementOnClick: {fileID: 1737185150}
   _move: {fileID: 1653470806590491828, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _walkOnClick: {fileID: 1997050109459260989, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
+  _pause: {fileID: 1147394648409866151, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
 --- !u!114 &1737185150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1330,7 @@ Transform:
   m_Children:
   - {fileID: 1770223919}
   - {fileID: 1074090069}
+  - {fileID: 1245291445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2082990593
@@ -1449,8 +1496,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2136761448}
   - {fileID: 1787787476}
+  - {fileID: 2136761448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136761444

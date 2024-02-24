@@ -44,4 +44,27 @@ namespace Command
             ((PlayerMovementOnClick)_playerReciver).WalkToPoint(new InputAction.CallbackContext());
         }
     }
+
+    public class PauseCommand : ACommand
+    {
+        public PauseCommand(MonoBehaviour playerReciver) : base(playerReciver)
+        {
+        }
+
+        public override void Execute()
+        {
+            GameState gameState = GameManager.Instance._gameState != GameState.Pause
+                ? GameState.Pause
+                : GameState.Resume;
+            GameManager.Instance.ChangeState(gameState);
+        }
+
+        public override void Execute(object data)
+        {
+            GameState gameState = GameManager.Instance._gameState != GameState.Pause
+                ? GameState.Pause
+                : GameState.Resume;
+            GameManager.Instance.ChangeState(gameState);
+        }
+    }
 }

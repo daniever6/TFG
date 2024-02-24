@@ -2,22 +2,26 @@ using System;
 using UnityEngine;
 using Utilities;
 
-public class GameManager : Singleton<MonoBehaviour>
+public class GameManager : Singleton<GameManager>
 {
     public GameState _gameState { get; private set; }
     
     public void Start() => ChangeState(GameState.Starting);
-
-    public static event Action<GameState> OnGameStateChanged;
+    
+    public static event Action<GameState> OnBeforeGameStateChanged;
+    public static event Action<GameState> OnAfterGameStateChanged;
     
     public void ChangeState(GameState newState)
     {
+        OnBeforeGameStateChanged?.Invoke(newState);
+
         _gameState = newState;
+
         switch (newState)
         {
             case GameState.Starting:
                 break;
-            case GameState.Gameplay:
+            case GameState.Resume:
                 break;
             case GameState.Pause:
                 break;
@@ -29,14 +33,14 @@ public class GameManager : Singleton<MonoBehaviour>
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
         
-        OnGameStateChanged?.Invoke(newState);
+        OnAfterGameStateChanged?.Invoke(newState);
     }
 }
 
 public enum GameState
 {
     Starting,
-    Gameplay,
+    Resume,
     Pause,
     Win,
     Loose

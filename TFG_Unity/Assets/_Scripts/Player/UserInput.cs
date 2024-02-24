@@ -19,12 +19,15 @@ namespace Player
         
         private ICommand _moveCommand;
         private ICommand _walkOnClickCommand;
+        private ICommand _pauseCommand = new PauseCommand(null);
+        
         public static event Action OnWalking;   
         private Vector2 _moveDirection;
         
         [Header("Input Actions")] 
         [SerializeField] private InputActionReference _move;
         [SerializeField] private InputActionReference _walkOnClick;
+        [SerializeField] private InputActionReference _pause;
         
         #endregion
 
@@ -44,14 +47,16 @@ namespace Player
         private void OnEnable()
         {
             _move.action.performed += ctx => {  _moveCommand?.Execute(_moveDirection);  OnWalking?.Invoke();}; 
-            _walkOnClick.action.performed += context =>  _walkOnClickCommand?.Execute(context);
+            _walkOnClick.action.performed += ctx =>  _walkOnClickCommand?.Execute(ctx);
+            _pause.action.performed += ctx => _pauseCommand?.Execute();
         }
 
         private void OnDisable()
         {
-            _move.action.performed -= ctx => { _moveCommand?.Execute(_moveDirection); }; 
-            _walkOnClick.action.performed -= context =>  _walkOnClickCommand?.Execute(context);
-            _walkOnClick.action.Disable();
+            _move.action.performed -= ctx => { _moveCommand?.Execute(_moveDirection); };
+            _walkOnClick.action.performed -= ctx => _walkOnClickCommand?.Execute(ctx);
+            _pause.action.performed -= ctx => _pauseCommand?.Execute();
+
         }
         
         #endregion

@@ -373,6 +373,7 @@
 "Assets/_Scripts/Player/PlayerMovement.cs"
 "Assets/_Scripts/Player/PlayerMovementOnClick.cs"
 "Assets/_Scripts/Player/UserInput.cs"
+"Assets/_Scripts/Utilities/GameplayMonoBehaviour.cs"
 "Assets/_Scripts/Utilities/Singleton.cs"
 "Assets/_Scripts/Utilities/Trigger.cs"
 -langversion:9.0

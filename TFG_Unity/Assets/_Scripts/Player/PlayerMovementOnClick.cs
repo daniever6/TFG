@@ -16,13 +16,28 @@ namespace Player
         Element
     }
     
-    public class PlayerMovementOnClick:MonoBehaviour
+    public class PlayerMovementOnClick:GameplayMonoBehaviour
     {
         #region Properties
 
         [SerializeField] private Camera _camera;
         [SerializeField] private NavMeshAgent _navMeshAgent;
         private RaycastHit _hit;
+
+        #endregion
+
+        #region Inheritance Methods
+
+        protected override void OnPostPaused()
+        {
+            _navMeshAgent.isStopped = true;
+        }
+
+        protected override void OnPostResumed()
+        {
+            _navMeshAgent.isStopped = false;
+            if(_navMeshAgent.hasPath) _navMeshAgent.SetDestination(_navMeshAgent.pathEndPosition);
+        }
 
         #endregion
 
