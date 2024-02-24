@@ -5,7 +5,11 @@ using Utilities;
 public class GameManager : Singleton<MonoBehaviour>
 {
     public GameState _gameState { get; private set; }
+    
     public void Start() => ChangeState(GameState.Starting);
+
+    public static event Action<GameState> OnGameStateChanged;
+    
     public void ChangeState(GameState newState)
     {
         _gameState = newState;
@@ -24,6 +28,8 @@ public class GameManager : Singleton<MonoBehaviour>
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
+        
+        OnGameStateChanged?.Invoke(newState);
     }
 }
 
