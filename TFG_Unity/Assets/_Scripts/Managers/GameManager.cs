@@ -2,6 +2,15 @@ using System;
 using UnityEngine;
 using Utilities;
 
+public enum GameState
+{
+    Starting,
+    Resume,
+    Pause,
+    Win,
+    Loose
+}
+
 public class GameManager : Singleton<GameManager>
 {
     public GameState _gameState { get; private set; }
@@ -35,13 +44,4 @@ public class GameManager : Singleton<GameManager>
         
         OnAfterGameStateChanged?.Invoke(newState);
     }
-}
-
-public enum GameState
-{
-    Starting,
-    Resume,
-    Pause,
-    Win,
-    Loose
 }

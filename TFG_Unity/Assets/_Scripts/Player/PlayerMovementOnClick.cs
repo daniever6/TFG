@@ -3,6 +3,7 @@ using System.Collections;
 using Dialogues;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Utilities;
 
@@ -16,6 +17,9 @@ namespace Player
         Element
     }
     
+    /// <summary>
+    /// Clase que controla el movimiento del jugador a traves del raton mediante OnClick
+    /// </summary>
     public class PlayerMovementOnClick:GameplayMonoBehaviour
     {
         #region Properties
@@ -55,17 +59,17 @@ namespace Player
         /// <param name="context"></param>
         public void WalkToPoint(InputAction.CallbackContext context)
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
             _navMeshAgent.isStopped = false;
 
             UserInput.OnWalking += ClearNavMeshAgentPath;
             
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {
-                string colliderTag = _hit.collider.tag;
                 Iteractables parsedEnum;
-                Enum.TryParse<Iteractables>(colliderTag, out parsedEnum);
+                Enum.TryParse(_hit.collider.tag, out parsedEnum);
                 switch(parsedEnum)
                 {
                     case Iteractables.None:

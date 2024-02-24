@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using Utilities;
 
+/// <summary>
+/// Manager que controla el menu de pausa del juego
+/// </summary>
 public class PauseMenuManager : Singleton<PauseMenuManager>
 {
     [SerializeField] private GameObject _pauseCanvas;

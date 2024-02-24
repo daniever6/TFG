@@ -11,7 +11,7 @@ namespace Player
     /// </summary>
     public class UserInput : Utilities.Singleton<MonoBehaviour>
     {
-        #region Properties
+        #region Class implementation
         
         [Header("Component's References")]
         [SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
@@ -19,7 +19,7 @@ namespace Player
         
         private ICommand _moveCommand;
         private ICommand _walkOnClickCommand;
-        private ICommand _pauseCommand = new PauseCommand(null);
+        private ICommand _pauseCommand;
         
         public static event Action OnWalking;   
         private Vector2 _moveDirection;
@@ -31,11 +31,12 @@ namespace Player
         
         #endregion
 
-        #region Lifecycle Methods
+        #region Input handler methods
         private void Start()
         {
             _moveCommand = _playerMovement != null ? new MoveCommand(_playerMovement) : null;
             _walkOnClickCommand = _playerMovementOnClick != null ? new WalkOnClickCommand(_playerMovementOnClick) : null;
+            _pauseCommand = new PauseCommand(null);
         }
 
         private void FixedUpdate()
@@ -52,10 +53,10 @@ namespace Player
         }
 
         private void OnDisable()
-        {
-            _move.action.performed -= ctx => { _moveCommand?.Execute(_moveDirection); };
-            _walkOnClick.action.performed -= ctx => _walkOnClickCommand?.Execute(ctx);
-            _pause.action.performed -= ctx => _pauseCommand?.Execute();
+        {   
+            _move.action.Disable();
+            _walkOnClick.action.Disable();
+            _pause.action.Disable();
 
         }
         

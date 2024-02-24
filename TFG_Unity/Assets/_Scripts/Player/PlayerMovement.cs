@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Clase que controla el movimiento del jugador a través de teclado
+/// </summary>
 public class PlayerMovement : GameplayMonoBehaviour
 {
     #region Variables

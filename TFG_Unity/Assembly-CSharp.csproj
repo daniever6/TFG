@@ -45,7 +45,6 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Command\PlayerCommands.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Singleton.cs" />
      <Compile Include="Assets\_Scripts\Managers\PauseMenuManager.cs" />
      <Compile Include="Assets\_Scripts\Command\ICommand.cs" />
@@ -56,6 +55,7 @@
      <Compile Include="Assets\_Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\_Scripts\Command\CommandsBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Managers\DialogueManager.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\Utilities\GameplayMonoBehaviour.cs" />
