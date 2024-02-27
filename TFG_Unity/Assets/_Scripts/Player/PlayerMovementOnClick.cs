@@ -34,11 +34,13 @@ namespace Player
 
         protected override void OnPostPaused()
         {
+            UserInput.OnWalking -= ClearNavMeshAgentPath;
             _navMeshAgent.isStopped = true;
         }
 
         protected override void OnPostResumed()
         {
+            UserInput.OnWalking += ClearNavMeshAgentPath;
             _navMeshAgent.isStopped = false;
             if(_navMeshAgent.hasPath) _navMeshAgent.SetDestination(_navMeshAgent.pathEndPosition);
         }
