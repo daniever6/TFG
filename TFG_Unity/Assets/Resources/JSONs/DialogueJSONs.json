@@ -1,72 +1,62 @@
 ﻿{
-  "moments": [
+  "Stages": [
     {
-      "momentId":"Tutorial",
-      "dialogues": [
+      "Stage":"Tutorial",
+      "Dialogues": [
         {
-          "characterName": "Alumno desconocido 1",
-          "characterImage": "",
-          "text": "¿Habéis visto sobre el nuevo virus que se está expandiendo por el mundo? Llevaos mascarillas para el próximo día tío, es que si me infectáis os mato.",
-          "event": ""
+          "UnitName": "Alumno desconocido 1",
+          "UnitImage": "",
+          "Sentences": "¿Habéis visto sobre el nuevo virus que se está expandiendo por el mundo? Llevaos mascarillas para el próximo día tío, es que si me infectáis os mato."
         },
         {
-          "characterName": "Alumno desconocido 2",
-          "characterImage": "",
-          "text": "Pero qué fantasma eres, ese virus será como todos los virus de gripe que se ha ocasionado, con el que tenemos seguramente no pasará nada.",
-          "event": ""
+          "UnitName": "Alumno desconocido 2",
+          "UnitImage": "",
+          "Sentences": "Pero qué fantasma eres, ese virus será como todos los virus de gripe que se ha ocasionado, con el que tenemos seguramente no pasará nada."
         },
         {
-          "characterName": "Protagonista",
-          "characterImage": "",
-          "text": "... (¿Qué hay de comer cuando llegue a casa?)",
-          "event": ""
+          "UnitName": "Protagonista",
+          "UnitImage": "",
+          "Sentences": "... (¿Qué hay de comer cuando llegue a casa?)"
         },
         {
-          "characterName": "Profesor",
-          "characterImage": "",
-          "text": "Antes de irnos a la clase de laboratorio, veamos un video de demostración sobre qué pautas hay que tomar y cómo sería el proceso de hacer las cosas",
-          "event": ""
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": "Antes de irnos a la clase de laboratorio, veamos un video de demostración sobre qué pautas hay que tomar y cómo sería el proceso de hacer las cosas"
         },
         {
-          "characterName": "Profesor",
-          "characterImage": "",
-          "text": "BIEN.",
-          "event": "Tutorial"
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": "BIEN."
         }
       ]
     },
     {
-      "moment": "Inicio",
-      "dialogues": [
+      "Stage": "Inicio",
+      "Dialogues": [
         {
-          "characterName": "Profesor",
-          "characterImage": "",
-          "text": "Por problemas personales, no puedo estar muy pendiente de vosotros hoy durante la práctica, confío en vosotros.",
-          "event": ""
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": "Por problemas personales, no puedo estar muy pendiente de vosotros hoy durante la práctica, confío en vosotros."
         },
         {
-          "characterName": "Profesor",
-          "characterImage": "",
-          "text": "Hoy debemos hacer lo siguiente: \nLuego maniobraremos y tendréis que limpiar el laboratorio bien, guardad las sustancias, y tirar los que no necesitáis al residuo correcto.",
-          "event": "CamaraPointAlumnaY"
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": "Hoy debemos hacer lo siguiente: \nLuego maniobraremos y tendréis que limpiar el laboratorio bien, guardad las sustancias, y tirar los que no necesitáis al residuo correcto."
         },
         {
-          "characterName": "Alumna Y",
-          "characterImage": "",
-          "text": "Cada vez que venimos al laboratorio nos toca limpiar, ¿porque los que usaron el laboratorio no saben deshacerse de los reactivos químicos o qué? ",
-          "event": "TurnToAlumnoX"
+          "UnitName": "Alumna Y",
+          "UnitImage": "",
+          "Sentences": "Cada vez que venimos al laboratorio nos toca limpiar, ¿porque los que usaron el laboratorio no saben deshacerse de los reactivos químicos o qué? "
         },
         {
-          "characterName": "Alumno X",
-          "characterImage": "",
-          "text": "...",
-          "event": "CamaraPointProfesor"
+          "UnitName": "Alumno X",
+          "UnitImage": "",
+          "Sentences": "..."
         },
         {
-          "characterName": "Profesor",
-          "characterImage": "",
-          "text": "La clase no va a durar mucho, por lo tanto, espero que podéis aprovechar la clase al máximo.",
-          "event": ""
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": "La clase no va a durar mucho, por lo tanto, espero que podéis aprovechar la clase al máximo."
         }
       ]
     }

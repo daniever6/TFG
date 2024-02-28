@@ -13,5 +13,15 @@ namespace Dialogues
         public string[] Sentences => _sentences;
         public string UnitName => _unitName;
         public Sprite UnitImage => _unitImage;
+
+        public static implicit operator Dialogue(DialogueSerializable dialogue)
+        {
+            return new Dialogue()
+            {
+                _unitImage = dialogue.UnitImage,
+                _unitName = dialogue.UnitName,
+                _sentences = new string[]{dialogue.Sentences}
+            };
+        }
     }
 }

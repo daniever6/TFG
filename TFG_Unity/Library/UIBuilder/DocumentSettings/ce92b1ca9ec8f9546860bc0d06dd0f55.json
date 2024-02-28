@@ -3,13 +3,13 @@
     "UxmlPath": "Assets/_Scripts/UI/UI Toolkit/PauseMenu.uxml",
     "CanvasX": 0,
     "CanvasY": 0,
-    "CanvasWidth": 900,
-    "CanvasHeight": 506,
-    "MatchGameView": true,
-    "ZoomScale": 0.6000000238418579,
+    "CanvasWidth": 716,
+    "CanvasHeight": 477,
+    "MatchGameView": false,
+    "ZoomScale": 1.0499999523162842,
     "PanOffset": {
-        "x": 27.366104125976564,
-        "y": 81.90774536132813
+        "x": 35.35075378417969,
+        "y": -51.81005859375
     },
     "ColorModeBackgroundOpacity": 1.0,
     "ImageModeCanvasBackgroundOpacity": 1.0,
