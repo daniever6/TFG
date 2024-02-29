@@ -13,7 +13,7 @@ namespace Dialogues
 
         public override void TriggerEvent()
         {
-            _dialogueManager.StartDialogue(_dialogue);
+            _dialogueManager.GetDialogues(new []{_dialogue});
         }
     }
 }

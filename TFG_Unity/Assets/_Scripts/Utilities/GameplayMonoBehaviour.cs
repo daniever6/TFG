@@ -7,18 +7,22 @@ public abstract class GameplayMonoBehaviour : MonoBehaviour
 {
     private void Awake()
     {
-        GameManager.OnAfterGameStateChanged += HandleGameStatedChanged;
+        GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
     }
 
     private void OnDestroy()
     {
-        GameManager.OnAfterGameStateChanged += HandleGameStatedChanged;
+        GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
     }
 
+    /// <summary>
+    /// Detiene los componentes que hijos cuando gameState es Pause o Dialogue
+    /// </summary>
+    /// <param name="gameState"></param>
     private void HandleGameStatedChanged(GameState gameState)
     {
-        enabled = gameState != GameState.Pause;
-        if (gameState == GameState.Pause)
+        enabled = (gameState != GameState.Pause && gameState != GameState.Dialogue);
+        if (gameState == GameState.Pause || gameState == GameState.Dialogue)
         {
             OnPostPaused();
         }

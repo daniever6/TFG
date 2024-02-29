@@ -58,7 +58,7 @@ namespace Command
         {
             GameState gameState = GameManager.Instance._gameState != GameState.Pause
                 ? GameState.Pause
-                : GameState.Resume;
+                : GameManager.Instance._previousGameState;
             GameManager.Instance.ChangeState(gameState);
         }
 
@@ -66,7 +66,7 @@ namespace Command
         {
             GameState gameState = GameManager.Instance._gameState != GameState.Pause
                 ? GameState.Pause
-                : GameState.Resume;
+                : GameManager.Instance._previousGameState;
             GameManager.Instance.ChangeState(gameState);
         }
     }

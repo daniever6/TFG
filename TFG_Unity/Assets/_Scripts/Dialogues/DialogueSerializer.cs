@@ -12,7 +12,7 @@ public class DialogueStages
 public class DialogueStage
 {
     public string Stage;
-    public List<DialogueSerializable> Dialogues;
+    public List<Dialogue> Dialogues;
 }
 
 [System.Serializable]

@@ -527,11 +527,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348d846993c44709bc4314f04ae10f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueManager: {fileID: 1074090070}
+  _dialogueManager: {fileID: 1074090071}
   _dialogue:
-    _unitImage: {fileID: 0}
-    _unitName: Profesor
-    _sentences: []
+    UnitName: 
+    UnitImage: {fileID: 0}
+    Sentences:
+    - Dejame en paz
 --- !u!1 &338705764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074090069}
-  - component: {fileID: 1074090070}
+  - component: {fileID: 1074090071}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -1169,7 +1170,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1909903334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074090070
+--- !u!114 &1074090071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1178,10 +1179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1074090068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a364ed8de8494f30b8ecd79b0e4d6438, type: 3}
+  m_Script: {fileID: 11500000, guid: e3824fe9298b4e2fbc49e3ae6bc44347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseCanvas: {fileID: 1596050501}
+  _dialogueCanvas: {fileID: 1596050501}
   _unitImage: {fileID: 0}
   _unitNameText: {fileID: 130218457}
   _dialogText: {fileID: 846151877}
@@ -1425,9 +1426,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1074090070}
-        m_TargetAssemblyTypeName: Managers.DialogueManager, Assembly-CSharp
-        m_MethodName: DisplayNextSentence
+      - m_Target: {fileID: 1074090071}
+        m_TargetAssemblyTypeName: Managers.DialogManager, Assembly-CSharp
+        m_MethodName: DisplayDialogueSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

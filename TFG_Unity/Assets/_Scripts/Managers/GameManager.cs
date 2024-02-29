@@ -10,6 +10,7 @@ public enum GameState
 {
     Starting,
     Resume,
+    Dialogue,
     Pause,
     Win,
     Loose
@@ -17,19 +18,27 @@ public enum GameState
 
 public class GameManager : Singleton<GameManager>
 {
-    private Dictionary<string, Queue<DialogueSerializable>> dialoguesDictionary = new Dictionary<string, Queue<DialogueSerializable>>();
-
+    private Dictionary<string, Queue<Dialogue>> dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
+    public GameState _previousGameState { get; private set; }
     public GameState _gameState { get; private set; }
+    
     
     public void Start() => ChangeState(GameState.Starting);
     
+    //EVENTS
     public static event Action<GameState> OnBeforeGameStateChanged;
     public static event Action<GameState> OnAfterGameStateChanged;
     
+    
+    /// <summary>
+    /// Metodo encargado de la gestion del juego, controla los estados y ejecuta los metodos indicados
+    /// </summary>
+    /// <param name="newState">Estado al que se cambia</param>
     public void ChangeState(GameState newState)
     {
         OnBeforeGameStateChanged?.Invoke(newState);
 
+        if (newState != GameState.Pause) _previousGameState = newState;
         _gameState = newState;
 
         switch (newState)
@@ -40,6 +49,9 @@ public class GameManager : Singleton<GameManager>
             case GameState.Resume:
                 break;
             case GameState.Pause:
+                break;
+            case GameState.Dialogue:
+                HandleDialogue();
                 break;
             case GameState.Win:
                 break;
@@ -57,7 +69,12 @@ public class GameManager : Singleton<GameManager>
     public void HandleStarting()
     {
         DeserializeDialogues();
-        ChangeState(GameState.Resume);
+        ChangeState(GameState.Dialogue);
+    }
+
+    public void HandleDialogue()
+    {
+        
     }
 
     #endregion
@@ -65,6 +82,9 @@ public class GameManager : Singleton<GameManager>
 
     #region Handle Starting Methods
 
+    /// <summary>
+    /// Carga los dialogos del JSON para mostrar los dialogos de la intro
+    /// </summary>
     public void DeserializeDialogues()
     {
         TextAsset dialogueJson = Resources.Load<TextAsset>("JSONs/DialogueJSONs");
@@ -74,11 +94,11 @@ public class GameManager : Singleton<GameManager>
         
         foreach (DialogueStage stage in stages.Stages)
         {
-            Queue<DialogueSerializable> dialoguesQueue = new Queue<DialogueSerializable>(stage.Dialogues);
+            Queue<Dialogue> dialoguesQueue = new Queue<Dialogue>(stage.Dialogues);
             dialoguesDictionary.Add(stage.Stage, dialoguesQueue);
         }
-        
-        DialogueManager.Instance.CinematicDialogue(dialoguesDictionary["Tutorial"]);
+
+        DialogueManager.Instance.GetDialogues(dialoguesDictionary["Tutorial"].ToArray());
     }
 
     #endregion

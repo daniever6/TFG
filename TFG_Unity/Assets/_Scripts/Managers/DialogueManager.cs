@@ -5,51 +5,77 @@ using System.Linq;
 using Dialogues;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities;
 
 namespace Managers
 {
-    public enum DialogueType
-    {
-        OneUnitDialogue,
-        ManyUnitsDialogue
-    }
     
     public class DialogueManager : Singleton<DialogueManager>
     {
         #region Class implementation
 
-        [SerializeField] private GameObject _pauseCanvas;
+        [SerializeField] private GameObject _dialogueCanvas;
         
         [SerializeField] private Image _unitImage;
         [SerializeField] private TextMeshProUGUI _unitNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;
         [SerializeField] private float _lettersWaitVelocity = 0f;
-
-        private DialogueType _dialogueType;
+        
         private Queue<string> _sentences;
-        private Queue<DialogueSerializable> _dialogues;
+        private Queue<Dialogue> _dialogues;
 
         private void Start()
         {
             _sentences = new Queue<string>();
-            _dialogues = new Queue<DialogueSerializable>();
+            _dialogues = new Queue<Dialogue>();
         }
         
         #endregion
 
         #region Dialogue Logic Methods
+        
+        /// <summary>
+        /// Almacena todos los dialogos dentro de una cola de dialogos para mostrarlos
+        /// </summary>
+        /// <param name="dialogues">Dialogos a almacenar</param>
+        public void GetDialogues(Dialogue[] dialogues)
+        {
+            GameManager.Instance.ChangeState(GameState.Dialogue);
+            
+            _dialogueCanvas.SetActive(true);
+            _dialogues.Clear();
+            
+            foreach (Dialogue dialogue in dialogues)
+            {
+                _dialogues.Enqueue(dialogue);
+            }
+            
+            DisplayNextDialogue();
+        }
+        
+        /// <summary>
+        /// Muestra la siguiente frase del dialogo, al acabar llama a EndDialog
+        /// </summary>
+        public void DisplayNextDialogue()
+        {
+            if (_dialogues.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
 
+            Dialogue dialogue = _dialogues.Dequeue();
+            StartDialogue(dialogue);
+        }
+        
         /// <summary>
         /// Lleva la lógica del comienzo de los dialogos con los personajes
         /// </summary>
         /// <param name="dialogue"></param>
         public void StartDialogue(Dialogue dialogue)
         {
-            _pauseCanvas.SetActive(true);
-            _dialogueType = DialogueType.OneUnitDialogue;
-            
             //_unitImage.sprite = dialogue.UnitImage;
             _unitNameText.text = dialogue.UnitName;
             _sentences.Clear();
@@ -59,45 +85,14 @@ namespace Managers
                 _sentences.Enqueue(sentence);
             }
 
-            DisplayNextSentence();
+            DisplayDialogueSentence();
         }
 
-        public void CinematicDialogue(Queue<DialogueSerializable> dialogues)
-        {
-            _pauseCanvas.SetActive(true);
-            _dialogueType = DialogueType.ManyUnitsDialogue;
-
-            _dialogues.Clear();
-            foreach (var dialogue in dialogues)
-            {
-                _dialogues.Enqueue(dialogue);
-            }
-            
-            DisplayNextSentence();
-        }
-
-        /// <summary>
-        /// Muestra la siguiente frase del dialogo, al acabar llama a EndDialog
-        /// </summary>
-        public void DisplayNextSentence()
-        {
-            switch (_dialogueType)
-            {
-                case DialogueType.OneUnitDialogue:
-                    DisplayOneUnitDialogue();
-                    break;
-                
-                case DialogueType.ManyUnitsDialogue:
-                    DisplayManyUnitDialogues();
-                    break;
-            }
-        }
-
-        private void DisplayOneUnitDialogue()
+        public void DisplayDialogueSentence()
         {
             if (_sentences.Count == 0)
             {
-                EndDialogue();
+                DisplayNextDialogue();
                 return;
             }
             
@@ -105,28 +100,14 @@ namespace Managers
             StopAllCoroutines();
             StartCoroutine(TypeSentence(sentence));
         }
-        
-        private void DisplayManyUnitDialogues()
-        {
-            if (_dialogues.Count == 0)
-            {
-                EndDialogue();
-                return;
-            }
-            DialogueSerializable currentDialogue = _dialogues.Dequeue();
-            //_unitImage.sprite = currentDialogue.UnitImage;
-            _unitNameText.text = currentDialogue.UnitName;
-            
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(currentDialogue.Sentences));
-        }
 
         /// <summary>
         /// Cierra la pestaña de los dialogos
         /// </summary>
         public void EndDialogue()
         {
-            _pauseCanvas.SetActive(false);
+            _dialogueCanvas.SetActive(false);
+            GameManager.Instance.ChangeState(GameState.Resume);
         }
 
         /// <summary>
