@@ -364,6 +364,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/_Scripts/Dialogues/Dialogue.cs"
 "Assets/_Scripts/Dialogues/DialogueTrigger.cs"
+"Assets/_Scripts/Interactables/InteractableTrigger.cs"
 "Assets/_Scripts/Managers/DialogueManager.cs"
 "Assets/_Scripts/Managers/GameManager.cs"
 "Assets/_Scripts/Managers/PauseMenuManager.cs"

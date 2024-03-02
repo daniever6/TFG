@@ -53,6 +53,7 @@
      <Compile Include="Assets\_Scripts\Utilities\Trigger.cs" />
      <Compile Include="Assets\_Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ICommand.cs" />
+     <Compile Include="Assets\_Scripts\Interactables\InteractableTrigger.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ACommand.cs" />
@@ -63,6 +64,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <Folder Include="Assets\Scenes" />
+     <Folder Include="Assets\_Scripts\Interactables" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\_Scripts" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />

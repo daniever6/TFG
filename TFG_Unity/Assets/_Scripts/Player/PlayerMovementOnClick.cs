@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using _Scripts.Interactables;
 using Dialogues;
 using UnityEngine;
 using UnityEngine.AI;
@@ -85,6 +86,7 @@ namespace Player
                         break;
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
+                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<InteractableTrigger>()));
                         break;
                     default:
                         break;
