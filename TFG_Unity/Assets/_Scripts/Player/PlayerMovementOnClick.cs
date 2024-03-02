@@ -14,7 +14,7 @@ namespace Player
         None,
         Ground,
         Npc,
-        Element
+        Interactable
     }
     
     /// <summary>
@@ -83,7 +83,7 @@ namespace Player
                         _navMeshAgent.SetDestination(_hit.point);
                         StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
                         break;
-                    case Iteractables.Element:
+                    case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
                         break;
                     default:
@@ -119,7 +119,7 @@ namespace Player
             {
                 if (_navMeshAgent.remainingDistance <= 0.1f)
                 {
-                    trigger.TriggerEvent();
+                    trigger?.TriggerEvent();
                     yield break;
                 }
                 yield return null;
