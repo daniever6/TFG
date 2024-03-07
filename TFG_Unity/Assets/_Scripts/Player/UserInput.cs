@@ -9,7 +9,7 @@ namespace Player
     /// <summary>
     /// Clase encargada del input del personaje
     /// </summary>
-    public class UserInput : Utilities.Singleton<MonoBehaviour>
+    public class UserInput : Utilities.Singleton<UserInput>
     {
         #region Class implementation
         
