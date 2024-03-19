@@ -9,8 +9,9 @@ public class PauseMenuManager : Singleton<PauseMenuManager>
 {
     [SerializeField] private GameObject _pauseCanvas;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         GameManager.OnAfterGameStateChanged += HandlePauseGameState;
     }
 
