@@ -2409,6 +2409,7 @@ GameObject:
   - component: {fileID: 1737185154}
   - component: {fileID: 1737185153}
   - component: {fileID: 1737185152}
+  - component: {fileID: 1737185158}
   - component: {fileID: 1737185151}
   - component: {fileID: 1737185150}
   - component: {fileID: 1737185149}
@@ -2446,11 +2447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c953a26c415b70143b1c35da9bf07cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerState: 0
-  _playerMovement: {fileID: 1737185151}
-  _playerMovementOnClick: {fileID: 1737185150}
+  _playerState: 1
+  _playerController: {fileID: 0}
   _move: {fileID: 1653470806590491828, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _walkOnClick: {fileID: 1997050109459260989, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
+  _use: {fileID: -7531365030351693403, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _pause: {fileID: 1147394648409866151, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
 --- !u!114 &1737185150
 MonoBehaviour:
@@ -2634,6 +2635,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737185147}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1737185158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737185147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ef731bfa9242a1903badc56aa83ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 1737185151}
+  _playerMovementOnClick: {fileID: 1737185150}
 --- !u!1 &1770223918
 GameObject:
   m_ObjectHideFlags: 0

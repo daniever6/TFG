@@ -10,17 +10,17 @@ namespace Command
     /// </summary>
     public class MoveCommand : ACommand
     {
-        public MoveCommand(PlayerMovement playerMovement) : base(playerMovement){}
+        public MoveCommand(IPlayerController playerController) : base(playerController){}
         public override void Execute()
         {
-            if(_playerReciver.Equals(null) || !_playerReciver.isActiveAndEnabled) return;
-            ((PlayerMovement)_playerReciver).Move(Vector2.zero);
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.Move(Vector2.zero);
         }
 
         public override void Execute(object data)
         {
-            if(_playerReciver.Equals(null) || !_playerReciver.isActiveAndEnabled) return;
-            ((PlayerMovement)_playerReciver).Move((Vector2)data);
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.Move((Vector2)data);
         }
     }
 
@@ -30,18 +30,36 @@ namespace Command
     /// </summary>
     public class WalkOnClickCommand : ACommand
     {
-        public WalkOnClickCommand(PlayerMovementOnClick playerMovementOnClick) : base(playerMovementOnClick){}
+        public WalkOnClickCommand(IPlayerController playerController) : base(playerController){}
 
         public override void Execute()
         {
-            if(_playerReciver.Equals(null) || !_playerReciver.isActiveAndEnabled) return;
-            ((PlayerMovementOnClick)_playerReciver).WalkToPoint(new InputAction.CallbackContext());
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.WalkToPoint(new InputAction.CallbackContext());
         }
 
         public override void Execute(object data)
         {
-            if(_playerReciver.Equals(null) || !_playerReciver.isActiveAndEnabled) return;
-            ((PlayerMovementOnClick)_playerReciver).WalkToPoint(new InputAction.CallbackContext());
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.WalkToPoint(new InputAction.CallbackContext());
+        }
+    }
+    
+    /// <summary>
+    /// Comando encargado de la interaccion de objetos en primera persona
+    /// </summary>
+    public class UseCommand : ACommand
+    {
+        public UseCommand(IPlayerController playerController) : base(playerController){}
+
+        public override void Execute()
+        {
+            var a = 0;
+        }
+
+        public override void Execute(object data)
+        {
+            var a = 0;
         }
     }
 
@@ -50,7 +68,7 @@ namespace Command
     /// </summary>
     public class PauseCommand : ACommand
     {
-        public PauseCommand(MonoBehaviour playerReciver) : base(playerReciver)
+        public PauseCommand(IPlayerController playerController) : base(playerController)
         {
         }
 
@@ -70,4 +88,6 @@ namespace Command
             GameManager.Instance.ChangeState(gameState);
         }
     }
+
+    
 }

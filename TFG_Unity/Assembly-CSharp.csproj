@@ -54,11 +54,13 @@
      <Compile Include="Assets\_Scripts\Player\UserInput.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ICommand.cs" />
      <Compile Include="Assets\_Scripts\Interactables\InteractableTrigger.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ACommand.cs" />
      <Compile Include="Assets\_Scripts\Managers\DialogueManager.cs" />
      <Compile Include="Assets\_Scripts\Interactables\MouseDrag.cs" />
+     <Compile Include="Assets\_Scripts\Player\IPlayerController.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\Utilities\GameplayMonoBehaviour.cs" />
      <Folder Include="Assets" />

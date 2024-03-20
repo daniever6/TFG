@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace Command
 {
@@ -7,9 +8,9 @@ namespace Command
     /// </summary>
     public abstract class ACommand : ICommand
     {
-        protected MonoBehaviour _playerReciver;
+        protected IPlayerController _playerReciver;
 
-        public ACommand(MonoBehaviour playerReciver)
+        public ACommand(IPlayerController playerReciver)
         {
             _playerReciver = playerReciver;
         }

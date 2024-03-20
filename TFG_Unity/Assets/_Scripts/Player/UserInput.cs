@@ -27,16 +27,19 @@ namespace Player
         private Vector2 _moveDirection;
         
         [Header("Component's References")]
-        [SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
-        [SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
+        [SerializeField] private PlayerController _playerController;
+        //[SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
+        //[SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
         
         private ICommand _moveCommand;
         private ICommand _walkOnClickCommand;
+        private ICommand _useCommand;
         private ICommand _pauseCommand;
         
         [Header("Input Actions")] 
         [SerializeField][CanBeNull] private InputActionReference _move;
         [SerializeField][CanBeNull] private InputActionReference _walkOnClick;
+        [SerializeField] private InputActionReference _use;
         [SerializeField] private InputActionReference _pause;
 
         #endregion
@@ -45,8 +48,9 @@ namespace Player
         
         private void Start()
         {
-            _moveCommand = _playerMovement != null ? new MoveCommand(_playerMovement) : null;
-            _walkOnClickCommand = _playerMovementOnClick != null ? new WalkOnClickCommand(_playerMovementOnClick) : null;
+            _moveCommand = _playerController.PlayerMovement != null? new MoveCommand(_playerController) : null;
+            _walkOnClickCommand = _playerController.PlayerMovementOnClick != null? new WalkOnClickCommand(_playerController) : null;
+            _useCommand = new UseCommand(null);
             _pauseCommand = new PauseCommand(null);
             
             ChangePlayerState(_playerState);
@@ -77,15 +81,13 @@ namespace Player
         private void FixedUpdate()
         {
             InputHandler?.Invoke();
-            // if (_isMoveNull) return;
-            // _moveDirection = _move.action.ReadValue<Vector2>();
-            // _moveCommand?.Execute(_moveDirection);  
         }
 
         private void OnEnable()
         {
             if(_move != null) _move.action.performed += ctx => {  _moveCommand?.Execute(_moveDirection);  OnWalking?.Invoke();}; 
             if(_walkOnClick != null) _walkOnClick.action.performed += ctx =>  _walkOnClickCommand?.Execute(ctx);
+            _use.action.performed += ctx => _useCommand?.Execute();
             _pause.action.performed += ctx => _pauseCommand?.Execute();
         }
 
@@ -93,6 +95,7 @@ namespace Player
         {   
             if(_move != null)_move.action.Disable();
             if(_walkOnClick != null)_walkOnClick.action.Disable();
+            _use.action.Disable();
             _pause.action.Disable();
 
         }
@@ -108,12 +111,15 @@ namespace Player
 
         private void DisableFirstPersonInput()
         {
-            
+            if (_use != null)
+            {
+                InputHandler += Interact;
+            }
         }
 
-        private void Drag()
+        private void Interact()
         {
-            
+            _useCommand?.Execute();
         }
 
         #endregion
@@ -128,12 +134,12 @@ namespace Player
         {
             DisableFirstPersonInput();
             
-            if (_move != null && _playerMovement != null)
+            if (_move != null)
             {
                 InputHandler += KeyboardMovement;
             }
 
-            if (_walkOnClick != null && _playerMovementOnClick != null)
+            if (_walkOnClick != null)
             {
                 InputHandler += ClickMovement;
             }
