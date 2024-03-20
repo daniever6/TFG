@@ -7,6 +7,6 @@ namespace Player
     {
         public void Move(Vector2 MoveDirection);
         public void WalkToPoint(InputAction.CallbackContext context);
-        public void Use();
+        public void Use(InputAction.CallbackContext context);
     }
 }

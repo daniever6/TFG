@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Player;
 using Command;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -50,8 +51,8 @@ namespace Player
         {
             _moveCommand = _playerController.PlayerMovement != null? new MoveCommand(_playerController) : null;
             _walkOnClickCommand = _playerController.PlayerMovementOnClick != null? new WalkOnClickCommand(_playerController) : null;
-            _useCommand = new UseCommand(null);
-            _pauseCommand = new PauseCommand(null);
+            _useCommand = new UseCommand(_playerController);
+            _pauseCommand = new PauseCommand(_playerController);
             
             ChangePlayerState(_playerState);
         }
@@ -87,7 +88,7 @@ namespace Player
         {
             if(_move != null) _move.action.performed += ctx => {  _moveCommand?.Execute(_moveDirection);  OnWalking?.Invoke();}; 
             if(_walkOnClick != null) _walkOnClick.action.performed += ctx =>  _walkOnClickCommand?.Execute(ctx);
-            _use.action.performed += ctx => _useCommand?.Execute();
+            _use.action.performed += ctx => _useCommand?.Execute(ctx);
             _pause.action.performed += ctx => _pauseCommand?.Execute();
         }
 
@@ -107,19 +108,20 @@ namespace Player
         private void HandleFirstPerson()
         {
             DisableThirdPersonInput();
-        }
 
-        private void DisableFirstPersonInput()
-        {
             if (_use != null)
             {
                 InputHandler += Interact;
             }
         }
 
+        private void DisableFirstPersonInput()
+        {
+            InputHandler -= Interact;
+        }
+
         private void Interact()
         {
-            _useCommand?.Execute();
         }
 
         #endregion

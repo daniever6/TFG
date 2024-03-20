@@ -371,6 +371,7 @@
 "Assets/_Scripts/Managers/PauseMenuManager.cs"
 "Assets/_Scripts/Player/IPlayerController.cs"
 "Assets/_Scripts/Player/PlayerController.cs"
+"Assets/_Scripts/Player/PlayerGrab.cs"
 "Assets/_Scripts/Player/PlayerMovement.cs"
 "Assets/_Scripts/Player/PlayerMovementOnClick.cs"
 "Assets/_Scripts/Player/UserInput.cs"

@@ -61,6 +61,7 @@
      <Compile Include="Assets\_Scripts\Managers\DialogueManager.cs" />
      <Compile Include="Assets\_Scripts\Interactables\MouseDrag.cs" />
      <Compile Include="Assets\_Scripts\Player\IPlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerGrab.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\Utilities\GameplayMonoBehaviour.cs" />
      <Folder Include="Assets" />

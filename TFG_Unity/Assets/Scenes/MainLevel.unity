@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerState: 1
-  _playerController: {fileID: 0}
+  _playerController: {fileID: 1737185158}
   _move: {fileID: 1653470806590491828, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _walkOnClick: {fileID: 1997050109459260989, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _use: {fileID: -7531365030351693403, guid: c158eb7e2aef0874f85995b436afa402, type: 3}

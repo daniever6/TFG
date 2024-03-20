@@ -1,30 +1,36 @@
-
-using _Scripts.Player;
+using System;
 using JetBrains.Annotations;
 using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IPlayerController
+namespace _Scripts.Player
 {
-    [SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
-    [SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
+    public class PlayerController : GameplayMonoBehaviour, IPlayerController
+    {
+        [SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
+        [SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
+        [SerializeField] [CanBeNull] private PlayerGrab _playerGrab;
 
-    public PlayerMovement PlayerMovement => _playerMovement;
-    public PlayerMovementOnClick PlayerMovementOnClick => _playerMovementOnClick;
+        public PlayerMovement PlayerMovement => _playerMovement;
+        public PlayerMovementOnClick PlayerMovementOnClick => _playerMovementOnClick;
         
-    public void Move(Vector2 direction)
-    {
-        _playerMovement.Move(direction);
-    }
+        public void Move(Vector2 direction)
+        {
+            if (!this.enabled) return;
+            _playerMovement.Move(direction);
+        }
 
-    public void WalkToPoint(InputAction.CallbackContext context)
-    {
-        _playerMovementOnClick.WalkToPoint(context);
-    }
+        public void WalkToPoint(InputAction.CallbackContext context)
+        {
+            if (!this.enabled) return;
+            _playerMovementOnClick.WalkToPoint(context);
+        }
 
-    public void Use()
-    {
-        throw new System.NotImplementedException();
+        public void Use(InputAction.CallbackContext context)
+        {
+            if (!this.enabled) return;
+            _playerGrab?.Grab(context);
+        }
     }
 }

@@ -54,12 +54,14 @@ namespace Command
 
         public override void Execute()
         {
-            var a = 0;
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.Use(new InputAction.CallbackContext());
         }
 
         public override void Execute(object data)
         {
-            var a = 0;
+            if(_playerReciver.Equals(null)) return;
+            _playerReciver.Use(new InputAction.CallbackContext());
         }
     }
 
