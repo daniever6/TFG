@@ -3,9 +3,11 @@ using System.Collections;
 using _Scripts.Interactables;
 using DG.Tweening;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Utilities;
 
 public class PlayerGrab : GameplayMonoBehaviour
@@ -15,7 +17,8 @@ public class PlayerGrab : GameplayMonoBehaviour
 
     [SerializeField] private GameObject _interactablesParent;
 
-    [SerializeField] private PlayerHand _playerHand;
+    [SerializeField] private PlayerHand _rightHand;
+    [SerializeField] private PlayerHand _leftHand;
 
     private void Start()
     {
@@ -38,13 +41,27 @@ public class PlayerGrab : GameplayMonoBehaviour
             switch(parsedEnum)
             {
                 case Iteractables.Interactable:
-                    GrabObject(_hit.collider.gameObject, _playerHand);
+                    var selectedObject = _hit.collider.gameObject;
+                    GrabObject(selectedObject, ChoosePlayerHand(selectedObject.transform.position));
                     break;
                 case Iteractables.Ground:
-                    DropObject(_playerHand);
+                    DropObject(ChoosePlayerHand(_hit.point));
                     break;
             }
         }
+    }
+
+    private PlayerHand ChoosePlayerHand(Vector3 clickedPoint)
+    {
+        Vector3 rightHandPosition = _rightHand.transform.position;
+        Vector3 leftHandPosition = _leftHand.transform.position;
+
+        float rightDistance = Vector3.Distance(rightHandPosition, clickedPoint);
+        float leftDistance = Vector3.Distance(leftHandPosition, clickedPoint);
+
+        if (rightDistance > leftDistance) return _leftHand;
+
+        return _rightHand;
     }
 
     /// <summary>
@@ -57,14 +74,14 @@ public class PlayerGrab : GameplayMonoBehaviour
         hand.transform.DOMove(objectToGrab.transform.position, 1)
             .OnComplete(() =>
             {
-                if (hand.ObjectSelected != null)
+                if (!hand.ObjectSelected.IsUnityNull())
                 {
                     DropObject(hand);
                 }
                 objectToGrab.transform.SetParent(hand.transform);
                 hand.ObjectSelected = objectToGrab;
                 
-                objectToGrab.GetComponent<Collider>().enabled = false;
+                objectToGrab.layer = LayerMask.NameToLayer("Ignore Raycast");
                 
                 GoToInitialPosition(hand);
             });
@@ -83,14 +100,14 @@ public class PlayerGrab : GameplayMonoBehaviour
     {
         try
         {
-            if (hand.ObjectSelected.Equals(null)) return;
+            if (hand.ObjectSelected.IsUnityNull()) return;
 
             var droppedObject = hand.ObjectSelected;
 
+            droppedObject.transform.position = hand.ObjectInitialPosition.GetValueOrDefault();
             droppedObject.transform.SetParent(_interactablesParent.transform);
-            droppedObject.transform.position = hand.ObjectInialPosition;
-            droppedObject.GetComponent<Collider>().enabled = true;
-
+            droppedObject.layer = LayerMask.NameToLayer("Default");
+            
             hand.ObjectSelected = null;
         }
         catch (Exception e)

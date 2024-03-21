@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts.Interactables
@@ -9,24 +10,31 @@ namespace _Scripts.Interactables
     public class PlayerHand:MonoBehaviour
     {
         [SerializeField] private GameObject _hand;
-        private GameObject _objectSelected { get; set; }
-        private Vector3 _handHandInitialPosition;
-        private Vector3 _objectInitialPosition;
-        public Vector3 HandInitialPosition => _handHandInitialPosition;
-        public Vector3 ObjectInialPosition => _objectInitialPosition;
+        private GameObject _objectSelected;
+        private Vector3 _handInitialPosition;
+        private Vector3? _objectInitialPosition;
+
+        public Vector3 HandInitialPosition => _handInitialPosition;
+        public Vector3? ObjectInitialPosition => _objectInitialPosition;
+
         public GameObject ObjectSelected
         {
-            get { return _objectSelected; }
+            get => _objectSelected;
             set
             {
-                if(!value.Equals(null)) _objectInitialPosition = value.transform.position;
                 _objectSelected = value;
+                _objectInitialPosition = value?.transform.position;
             }
         }
 
         private void Start()
         {
-            _handHandInitialPosition = _hand.transform.position;
+            _handInitialPosition = _hand.transform.position;
+        }
+
+        private void OnMouseUp()
+        {
+            _hand.transform.DOMove(_handInitialPosition, 1);
         }
     }
 }

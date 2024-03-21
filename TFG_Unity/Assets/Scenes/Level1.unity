@@ -1238,7 +1238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactablesParent: {fileID: 1081302133}
-  _playerHand: {fileID: 159574038}
+  _rightHand: {fileID: 159574038}
+  _leftHand: {fileID: 1260513157}
 --- !u!114 &792894211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,6 +1647,7 @@ GameObject:
   - component: {fileID: 1260513154}
   - component: {fileID: 1260513153}
   - component: {fileID: 1260513156}
+  - component: {fileID: 1260513157}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -1751,6 +1753,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b089b86688506ac4f936f1ab0cca03d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1260513157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260513151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b263825f909740258d12279f77a36df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hand: {fileID: 1260513151}
 --- !u!1 &1351704557
 GameObject:
   m_ObjectHideFlags: 0

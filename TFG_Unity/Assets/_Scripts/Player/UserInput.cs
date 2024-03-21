@@ -27,8 +27,6 @@ namespace Player
         
         [Header("Component's References")]
         [SerializeField] private PlayerController _playerController;
-        //[SerializeField] [CanBeNull] private PlayerMovement _playerMovement;
-        //[SerializeField] [CanBeNull] private PlayerMovementOnClick _playerMovementOnClick;
         
         private ICommand _moveCommand;
         private ICommand _walkOnClickCommand;
@@ -83,11 +81,17 @@ namespace Player
             _moveCommand?.Execute(_moveDirection);
         }
 
+        /// <summary>
+        /// Activa las acciones principales del input
+        /// </summary>
         private void OnEnable()
         {
             _pause.action.performed += ctx => _pauseCommand?.Execute();
         }
 
+        /// <summary>
+        /// Desabilita todas las acciones del input
+        /// </summary>
         private void OnDisable()
         {   
             DisableThirdPersonInput();
@@ -100,6 +104,9 @@ namespace Player
 
         #region FIRST PERSON METHODS
 
+        /// <summary>
+        /// Suscribe las acciones de primera persona
+        /// </summary>
         private void EnableFirstPersonInput()
         {
             DisableThirdPersonInput();
@@ -107,6 +114,9 @@ namespace Player
             if(_use != null) _use.action.performed += ctx => _useCommand?.Execute(ctx);
         }
 
+        /// <summary>
+        /// Desuscribe las acciones de primera persona
+        /// </summary>
         private void DisableFirstPersonInput()
         {
             _use.action.Disable();
@@ -118,7 +128,7 @@ namespace Player
         #region THIRD PERSON METHODS
 
         /// <summary>
-        /// Suscribe los metodos de tercera persona
+        /// Suscribe las acciones de tercera persona
         /// </summary>
         private void EnableThirdPersonInput()
         {
@@ -133,7 +143,7 @@ namespace Player
         }
 
         /// <summary>
-        /// Desusbribe los metodos del movimiento de tercera persona
+        /// Desusbribe las acciones del movimiento de tercera persona
         /// </summary>
         private void DisableThirdPersonInput()
         {
