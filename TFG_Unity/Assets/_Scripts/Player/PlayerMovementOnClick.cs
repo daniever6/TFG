@@ -15,7 +15,7 @@ namespace Player
         None,
         Ground,
         Npc,
-        Interactable
+        Interactable,
     }
     
     /// <summary>

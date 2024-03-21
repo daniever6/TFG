@@ -2451,7 +2451,7 @@ MonoBehaviour:
   _playerController: {fileID: 1737185158}
   _move: {fileID: 1653470806590491828, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
   _walkOnClick: {fileID: 1997050109459260989, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
-  _use: {fileID: -7531365030351693403, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
+  _use: {fileID: -2926397881720576710, guid: 326ae2be04c524744a333ee2c7aece18, type: 3}
   _pause: {fileID: 1147394648409866151, guid: c158eb7e2aef0874f85995b436afa402, type: 3}
 --- !u!114 &1737185150
 MonoBehaviour:
@@ -2509,7 +2509,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 8888772230277726742}
@@ -2649,6 +2649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 1737185151}
   _playerMovementOnClick: {fileID: 1737185150}
+  _playerGrab: {fileID: 0}
 --- !u!1 &1770223918
 GameObject:
   m_ObjectHideFlags: 0

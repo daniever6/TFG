@@ -19,8 +19,6 @@ namespace Player
     public class UserInput : Utilities.Singleton<UserInput>
     {
         #region Class implementation
-
-        private static event Action InputHandler;
         public static event Action<PlayerState> OnPlayerStateChanged;
         public static event Action OnWalking;
 
@@ -70,33 +68,30 @@ namespace Player
             switch (newState)
             {
                 case PlayerState.FirstPerson:
-                    HandleFirstPerson();
+                    EnableFirstPersonInput();
                     break;
                 
                 case PlayerState.ThirdPerson:
-                    HandleThirdPerson();
+                    EnableThirdPersonInput();
                     break;
             }
         }
 
         private void FixedUpdate()
         {
-            InputHandler?.Invoke();
+            _moveDirection = _move.action.ReadValue<Vector2>();
+            _moveCommand?.Execute(_moveDirection);
         }
 
         private void OnEnable()
         {
-            if(_move != null) _move.action.performed += ctx => {  _moveCommand?.Execute(_moveDirection);  OnWalking?.Invoke();}; 
-            if(_walkOnClick != null) _walkOnClick.action.performed += ctx =>  _walkOnClickCommand?.Execute(ctx);
-            _use.action.performed += ctx => _useCommand?.Execute(ctx);
             _pause.action.performed += ctx => _pauseCommand?.Execute();
         }
 
         private void OnDisable()
         {   
-            if(_move != null)_move.action.Disable();
-            if(_walkOnClick != null)_walkOnClick.action.Disable();
-            _use.action.Disable();
+            DisableThirdPersonInput();
+            DisableFirstPersonInput();
             _pause.action.Disable();
 
         }
@@ -105,23 +100,16 @@ namespace Player
 
         #region FIRST PERSON METHODS
 
-        private void HandleFirstPerson()
+        private void EnableFirstPersonInput()
         {
             DisableThirdPersonInput();
 
-            if (_use != null)
-            {
-                InputHandler += Interact;
-            }
+            if(_use != null) _use.action.performed += ctx => _useCommand?.Execute(ctx);
         }
 
         private void DisableFirstPersonInput()
         {
-            InputHandler -= Interact;
-        }
-
-        private void Interact()
-        {
+            _use.action.Disable();
         }
 
         #endregion
@@ -132,19 +120,16 @@ namespace Player
         /// <summary>
         /// Suscribe los metodos de tercera persona
         /// </summary>
-        private void HandleThirdPerson()
+        private void EnableThirdPersonInput()
         {
             DisableFirstPersonInput();
             
-            if (_move != null)
+            if(_move != null)_move.action.performed += ctx =>
             {
-                InputHandler += KeyboardMovement;
-            }
-
-            if (_walkOnClick != null)
-            {
-                InputHandler += ClickMovement;
-            }
+                _moveCommand?.Execute();
+                OnWalking?.Invoke();
+            };
+            if(_walkOnClick != null)_walkOnClick.action.performed += ctx => _walkOnClickCommand?.Execute(ctx);
         }
 
         /// <summary>
@@ -152,26 +137,8 @@ namespace Player
         /// </summary>
         private void DisableThirdPersonInput()
         {
-            InputHandler -= KeyboardMovement;
-            InputHandler -= ClickMovement;
-        }
-        
-        /// <summary>
-        /// Controla el movimiento del jugador mediante teclado
-        /// </summary>
-        private void KeyboardMovement()
-        {
-            _moveDirection = _move.action.ReadValue<Vector2>();
-            _moveCommand?.Execute(_moveDirection);
-        }
-
-        /// <summary>
-        /// Controla el movimiento e interacciones del jugador cuando se hace click
-        /// </summary>
-        private void ClickMovement()
-        {
-            _moveDirection = _move.action.ReadValue<Vector2>();
-            _moveCommand?.Execute(_moveDirection);
+            if(_move != null)_move.action.Disable();
+            if(_walkOnClick != null)_walkOnClick.action.Disable();
         }
 
         #endregion

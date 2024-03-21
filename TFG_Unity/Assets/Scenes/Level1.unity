@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 159574035}
   - component: {fileID: 159574034}
   - component: {fileID: 159574037}
+  - component: {fileID: 159574038}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -535,6 +536,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b089b86688506ac4f936f1ab0cca03d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &159574038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159574032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b263825f909740258d12279f77a36df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hand: {fileID: 159574032}
 --- !u!1001 &277006682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1223,8 +1237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd6977aa492ff14880cc8b615564da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rightHand: {fileID: 159574032}
-  _leftHand: {fileID: 1260513151}
+  _interactablesParent: {fileID: 1081302133}
+  _playerHand: {fileID: 159574038}
 --- !u!114 &792894211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,6 +1835,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
       propertyPath: m_Name
       value: Mesa de trabajo
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
