@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using _Scripts.Interactables;
 using DG.Tweening;
 using Player;
@@ -7,112 +6,71 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using Utilities;
 
-public class PlayerGrab : GameplayMonoBehaviour
+namespace _Scripts.Player
 {
-    private Camera _camera;
-    private RaycastHit _hit;
-
-    [SerializeField] private GameObject _interactablesParent;
-
-    [SerializeField] private PlayerHand _rightHand;
-    [SerializeField] private PlayerHand _leftHand;
-
-    private void Start()
-    {
-        _camera = Camera.main;
-    }
-
     /// <summary>
-    /// Lleva la logica de la interaccion de los objetos en los niveles del juego
+    /// Esta clase controla el movimiento y accion conjunta de las dos manos del jugador
     /// </summary>
-    /// <param name="context"></param>
-    public void Grab(InputAction.CallbackContext context)
+    public class PlayerGrab : GameplayMonoBehaviour
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-            
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
+        private Camera _camera;
+        private RaycastHit _hit;
+
+        [SerializeField] private GameObject interactablesParent;
+
+        [SerializeField] private PlayerHand rightHand;
+        [SerializeField] private PlayerHand leftHand;
+
+        private void Start()
         {
-            Iteractables parsedEnum;
-            Enum.TryParse(_hit.collider.tag, out parsedEnum);
-            switch(parsedEnum)
+            _camera = Camera.main;
+        }
+
+        /// <summary>
+        /// Lleva la logica de la interaccion de los objetos en los niveles del juego
+        /// </summary>
+        /// <param name="context"></param>
+        public void Grab(InputAction.CallbackContext context)
+        {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {
-                case Iteractables.Interactable:
-                    var selectedObject = _hit.collider.gameObject;
-                    GrabObject(selectedObject, ChoosePlayerHand(selectedObject.transform.position));
-                    break;
-                case Iteractables.Ground:
-                    DropObject(ChoosePlayerHand(_hit.point));
-                    break;
+                Iteractables parsedEnum;
+                PlayerHand hand = ChoosePlayerHand(_hit.point);
+                Enum.TryParse(_hit.collider.tag, out parsedEnum);
+                switch(parsedEnum)
+                {
+                    case Iteractables.Interactable:
+                        var selectedObject = _hit.collider.gameObject;
+                        hand.GrabObject(selectedObject, interactablesParent);
+                        break;
+                    case Iteractables.Ground:
+                        hand.DropObject(interactablesParent);
+                        break;
+                }
             }
         }
-    }
 
-    private PlayerHand ChoosePlayerHand(Vector3 clickedPoint)
-    {
-        Vector3 rightHandPosition = _rightHand.transform.position;
-        Vector3 leftHandPosition = _leftHand.transform.position;
-
-        float rightDistance = Vector3.Distance(rightHandPosition, clickedPoint);
-        float leftDistance = Vector3.Distance(leftHandPosition, clickedPoint);
-
-        if (rightDistance > leftDistance) return _leftHand;
-
-        return _rightHand;
-    }
-
-    /// <summary>
-    /// Mueve la mano hacia el objeto y coloca el objeto como hijo de la mano
-    /// </summary>
-    /// <param name="objectToGrab">Objeto a coger</param>
-    /// <param name="hand">Mano con el que realiza la accion</param>
-    public void GrabObject(GameObject objectToGrab, PlayerHand hand)
-    {
-        hand.transform.DOMove(objectToGrab.transform.position, 1)
-            .OnComplete(() =>
-            {
-                if (!hand.ObjectSelected.IsUnityNull())
-                {
-                    DropObject(hand);
-                }
-                objectToGrab.transform.SetParent(hand.transform);
-                hand.ObjectSelected = objectToGrab;
-                
-                objectToGrab.layer = LayerMask.NameToLayer("Ignore Raycast");
-                
-                GoToInitialPosition(hand);
-            });
-    }
-
-    /// <summary>
-    /// Devuelve la mano hacia hacia su posicion inicial
-    /// </summary>
-    /// <param name="hand">Mano a realizar la accion</param>
-    public void GoToInitialPosition(PlayerHand hand)
-    {
-        hand.transform.DOMove(hand.HandInitialPosition, 1);
-    }
-
-    public void DropObject(PlayerHand hand)
-    {
-        try
+        /// <summary>
+        /// Metodo que calcula la distancia entre el objeto y las manos, para determinar que mano
+        /// va a llevar a cabo la accion
+        /// </summary>
+        /// <param name="clickedPoint">Punto a calcular la distancia de manos</param>
+        /// <returns></returns>
+        private PlayerHand ChoosePlayerHand(Vector3 clickedPoint)
         {
-            if (hand.ObjectSelected.IsUnityNull()) return;
+            Vector3 rightHandPosition = rightHand.HandInitialPosition;
+            Vector3 leftHandPosition = leftHand.HandInitialPosition;
 
-            var droppedObject = hand.ObjectSelected;
+            float rightDistance = Vector3.Distance(rightHandPosition, clickedPoint);
+            float leftDistance = Vector3.Distance(leftHandPosition, clickedPoint);
 
-            droppedObject.transform.position = hand.ObjectInitialPosition.GetValueOrDefault();
-            droppedObject.transform.SetParent(_interactablesParent.transform);
-            droppedObject.layer = LayerMask.NameToLayer("Default");
-            
-            hand.ObjectSelected = null;
+            if (rightDistance > leftDistance) return leftHand;
+
+            return rightHand;
         }
-        catch (Exception e)
-        {
-        }
-        
     }
 }
