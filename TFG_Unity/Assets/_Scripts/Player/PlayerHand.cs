@@ -14,6 +14,7 @@ namespace _Scripts.Player
         #region Definicion de la clase
 
         [SerializeField] private GameObject hand;
+        [SerializeField] private PlayerHand otherHand;
         private Camera _camera;
         
         private GameObject _objectSelected;
@@ -54,19 +55,32 @@ namespace _Scripts.Player
             Vector3 rayOrigin = hand.transform.position;
             Vector3 cameraPos = _camera.transform.position;
             Vector3 rayDirection = (rayOrigin-cameraPos).normalized;
-            
-            if(Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
+
+            // Interaccion entre las dos manos
+            if (Vector3.Distance(hand.transform.position, otherHand.transform.position) < 0.1f)
+            {
+                UseObjects(otherHand.ObjectSelected);
+            }
+            // Accion entre objetos interactables de la escena
+            else if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
             {
                 Iteractables parsedEnum;
                 Enum.TryParse(hit.collider.tag, out parsedEnum);
                 switch(parsedEnum)
                 {
                     case Iteractables.Interactable:
-                        if (ObjectSelected.IsUnityNull()) Grab(hit.collider.gameObject);
+                        if (ObjectSelected.IsUnityNull())
+                        {
+                            Grab(hit.collider.gameObject); 
+                            break;
+                        }
+                        
+                        UseObjects(hit.collider.gameObject);
                         break;
                 }
             }
             
+            // Volver a la posicion inicial
             GoToInitialPosition();
         }
 
@@ -135,6 +149,19 @@ namespace _Scripts.Player
             {
             }
         
+        }
+        
+        /// <summary>
+        /// Lleva la accion resultante de juntar el Objeto que sujeta la mano arrastrada (PrimaryObject), al
+        /// interactuar con el otro objeto (secondaryObject)
+        /// </summary>
+        /// <param name="secondaryObject">Objeto secundario</param>
+        private void UseObjects(GameObject secondaryObject)
+        {
+            GameObject primaryObject = ObjectSelected;
+            
+            Debug.Log(ObjectSelected.name + " + " + secondaryObject.name);
+            GoToInitialPosition();
         }
         
         #endregion

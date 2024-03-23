@@ -1,22 +1,35 @@
+using System;
 using UnityEngine;
 
-public class MouseDrag : MonoBehaviour
+namespace _Scripts.Interactables
 {
-    private Vector3 mousePosition;
-
-    private Vector3 GetMousePosition()
+    /// <summary>
+    /// Clase que permite arrastrar objetos de la escena
+    /// </summary>
+    public class MouseDrag : MonoBehaviour
     {
-        return Camera.main.WorldToScreenPoint(transform.position);
-    }
+        private Vector3 _mousePosition;
+        private Camera _camera;
 
-    private void OnMouseDown()
-    {
-        mousePosition = Input.mousePosition - GetMousePosition();
-    }
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
 
-    private void OnMouseDrag()
-    {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-    }
+        private Vector3 GetMousePosition()
+        {
+            return _camera.WorldToScreenPoint(transform.position);
+        }
+
+        private void OnMouseDown()
+        {
+            _mousePosition = Input.mousePosition - GetMousePosition();
+        }
+
+        private void OnMouseDrag()
+        {
+            transform.position = _camera.ScreenToWorldPoint(Input.mousePosition - _mousePosition);
+        }
     
+    }
 }

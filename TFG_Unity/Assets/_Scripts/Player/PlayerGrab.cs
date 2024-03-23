@@ -1,8 +1,5 @@
 using System;
-using _Scripts.Interactables;
-using DG.Tweening;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
