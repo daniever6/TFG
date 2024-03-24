@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Numerics;
 using DG.Tweening;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
+using Sequence = DG.Tweening.Sequence;
+using Vector3 = UnityEngine.Vector3;
 
 namespace _Scripts.Player
 {
@@ -21,6 +24,9 @@ namespace _Scripts.Player
         private Vector3 _handInitialPosition;
         private Vector3? _objectInitialPosition;
         private Vector3? _objectInitialLocalPosition;
+
+        [SerializeField]private Vector3 handActionOffset;
+        [SerializeField] private Vector3 handActionRotation;
 
         public Vector3 HandInitialPosition => _handInitialPosition;
         public Vector3? ObjectInitialPosition => _objectInitialPosition;
@@ -50,6 +56,8 @@ namespace _Scripts.Player
         /// </summary>
         public void OnMouseUp()
         {
+            if (PlayerGrab.IsTweening) return;
+            
             RaycastHit hit;
 
             Vector3 rayOrigin = hand.transform.position;
@@ -60,6 +68,7 @@ namespace _Scripts.Player
             if (Vector3.Distance(hand.transform.position, otherHand.transform.position) < 0.1f)
             {
                 UseObjects(otherHand.ObjectSelected);
+                return;
             }
             // Accion entre objetos interactables de la escena
             else if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
@@ -158,10 +167,22 @@ namespace _Scripts.Player
         /// <param name="secondaryObject">Objeto secundario</param>
         private void UseObjects(GameObject secondaryObject)
         {
+            if (secondaryObject.IsUnityNull() || PlayerGrab.IsTweening) return;
+            PlayerGrab.IsTweening = true;
+            
             GameObject primaryObject = ObjectSelected;
             
             Debug.Log(ObjectSelected.name + " + " + secondaryObject.name);
-            GoToInitialPosition();
+
+            Sequence UseSecuence = DOTween.Sequence();
+            UseSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
+            UseSecuence.Append(transform.DORotate(handActionRotation, 2));
+            UseSecuence.Append(transform.DORotate(Vector3.zero, 2));
+            UseSecuence.Append(transform.DOMove(_handInitialPosition, 1.5f));
+
+            UseSecuence.Play();
+
+            UseSecuence.OnComplete(()=>PlayerGrab.IsTweening = false);
         }
         
         #endregion

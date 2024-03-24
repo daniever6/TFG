@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Player;
 using UnityEngine;
 
 namespace _Scripts.Interactables
@@ -28,6 +29,7 @@ namespace _Scripts.Interactables
 
         private void OnMouseDrag()
         {
+            if (PlayerGrab.IsTweening) return;
             transform.position = _camera.ScreenToWorldPoint(Input.mousePosition - _mousePosition);
         }
     

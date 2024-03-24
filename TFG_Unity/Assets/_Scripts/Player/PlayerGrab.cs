@@ -13,6 +13,7 @@ namespace _Scripts.Player
     {
         private Camera _camera;
         private RaycastHit _hit;
+        public static bool IsTweening = false;
 
         [SerializeField] private GameObject interactablesParent;
 
@@ -30,7 +31,8 @@ namespace _Scripts.Player
         /// <param name="context"></param>
         public void Grab(InputAction.CallbackContext context)
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject() || IsTweening) return;
+            
             
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))

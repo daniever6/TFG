@@ -2029,7 +2029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 286734902858677172, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 495048361022065648, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: interactablesParent
@@ -2039,10 +2039,34 @@ PrefabInstance:
       propertyPath: otherHand
       value: 
       objectReference: {fileID: 1372962988}
+    - target: {fileID: 1611943411719290854, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionOffset.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611943411719290854, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionOffset.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611943411719290854, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionRotation.z
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 1741240970127105996, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: otherHand
       value: 
       objectReference: {fileID: 347100659}
+    - target: {fileID: 1741240970127105996, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionOffset.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741240970127105996, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionOffset.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741240970127105996, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: handActionRotation.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3430213927395679710, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2053,7 +2077,7 @@ PrefabInstance:
       objectReference: {fileID: 430745161}
     - target: {fileID: 3597098536523683709, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4126630667342987654, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_Name
