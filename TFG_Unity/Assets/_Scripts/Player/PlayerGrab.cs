@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Interactables;
 using Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -43,7 +44,7 @@ namespace _Scripts.Player
                 switch(parsedEnum)
                 {
                     case Iteractables.Interactable:
-                        var selectedObject = _hit.collider.gameObject;
+                        var selectedObject = _hit.collider.gameObject.GetComponent<ObjectInteractable>();
                         hand.GrabObject(selectedObject, interactablesParent);
                         break;
                     case Iteractables.Ground:

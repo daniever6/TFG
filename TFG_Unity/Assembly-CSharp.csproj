@@ -59,10 +59,12 @@
      <Compile Include="Assets\_Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ACommand.cs" />
+     <Compile Include="Assets\_Scripts\Managers\CombinationsManager.cs" />
      <Compile Include="Assets\_Scripts\Managers\DialogueManager.cs" />
      <Compile Include="Assets\_Scripts\Interactables\MouseDrag.cs" />
      <Compile Include="Assets\_Scripts\Player\IPlayerController.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerGrab.cs" />
+     <Compile Include="Assets\_Scripts\Interactables\ObjectInteractable.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\Utilities\GameplayMonoBehaviour.cs" />
      <Folder Include="Assets" />
@@ -83,6 +85,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Art\3D Art" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
+     <None Include="Assets\Resources\Combinaciones.txt" />
      <Folder Include="Assets\Prefabs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

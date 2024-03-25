@@ -1,0 +1,13 @@
+BoteReactivos_Matraz : Explosion
+BoteReactivos_Agua : Explosion
+BoteReactivos_BotellaReactivos : Explosion
+BoteReactivos_VasoPrecipitacion : Correct
+BoteReactivos_BotellaPlastico : Explosion
+BotellaPlastico_Matraz : Correct
+BotellaPlastico_BoteReactivos : Explosion
+BotellaPlastico_BotellaReactivos: Explosion
+BotellaPlastico_VasoPrecipitacion: Error
+BotellaReactivos_BoteReactivos: Explosion
+BotellaReactivos_BotellaPlastico: Explosion
+BotellaReactivos_Matraz: Error
+BotellaReactivos_VasoPrecipitacion: Correct

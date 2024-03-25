@@ -14,6 +14,7 @@ namespace Player
     {
         None,
         Ground,
+        Alfombrilla,
         Npc,
         Interactable,
     }
