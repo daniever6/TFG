@@ -45,9 +45,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\Level01.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\CommandsBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerHand.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Singleton.cs" />
+     <Compile Include="Assets\_Scripts\LevelScripts\ILevel.cs" />
      <Compile Include="Assets\_Scripts\Managers\PauseMenuManager.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovementOnClick.cs" />
      <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
@@ -56,6 +58,7 @@
      <Compile Include="Assets\_Scripts\Utilities\Command\ICommand.cs" />
      <Compile Include="Assets\_Scripts\Interactables\InteractableTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\LevelScripts\ALevel.cs" />
      <Compile Include="Assets\_Scripts\Dialogues\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\ACommand.cs" />
@@ -73,7 +76,9 @@
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\_Scripts\Interactables" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <Folder Include="Assets\Prefabs\Player" />
      <Folder Include="Assets\_Scripts" />
+     <Folder Include="Assets\_Scripts\LevelScripts" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <Folder Include="Assets\_Scripts\Player" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -104,6 +109,7 @@
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <Folder Include="Assets\_Scripts\Utilities" />
+     <Folder Include="Assets\Prefabs\Interactables" />
      <Folder Include="Assets\Art" />
      <Folder Include="Assets\TextMesh Pro" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

@@ -1,4 +1,6 @@
-﻿using Player;
+﻿using _Scripts.LevelScripts;
+using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,17 +12,18 @@ namespace Command
     /// </summary>
     public class MoveCommand : ACommand
     {
-        public MoveCommand(IPlayerController playerController) : base(playerController){}
+        public MoveCommand(IPlayerController playerController) : base((MonoBehaviour)playerController){}
         public override void Execute()
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.Move(Vector2.zero);
+            if(Reciver.Equals(null)) return;
+            ((IPlayerController)Reciver).Move(Vector2.zero);
         }
 
-        public override void Execute(object data)
+        public override bool Execute(object data)
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.Move((Vector2)data);
+            if(Reciver.Equals(null)) return false;
+            ((IPlayerController)Reciver).Move((Vector2)data);
+            return true;
         }
     }
 
@@ -30,18 +33,19 @@ namespace Command
     /// </summary>
     public class WalkOnClickCommand : ACommand
     {
-        public WalkOnClickCommand(IPlayerController playerController) : base(playerController){}
+        public WalkOnClickCommand(IPlayerController playerController) : base((MonoBehaviour)playerController){}
 
         public override void Execute()
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.WalkToPoint(new InputAction.CallbackContext());
+            if(Reciver.Equals(null)) return;
+            ((IPlayerController)Reciver).WalkToPoint(new InputAction.CallbackContext());
         }
 
-        public override void Execute(object data)
+        public override bool Execute(object data)
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.WalkToPoint(new InputAction.CallbackContext());
+            if(Reciver.Equals(null)) return false;
+            ((IPlayerController)Reciver).WalkToPoint(new InputAction.CallbackContext());
+            return true;
         }
     }
     
@@ -50,18 +54,19 @@ namespace Command
     /// </summary>
     public class UseCommand : ACommand
     {
-        public UseCommand(IPlayerController playerController) : base(playerController){}
+        public UseCommand(IPlayerController playerController) : base((MonoBehaviour)playerController){}
 
         public override void Execute()
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.Use(new InputAction.CallbackContext());
+            if(Reciver.Equals(null)) return;
+            ((IPlayerController)Reciver).Use(new InputAction.CallbackContext());
         }
 
-        public override void Execute(object data)
+        public override bool Execute(object data)
         {
-            if(_playerReciver.Equals(null)) return;
-            _playerReciver.Use(new InputAction.CallbackContext());
+            if(Reciver.Equals(null)) return false;
+            ((IPlayerController)Reciver).Use(new InputAction.CallbackContext());
+            return true;
         }
     }
 
@@ -70,7 +75,7 @@ namespace Command
     /// </summary>
     public class PauseCommand : ACommand
     {
-        public PauseCommand(IPlayerController playerController) : base(playerController)
+        public PauseCommand(IPlayerController playerController) : base((MonoBehaviour)playerController)
         {
         }
 
@@ -82,14 +87,28 @@ namespace Command
             GameManager.Instance.ChangeState(gameState);
         }
 
-        public override void Execute(object data)
+        public override bool Execute(object data)
         {
             GameState gameState = GameManager.Instance._gameState != GameState.Pause
                 ? GameState.Pause
                 : GameManager.Instance._previousGameState;
             GameManager.Instance.ChangeState(gameState);
+            return true;
         }
     }
 
-    
+    public class CombinationCommand : ACommand
+    {
+        public CombinationCommand(ILevel level) : base((MonoBehaviour)level){}
+
+        public override void Execute()
+        {
+        }
+
+        public override bool Execute(object data)
+        {
+            if (Reciver.Equals(null)) return false;
+            return ((ILevel)Reciver).PerformCombination((string) data);
+        }
+    }
 }

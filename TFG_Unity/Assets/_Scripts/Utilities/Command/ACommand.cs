@@ -8,15 +8,15 @@ namespace Command
     /// </summary>
     public abstract class ACommand : ICommand
     {
-        protected IPlayerController _playerReciver;
+        protected MonoBehaviour Reciver;
 
-        public ACommand(IPlayerController playerReciver)
+        public ACommand(MonoBehaviour reciver)
         {
-            _playerReciver = playerReciver;
+            Reciver = reciver;
         }
 
         public abstract void Execute();
         
-        public abstract void Execute(object data);
+        public abstract bool Execute(object data);
     }
 }

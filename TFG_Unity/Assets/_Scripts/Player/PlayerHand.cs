@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Numerics;
 using _Scripts.Interactables;
+using _Scripts.LevelScripts;
 using _Scripts.Managers;
+using Command;
 using DG.Tweening;
 using Player;
 using Unity.VisualScripting;
@@ -195,11 +197,10 @@ namespace _Scripts.Player
             if (ObjectSelected.IsUnityNull() || secondaryObject.IsUnityNull() || PlayerGrab.IsTweening) return;
             PlayerGrab.IsTweening = true;
             
-            UseObjectsAnimation(secondaryObject);
+            string combinationName = ObjectSelected.name + "_" + secondaryObject.name;
 
             // Resultado de la accion
-            CombinationResult result = CombinationsManager.Instance.GetCombinationResult
-                (ObjectSelected.name + "_" + secondaryObject.name);
+            CombinationResult result = CombinationsManager.Instance.GetCombinationResult(combinationName);
 
             switch (result)
             {
@@ -210,11 +211,23 @@ namespace _Scripts.Player
                     break;
                 case CombinationResult.Correct:
                     Debug.Log("Correcto");
+                    var resul = ALevel.PerformCombinationCommand.Execute(combinationName);
+                    if (resul)
+                    {
+                        UseObjectsAnimation(secondaryObject);
+                    }
+                    else
+                    {
+                        PlayerGrab.IsTweening = false;
+                        GoToInitialPosition();
+                    }
                     break;
                 case CombinationResult.Explosion:
+                    UseObjectsAnimation(secondaryObject);
                     Debug.Log("Explosion");
                     break;
                 case CombinationResult.Corrosion:
+                    UseObjectsAnimation(secondaryObject);
                     Debug.Log("Corrosion");
                     break;
             }
