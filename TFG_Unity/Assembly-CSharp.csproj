@@ -45,10 +45,11 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Level01.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Command\CommandsBehaviour.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerHand.cs" />
      <Compile Include="Assets\_Scripts\Utilities\Singleton.cs" />
+     <Compile Include="Assets\_Scripts\LevelScripts\LevelManager.cs" />
+     <Compile Include="Assets\_Scripts\LevelScripts\LevelDataClass.cs" />
      <Compile Include="Assets\_Scripts\LevelScripts\ILevel.cs" />
      <Compile Include="Assets\_Scripts\Managers\PauseMenuManager.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerMovementOnClick.cs" />
@@ -90,6 +91,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <Folder Include="Assets\Art\3D Art" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
+     <None Include="Assets\Resources\JSONs\Level02JSON.json" />
      <None Include="Assets\Resources\Combinaciones.txt" />
      <Folder Include="Assets\Prefabs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -97,6 +99,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\Resources\JSONs\DialogueJSONs.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\Resources\JSONs\Level01JSON.json" />
      <Folder Include="Assets\Resources" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

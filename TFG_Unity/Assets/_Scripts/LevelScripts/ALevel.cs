@@ -6,7 +6,7 @@ namespace _Scripts.LevelScripts
     {
         public static ICommand PerformCombinationCommand;
 
-        private void Start()
+        protected virtual void Start()
         {
             PerformCombinationCommand = new CombinationCommand(this);
         }

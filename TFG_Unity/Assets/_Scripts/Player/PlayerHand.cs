@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Numerics;
+using System.Threading.Tasks;
 using _Scripts.Interactables;
 using _Scripts.LevelScripts;
 using _Scripts.Managers;
-using Command;
 using DG.Tweening;
 using Player;
 using Unity.VisualScripting;
@@ -36,11 +35,8 @@ namespace _Scripts.Player
 
         public ObjectInteractable ObjectSelected
         {
-            get => _objectSelected;
-            set
-            {
-                _objectSelected = value;
-            }
+            get { return _objectSelected; }
+            set { _objectSelected = value; }
         }
         
         private void Start()
@@ -56,7 +52,7 @@ namespace _Scripts.Player
         /// <summary>
         /// Controla la accion de la mano una vez soltado sobre un objeto
         /// </summary>
-        public void OnMouseUp()
+        public async void OnMouseUp()
         {
             if (PlayerGrab.IsTweening) return;
             
@@ -70,7 +66,7 @@ namespace _Scripts.Player
             if (Vector3.Distance(hand.transform.position, otherHand.transform.position) < 0.1f)
             {
                 UseObjects(otherHand.ObjectSelected);
-                if(otherHand.ObjectSelected.IsUnityNull() || ObjectSelected.IsUnityNull()) GoToInitialPosition();
+                if(otherHand.ObjectSelected.IsUnityNull() || ObjectSelected.IsUnityNull()) await GoToInitialPosition();
             }
             // Accion entre objetos interactables de la escena
             else if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
@@ -96,7 +92,7 @@ namespace _Scripts.Player
                         break;
                 }
                 
-                GoToInitialPosition();
+                await GoToInitialPosition();
             }
         }
 
@@ -108,7 +104,7 @@ namespace _Scripts.Player
         public void GrabObject(ObjectInteractable objectToGrab, GameObject newParent)
         {
             transform.DOMove(objectToGrab.transform.position, 1)
-                .OnComplete(() =>
+                .OnComplete(async () =>
                 {
                     if (!ObjectSelected.IsUnityNull())
                     {
@@ -116,7 +112,7 @@ namespace _Scripts.Player
                     }
                     Grab(objectToGrab);
                 
-                    GoToInitialPosition();
+                    await GoToInitialPosition();
                 });
         }
 
@@ -137,9 +133,9 @@ namespace _Scripts.Player
         /// <summary>
         /// Devuelve la mano hacia hacia su posicion inicial
         /// </summary>
-        public void GoToInitialPosition()
+        public async Task GoToInitialPosition()
         {
-            transform.DOMove(HandInitialPosition, 1);
+            await transform.DOMove(HandInitialPosition, 1).AsyncWaitForCompletion();;
         }
 
         /// <summary>
@@ -147,6 +143,7 @@ namespace _Scripts.Player
         /// y establece sus valores por defecto.
         /// </summary>
         /// <param name="newParent">Gameobject padre al que se le suelta el objeto</param>
+        /// <param name="position"></param>
         public void DropObject(GameObject newParent, Vector3 position = default)
         {
             try
@@ -192,7 +189,7 @@ namespace _Scripts.Player
         /// interactuar con el otro objeto (secondaryObject)
         /// </summary>
         /// <param name="secondaryObject">Objeto secundario</param>
-        private void UseObjects(ObjectInteractable secondaryObject)
+        private async void UseObjects(ObjectInteractable secondaryObject)
         {
             if (ObjectSelected.IsUnityNull() || secondaryObject.IsUnityNull() || PlayerGrab.IsTweening) return;
             PlayerGrab.IsTweening = true;
@@ -205,9 +202,14 @@ namespace _Scripts.Player
             switch (result)
             {
                 case CombinationResult.None:
+                    PlayerGrab.IsTweening = false;
+                    await GoToInitialPosition();
+                    Debug.Log("Ha awaiteado");
                     break;
                 case CombinationResult.Error:
                     Debug.Log("Error");
+                    PlayerGrab.IsTweening = false;
+                    await GoToInitialPosition();
                     break;
                 case CombinationResult.Correct:
                     Debug.Log("Correcto");
@@ -219,7 +221,7 @@ namespace _Scripts.Player
                     else
                     {
                         PlayerGrab.IsTweening = false;
-                        GoToInitialPosition();
+                        await GoToInitialPosition();
                     }
                     break;
                 case CombinationResult.Explosion:

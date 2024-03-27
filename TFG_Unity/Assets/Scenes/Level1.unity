@@ -902,7 +902,7 @@ Transform:
   m_GameObject: {fileID: 728599102}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10750343, y: -0, z: -0, w: 0.99420476}
-  m_LocalPosition: {x: 0.049, y: 1.23, z: -0.543}
+  m_LocalPosition: {x: 0.049, y: 1.167, z: -0.408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1498,6 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199c74fb7b9e82147a52090e3b6ff19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCombinationsTextAsset: {fileID: 4900000, guid: 7884a16df1484810b343a624fbad10fd, type: 3}
 --- !u!1 &1722196371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8205892
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1724,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.45903242
+      value: 0.548
       objectReference: {fileID: 0}
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1756,7 +1757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010457391929259231, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_Name
-      value: BotellaReactivos
+      value: BotellaBases
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1773,11 +1774,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6091235282554556471, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_Name
-      value: BotellaPlastico
+      value: BotellaAgua
       objectReference: {fileID: 0}
     - target: {fileID: 6900564232724400781, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.534
+      value: 0.40399998
       objectReference: {fileID: 0}
     - target: {fileID: 6900564232724400781, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1785,7 +1786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6900564232724400781, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.511
+      value: 0.48099995
       objectReference: {fileID: 0}
     - target: {fileID: 6900564232724400781, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1834,7 +1835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776180535841174229, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.387
+      value: -0.405
       objectReference: {fileID: 0}
     - target: {fileID: 7776180535841174229, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1842,7 +1843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776180535841174229, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.34413242
+      value: 0.269
       objectReference: {fileID: 0}
     - target: {fileID: 7776180535841174229, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1887,7 +1888,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1734741563583871907, guid: b6136a8a9af1a8a4ab35c6871f565212, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.435
+      value: 0.305
       objectReference: {fileID: 0}
     - target: {fileID: 1734741563583871907, guid: b6136a8a9af1a8a4ab35c6871f565212, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1895,7 +1896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734741563583871907, guid: b6136a8a9af1a8a4ab35c6871f565212, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.263
+      value: 0.233
       objectReference: {fileID: 0}
     - target: {fileID: 1734741563583871907, guid: b6136a8a9af1a8a4ab35c6871f565212, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1951,7 +1952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478801218786241702, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.23141083
+      value: -0.206
       objectReference: {fileID: 0}
     - target: {fileID: 4478801218786241702, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1959,7 +1960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478801218786241702, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.49603242
+      value: 0.372
       objectReference: {fileID: 0}
     - target: {fileID: 4478801218786241702, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2061,7 +2062,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6584108
+      value: -0.448
       objectReference: {fileID: 0}
     - target: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2069,7 +2070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36103243
+      value: 0.546
       objectReference: {fileID: 0}
     - target: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2101,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Name
-      value: BoteReactivos
+      value: BotellaAcidos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2122,7 +2123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777550260975028388, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.835
+      value: 0.7444108
       objectReference: {fileID: 0}
     - target: {fileID: 777550260975028388, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2130,7 +2131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777550260975028388, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.254
+      value: 0.3039676
       objectReference: {fileID: 0}
     - target: {fileID: 777550260975028388, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2259,7 +2260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550295865240043540, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.02
+      value: 0.038
       objectReference: {fileID: 0}
     - target: {fileID: 5550295865240043540, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_LocalRotation.w
