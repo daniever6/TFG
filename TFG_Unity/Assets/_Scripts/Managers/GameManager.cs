@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dialogues;
 using Managers;
 using UnityEngine;
+using UnityEngine.UI;
 using Utilities;
 
 namespace _Scripts.Managers
@@ -22,6 +23,8 @@ namespace _Scripts.Managers
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
         public GameState PreviousGameState { get; private set; }
         public GameState GameState { get; private set; }
+
+        private Button Pause;
         
         //EVENTS
         public static event Action<GameState> OnBeforeGameStateChanged;
@@ -81,6 +84,7 @@ namespace _Scripts.Managers
         {
         
         }
+        //Metodo para invocar el canvas del menu de pausa.
 
         #endregion
     
@@ -107,6 +111,6 @@ namespace _Scripts.Managers
         }
 
         #endregion
-   
+
     }
 }
