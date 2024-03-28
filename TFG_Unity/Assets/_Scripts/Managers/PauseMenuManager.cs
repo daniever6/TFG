@@ -1,27 +1,29 @@
-using System;
 using UnityEngine;
 using Utilities;
 
-/// <summary>
-/// Manager que controla el menu de pausa del juego
-/// </summary>
-public class PauseMenuManager : Singleton<PauseMenuManager>
+namespace _Scripts.Managers
 {
-    [SerializeField] private GameObject _pauseCanvas;
-
-    protected override void Awake()
+    /// <summary>
+    /// Manager que controla el menu de pausa del juego
+    /// </summary>
+    public class PauseMenuManager : Singleton<PauseMenuManager>
     {
-        base.Awake();
-        GameManager.OnAfterGameStateChanged += HandlePauseGameState;
-    }
+        [SerializeField] private GameObject pauseCanvas;
 
-    private void OnDestroy()
-    {
-        GameManager.OnAfterGameStateChanged -= HandlePauseGameState;
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            GameManager.OnAfterGameStateChanged += HandlePauseGameState;
+        }
 
-    private void HandlePauseGameState(GameState gameState)
-    {
-        _pauseCanvas.SetActive(gameState == GameState.Pause);
+        private void OnDestroy()
+        {
+            GameManager.OnAfterGameStateChanged -= HandlePauseGameState;
+        }
+
+        private void HandlePauseGameState(GameState gameState)
+        {
+            pauseCanvas.SetActive(gameState == GameState.Pause);
+        }
     }
 }

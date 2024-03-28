@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace _Scripts.LevelScripts
 {
+    
     public class LevelManager : ALevel
     {
         #region Class definition
@@ -50,7 +52,11 @@ namespace _Scripts.LevelScripts
 
             _currentCombinations.Push(combination);
             CurrentCombinationIndex++;
-            
+            return true;
+        }
+
+        public override void PostPerformCombination()
+        {
             if (CheckCompletion())
             {
                 _levelCorrectCombinations.RemoveAt(0);
@@ -68,11 +74,8 @@ namespace _Scripts.LevelScripts
                     SceneManager.LoadScene("MainLevel");
                 }
             }
-
-            return true;
-            
         }
-    
+
         /// <summary>
         /// Comprueba si se han acabado las combinaciones a realizar, comprobando
         /// si currentCombination = correctCombination

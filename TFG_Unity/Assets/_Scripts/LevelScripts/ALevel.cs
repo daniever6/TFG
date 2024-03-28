@@ -1,8 +1,10 @@
-﻿using Command;
+﻿using _Scripts.Utilities.Command;
+using Command;
+using Utilities;
 
 namespace _Scripts.LevelScripts
 {
-    public class ALevel : Utilities.Singleton<ALevel>, ILevel
+    public class ALevel : Singleton<ALevel>, ILevel
     {
         public static ICommand PerformCombinationCommand;
 
@@ -15,6 +17,8 @@ namespace _Scripts.LevelScripts
         {
             return true;
         }
+        
+        public virtual void PostPerformCombination(){}
 
     }
 }

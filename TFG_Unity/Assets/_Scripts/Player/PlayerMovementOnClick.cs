@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using _Scripts.Interactables;
+using _Scripts.Player;
+using _Scripts.Utilities;
 using Dialogues;
 using UnityEngine;
 using UnityEngine.AI;

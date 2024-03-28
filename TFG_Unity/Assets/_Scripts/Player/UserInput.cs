@@ -1,11 +1,11 @@
 using System;
-using _Scripts.Player;
-using Command;
+using _Scripts.Utilities.Command;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utilities;
 
-namespace Player
+namespace _Scripts.Player
 {
     public enum PlayerState
     {
@@ -16,17 +16,17 @@ namespace Player
     /// <summary>
     /// Clase encargada del input del personaje
     /// </summary>
-    public class UserInput : Utilities.Singleton<UserInput>
+    public class UserInput : Singleton<UserInput>
     {
         #region Class implementation
         public static event Action<PlayerState> OnPlayerStateChanged;
         public static event Action OnWalking;
 
-        [SerializeField] private PlayerState _playerState;
+        [SerializeField] private PlayerState playerState;
         private Vector2 _moveDirection;
         
         [Header("Component's References")]
-        [SerializeField] private PlayerController _playerController;
+        [SerializeField] private PlayerController playerController;
         
         private ICommand _moveCommand;
         private ICommand _walkOnClickCommand;
@@ -45,12 +45,12 @@ namespace Player
         
         private void Start()
         {
-            _moveCommand = _playerController.PlayerMovement != null? new MoveCommand(_playerController) : null;
-            _walkOnClickCommand = _playerController.PlayerMovementOnClick != null? new WalkOnClickCommand(_playerController) : null;
-            _useCommand = new UseCommand(_playerController);
-            _pauseCommand = new PauseCommand(_playerController);
+            _moveCommand = playerController.PlayerMovement != null? new MoveCommand(playerController) : null;
+            _walkOnClickCommand = playerController.PlayerMovementOnClick != null? new WalkOnClickCommand(playerController) : null;
+            _useCommand = new UseCommand(playerController);
+            _pauseCommand = new PauseCommand(playerController);
             
-            ChangePlayerState(_playerState);
+            ChangePlayerState(playerState);
         }
         
         /// <summary>
@@ -61,7 +61,7 @@ namespace Player
         {
             OnPlayerStateChanged?.Invoke(newState);
             
-            _playerState = newState;
+            playerState = newState;
 
             switch (newState)
             {
@@ -86,7 +86,7 @@ namespace Player
         /// </summary>
         private void OnEnable()
         {
-            _pause.action.performed += ctx => _pauseCommand?.Execute();
+            _pause.action.performed += PauseActionMethod;
         }
 
         /// <summary>
@@ -96,10 +96,10 @@ namespace Player
         {   
             DisableThirdPersonInput();
             DisableFirstPersonInput();
+            _pause.action.performed -= PauseActionMethod;
             _pause.action.Disable();
-
         }
-        
+
         #endregion
 
         #region FIRST PERSON METHODS
@@ -149,6 +149,15 @@ namespace Player
         {
             if(_move != null)_move.action.Disable();
             if(_walkOnClick != null)_walkOnClick.action.Disable();
+        }
+        
+        /// <summary>
+        /// Metodo que ejecuta el comando de pausa
+        /// </summary>
+        /// <param name="ctx"></param>
+        public void PauseActionMethod(InputAction.CallbackContext ctx)
+        {
+            _pauseCommand?.Execute();
         }
 
         #endregion

@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0f865dbd2349b4f9d1c72c03578b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseCanvas: {fileID: 338705764}
+  pauseCanvas: {fileID: 338705764}
 --- !u!1001 &1259892509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2399,6 +2399,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5865688680811157, guid: 2919cd74b63993542b0111ba3fbc4c7f, type: 3}
   m_PrefabInstance: {fileID: 5428258188444024035}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1737185152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5518232605919207420, guid: 2919cd74b63993542b0111ba3fbc4c7f, type: 3}
+  m_PrefabInstance: {fileID: 5428258188444024035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ef731bfa9242a1903badc56aa83ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1770223918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,12 +2435,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770223918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.48958918, y: 1.5363098, z: -1.0660324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1909903334}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1770223920
 MonoBehaviour:
@@ -2505,7 +2516,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1770223919}
   - {fileID: 1074090069}
   - {fileID: 1245291445}
   m_Father: {fileID: 0}
@@ -2917,6 +2927,14 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 8888772230277726742}
+    - target: {fileID: 4479400115900048997, guid: 2919cd74b63993542b0111ba3fbc4c7f, type: 3}
+      propertyPath: playerState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479400115900048997, guid: 2919cd74b63993542b0111ba3fbc4c7f, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1737185152}
     - target: {fileID: 5424608727632500797, guid: 2919cd74b63993542b0111ba3fbc4c7f, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2989,6 +3007,7 @@ Camera:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1770223919}
   - {fileID: 1909903334}
   - {fileID: 1047654935}
   - {fileID: 1603344508}

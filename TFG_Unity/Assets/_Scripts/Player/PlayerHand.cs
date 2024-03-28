@@ -172,16 +172,24 @@ namespace _Scripts.Player
         /// Realiza la animación de la interaccion de objetos
         /// </summary>
         /// <param name="secondaryObject">Objeto secundario</param>
-        private void UseObjectsAnimation(ObjectInteractable secondaryObject)
+        private Task UseObjectsAnimation(ObjectInteractable secondaryObject)
         {
-            Sequence UseSecuence = DOTween.Sequence();
-            UseSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
-            UseSecuence.Append(transform.DORotate(handActionRotation, 2));
-            UseSecuence.Append(transform.DORotate(Vector3.zero, 2));
-            UseSecuence.Append(transform.DOMove(_handInitialPosition, 1.5f));
-            UseSecuence.Play();
+            TaskCompletionSource<bool> animationTask = new TaskCompletionSource<bool>();
+            
+            Sequence animationSecuence = DOTween.Sequence();
+            animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
+            animationSecuence.Append(transform.DORotate(handActionRotation, 2));
+            animationSecuence.Append(transform.DORotate(Vector3.zero, 2));
+            animationSecuence.Append(transform.DOMove(_handInitialPosition, 1.5f));
+            animationSecuence.OnComplete(()=>
+            {
+                animationTask.SetResult(true);
+                PlayerGrab.IsTweening = false;
+            });
+            
+            animationSecuence.Play();
 
-            UseSecuence.OnComplete(()=>PlayerGrab.IsTweening = false);
+            return animationTask.Task;
         }
         
         /// <summary>
@@ -204,7 +212,6 @@ namespace _Scripts.Player
                 case CombinationResult.None:
                     PlayerGrab.IsTweening = false;
                     await GoToInitialPosition();
-                    Debug.Log("Ha awaiteado");
                     break;
                 case CombinationResult.Error:
                     Debug.Log("Error");
@@ -216,7 +223,8 @@ namespace _Scripts.Player
                     var resul = ALevel.PerformCombinationCommand.Execute(combinationName);
                     if (resul)
                     {
-                        UseObjectsAnimation(secondaryObject);
+                        await UseObjectsAnimation(secondaryObject);
+                        LevelManager.Instance.PostPerformCombination();
                     }
                     else
                     {
@@ -225,11 +233,11 @@ namespace _Scripts.Player
                     }
                     break;
                 case CombinationResult.Explosion:
-                    UseObjectsAnimation(secondaryObject);
+                    await UseObjectsAnimation(secondaryObject);
                     Debug.Log("Explosion");
                     break;
                 case CombinationResult.Corrosion:
-                    UseObjectsAnimation(secondaryObject);
+                    await UseObjectsAnimation(secondaryObject);
                     Debug.Log("Corrosion");
                     break;
             }

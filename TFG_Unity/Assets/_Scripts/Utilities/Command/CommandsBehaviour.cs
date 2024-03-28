@@ -1,10 +1,11 @@
 ﻿using _Scripts.LevelScripts;
+using _Scripts.Managers;
+using Command;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Command
+namespace _Scripts.Utilities.Command
 {
     /// <summary>
     /// Comando encargado de llamar al metodo Move del PlayerMovement
@@ -81,17 +82,17 @@ namespace Command
 
         public override void Execute()
         {
-            GameState gameState = GameManager.Instance._gameState != GameState.Pause
+            GameState gameState = GameManager.Instance.GameState != GameState.Pause
                 ? GameState.Pause
-                : GameManager.Instance._previousGameState;
+                : GameManager.Instance.PreviousGameState;
             GameManager.Instance.ChangeState(gameState);
         }
 
         public override bool Execute(object data)
         {
-            GameState gameState = GameManager.Instance._gameState != GameState.Pause
+            GameState gameState = GameManager.Instance.GameState != GameState.Pause
                 ? GameState.Pause
-                : GameManager.Instance._previousGameState;
+                : GameManager.Instance.PreviousGameState;
             GameManager.Instance.ChangeState(gameState);
             return true;
         }
