@@ -84,7 +84,6 @@ namespace _Scripts.Managers
         {
         
         }
-        //Metodo para invocar el canvas del menu de pausa.
 
         #endregion
     
