@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utilities
+namespace _Scripts.Utilities
 {
     public abstract class Trigger : MonoBehaviour
     {

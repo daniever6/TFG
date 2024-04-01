@@ -1,6 +1,5 @@
-﻿using _Scripts.Utilities.Command;
-using Command;
-using Utilities;
+﻿using _Scripts.Utilities;
+using _Scripts.Utilities.Command;
 
 namespace _Scripts.LevelScripts
 {

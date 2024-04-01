@@ -1,6 +1,4 @@
 using _Scripts.Managers;
-using UnityEngine;
-using Utilities;
 
 namespace _Scripts.Utilities
 {
@@ -9,7 +7,7 @@ namespace _Scripts.Utilities
     /// </summary>
     public abstract class GameplayMonoBehaviour : Singleton<GameplayMonoBehaviour>
     {
-        private void Awake()
+        protected override void Awake()
         {
             GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
         }

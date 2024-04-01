@@ -1,42 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CanvasGroup))]
-[AddComponentMenu("UI/Blur Panel")]
-public class BlurPanel : Image
+namespace _Scripts.UI
 {
-    public bool animate;
-    public float time = 0.5f;
-    public float delay = 0f;
-
-    CanvasGroup canvasGroup;
-
-    protected override void Reset()
+    [RequireComponent(typeof(CanvasGroup))]
+    [AddComponentMenu("UI/Blur Panel")]
+    public class BlurPanel : Image
     {
-        color = Color.black * 0.1f;
-    }
+        [SerializeField] private bool animate;
+        [SerializeField] private float time = 0.5f;
+        [SerializeField] private float delay = 0f;
 
-    protected override void Awake()
-    {
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
+        private CanvasGroup _canvasGroup;
 
-    protected override void OnEnable()
-    {
-        if (Application.isPlaying)
+        protected override void Reset()
         {
-            material.SetFloat("_Size", 0);
-            canvasGroup.alpha = 0;
-            LeanTween.value(gameObject, updateBlur, 0, 1, time).setDelay(delay);
-
+            color = Color.black * 0.1f;
         }
-    }
-    void updateBlur(float value)
-    {
-        material.SetFloat("_Size", value);
-        canvasGroup.alpha = value;
+
+        protected override void Awake()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+        }
+
+        protected override void OnEnable()
+        {
+            if (Application.isPlaying)
+            {
+                material.SetFloat("_Size", 0);
+                _canvasGroup.alpha = 0;
+                LeanTween.value(gameObject, UpdateBlur, 0, 1, time).setDelay(delay);
+
+            }
+        }
+        void UpdateBlur(float value)
+        {
+            material.SetFloat("_Size", value);
+            _canvasGroup.alpha = value;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using _Scripts.Dialogues;
 using _Scripts.Interactables;
 using _Scripts.Player;
 using _Scripts.Utilities;
@@ -8,7 +9,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using Utilities;
 
 namespace Player
 {

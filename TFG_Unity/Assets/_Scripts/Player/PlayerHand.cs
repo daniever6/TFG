@@ -24,24 +24,18 @@ namespace _Scripts.Player
         [SerializeField] private GameObject alfombrillaContainer;
         private Camera _camera;
 
-        private ObjectInteractable _objectSelected;
-        private Vector3 _handInitialPosition;
-
         [SerializeField]private Vector3 handActionOffset;
         [SerializeField] private Vector3 handActionRotation;
 
-        public Vector3 HandInitialPosition => _handInitialPosition;
-        public Vector3? ObjectInitialPosition => _objectSelected.InitialPosition;
+        public Vector3 HandInitialPosition { get; private set; }
 
-        public ObjectInteractable ObjectSelected
-        {
-            get { return _objectSelected; }
-            set { _objectSelected = value; }
-        }
-        
+        public Vector3? ObjectInitialPosition => ObjectSelected.InitialPosition;
+
+        public ObjectInteractable ObjectSelected { get; set; }
+
         private void Start()
         {
-            _handInitialPosition = hand.transform.position;
+            HandInitialPosition = hand.transform.position;
             _camera = Camera.main;
         }
 
@@ -180,7 +174,7 @@ namespace _Scripts.Player
             animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
             animationSecuence.Append(transform.DORotate(handActionRotation, 2));
             animationSecuence.Append(transform.DORotate(Vector3.zero, 2));
-            animationSecuence.Append(transform.DOMove(_handInitialPosition, 1.5f));
+            animationSecuence.Append(transform.DOMove(HandInitialPosition, 1.5f));
             animationSecuence.OnComplete(()=>
             {
                 animationTask.SetResult(true);

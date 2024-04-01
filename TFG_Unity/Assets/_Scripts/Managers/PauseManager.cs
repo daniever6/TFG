@@ -1,7 +1,6 @@
+using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Utilities;
 
 namespace _Scripts.Managers
 {
@@ -29,7 +28,7 @@ namespace _Scripts.Managers
         /// activar o desactivar las UIs correspondientes
         /// </summary>
         /// <param name="gameState">Nuevo estado del juego</param>
-        public void HandlePauseGameState(GameState gameState)
+        private void HandlePauseGameState(GameState gameState)
         {
             mainCanvas.SetActive(gameState != GameState.Pause);
             pauseCanvas.SetActive(gameState == GameState.Pause);

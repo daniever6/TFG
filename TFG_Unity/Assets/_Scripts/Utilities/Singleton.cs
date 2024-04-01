@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Utilities
+namespace _Scripts.Utilities
 {
     public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour
     {

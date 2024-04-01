@@ -1,19 +1,18 @@
-﻿using System.Runtime.CompilerServices;
-using Managers;
-using Unity.VisualScripting.Dependencies.Sqlite;
+﻿using _Scripts.Managers;
+using _Scripts.Utilities;
+using Dialogues;
 using UnityEngine;
-using Utilities;
 
-namespace Dialogues
+namespace _Scripts.Dialogues
 {
     public class DialogueTrigger : Trigger
     {
-        [SerializeField] private DialogueManager _dialogueManager;
-        [SerializeField] private Dialogue _dialogue;
+        [SerializeField] private DialogueManager dialogueManager;
+        [SerializeField] private Dialogue dialogue;
 
         public override void TriggerEvent()
         {
-            _dialogueManager.GetDialogues(new []{_dialogue});
+            dialogueManager.GetDialogues(new []{dialogue});
         }
     }
 }

@@ -1,9 +1,9 @@
 using System;
+using _Scripts.Utilities;
 using _Scripts.Utilities.Command;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Utilities;
 
 namespace _Scripts.Player
 {
@@ -32,12 +32,14 @@ namespace _Scripts.Player
         private ICommand _walkOnClickCommand;
         private ICommand _useCommand;
         private ICommand _pauseCommand;
+        private ICommand _interactCommand;
         
         [Header("Input Actions")] 
-        [SerializeField][CanBeNull] private InputActionReference _move;
-        [SerializeField][CanBeNull] private InputActionReference _walkOnClick;
-        [SerializeField] private InputActionReference _use;
-        [SerializeField] private InputActionReference _pause;
+        [SerializeField][CanBeNull] private InputActionReference move;
+        [SerializeField][CanBeNull] private InputActionReference walkOnClick;
+        [SerializeField] private InputActionReference use;
+        [SerializeField] private InputActionReference pause;
+        [SerializeField] private InputActionReference interact;
 
         #endregion
 
@@ -49,6 +51,7 @@ namespace _Scripts.Player
             _walkOnClickCommand = playerController.PlayerMovementOnClick != null? new WalkOnClickCommand(playerController) : null;
             _useCommand = new UseCommand(playerController);
             _pauseCommand = new PauseCommand(playerController);
+            _interactCommand = new InteractCommand(playerController);
             
             ChangePlayerState(playerState);
         }
@@ -77,7 +80,7 @@ namespace _Scripts.Player
 
         private void FixedUpdate()
         {
-            _moveDirection = _move.action.ReadValue<Vector2>();
+            _moveDirection = move.action.ReadValue<Vector2>();
             _moveCommand?.Execute(_moveDirection);
         }
 
@@ -86,7 +89,7 @@ namespace _Scripts.Player
         /// </summary>
         private void OnEnable()
         {
-            _pause.action.performed += PauseActionMethod;
+            pause.action.performed += PauseActionMethod;
         }
 
         /// <summary>
@@ -96,8 +99,8 @@ namespace _Scripts.Player
         {   
             DisableThirdPersonInput();
             DisableFirstPersonInput();
-            _pause.action.performed -= PauseActionMethod;
-            _pause.action.Disable();
+            pause.action.performed -= PauseActionMethod;
+            pause.action.Disable();
         }
 
         #endregion
@@ -111,7 +114,7 @@ namespace _Scripts.Player
         {
             DisableThirdPersonInput();
 
-            if(_use != null) _use.action.performed += ctx => _useCommand?.Execute(ctx);
+            if(use != null) use.action.performed += ctx => _useCommand?.Execute(ctx);
         }
 
         /// <summary>
@@ -119,7 +122,7 @@ namespace _Scripts.Player
         /// </summary>
         private void DisableFirstPersonInput()
         {
-            _use.action.Disable();
+            use.action.Disable();
         }
 
         #endregion
@@ -134,12 +137,13 @@ namespace _Scripts.Player
         {
             DisableFirstPersonInput();
             
-            if(_move != null)_move.action.performed += ctx =>
+            if(move != null)move.action.performed += ctx =>
             {
                 _moveCommand?.Execute();
                 OnWalking?.Invoke();
             };
-            if(_walkOnClick != null)_walkOnClick.action.performed += ctx => _walkOnClickCommand?.Execute(ctx);
+            if (walkOnClick != null) walkOnClick.action.performed += ctx => _walkOnClickCommand?.Execute(ctx);
+            if (interact != null) interact.action.performed += ctx => _interactCommand?.Execute();
         }
 
         /// <summary>
@@ -147,8 +151,9 @@ namespace _Scripts.Player
         /// </summary>
         private void DisableThirdPersonInput()
         {
-            if(_move != null)_move.action.Disable();
-            if(_walkOnClick != null)_walkOnClick.action.Disable();
+            if(move != null) move.action.Disable();
+            if(walkOnClick != null) walkOnClick.action.Disable();
+            if(interact != null) interact.action.Disable();
         }
         
         /// <summary>

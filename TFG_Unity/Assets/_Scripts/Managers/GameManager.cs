@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Dialogues;
-using Managers;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using Utilities;
 
 namespace _Scripts.Managers
 {
@@ -18,13 +16,11 @@ namespace _Scripts.Managers
         Loose
     }
 
-    public class GameManager : Singleton<GameManager>
+    public class GameManager : global::_Scripts.Utilities.Singleton<GameManager>
     {
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
         public GameState PreviousGameState { get; private set; }
         public GameState GameState { get; private set; }
-
-        private Button Pause;
         
         //EVENTS
         public static event Action<GameState> OnBeforeGameStateChanged;
@@ -74,7 +70,7 @@ namespace _Scripts.Managers
 
         #region Game State Handlers
 
-        public void HandleStarting()
+        private void HandleStarting()
         {
             DeserializeDialogues();
             ChangeState(GameState.Dialogue);
@@ -93,10 +89,10 @@ namespace _Scripts.Managers
         /// <summary>
         /// Carga los dialogos del JSON para mostrar los dialogos de la intro
         /// </summary>
-        public void DeserializeDialogues()
+        private void DeserializeDialogues()
         {
             TextAsset dialogueJson = Resources.Load<TextAsset>("JSONs/DialogueJSONs");
-            if (dialogueJson == null) return;
+            if (UnityObjectUtility.IsUnityNull(dialogueJson)) return;
 
             DialogueStages stages = JsonUtility.FromJson<DialogueStages>(dialogueJson.text);
         

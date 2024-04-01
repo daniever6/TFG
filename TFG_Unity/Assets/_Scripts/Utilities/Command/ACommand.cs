@@ -1,7 +1,6 @@
-﻿using Player;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Command
+namespace _Scripts.Utilities.Command
 {
     /// <summary>
     /// Clase abstracta de comandos

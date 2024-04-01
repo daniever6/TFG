@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using _Scripts.UI;
 using UnityEditor;
 using UnityEditor.UI;
 
-[CustomEditor(typeof(BlurPanel))]
-public class BlurPanelEditor : ImageEditor
+namespace Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(BlurPanel))]
+    public class BlurPanelEditor : ImageEditor
     {
-        base.OnInspectorGUI();
-
-        EditorGUI.BeginChangeCheck();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("animate"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("time"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("delay"));
-
-        if (EditorGUI.EndChangeCheck())
+        public override void OnInspectorGUI()
         {
-            serializedObject.ApplyModifiedProperties();
+            base.OnInspectorGUI();
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("animate"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("time"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("delay"));
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
         }
     }
 }

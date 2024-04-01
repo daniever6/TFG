@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using _Scripts.Managers;
+using _Scripts.Utilities;
 using Dialogues;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Utilities;
 
-namespace Managers
+namespace _Scripts.Managers
 {
     
     public class DialogueManager : Singleton<DialogueManager>
     {
         #region Class implementation
 
-        [SerializeField] private GameObject _dialogueCanvas;
+        [SerializeField] private GameObject dialogueCanvas;
         
-        [SerializeField] private Image _unitImage;
-        [SerializeField] private TextMeshProUGUI _unitNameText;
-        [SerializeField] private TextMeshProUGUI _dialogText;
-        [SerializeField] private float _lettersWaitVelocity = 0f;
+        [SerializeField] private Image unitImage;
+        [SerializeField] private TextMeshProUGUI unitNameText;
+        [SerializeField] private TextMeshProUGUI dialogText;
+        [SerializeField] private float lettersWaitVelocity = 0f;
         
         private Queue<string> _sentences;
         private Queue<Dialogue> _dialogues;
@@ -45,7 +41,7 @@ namespace Managers
         {
             GameManager.Instance.ChangeState(GameState.Dialogue);
             
-            _dialogueCanvas.SetActive(true);
+            dialogueCanvas.SetActive(true);
             _dialogues.Clear();
             
             foreach (Dialogue dialogue in dialogues)
@@ -75,10 +71,10 @@ namespace Managers
         /// Lleva la lógica del comienzo de los dialogos con los personajes
         /// </summary>
         /// <param name="dialogue"></param>
-        public void StartDialogue(Dialogue dialogue)
+        private void StartDialogue(Dialogue dialogue)
         {
             //_unitImage.sprite = dialogue.UnitImage;
-            _unitNameText.text = dialogue.UnitName;
+            unitNameText.text = dialogue.UnitName;
             _sentences.Clear();
             
             foreach (string sentence in dialogue.Sentences)
@@ -105,9 +101,9 @@ namespace Managers
         /// <summary>
         /// Cierra la pestaña de los dialogos
         /// </summary>
-        public void EndDialogue()
+        private void EndDialogue()
         {
-            _dialogueCanvas.SetActive(false);
+            dialogueCanvas.SetActive(false);
             GameManager.Instance.ChangeState(GameState.Resume);
         }
 
@@ -116,13 +112,13 @@ namespace Managers
         /// </summary>
         /// <param name="sentence">Frase a mostrar</param>
         /// <returns></returns>
-        IEnumerator TypeSentence(string sentence)
+        private IEnumerator TypeSentence(string sentence)
         {
-            _dialogText.text = "";
+            dialogText.text = "";
             foreach (char letter in sentence.ToCharArray())
             {
-                _dialogText.text += letter;
-                yield return new WaitForSeconds(_lettersWaitVelocity);
+                dialogText.text += letter;
+                yield return new WaitForSeconds(lettersWaitVelocity);
             }
         }
         

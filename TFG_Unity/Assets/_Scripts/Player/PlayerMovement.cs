@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using _Scripts.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Player
@@ -11,13 +13,13 @@ namespace _Scripts.Player
         #region Variables
 
         [Header("References")] 
-        [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private Camera _camera;
+        [SerializeField] private Rigidbody rbRigidbody;
+        [SerializeField] private Camera mainCamera;
         private RaycastHit _hit;
     
         [Header("Properties")] 
-        [SerializeField] private float _moveSpeed = 6f;
-        [SerializeField] private float _rotationSpeed = 200f;
+        [SerializeField] private float moveSpeed = 6f;
+        [SerializeField] private float rotationSpeed = 200f;
         private Vector2 _moveDirection;
 
         #endregion
@@ -30,7 +32,7 @@ namespace _Scripts.Player
         /// </summary>
         private void LateUpdate()
         {
-            _camera.transform.position = this.transform.position + new Vector3(0, 7.5f, -5);
+            mainCamera.transform.position = this.transform.position + new Vector3(0, 7.5f, -5);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace _Scripts.Player
         /// <param name="direction">Direccion recibida mediante inputActionReference Move(WASD)</param>
         public void Move(Vector2 direction)
         {
-            _rigidbody.velocity = new Vector3(direction.x * _moveSpeed, 0, direction.y * _moveSpeed);
+            rbRigidbody.velocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed);
             if (direction != Vector2.zero)
             {
                 Rotate(direction);
@@ -50,12 +52,51 @@ namespace _Scripts.Player
         /// Gira al jugador hacia la direccion de su movimiento
         /// </summary>
         /// <param name="direction">Direccion a la que se dirige el jugador</param>
-        public void Rotate(Vector2 direction)
+        private void Rotate(Vector2 direction)
         {
             Vector3 forwardPlayerDirection = new Vector3(direction.x, 0, direction.y);
             Quaternion toRotation = Quaternion.LookRotation(forwardPlayerDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation,
-                _rotationSpeed * Time.deltaTime);
+                rotationSpeed * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Metodo que se encarga de interactuar con el objeto interactable mas cercano, y que responde al
+        /// inputActionReference interact del UserInput
+        /// </summary>
+        public void Interact()
+        {
+            Collider[] collidersBuffer = new Collider[10];
+            Queue<Collider> interactables = new Queue<Collider>();
+            
+            int numCollisions = Physics.OverlapSphereNonAlloc(transform.position, 3f, collidersBuffer);
+
+            for (int i = 0; i < numCollisions; i++)
+            {
+                if (collidersBuffer[i].gameObject.layer.Equals(LayerMask.NameToLayer("Interactable")))
+                {
+                    interactables.Enqueue(collidersBuffer[i]);
+                }
+            }
+
+            float closestDistance = Mathf.Infinity;
+            GameObject closestObject = null;
+
+            while (interactables.Count>0)
+            {
+                Collider colliderObject = interactables.Dequeue();
+                float distance = Vector3.Distance(transform.position, colliderObject.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestObject = colliderObject.gameObject;
+                }
+            }
+
+            if (!closestObject.IsUnityNull())
+            {
+                closestObject.GetComponent<Trigger>().TriggerEvent();
+            }
         }
 
         #endregion

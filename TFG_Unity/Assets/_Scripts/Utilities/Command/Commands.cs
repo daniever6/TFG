@@ -1,6 +1,5 @@
 ﻿using _Scripts.LevelScripts;
 using _Scripts.Managers;
-using Command;
 using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,6 +45,28 @@ namespace _Scripts.Utilities.Command
         {
             if(Reciver.Equals(null)) return false;
             ((IPlayerController)Reciver).WalkToPoint(new InputAction.CallbackContext());
+            return true;
+        }
+    }
+    
+    /// <summary>
+    /// Comando encargado de llamar al metodo Interact del PlayerController
+    /// Comprueba si es nulo o esta activo antes de lanzar el comando
+    /// </summary>
+    public class InteractCommand : ACommand
+    {
+        public InteractCommand(IPlayerController playerController) : base((MonoBehaviour)playerController){}
+
+        public override void Execute()
+        {
+            if(Reciver.Equals(null)) return;
+            ((IPlayerController)Reciver).Interact();
+        }
+
+        public override bool Execute(object data)
+        {
+            if(Reciver.Equals(null)) return false;
+            ((IPlayerController)Reciver).Interact();
             return true;
         }
     }
