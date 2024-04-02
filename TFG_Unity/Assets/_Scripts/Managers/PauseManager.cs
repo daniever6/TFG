@@ -56,7 +56,10 @@ namespace _Scripts.Managers
         {
             SceneManager.LoadScene(sceneName);
         }
-
+        
+        /// <summary>
+        ///  Evento donde si se hace clic en el boton 
+        /// </summary>
         public void Options()
         {
             panelPausa.SetActive(false);
