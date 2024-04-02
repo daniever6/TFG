@@ -11,6 +11,9 @@ namespace _Scripts.Managers
     {
         [SerializeField] private GameObject mainCanvas;
         [SerializeField] private GameObject pauseCanvas;
+        [SerializeField] private GameObject panelPausa;
+        [SerializeField] private GameObject panelOpcion;
+        
         
         protected override void Awake()
         {
@@ -52,6 +55,12 @@ namespace _Scripts.Managers
         public void ChangeLevelScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
+        }
+
+        public void Options()
+        {
+            panelPausa.SetActive(false);
+            panelOpcion.SetActive(true);
         }
 
     }
