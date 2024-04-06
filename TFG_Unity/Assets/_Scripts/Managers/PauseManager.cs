@@ -62,8 +62,16 @@ namespace _Scripts.Managers
         /// </summary>
         public void Options()
         {
-            panelPausa.SetActive(false);
-            panelOpcion.SetActive(true);
+            if (panelOpcion.active == false)
+            {
+                panelPausa.SetActive(false);
+                panelOpcion.SetActive(true);
+            }
+            else
+            {
+                panelPausa.SetActive(true);
+                panelOpcion.SetActive(false);
+            }
         }
 
     }
