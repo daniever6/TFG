@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Dialogues;
+using _Scripts.Dialogues;
 using Unity.VisualScripting;
 using UnityEngine;
 

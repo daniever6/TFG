@@ -1,6 +1,5 @@
 ﻿using _Scripts.Managers;
 using _Scripts.Utilities;
-using Dialogues;
 using UnityEngine;
 
 namespace _Scripts.Dialogues

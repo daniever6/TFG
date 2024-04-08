@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Dialogues
+namespace _Scripts.Dialogues
 {
     [System.Serializable]
     public class DialogueStages

@@ -949,6 +949,11 @@ Transform:
   - {fileID: 792894207}
   m_Father: {fileID: 439831874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &535651340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7400730172457891916, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+  m_PrefabInstance: {fileID: 8956228251160459314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &639415383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +2970,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 1122199303}
   pauseCanvas: {fileID: 2067330615}
+  panelPausa: {fileID: 0}
+  panelOpcion: {fileID: 0}
 --- !u!1 &1707309807
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,6 +4058,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 8956228251160459315}
+    - target: {fileID: 6435104540107752866, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
+      propertyPath: firstPersonComponents
+      value: 
+      objectReference: {fileID: 535651340}
     - target: {fileID: 7400730172457891916, guid: 427c5e4069bc70e479e7ff7e023a96ae, type: 3}
       propertyPath: m_Layer
       value: 0

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Dialogues;
 using _Scripts.Utilities;
-using Dialogues;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

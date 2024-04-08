@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.Managers;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -59,6 +60,15 @@ namespace _Scripts.Player
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation,
                 rotationSpeed * Time.deltaTime);
         }
+        
+        /// <summary>
+        /// Detiene el movimiento del jugador
+        /// </summary>
+        private void StopMovement()
+        {
+            rbRigidbody.velocity = Vector3.zero;
+            _moveDirection = Vector2.zero;
+        }
 
         /// <summary>
         /// Metodo que se encarga de interactuar con el objeto interactable mas cercano, y que responde al
@@ -95,6 +105,7 @@ namespace _Scripts.Player
 
             if (!closestObject.IsUnityNull())
             {
+                StopMovement();
                 closestObject.GetComponent<Trigger>().TriggerEvent();
             }
         }
