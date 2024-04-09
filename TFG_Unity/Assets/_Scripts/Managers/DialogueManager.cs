@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace _Scripts.Managers
@@ -22,6 +24,11 @@ namespace _Scripts.Managers
         
         private Queue<string> _sentences;
         private Queue<Dialogue> _dialogues;
+
+        //Sound
+        [SerializeField] private AudioClip Dialogue;
+        [SerializeField] private AudioMixer sfx;
+        private float volume;
 
         private void Start()
         {
@@ -64,6 +71,8 @@ namespace _Scripts.Managers
             }
 
             Dialogue dialogue = _dialogues.Dequeue();
+            Console.WriteLine($"SFX Dialogue = {0}", sfx.GetFloat("SFX", out volume) ? volume : 0);
+            SFXmanager.Instance.PlaySFX(Dialogue, transform, sfx.GetFloat("SFX", out volume) ? volume : 0);
             StartDialogue(dialogue);
         }
         
@@ -90,12 +99,14 @@ namespace _Scripts.Managers
             if (_sentences.Count == 0)
             {
                 DisplayNextDialogue();
+
                 return;
             }
             
             string sentence = _sentences.Dequeue();
             StopAllCoroutines();
             StartCoroutine(TypeSentence(sentence));
+            
         }
 
         /// <summary>
