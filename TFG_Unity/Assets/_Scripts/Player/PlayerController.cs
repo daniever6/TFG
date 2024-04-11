@@ -1,4 +1,6 @@
+using System;
 using _Scripts.Utilities;
+using Facepunch;
 using JetBrains.Annotations;
 using Player;
 using UnityEngine;
@@ -15,7 +17,7 @@ namespace _Scripts.Player
 
         public PlayerMovement PlayerMovement => playerMovement;
         public PlayerMovementOnClick PlayerMovementOnClick => playerMovementOnClick;
-        
+
         public void Move(Vector2 direction)
         {
             if (!this.enabled) return;

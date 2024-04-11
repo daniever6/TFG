@@ -42,7 +42,7 @@ namespace _Scripts.Managers
         /// </summary>
         public void PauseAndResume()
         {
-            GameState gameState = GameManager.Instance.GameState != GameState.Pause
+            GameState gameState = GameManager.GameState != GameState.Pause
                 ? GameState.Pause
                 : GameManager.Instance.PreviousGameState;
             GameManager.Instance.ChangeState(gameState);

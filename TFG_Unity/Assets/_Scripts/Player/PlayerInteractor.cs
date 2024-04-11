@@ -1,4 +1,5 @@
 ﻿using System;
+using _Scripts.Managers;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace _Scripts.Player
                 _collidersBuffer, interactableMask);
 
 
-            interactorUI.enabled = _numCollisions > 0 ? true : false;
+            interactorUI.enabled = (_numCollisions > 0 && GameManager.GameState == GameState.Resume) ? true : false;
         }
 
         /// <summary>

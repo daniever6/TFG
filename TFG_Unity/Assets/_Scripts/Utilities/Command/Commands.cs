@@ -103,7 +103,7 @@ namespace _Scripts.Utilities.Command
 
         public override void Execute()
         {
-            GameState gameState = GameManager.Instance.GameState != GameState.Pause
+            GameState gameState = GameManager.GameState != GameState.Pause
                 ? GameState.Pause
                 : GameManager.Instance.PreviousGameState;
             GameManager.Instance.ChangeState(gameState);
@@ -111,7 +111,7 @@ namespace _Scripts.Utilities.Command
 
         public override bool Execute(object data)
         {
-            GameState gameState = GameManager.Instance.GameState != GameState.Pause
+            GameState gameState = GameManager.GameState != GameState.Pause
                 ? GameState.Pause
                 : GameManager.Instance.PreviousGameState;
             GameManager.Instance.ChangeState(gameState);

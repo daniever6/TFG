@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Interactables
 {
-    public class ObjectInteractable : MonoBehaviour
+    public class LevelInteractable : MonoBehaviour
     {
         private Vector3 _initialPosition;
         public Vector3 InitialPosition => _initialPosition;

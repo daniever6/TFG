@@ -45,7 +45,7 @@ namespace _Scripts.Player
                 switch(parsedEnum)
                 {
                     case Iteractables.Interactable:
-                        var selectedObject = _hit.collider.gameObject.GetComponent<ObjectInteractable>();
+                        var selectedObject = _hit.collider.gameObject.GetComponent<LevelInteractable>();
                         hand.GrabObject(selectedObject, interactablesParent);
                         break;
                     case Iteractables.Ground:

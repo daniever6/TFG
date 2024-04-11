@@ -20,7 +20,7 @@ namespace _Scripts.Managers
     {
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
         public GameState PreviousGameState { get; private set; }
-        public GameState GameState { get; private set; }
+        public static GameState GameState { get; private set; }
         
         //EVENTS
         public static event Action<GameState> OnBeforeGameStateChanged;
