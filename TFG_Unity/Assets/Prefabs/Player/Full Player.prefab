@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6443218597269294377}
   - component: {fileID: 6437884453665289415}
   - component: {fileID: 1375592249266341522}
+  - component: {fileID: 7393975770634749555}
   - component: {fileID: 3157721989893258842}
   - component: {fileID: 5230014060078585861}
   m_Layer: 2
@@ -35,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2257736854300425459}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.48958918, y: -0.6163098, z: -4.495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 6437884453665289415}
   playerMovementOnClick: {fileID: 1375592249266341522}
+  playerInteractor: {fileID: 7393975770634749555}
   playerGrab: {fileID: 5230014060078585861}
 --- !u!114 &6437884453665289415
 MonoBehaviour:
@@ -240,6 +242,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _navMeshAgent: {fileID: 9119651269068305788}
+--- !u!114 &7393975770634749555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257736854300425459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a574410e538a48cabf63d2ed0472267c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPoint: {fileID: 5998586868283518301}
+  interactionRadius: 1.5
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &3157721989893258842
 MonoBehaviour:
   m_ObjectHideFlags: 0

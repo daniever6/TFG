@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using _Scripts.Managers;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -64,52 +63,12 @@ namespace _Scripts.Player
         /// <summary>
         /// Detiene el movimiento del jugador
         /// </summary>
-        private void StopMovement()
+        public void StopMovement()
         {
             rbRigidbody.velocity = Vector3.zero;
             _moveDirection = Vector2.zero;
         }
-
-        /// <summary>
-        /// Metodo que se encarga de interactuar con el objeto interactable mas cercano, y que responde al
-        /// inputActionReference interact del UserInput
-        /// </summary>
-        public void Interact()
-        {
-            Collider[] collidersBuffer = new Collider[10];
-            Queue<Collider> interactables = new Queue<Collider>();
-            
-            int numCollisions = Physics.OverlapSphereNonAlloc(transform.position, 3f, collidersBuffer);
-
-            for (int i = 0; i < numCollisions; i++)
-            {
-                if (collidersBuffer[i].gameObject.layer.Equals(LayerMask.NameToLayer("Interactable")))
-                {
-                    interactables.Enqueue(collidersBuffer[i]);
-                }
-            }
-
-            float closestDistance = Mathf.Infinity;
-            GameObject closestObject = null;
-
-            while (interactables.Count>0)
-            {
-                Collider colliderObject = interactables.Dequeue();
-                float distance = Vector3.Distance(transform.position, colliderObject.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestObject = colliderObject.gameObject;
-                }
-            }
-
-            if (!closestObject.IsUnityNull())
-            {
-                StopMovement();
-                closestObject.GetComponent<Trigger>().TriggerEvent();
-            }
-        }
-
+        
         #endregion
 
     }

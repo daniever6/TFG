@@ -1,9 +1,6 @@
-using System;
-using _Scripts.Managers;
 using _Scripts.Utilities;
 using JetBrains.Annotations;
 using Player;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +10,7 @@ namespace _Scripts.Player
     {
         [SerializeField] [CanBeNull] private PlayerMovement playerMovement;
         [SerializeField] [CanBeNull] private PlayerMovementOnClick playerMovementOnClick;
+        [SerializeField] [CanBeNull] private PlayerInteractor playerInteractor;
         [SerializeField] [CanBeNull] private PlayerGrab playerGrab;
 
         public PlayerMovement PlayerMovement => playerMovement;
@@ -21,25 +19,26 @@ namespace _Scripts.Player
         public void Move(Vector2 direction)
         {
             if (!this.enabled) return;
-            playerMovement.Move(direction);
+            playerMovement!.Move(direction);
         }
 
         public void WalkToPoint(InputAction.CallbackContext context)
         {
             if (!this.enabled) return;
-            playerMovementOnClick.WalkToPoint(context);
+            playerMovementOnClick!.WalkToPoint(context);
         }
 
         public void Use(InputAction.CallbackContext context)
         {
             if (!this.enabled) return;
-            playerGrab?.Grab(context);
+            playerGrab!.Grab(context);
         }
 
         public void Interact()
         {
             if (!this.enabled) return;
-            playerMovement.Interact();
+            playerMovement!.StopMovement();
+            playerInteractor!.Interact();
         }
     }
 }
