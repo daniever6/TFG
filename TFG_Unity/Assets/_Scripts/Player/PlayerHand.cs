@@ -29,9 +29,9 @@ namespace _Scripts.Player
 
         public Vector3 HandInitialPosition { get; private set; }
 
-        public Vector3? ObjectInitialPosition => LevelSelected.InitialPosition;
+        public Vector3? ObjectInitialPosition => ObjectSelected.InitialPosition;
 
-        public LevelInteractable LevelSelected { get; set; }
+        public LevelInteractable ObjectSelected { get; set; }
 
         private void Start()
         {
@@ -57,54 +57,84 @@ namespace _Scripts.Player
             Vector3 rayDirection = (rayOrigin-cameraPos).normalized;
 
             // Interaccion entre las dos manos
-            if (Vector3.Distance(hand.transform.position, otherHand.transform.position) < 0.1f)
-            {
-                UseObjects(otherHand.LevelSelected);
-                if(otherHand.LevelSelected.IsUnityNull() || LevelSelected.IsUnityNull()) await GoToInitialPosition();
-            }
+            // if (Vector3.Distance(hand.transform.position, otherHand.transform.position) < 0.1f)
+            // {
+            //     //UseObjects(otherHand.ObjectSelected);
+            //     //if(otherHand.ObjectSelected.IsUnityNull() || ObjectSelected.IsUnityNull()) await GoToInitialPosition();
+            // }
+            
             // Accion entre objetos interactables de la escena
-            else if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
+            if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
             {
                 Iteractables parsedEnum;
                 Enum.TryParse(hit.collider.tag, out parsedEnum);
                 switch(parsedEnum)
                 {
                     case Iteractables.Interactable:
-                        if (LevelSelected.IsUnityNull())
+                        if (ObjectSelected.IsUnityNull())
                         {
-                            Grab(hit.collider.gameObject.GetComponent<LevelInteractable>()); 
-                            break;
+                            Grab(hit.collider.gameObject.GetComponent<LevelInteractable>());
                         }
                         
-                        UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                        //UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>()); Quitar await si se descomenta
+                        await GoToInitialPosition();
                         return;
                     
                     case Iteractables.Alfombrilla:
-                        Vector3 newPos = alfombrillaContainer.transform.position;
-                        newPos.y = ObjectInitialPosition.GetValueOrDefault().y;
-                        DropObject(alfombrillaContainer, newPos);
+                        bool alfombrillaIsEmpty = alfombrillaContainer.transform.childCount <= 0;
+                        bool handHasObject = !ObjectSelected.IsUnityNull();
+
+                        if (!alfombrillaIsEmpty && !handHasObject) //Coger objeto de alfombrilla
+                        {
+                            Grab(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            await GoToInitialPosition();
+                            break;
+                        }
+                        if (!alfombrillaIsEmpty && handHasObject) //Hacer combinacion
+                        {
+                            UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            break;
+                        }
+
+                        if (alfombrillaIsEmpty && !handHasObject) //Soltar en alfombrilla
+                        {
+                            await GoToInitialPosition();
+                            break;
+                        } 
+                        
+                        if (alfombrillaIsEmpty && handHasObject)//Dejar en alfombrilla
+                        {
+                            Vector3 newPos = alfombrillaContainer.transform.position;
+                            newPos.y = ObjectInitialPosition.GetValueOrDefault().y;
+                            ObjectSelected.gameObject.tag = "Alfombrilla";
+                            DropObject(alfombrillaContainer, newPos);
+                            await GoToInitialPosition();
+                            break;
+                        }
+                        break;
+                    
+                    default:
+                        await GoToInitialPosition();
                         break;
                 }
-                
-                await GoToInitialPosition();
             }
         }
 
         /// <summary>
         /// Mueve la mano hacia el objeto y coloca el objeto como hijo de la mano
         /// </summary>
-        /// <param name="levelToGrab">Objeto a coger</param>
+        /// <param name="objectToGrab">Objeto a coger</param>
         /// <param name="newParent">Gameobject padre en el que soltar el objeto</param>
-        public void GrabObject(LevelInteractable levelToGrab, GameObject newParent)
+        public void GrabObject(LevelInteractable objectToGrab, GameObject newParent)
         {
-            transform.DOMove(levelToGrab.transform.position, 1)
+            transform.DOMove(objectToGrab.transform.position, 1)
                 .OnComplete(async () =>
                 {
-                    if (!LevelSelected.IsUnityNull())
+                    if (!ObjectSelected.IsUnityNull())
                     {
                         DropObject(newParent);
                     }
-                    Grab(levelToGrab);
+                    Grab(objectToGrab);
                 
                     await GoToInitialPosition();
                 });
@@ -113,15 +143,16 @@ namespace _Scripts.Player
         /// <summary>
         /// Metodo para agarrar un objeto con la mano
         /// </summary>
-        /// <param name="levelToGrab">Objeto a agarrar</param>
-        public void Grab(LevelInteractable levelToGrab)
+        /// <param name="objectToGrab">Objeto a agarrar</param>
+        public void Grab(LevelInteractable objectToGrab)
         {
-            LevelSelected = levelToGrab;
+            ObjectSelected = objectToGrab;
 
-            levelToGrab.transform.SetParent(transform);
-            levelToGrab.transform.localPosition = Vector3.zero;
-                
-            levelToGrab.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            objectToGrab.transform.SetParent(transform);
+            objectToGrab.transform.localPosition = Vector3.zero;
+
+            objectToGrab.gameObject.tag = "Interactable";    
+            objectToGrab.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
         
         /// <summary>
@@ -142,20 +173,20 @@ namespace _Scripts.Player
         {
             try
             {
-                if (LevelSelected.IsUnityNull()) return;
+                if (ObjectSelected.IsUnityNull()) return;
 
                 Vector3 newPos = position.Equals(default) ? ObjectInitialPosition.GetValueOrDefault() : position;
 
                 //Evita poner mas de 2 objetos en la alfombrilla
                 if (newPos.Equals(position) && alfombrillaContainer.transform.childCount > 0) return; 
                 
-                var droppedObject = LevelSelected;
+                var droppedObject = ObjectSelected;
 
                 droppedObject.transform.position = newPos;
                 droppedObject.transform.SetParent(newParent.transform);
                 droppedObject.gameObject.layer = LayerMask.NameToLayer("Default");
             
-                LevelSelected = null;
+                ObjectSelected = null;
             }
             catch (Exception e)
             {
@@ -165,13 +196,13 @@ namespace _Scripts.Player
         /// <summary>
         /// Realiza la animación de la interaccion de objetos
         /// </summary>
-        /// <param name="secondaryLevel">Objeto secundario</param>
-        private Task UseObjectsAnimation(LevelInteractable secondaryLevel)
+        /// <param name="secondaryObject">Objeto secundario</param>
+        private Task UseObjectsAnimation(LevelInteractable secondaryObject)
         {
             TaskCompletionSource<bool> animationTask = new TaskCompletionSource<bool>();
             
             Sequence animationSecuence = DOTween.Sequence();
-            animationSecuence.Append(transform.DOMove(secondaryLevel.transform.position + handActionOffset, 1.5f));
+            animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
             animationSecuence.Append(transform.DORotate(handActionRotation, 2));
             animationSecuence.Append(transform.DORotate(Vector3.zero, 2));
             animationSecuence.Append(transform.DOMove(HandInitialPosition, 1.5f));
@@ -190,13 +221,13 @@ namespace _Scripts.Player
         /// Lleva la accion resultante de juntar el Objeto que sujeta la mano arrastrada (PrimaryObject), al
         /// interactuar con el otro objeto (secondaryObject)
         /// </summary>
-        /// <param name="secondaryLevel">Objeto secundario</param>
-        private async void UseObjects(LevelInteractable secondaryLevel)
+        /// <param name="secondaryObject">Objeto secundario</param>
+        private async void UseObjects(LevelInteractable secondaryObject)
         {
-            if (LevelSelected.IsUnityNull() || secondaryLevel.IsUnityNull() || PlayerGrab.IsTweening) return;
+            if (ObjectSelected.IsUnityNull() || secondaryObject.IsUnityNull() || PlayerGrab.IsTweening) return;
             PlayerGrab.IsTweening = true;
             
-            string combinationName = LevelSelected.name + "_" + secondaryLevel.name;
+            string combinationName = ObjectSelected.name + "_" + secondaryObject.name;
 
             // Resultado de la accion
             CombinationResult result = CombinationsManager.Instance.GetCombinationResult(combinationName);
@@ -207,17 +238,19 @@ namespace _Scripts.Player
                     PlayerGrab.IsTweening = false;
                     await GoToInitialPosition();
                     break;
+                
                 case CombinationResult.Error:
-                    Debug.Log("Error");
                     PlayerGrab.IsTweening = false;
                     await GoToInitialPosition();
+                    Debug.Log("Error");
                     break;
+                
                 case CombinationResult.Correct:
                     Debug.Log("Correcto");
                     var resul = ALevel.PerformCombinationCommand.Execute(combinationName);
                     if (resul)
                     {
-                        await UseObjectsAnimation(secondaryLevel);
+                        await UseObjectsAnimation(secondaryObject);
                         LevelManager.Instance.PostPerformCombination();
                     }
                     else
@@ -226,12 +259,14 @@ namespace _Scripts.Player
                         await GoToInitialPosition();
                     }
                     break;
+                
                 case CombinationResult.Explosion:
-                    await UseObjectsAnimation(secondaryLevel);
+                    await UseObjectsAnimation(secondaryObject);
                     Debug.Log("Explosion");
                     break;
+                
                 case CombinationResult.Corrosion:
-                    await UseObjectsAnimation(secondaryLevel);
+                    await UseObjectsAnimation(secondaryObject);
                     Debug.Log("Corrosion");
                     break;
             }

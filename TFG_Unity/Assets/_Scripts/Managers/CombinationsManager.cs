@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Utilities;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts.Managers
@@ -15,6 +16,8 @@ namespace _Scripts.Managers
 
     public class CombinationsManager : Singleton<CombinationsManager>
     {
+        [SerializeField] private GameObject teacherHand;
+        
         private Dictionary<string, CombinationResult> _combinations = new Dictionary<string, CombinationResult>();
 
         private void Start() {
@@ -58,5 +61,6 @@ namespace _Scripts.Managers
             }
             return CombinationResult.None;
         }
+
     }
 }

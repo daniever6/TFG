@@ -6,7 +6,7 @@ Pipeta_Matraz : Correct
 CuentaGotas_Matraz : Correct
 BotellaAcidos_BotellaBases : Explosion
 BotellaBases_BotellaAcidos : Explosion
-Pipeta_BotellaAcidos:Corrosion
+Pipeta_BotellaAcidos:Error
 Pipeta_BotellaBases:Corrosion
 BotellaAcidos_BotellaAgua:Explosion
 BotellaBases_BotellaAgua:Explosion
