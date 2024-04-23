@@ -51,6 +51,10 @@ namespace _Scripts.Player
                     case Iteractables.Ground:
                         hand.DropObject(interactablesParent);
                         break;
+                    case Iteractables.Alfombrilla:
+                        var alfombrillaObject = _hit.collider.gameObject.GetComponent<LevelInteractable>();
+                        hand.GrabObject(alfombrillaObject, interactablesParent);
+                        break;
                 }
             }
         }

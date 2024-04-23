@@ -20,7 +20,6 @@ namespace _Scripts.Player
         #region Definicion de la clase
 
         [SerializeField] private GameObject hand;
-        [SerializeField] private PlayerHand otherHand;
         [SerializeField] private GameObject alfombrillaContainer;
         private Camera _camera;
 
