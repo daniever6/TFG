@@ -48,7 +48,7 @@ namespace _Scripts.Player
 
             if (!closestObject.IsUnityNull())
             {
-                closestObject.GetComponent<Trigger>().TriggerEvent();
+                closestObject.GetComponent<Trigger>()?.TriggerEvent();
             }
         }
     }

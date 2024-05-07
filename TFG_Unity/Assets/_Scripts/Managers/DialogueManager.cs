@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Dialogues;
+using _Scripts.UI.Scripts;
 using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
@@ -72,7 +73,7 @@ namespace _Scripts.Managers
 
             Dialogue dialogue = _dialogues.Dequeue();
             Console.WriteLine($"SFX Dialogue = {0}", sfx.GetFloat("SFX", out volume) ? volume : 0);
-            SFXmanager.Instance.PlaySFX(Dialogue, transform, sfx.GetFloat("SFX", out volume) ? volume : 0);
+            SfxManager.Instance.PlaySFX(Dialogue, transform, sfx.GetFloat("SFX", out volume) ? volume : 0);
             StartDialogue(dialogue);
         }
         
