@@ -16,7 +16,6 @@ namespace _Scripts.Dialogues
         public override void TriggerEvent()
         {
             dialogueManager.GetDialogues(new []{dialogue});
-            
         }
     }
 }

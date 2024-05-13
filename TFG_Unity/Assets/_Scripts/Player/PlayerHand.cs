@@ -19,6 +19,8 @@ namespace _Scripts.Player
     {
         #region Definicion de la clase
 
+        [SerializeField] private LevelTeacher _levelTeacher;
+        
         [SerializeField] private GameObject hand;
         [SerializeField] private GameObject alfombrillaContainer;
         private Camera _camera;
@@ -242,6 +244,9 @@ namespace _Scripts.Player
                     PlayerGrab.IsTweening = false;
                     await GoToInitialPosition();
                     Debug.Log("Error");
+                    
+                    _levelTeacher.GrabAndHide(secondaryObject);
+                    
                     break;
                 
                 case CombinationResult.Correct:

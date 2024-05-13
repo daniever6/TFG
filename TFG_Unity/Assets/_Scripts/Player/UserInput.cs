@@ -1,9 +1,6 @@
 using System;
-using _Scripts.Managers;
 using _Scripts.Utilities.Command;
-using Facepunch;
 using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

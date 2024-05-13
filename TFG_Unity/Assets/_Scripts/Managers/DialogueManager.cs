@@ -16,6 +16,8 @@ namespace _Scripts.Managers
     {
         #region Class implementation
 
+        public static event Action OnDialogueFinish; 
+
         [SerializeField] private GameObject dialogueCanvas;
         
         [SerializeField] private Image unitImage;
@@ -25,11 +27,6 @@ namespace _Scripts.Managers
         
         private Queue<string> _sentences;
         private Queue<Dialogue> _dialogues;
-
-        //Sound
-        [SerializeField] private AudioClip Dialogue;
-        [SerializeField] private AudioMixer sfx;
-        private float volume;
 
         private void Start()
         {
@@ -72,8 +69,6 @@ namespace _Scripts.Managers
             }
 
             Dialogue dialogue = _dialogues.Dequeue();
-            Console.WriteLine($"SFX Dialogue = {0}", sfx.GetFloat("SFX", out volume) ? volume : 0);
-            SfxManager.Instance.PlaySFX(Dialogue, transform, sfx.GetFloat("SFX", out volume) ? volume : 0);
             StartDialogue(dialogue);
         }
         
@@ -116,6 +111,7 @@ namespace _Scripts.Managers
         private void EndDialogue()
         {
             dialogueCanvas.SetActive(false);
+            OnDialogueFinish?.Invoke();
             GameManager.Instance.ChangeState(GameState.Resume);
         }
 

@@ -56,9 +56,11 @@ namespace _Scripts.Managers
         /// <returns>Resultado de la combinacion</returns>
         public CombinationResult GetCombinationResult(string combination) {
             CombinationResult result;
+            
             if (_combinations.TryGetValue(combination, out result)) {
                 return result;
             }
+            
             return CombinationResult.None;
         }
 
