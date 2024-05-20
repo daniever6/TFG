@@ -121,7 +121,7 @@ namespace Player
         {
             while (_navMeshAgent.remainingDistance > 0f)
             {
-                if (_navMeshAgent.remainingDistance <= 0.1f)
+                if (_navMeshAgent.remainingDistance <= 0.3f)
                 {
                     trigger?.TriggerEvent();
                     yield break;
