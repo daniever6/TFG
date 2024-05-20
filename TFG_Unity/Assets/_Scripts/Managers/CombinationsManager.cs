@@ -17,7 +17,9 @@ namespace _Scripts.Managers
     public class CombinationsManager : Singleton<CombinationsManager>
     {
         [SerializeField] private GameObject teacherHand;
-        
+
+        public static event Action CombinationErrorEvent; 
+
         private Dictionary<string, CombinationResult> _combinations = new Dictionary<string, CombinationResult>();
 
         private void Start() {
@@ -58,6 +60,7 @@ namespace _Scripts.Managers
             CombinationResult result;
             
             if (_combinations.TryGetValue(combination, out result)) {
+                if(result == CombinationResult.Error) CombinationErrorEvent?.Invoke();
                 return result;
             }
             

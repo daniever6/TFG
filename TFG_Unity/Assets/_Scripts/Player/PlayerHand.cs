@@ -149,9 +149,17 @@ namespace _Scripts.Player
         {
             ObjectSelected = objectToGrab;
 
-            objectToGrab.transform.SetParent(transform);
-            objectToGrab.transform.localPosition = Vector3.zero;
+            var objectTransform = objectToGrab.transform;
+            
+            objectTransform.SetParent(transform);
+            objectTransform.localPosition = Vector3.zero;
 
+            if (ObjectSelected.name == "Pipeta")
+            {
+                objectTransform.localRotation = objectToGrab.GrabRotation;
+                objectTransform.localPosition = objectToGrab.GrabLocalPos;
+            }
+            
             objectToGrab.gameObject.tag = "Interactable";    
             objectToGrab.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
@@ -183,8 +191,11 @@ namespace _Scripts.Player
                 
                 var droppedObject = ObjectSelected;
 
-                droppedObject.transform.position = newPos;
-                droppedObject.transform.SetParent(newParent.transform);
+                var droppedTransform = droppedObject.transform;
+                
+                droppedTransform.position = newPos;
+                droppedTransform.localRotation = droppedObject.InitialRotation;
+                droppedTransform.SetParent(newParent.transform);
                 droppedObject.gameObject.layer = LayerMask.NameToLayer("Default");
             
                 ObjectSelected = null;
@@ -203,9 +214,16 @@ namespace _Scripts.Player
             TaskCompletionSource<bool> animationTask = new TaskCompletionSource<bool>();
             
             Sequence animationSecuence = DOTween.Sequence();
-            animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
-            animationSecuence.Append(transform.DORotate(handActionRotation, 2));
-            animationSecuence.Append(transform.DORotate(Vector3.zero, 2));
+            if (ObjectSelected.name != "Pipeta")
+            {
+                animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + handActionOffset, 1.5f));
+                animationSecuence.Append(transform.DORotate(handActionRotation, 2));
+                animationSecuence.Append(transform.DORotate(Vector3.zero, 2));
+            }
+            else
+            {
+                animationSecuence.Append(transform.DOMove(secondaryObject.transform.position + new Vector3(0,0.3f,0), 1.5f));
+            }
             animationSecuence.Append(transform.DOMove(HandInitialPosition, 1.5f));
             animationSecuence.OnComplete(()=>
             {
@@ -242,6 +260,7 @@ namespace _Scripts.Player
                 
                 case CombinationResult.Error:
                     PlayerGrab.IsTweening = false;
+                    await UseObjectsAnimation(secondaryObject);
                     await GoToInitialPosition();
                     Debug.Log("Error");
                     
