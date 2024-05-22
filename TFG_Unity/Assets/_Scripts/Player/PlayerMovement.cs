@@ -18,7 +18,6 @@ namespace _Scripts.Player
         [Header("Properties")] 
         [SerializeField] private float moveSpeed = 6f;
         [SerializeField] private float rotationSpeed = 200f;
-        private Vector2 _moveDirection;
 
         #endregion
 
@@ -30,7 +29,7 @@ namespace _Scripts.Player
         /// </summary>
         private void LateUpdate()
         {
-            mainCamera.transform.position = this.transform.position + new Vector3(0, 7.5f, -5);
+            mainCamera.transform.position = this.transform.position + new Vector3(0, 9, -6);
         }
 
         /// <summary>
@@ -64,9 +63,16 @@ namespace _Scripts.Player
         public void StopMovement()
         {
             rbRigidbody.velocity = Vector3.zero;
-            _moveDirection = Vector2.zero;
         }
-        
+
+        /// <summary>
+        /// Realiza las siguientes acciones cuando se pausa el juego
+        /// </summary>
+        protected override void OnPostPaused()
+        {
+            StopMovement();
+        }
+
         #endregion
 
     }

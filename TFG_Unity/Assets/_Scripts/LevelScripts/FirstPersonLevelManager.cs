@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ using UnityEngine.SceneManagement;
 namespace _Scripts.LevelScripts
 {
     
-    public class LevelManager : ALevel
+    public class FirstPersonLevelManager : ALevel
     {
         #region Class definition
 

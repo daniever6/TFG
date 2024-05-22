@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Dialogues;
-using _Scripts.UI;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ namespace _Scripts.Managers
         Loose
     }
 
-    public class GameManager : global::_Scripts.Utilities.Singleton<GameManager>
+    public class GameManager : _Scripts.Utilities.Singleton<GameManager>
     {
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
         public GameState PreviousGameState { get; private set; }
@@ -27,12 +26,15 @@ namespace _Scripts.Managers
         public static event Action<GameState> OnBeforeGameStateChanged;
         public static event Action<GameState> OnAfterGameStateChanged;
 
-        public void Start()=>ChangeState(GameState.Starting);
-
         protected override void Awake()
         {
             base.Awake();
             DontDestroyOnLoad(this.gameObject);
+        }
+        
+        public void Start()
+        {
+            ChangeState(GameState.Starting);
         }
 
         /// <summary>

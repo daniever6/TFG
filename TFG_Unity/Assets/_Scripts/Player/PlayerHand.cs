@@ -274,7 +274,7 @@ namespace _Scripts.Player
                     if (resul)
                     {
                         await UseObjectsAnimation(secondaryObject);
-                        LevelManager.Instance.PostPerformCombination();
+                        FirstPersonLevelManager.Instance.PostPerformCombination();
                     }
                     else
                     {
