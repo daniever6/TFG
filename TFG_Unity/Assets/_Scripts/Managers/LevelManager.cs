@@ -78,6 +78,7 @@ namespace _Scripts.Managers
         /// ACCIONES
         /// - Mostrar iconos animados encima de las mesas de trabajo con residuos todavia.
         /// - Mostrar la direccion a los contenedores cuando transporta residuos.
+        /// - Al interactuar con las mesas de trabajo, no abrir niveles anteriores.
         /// - Permitir al jugador coger residuos visualmente(Una caja mientras los transporta).
         /// - Cambiar entre primera y tercera persona cuando sea necesario.
         /// - Llevar a cabo la gestion de residuos.

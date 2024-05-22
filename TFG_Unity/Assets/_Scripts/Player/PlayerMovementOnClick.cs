@@ -88,7 +88,7 @@ namespace Player
                         break;
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
-                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<InteractableTrigger>()));
+                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<Trigger>()));
                         break;
                     default:
                         break;
@@ -121,9 +121,10 @@ namespace Player
         {
             while (_navMeshAgent.remainingDistance > 0f)
             {
-                if (_navMeshAgent.remainingDistance <= 0.3f)
+                if (_navMeshAgent.remainingDistance <= 1f)
                 {
                     trigger?.TriggerEvent();
+                    ClearNavMeshAgentPath();
                     yield break;
                 }
                 yield return null;

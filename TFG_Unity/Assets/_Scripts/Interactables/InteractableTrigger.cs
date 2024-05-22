@@ -9,9 +9,6 @@ namespace _Scripts.Interactables
         [SerializeField] private string levelName;
         public override void TriggerEvent()
         {
-            //Guardar
-            
-            //Cambiar de escena
             SceneManager.LoadScene(levelName);
         }
     }

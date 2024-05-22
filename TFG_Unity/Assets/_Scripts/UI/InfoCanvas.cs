@@ -12,6 +12,7 @@ namespace _Scripts.UI
         [SerializeField] private GameObject canvasPanel;
         [SerializeField] private TextMeshProUGUI panelText;
         [SerializeField] private GameObject repeatMessageButton;
+        private RectTransform panelRectTransform;
         private bool _isShowing = false;
         private string _messageText = String.Empty;
         private bool _messageShown = false;
@@ -21,7 +22,7 @@ namespace _Scripts.UI
         {
             GameManager.OnBeforeGameStateChanged += DisplayCanvas;
             repeatMessageButton.SetActive(false);
-            
+            panelRectTransform = canvasPanel.GetComponent<RectTransform>();
         }
 
         public void RepeatAnimation()
@@ -70,7 +71,7 @@ namespace _Scripts.UI
             
             canvasPanel.SetActive(true);
             panelText.text = _messageText;
-            canvasPanel.transform.DOMoveX(650, 2f).SetEase(Ease.InOutBack);
+            panelRectTransform.DOAnchorPosX(-10, 2f).SetEase(Ease.InOutBack);
             
             Invoke("HidePanelAnim", 8f);
         }
@@ -80,7 +81,7 @@ namespace _Scripts.UI
         /// </summary>
         private void HidePanelAnim()
         {
-            canvasPanel.transform.DOMoveX(1000, 2f).SetEase(Ease.InOutBack)
+            panelRectTransform.DOAnchorPosX(400, 2f).SetEase(Ease.InOutBack)
                 .OnComplete(() =>
                 {
                     canvasPanel.SetActive(false);
