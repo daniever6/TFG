@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace _Scripts.LevelScripts
 {
-    public class LevelTeacher : GameplayMonoBehaviour
+    public class LevelTeacher : GameplayMonoBehaviour<LevelTeacher>
     {
         [SerializeField] private LevelInteractable objectGrabbed = null;
         [SerializeField] private Transform teacherHandPosition;

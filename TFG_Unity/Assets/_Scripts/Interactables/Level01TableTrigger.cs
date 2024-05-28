@@ -1,14 +1,23 @@
-﻿using _Scripts.Utilities;
+﻿using System;
+using _Scripts.Managers;
+using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace _Scripts.Interactables
 {
-    public class InteractableTrigger : Trigger
+    public class Level01TableTrigger : Trigger
     {
         [SerializeField] private string levelName;
+
+        private void Start()
+        {
+        }
+
         public override void TriggerEvent()
         {
+            if(LevelManager.Instance.GetLevelState != LevelState.FistLevel) return;
+            
             SceneManager.LoadScene(levelName);
         }
     }

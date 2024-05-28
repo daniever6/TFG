@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections;
 using _Scripts.Dialogues;
-using _Scripts.Interactables;
-using _Scripts.Player;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace _Scripts.Player
 {
     public enum Iteractables
     {
@@ -23,7 +21,7 @@ namespace Player
     /// <summary>
     /// Clase que controla el movimiento del jugador a traves del raton mediante OnClick
     /// </summary>
-    public class PlayerMovementOnClick:GameplayMonoBehaviour
+    public class PlayerMovementOnClick:GameplayMonoBehaviour<PlayerMovementOnClick>
     {
         #region Properties
 

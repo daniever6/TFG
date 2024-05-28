@@ -9,7 +9,7 @@ namespace _Scripts.Interactables
     /// Clase que utiliza un outline para aquellos objetos que implementen esta clase,
     /// se activa cuando el ratón se posiciona encima del objeto
     /// </summary>
-    public class Interactable : GameplayMonoBehaviour
+    public class Interactable : GameplayMonoBehaviour<Interactable>
     {
         private Renderer _renderer;
 

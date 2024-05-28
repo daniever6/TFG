@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace _Scripts.Player
 {
-    public class PlayerController : GameplayMonoBehaviour, IPlayerController
+    public class PlayerController : GameplayMonoBehaviour<PlayerController>, IPlayerController
     {
         [SerializeField] [CanBeNull] private PlayerMovement playerMovement;
         [SerializeField] [CanBeNull] private PlayerMovementOnClick playerMovementOnClick;

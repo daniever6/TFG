@@ -5,10 +5,11 @@ namespace _Scripts.Utilities
     /// <summary>
     /// Esta es una clase abstracta que se encarga de desactivar los componentes hijos cuando el juego esta pausado
     /// </summary>
-    public abstract class GameplayMonoBehaviour : Singleton<GameplayMonoBehaviour>
+    public abstract class GameplayMonoBehaviour<T> : StaticInstance<T> where T : GameplayMonoBehaviour<T>
     {
         protected override void Awake()
         {
+            base.Awake();
             GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Scripts.UI;
 using _Scripts.Utilities;
+using UnityEngine;
 
 namespace _Scripts.Managers
 {
@@ -12,6 +14,12 @@ namespace _Scripts.Managers
         SecondLevel,
         ThirdLevel
     }
+
+    [System.Serializable]
+    public class ComponentList<T> 
+    {
+        public List<T> List;
+    }
     
     /// <summary>
     /// Esta clase controla los eventos y niveles a nivel global, a diferencia del GameManager,
@@ -19,14 +27,29 @@ namespace _Scripts.Managers
     ///
     /// LevelState indica el nivel activo
     /// </summary>
-    public class LevelManager : GameplayMonoBehaviour
+    public class LevelManager : GameplayMonoBehaviour<LevelManager>
     {
+        [SerializeField] private List<ComponentList<GameObject>> levelComponents;
+        [SerializeField] private List<ComponentList<MonoBehaviour>> levelScripts;
+        
         private LevelState _levelState = LevelState.None;
-
+        public LevelState GetLevelState => _levelState;
         protected override void Awake()
         {
             base.Awake();
             DontDestroyOnLoad(this);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (var component in levelComponents[i].List)
+                {
+                    component.SetActive(false);
+                }
+                foreach (var script in levelScripts[i].List)
+                {
+                    script.enabled = false;
+                }
+            }
         }
 
         private void Start()
@@ -86,6 +109,16 @@ namespace _Scripts.Managers
         /// </summary>
         private void HandleThirdLevel()
         {
+            foreach (var obj in levelComponents[2].List)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (var script in levelScripts[2].List)
+            {
+                script.enabled = true;
+            }
+            
             InfoCanvas.Instance.ShowMessage("- Recoge los residuos de las mesas de trabajo y tiralos en " +
                                           "sus contenedores correspondientes.");
         }

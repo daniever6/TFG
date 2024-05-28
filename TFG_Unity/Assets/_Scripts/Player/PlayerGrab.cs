@@ -11,7 +11,7 @@ namespace _Scripts.Player
     /// <summary>
     /// Esta clase controla el movimiento y accion conjunta de las dos manos del jugador
     /// </summary>
-    public class PlayerGrab : GameplayMonoBehaviour
+    public class PlayerGrab : GameplayMonoBehaviour<PlayerGrab>
     {
         private Camera _camera;
         private RaycastHit _hit;
