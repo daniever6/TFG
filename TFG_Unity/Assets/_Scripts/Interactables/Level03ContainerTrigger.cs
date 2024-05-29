@@ -1,9 +1,7 @@
-﻿using System;
-using _Scripts.Managers;
+﻿using _Scripts.Managers;
 using _Scripts.Player;
 using _Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace _Scripts.Interactables
 {
@@ -11,10 +9,11 @@ namespace _Scripts.Interactables
     {
         [SerializeField] private string levelName;
 
-        private void Start()
-        {
-        }
+        private void Start() {}
 
+        /// <summary>
+        /// Suelta la caja de residuos y abre la escena del nivel 3
+        /// </summary>
         public override void TriggerEvent()
         {
             if(LevelManager.Instance.GetLevelState != LevelState.ThirdLevel) return;

@@ -11,19 +11,19 @@ namespace _Scripts.Interactables
     {
         [SerializeField] private GameObject puntoRecogidaUI;
 
-        private void Start()
-        {
-        }
+        private void Start(){}
 
+        /// <summary>
+        /// Si el jugador coge los residuos de la mesa de trabajo, desactiva la UI de la mesa y destruye el script
+        /// </summary>
         public override void TriggerEvent()
         {
-            var a = LevelManager.Instance;
             if (LevelManager.Instance.GetLevelState != LevelState.ThirdLevel) return;
             
             if (Level03PlayerController.Instance.GetGarbageFromTable())
             {
                 puntoRecogidaUI.SetActive(false);
-                this.enabled = false;
+                Destroy(this);
             }
         }
     }

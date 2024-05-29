@@ -23,6 +23,9 @@ namespace _Scripts.Player
             return true;
         }
 
+        /// <summary>
+        /// Suelta la caja de residuos en el contenedor
+        /// </summary>
         public void DropGarbage()
         {
             if(!_hasGarbage) return;

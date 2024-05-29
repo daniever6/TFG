@@ -1,19 +1,10 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Utilities;
-using DG.Tweening;
 using UnityEngine;
 
 namespace _Scripts.Managers
 {
-    public enum CombinationResult {
-        None,
-        Error,
-        Correct,
-        Explosion,
-        Corrosion
-    }
-
     public class CombinationsManager : Singleton<CombinationsManager>
     {
         [SerializeField] private GameObject teacherHand;

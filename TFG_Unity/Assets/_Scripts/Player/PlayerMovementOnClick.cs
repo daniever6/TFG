@@ -9,15 +9,6 @@ using UnityEngine.InputSystem;
 
 namespace _Scripts.Player
 {
-    public enum Iteractables
-    {
-        None,
-        Ground,
-        Alfombrilla,
-        Npc,
-        Interactable,
-    }
-    
     /// <summary>
     /// Clase que controla el movimiento del jugador a traves del raton mediante OnClick
     /// </summary>

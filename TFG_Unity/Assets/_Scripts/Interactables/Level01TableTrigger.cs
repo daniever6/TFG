@@ -14,6 +14,9 @@ namespace _Scripts.Interactables
         {
         }
 
+        /// <summary>
+        /// Carga la escena indicada
+        /// </summary>
         public override void TriggerEvent()
         {
             if(LevelManager.Instance.GetLevelState != LevelState.FistLevel) return;

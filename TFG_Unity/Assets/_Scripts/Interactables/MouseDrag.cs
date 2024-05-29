@@ -17,16 +17,26 @@ namespace _Scripts.Interactables
             _camera = Camera.main;
         }
 
+        /// <summary>
+        /// Devuelve la posición del objeto actual respecto a la posicion de la camara
+        /// </summary>
+        /// <returns></returns>
         private Vector3 GetMousePosition()
         {
             return _camera.WorldToScreenPoint(transform.position);
         }
 
+        /// <summary>
+        /// Traslada la el objeto a la posicion del raton on click
+        /// </summary>
         private void OnMouseDown()
         {
             _mousePosition = Input.mousePosition - GetMousePosition();
         }
 
+        /// <summary>
+        /// Traslada el objeto a la posicion del objeto mientras se mantiene presionado
+        /// </summary>
         private void OnMouseDrag()
         {
             if (PlayerGrab.IsTweening) return;

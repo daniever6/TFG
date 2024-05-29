@@ -6,8 +6,10 @@ namespace _Scripts.Player
     public class PointerIndicator : MonoBehaviour
     {
         [SerializeField] private Transform target;
-        [SerializeField] private float rotationSpeed;
 
+        /// <summary>
+        /// Gira la UI que indica la posicion del target
+        /// </summary>
         private void Update()
         {
             Vector3 direction = new Vector3

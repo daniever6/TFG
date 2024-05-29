@@ -11,6 +11,9 @@ namespace _Scripts.Interactables
             _camera = Camera.main;
         }
 
+        /// <summary>
+        /// Sigue al jugador a una distancia fija
+        /// </summary>
         private void LateUpdate()
         {
             Quaternion rotation = _camera.transform.rotation;

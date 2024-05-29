@@ -1,22 +1,13 @@
 using System;
 using System.Collections.Generic;
 using _Scripts.Dialogues;
+using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Managers
 {
-    public enum GameState
-    {
-        Starting,
-        Resume,
-        Dialogue,
-        Pause,
-        Win,
-        Loose
-    }
-
-    public class GameManager : _Scripts.Utilities.Singleton<GameManager>
+    public class GameManager : Utilities.Singleton<GameManager>
     {
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
         public GameState PreviousGameState { get; private set; }

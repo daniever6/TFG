@@ -5,12 +5,16 @@ namespace _Scripts.Interactables
 {
     public class ParticleSystemInteractable : Trigger
     {
-        [SerializeField] private ParticleSystem particleSystem;
+        [SerializeField] private ParticleSystem particles;
+        
+        /// <summary>
+        /// Ejecuta la animacion del sistema de particulas indicado
+        /// </summary>
         public override void TriggerEvent()
         {
-            if (particleSystem.isPlaying) return;
+            if (particles.isPlaying) return;
                 
-            particleSystem.Play();
+            particles.Play();
         }
     }
 }

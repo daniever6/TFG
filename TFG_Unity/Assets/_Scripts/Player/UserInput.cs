@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Utilities;
 using _Scripts.Utilities.Command;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -6,12 +7,6 @@ using UnityEngine.InputSystem;
 
 namespace _Scripts.Player
 {
-    public enum PlayerState
-    {
-        FirstPerson = 0,
-        ThirdPerson = 1
-    }
-    
     /// <summary>
     /// Clase encargada del input del personaje
     /// </summary>

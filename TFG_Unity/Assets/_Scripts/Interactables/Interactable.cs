@@ -18,6 +18,9 @@ namespace _Scripts.Interactables
             _renderer = GetComponent<Renderer>();
         }
         
+        /// <summary>
+        /// Pinta el outline del objeto
+        /// </summary>
         private void OnMouseEnter()
         {
             if(!enabled) return;
@@ -25,6 +28,9 @@ namespace _Scripts.Interactables
             Highlight.Rebuild();
         }
 
+        /// <summary>
+        /// Desactiva el outline del objeto
+        /// </summary>
         private void OnMouseExit()
         {
             Highlight.ClearAll();

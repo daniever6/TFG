@@ -6,15 +6,6 @@ using UnityEngine;
 
 namespace _Scripts.Managers
 {
-    public enum LevelState
-    {
-        None,
-        Tutorial,
-        FistLevel,
-        SecondLevel,
-        ThirdLevel
-    }
-
     [System.Serializable]
     public class ComponentList<T> 
     {
@@ -39,6 +30,7 @@ namespace _Scripts.Managers
             base.Awake();
             DontDestroyOnLoad(this);
             
+            //Desactiva todos los componentes y scripts relacionados con los niveles
             for (int i = 0; i < 3; i++)
             {
                 foreach (var component in levelComponents[i].List)
@@ -52,13 +44,22 @@ namespace _Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Establece el estado inicial del juego
+        /// </summary>
         private void Start()
         {
             ChangeLevelState(LevelState.ThirdLevel);
         }
 
+        /// <summary>
+        /// Establece el estado del juego y maneja los eventos de cada estado
+        /// </summary>
+        /// <param name="newState">Estado nuevo</param>
         public void ChangeLevelState(LevelState newState)
         {
+            if (newState == _levelState) return;
+            
             _levelState = newState;
 
             switch (_levelState)
@@ -98,17 +99,31 @@ namespace _Scripts.Managers
         /// - El jugador tendra que ir recogiendo los residuos de las mesas de trabajo y
         ///   depositarlas en los contenedores correspondientes para pasarse el nivel.
         ///
-        /// ACCIONES
+        /// ACCIONES:
+        /// - Desactivar scripts y componentes del nivel anterior
         /// - Mostrar iconos animados encima de las mesas de trabajo con residuos todavia.
         /// - Mostrar la direccion a los contenedores cuando transporta residuos.
         /// - Al interactuar con las mesas de trabajo, no abrir niveles anteriores.
         /// - Permitir al jugador coger residuos visualmente(Una caja mientras los transporta).
         /// - Cambiar entre primera y tercera persona cuando sea necesario.
         /// - Llevar a cabo la gestion de residuos.
+        /// - Finalizar el nivel una vez terminado
         /// 
         /// </summary>
         private void HandleThirdLevel()
         {
+            //Desactiva los compoenentes y scripts del nivel 2
+            foreach (var obj in levelComponents[1].List)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (var script in levelScripts[1].List)
+            {
+                script.enabled = false;
+            }
+            
+            //Activa los componentes y scripts del nivel 3
             foreach (var obj in levelComponents[2].List)
             {
                 obj.SetActive(true);

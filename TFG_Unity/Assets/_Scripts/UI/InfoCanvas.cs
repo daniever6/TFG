@@ -30,6 +30,10 @@ namespace _Scripts.UI
             ShowPanelAnim();
         }
 
+        /// <summary>
+        /// Ejecuta el texto indicado en una pantalla de informacion
+        /// </summary>
+        /// <param name="newText">Texto a mostrar</param>
         public void ShowMessage(string newText)
         {
             if (!_messageText.Equals(newText))
@@ -48,6 +52,10 @@ namespace _Scripts.UI
             DisplayCanvas(GameManager.GameState);
         }
 
+        /// <summary>
+        /// Ejecuta la animacion de la pantalla de informacion
+        /// </summary>
+        /// <param name="gameState">Comprueba si gameState esta en Resume para ejecutarlo</param>
         public void DisplayCanvas(GameState gameState)
         {
             if (!_messageShown && gameState == GameState.Resume)
