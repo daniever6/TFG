@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -40,7 +41,6 @@ namespace _Scripts.Player
         #endregion
 
         #region Methods
-
         private void OnDisable()
         {
             UserInput.OnWalking -= ClearNavMeshAgentPath;
@@ -77,7 +77,8 @@ namespace _Scripts.Player
                         break;
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
-                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<Trigger>()));
+                        StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
+                            .Where(t => t.enabled)?.FirstOrDefault()));
                         break;
                     default:
                         break;

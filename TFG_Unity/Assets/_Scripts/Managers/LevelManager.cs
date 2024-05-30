@@ -49,7 +49,7 @@ namespace _Scripts.Managers
         /// </summary>
         private void Start()
         {
-            ChangeLevelState(LevelState.ThirdLevel);
+            ChangeLevelState(LevelState.FirstLevel);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace _Scripts.Managers
                 case LevelState.Tutorial:
                     break;
                 
-                case LevelState.FistLevel:
+                case LevelState.FirstLevel:
                     HandleFirstLevel();
                     break;
                 
@@ -84,9 +84,33 @@ namespace _Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// CONTEXTO:
+        /// - El jugador tendra que interactuar con las mesas de trabajo para realizar los
+        ///   reactivos correspondientes
+        ///
+        /// ACCIONES:
+        /// - Desactivar scripts y componentes del nivel anterior
+        /// - Al interactuar con las mesas de trabajo, no abrir niveles diferentes.
+        /// - Llevar a cabo la elaboracion de reactivos y combinaciones.
+        /// - Gestionar las combinaciones entre elementos
+        /// - Finalizar el nivel una vez terminado
+        /// 
+        /// </summary>
         private void HandleFirstLevel()
         {
+            //Activa los componentes y scripts del nivel 1
+            foreach (var obj in levelComponents[0].List)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (var script in levelScripts[0].List)
+            {
+                script.enabled = true;
+            }
             
+            InfoCanvas.Instance.ShowMessage("- Prepara los reactivos en las mesas de trabajo.");
         }
         
         private void HandleSecondLevel()
@@ -103,7 +127,7 @@ namespace _Scripts.Managers
         /// - Desactivar scripts y componentes del nivel anterior
         /// - Mostrar iconos animados encima de las mesas de trabajo con residuos todavia.
         /// - Mostrar la direccion a los contenedores cuando transporta residuos.
-        /// - Al interactuar con las mesas de trabajo, no abrir niveles anteriores.
+        /// - Al interactuar con las mesas de trabajo, no abrir niveles diferentes.
         /// - Permitir al jugador coger residuos visualmente(Una caja mientras los transporta).
         /// - Cambiar entre primera y tercera persona cuando sea necesario.
         /// - Llevar a cabo la gestion de residuos.

@@ -4,12 +4,7 @@ namespace _Scripts.Interactables
 {
     public class InteractionPrompt : MonoBehaviour
     {
-        private Camera _camera;
-        
-        private void Start()
-        {
-            _camera = Camera.main;
-        }
+        [SerializeField] private Camera _camera;
 
         /// <summary>
         /// Sigue al jugador a una distancia fija

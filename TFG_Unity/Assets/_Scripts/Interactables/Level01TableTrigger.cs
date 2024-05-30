@@ -19,7 +19,7 @@ namespace _Scripts.Interactables
         /// </summary>
         public override void TriggerEvent()
         {
-            if(LevelManager.Instance.GetLevelState != LevelState.FistLevel) return;
+            if(LevelManager.Instance.GetLevelState != LevelState.FirstLevel) return;
             
             SceneManager.LoadScene(levelName);
         }

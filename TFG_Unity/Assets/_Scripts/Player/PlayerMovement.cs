@@ -12,7 +12,6 @@ namespace _Scripts.Player
 
         [Header("References")] 
         [SerializeField] private Rigidbody rbRigidbody;
-        [SerializeField] private Camera mainCamera;
         private RaycastHit _hit;
     
         [Header("Properties")] 
@@ -22,15 +21,6 @@ namespace _Scripts.Player
         #endregion
 
         #region Lifecycle Methods
-
-    
-        /// <summary>
-        /// Llamamos a actualizar la posicion de la camara despues del movimiento del personaje
-        /// </summary>
-        private void LateUpdate()
-        {
-            mainCamera.transform.position = this.transform.position + new Vector3(0, 9, -6);
-        }
 
         /// <summary>
         /// Mueve el personaje en la direccion indicada

@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Utilities;
 using _Scripts.Utilities.Command;
+using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -39,6 +40,8 @@ namespace _Scripts.Player
         [SerializeField] private InputActionReference use;
         [SerializeField] private InputActionReference pause;
         [SerializeField] private InputActionReference interact;
+
+        [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
 
         #endregion
 
@@ -135,6 +138,8 @@ namespace _Scripts.Player
             if (firstPersonComponents != null) firstPersonComponents.SetActive(true);
 
             use.action.Enable();
+
+            firstPersonCamera.enabled = true;
         }
 
         /// <summary>
@@ -145,6 +150,8 @@ namespace _Scripts.Player
             if (firstPersonComponents != null) firstPersonComponents.SetActive(false);
 
             use.action.Disable();
+
+            firstPersonCamera.enabled = false;
         }
 
         #endregion

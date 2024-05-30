@@ -58,7 +58,7 @@ namespace _Scripts.UI
         /// <param name="gameState">Comprueba si gameState esta en Resume para ejecutarlo</param>
         public void DisplayCanvas(GameState gameState)
         {
-            if (!_messageShown && gameState == GameState.Resume)
+            if (!_messageShown && gameState == GameState.Resume && _messageText != String.Empty)
             {
                 ShowPanelAnim();
             }

@@ -3,6 +3,7 @@ using _Scripts.Dialogues;
 using _Scripts.Interactables;
 using _Scripts.Managers;
 using _Scripts.Utilities;
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace _Scripts.LevelScripts
         [SerializeField] private Transform teacherHandPosition;
         [SerializeField] private DialogueTrigger dialogueTrigger;
         [SerializeField] private GameObject interactablesParent;
+        [SerializeField] private CinemachineVirtualCamera teacherVirtualCamera;
 
         private bool _hasGrabbedObject = false;
         private Camera _camera;
@@ -43,8 +45,8 @@ namespace _Scripts.LevelScripts
             _hasGrabbedObject = true;
             objectGrabbed = interactable;
             objectGrabbed.transform.parent = interactablesParent.transform;
-            
-            _camera.transform.DORotate(Quaternion.Euler(0, -90, 0).eulerAngles, 1.5f);
+
+            teacherVirtualCamera.enabled = true;
             
             await interactable.transform.DOMove(teacherHandPosition.position, 2)
                 .OnComplete(() => objectGrabbed.gameObject.SetActive(false)).AsyncWaitForCompletion();
@@ -62,7 +64,7 @@ namespace _Scripts.LevelScripts
             _hasGrabbedObject = false;
             objectGrabbed.gameObject.SetActive(true);
 
-            var cameraRotation = _camera.transform.rotation;
+            teacherVirtualCamera.enabled = false;
             
             _camera.transform.DORotate(_cameraInitialRotation, 1.5f);
             objectGrabbed.transform.DOMove(objectGrabbed.InitialPosition, 2);

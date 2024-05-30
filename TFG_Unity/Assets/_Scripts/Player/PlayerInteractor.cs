@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
@@ -48,7 +49,7 @@ namespace _Scripts.Player
 
             if (!closestObject.IsUnityNull())
             {
-                closestObject.GetComponent<Trigger>()?.TriggerEvent();
+                closestObject.GetComponents<Trigger>()?.Where(t => t.enabled)?.FirstOrDefault()?.TriggerEvent();
             }
         }
     }

@@ -4,7 +4,7 @@
     {
         None,
         Tutorial,
-        FistLevel,
+        FirstLevel,
         SecondLevel,
         ThirdLevel
     }
