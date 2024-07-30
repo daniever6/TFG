@@ -25,7 +25,7 @@ namespace _Scripts.Managers
         
         public void Start()
         {
-            ChangeState(GameState.Starting);
+            ChangeState(GameState.Resume);
         }
 
         /// <summary>
