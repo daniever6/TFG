@@ -286,7 +286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 126.83835, y: -100}
+  m_AnchoredPosition: {x: 139.67119, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119476775
@@ -370,7 +370,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 119476775}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Glove_-1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &134038976
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 134038978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pants_-1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &162245629
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aceptar
+  m_text: Terminar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -625,6 +649,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162245629}
   m_CullTransparentMesh: 1
+--- !u!4 &169413081 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1113374480543859572, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &177968368
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +847,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 201028772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hair_1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &201028772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +898,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201028769}
   m_CullTransparentMesh: 1
+--- !u!4 &217798146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4536754463214019476, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &225277417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2529800433611711040, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &227615598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8469591776931730629, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5951018299641414785, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
       propertyPath: m_IsActive
@@ -1133,12 +1184,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -1300580388378695123, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1661205823}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
 --- !u!4 &237946243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &241105617 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1840364017571873623, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
   m_PrefabInstance: {fileID: 237946242}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &269438578
@@ -1222,6 +1281,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269438578}
   m_CullTransparentMesh: 1
+--- !u!4 &287693549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -435391637430500341, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &311625369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,6 +1317,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &320519677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2037702473821299946, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320921965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1441,24 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 320921967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shoes_1
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &322460374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5951018299641414785, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &335836093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1776,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393272377}
   m_CullTransparentMesh: 1
+--- !u!1 &425929467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8469591776931730629, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433444389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1981,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &463674832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1717497605791666525, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466388279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,6 +2195,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470058983}
   m_CullTransparentMesh: 1
+--- !u!4 &470965964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2726146805264962735, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489755310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,7 +2719,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 607495429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hair_2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &607495429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,7 +3125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 281.83835, y: -50}
+  m_AnchoredPosition: {x: 294.6712, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710819192
@@ -3096,7 +3209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 710819192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shirt_1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &714378153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,6 +3427,11 @@ Transform:
   - {fileID: 1542890611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &754640017 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2342369390206987007, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &768476268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,7 +3627,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 772311359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shoes_2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &776787553
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,6 +4240,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &802269123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3669287860725330234, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &803187425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,6 +4276,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &823373311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8850707198901461768, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &824928764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8033771843984770561, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &828253373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4471,6 +4628,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831862586}
   m_CullTransparentMesh: 1
+--- !u!1 &833060290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7654599198848668122, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &834768978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4585,6 +4747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843500251}
   - component: {fileID: 843500250}
+  - component: {fileID: 843500252}
   m_Layer: 0
   m_Name: Level00Manager
   m_TagString: Untagged
@@ -4634,6 +4797,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 177968369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843500252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843500249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c7cd45348e5c042880e8e7670e4186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hairComponents:
+  - {fileID: 1441952808}
+  - {fileID: 322460374}
+  - {fileID: 425929467}
+  - {fileID: 1889702518}
+  shirtComponents:
+  - {fileID: 1471074618}
+  - {fileID: 320519677}
+  - {fileID: 1613541345}
+  gloveComponents:
+  - {fileID: 833060290}
+  pantsComponents:
+  - {fileID: 1926150821}
+  - {fileID: 1269639234}
+  shoesComponents:
+  - {fileID: 823373311}
+  - {fileID: 996398286}
+  - {fileID: 1366103784}
+--- !u!4 &849385317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2400503150154179012, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &868878680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4669,7 +4867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.83835, y: -50}
+  m_AnchoredPosition: {x: 84.67119, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868878682
@@ -4753,7 +4951,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 868878682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shirt_-1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &882615936
 GameObject:
   m_ObjectHideFlags: 0
@@ -4820,7 +5030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 331.83835, y: -100}
+  m_AnchoredPosition: {x: 344.6712, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886944922
@@ -4904,7 +5114,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 886944922}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Glove_0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &892168774
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,7 +5600,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 962017974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hair_0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &962017974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5492,6 +5726,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971139688}
   m_CullTransparentMesh: 1
+--- !u!4 &978779545 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2757388909526915650, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &984245770
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,6 +5966,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990276541}
   m_CullTransparentMesh: 1
+--- !u!1 &996398286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -425402539540300512, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1002582623
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,6 +6255,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!4 &1091593405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2654252653990639644, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1093257356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,6 +6362,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!4 &1104498243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7705325674753224674, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1129127639
 GameObject:
   m_ObjectHideFlags: 0
@@ -6194,7 +6448,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1129127642}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hair_3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1129127642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6484,7 +6750,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1153366505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pants_0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1155162372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7045,7 +7323,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1201705990}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shoes_0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1204130524
 GameObject:
   m_ObjectHideFlags: 0
@@ -7226,6 +7516,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212073853}
   m_CullTransparentMesh: 1
+--- !u!4 &1215905236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1118504093547216880, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232103510
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,6 +7671,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252344865}
   m_CullTransparentMesh: 1
+--- !u!1 &1269639234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -865667943684045958, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1270205833
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,7 +7967,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1329937171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hair_-1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1329937171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7825,7 +8137,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342259461}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pants_1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1366056614
 GameObject:
   m_ObjectHideFlags: 0
@@ -7904,6 +8228,11 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &1366103784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8239586788646006405, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423616993
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,7 +8438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.83835, y: -50}
+  m_AnchoredPosition: {x: 189.67119, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429183524
@@ -8193,7 +8522,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1429183524}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shirt_0
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1436802638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1250031845290639023, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1441952808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9155067381321351552, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1447675105
 GameObject:
   m_ObjectHideFlags: 0
@@ -8326,6 +8677,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447675105}
   m_CullTransparentMesh: 1
+--- !u!4 &1450048555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 505030801924936357, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1456643099
 GameObject:
   m_ObjectHideFlags: 0
@@ -8401,6 +8757,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456643099}
   m_CullTransparentMesh: 1
+--- !u!1 &1471074618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5583907851015191948, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475561286
 GameObject:
   m_ObjectHideFlags: 0
@@ -9046,6 +9407,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587152406}
   m_CullTransparentMesh: 1
+--- !u!1 &1613541345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635681167576634899, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1613541346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1300580388378695123, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1660688445
 GameObject:
   m_ObjectHideFlags: 3
@@ -9113,6 +9484,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1661205822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661205823}
+  - component: {fileID: 1661205824}
+  m_Layer: 0
+  m_Name: SHIRT0 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1661205823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661205822}
+  serializedVersion: 2
+  m_LocalRotation: {x: -9.313226e-10, y: -0.0000000037107384, z: 0.0000000053069016, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613541346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &1661205824
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661205822}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -8499701361930146817, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -3938826880240730827, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_Bones:
+  - {fileID: 1091593405}
+  - {fileID: 824928764}
+  - {fileID: 287693549}
+  - {fileID: 978779545}
+  - {fileID: 1909195867}
+  - {fileID: 470965964}
+  - {fileID: 1215905236}
+  - {fileID: 217798146}
+  - {fileID: 754640017}
+  - {fileID: 1436802638}
+  - {fileID: 1450048555}
+  - {fileID: 849385317}
+  - {fileID: 225277417}
+  - {fileID: 463674832}
+  - {fileID: 241105617}
+  - {fileID: 2007502006}
+  - {fileID: 802269123}
+  - {fileID: 169413081}
+  - {fileID: 1104498243}
+  - {fileID: 1930224810}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 754640017}
+  m_AABB:
+    m_Center: {x: -0.5019405, y: 0.12723297, z: 0.003370732}
+    m_Extent: {x: 0.5840013, y: 0.19692174, z: 0.4873788}
+  m_DirtyAABB: 0
 --- !u!1 &1685645164
 GameObject:
   m_ObjectHideFlags: 0
@@ -10723,6 +11199,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1818710516}
+--- !u!1 &1889702518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6461882149406026608, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1894488066
 GameObject:
   m_ObjectHideFlags: 0
@@ -10840,6 +11321,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!4 &1909195867 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1389065708277550299, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1926150821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1217134947297770410, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1930224810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -811450863697227074, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1937649397
 GameObject:
   m_ObjectHideFlags: 0
@@ -10875,7 +11371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 386.83835, y: -50}
+  m_AnchoredPosition: {x: 399.6712, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937649399
@@ -10959,7 +11455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1937649399}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843500252}
+        m_TargetAssemblyTypeName: _Scripts.LevelScripts.Level_00.ClothSelector, Assembly-CSharp
+        m_MethodName: SelectCloth
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shirt_2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1985534040
 GameObject:
   m_ObjectHideFlags: 0
@@ -11094,6 +11602,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985534040}
   m_CullTransparentMesh: 1
+--- !u!4 &2007502006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5820317526520113369, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 237946242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010976994
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using _Scripts.Utilities;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
 
-namespace _Scripts.LevelScripts
+namespace _Scripts.LevelScripts.Level_00
 {
-    public class Level00Manager : GameplayMonoBehaviour<Level00Manager>
+    public class UILevel00 : GameplayMonoBehaviour<UILevel00>
     {
         [SerializeField] private Canvas clothingCanvas;
         [SerializeField] private CinemachineVirtualCamera generalCamera;
@@ -66,7 +65,6 @@ namespace _Scripts.LevelScripts
             bodyCameras[_currentBodyPart].SetActive(false);
             
             generalCamera.enabled = true;
-
         }
 
         protected override void OnPostPaused()
