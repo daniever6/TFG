@@ -151,7 +151,10 @@ namespace _Scripts.Player
 
             use.action.Disable();
 
-            firstPersonCamera.enabled = false;
+            if (firstPersonCamera != null)
+            {
+                firstPersonCamera.enabled = false;
+            }
         }
 
         #endregion

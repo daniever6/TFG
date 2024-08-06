@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_01.unity
     guid: f83784dc7c6b1be41888fe77b8587e86
+  - enabled: 1
+    path: Assets/Scenes/Level_00.unity
+    guid: 8cfed40c3b7754a4c966ad4b2b9d3193
+  - enabled: 1
+    path: Assets/Scenes/SelectorDeRopa.unity
+    guid: 5ed58722a0ecdbf48910ccd93679a6de
+  - enabled: 1
+    path: Assets/Scenes/EscenaMainLevel_Gonzalo.unity
+    guid: 811dcb42fa075844f86bb61fa45fe562
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4105a388cb33c6d4e882863fb38b7578, type: 2}

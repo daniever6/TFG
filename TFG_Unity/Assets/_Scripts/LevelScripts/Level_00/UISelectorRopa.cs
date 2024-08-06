@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace _Scripts.LevelScripts.Level_00
 {
-    public class UILevel00 : GameplayMonoBehaviour<UILevel00>
+    public class UISelectorRopa : GameplayMonoBehaviour<UISelectorRopa>
     {
         [SerializeField] private Canvas clothingCanvas;
         [SerializeField] private Canvas endEditCanvas;
