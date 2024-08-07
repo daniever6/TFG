@@ -21,6 +21,16 @@ namespace _Scripts.LevelScripts.Level_00
         public List<Image> collection;
     }
     
+    [System.Serializable]
+    public class ClothingIndex
+    {
+        public int headIdx = 2;
+        public int shirtIdx = -1;
+        public int gloveIdx = -1;
+        public int pantsIdx = -1;
+        public int shoesIdx = 0;
+    }
+    
     public class ClothSelector : MonoBehaviour
     {
         [SerializeField] private List<ClothItemContainer> clothButtons;
@@ -31,48 +41,73 @@ namespace _Scripts.LevelScripts.Level_00
         [SerializeField] private List<GameObject> pantsComponents;
         [SerializeField] private List<GameObject> shoesComponents;
         
-        private Color desactivateColor = new Color(0.6f, 0.6f,0.6f, 1);
-        private Color outlineColor = Color.black;
-
-        private int currentHairIdx = 2;
-        private int currentShirtIdx = -1;
-        private int currentGloveIdx = -1;
-        private int currentPantsIdx = -1;
-        private int currentShoesIdx = 0;
+        private Color _desactivateColor = new Color(0.6f, 0.6f,0.6f, 1);
+        private Color _outlineColor = Color.black;
+        
+        private ClothingIndex _clothingIndex = new ();
 
         private void Start()
         {
-            ActivateComponent(hairComponents, currentHairIdx);
-            ActivateComponent(shirtComponents, currentShirtIdx);
-            ActivateComponent(gloveComponents, currentGloveIdx);
-            ActivateComponent(pantsComponents, currentPantsIdx);
-            ActivateComponent(shoesComponents, currentShoesIdx);
+            UISelectorRopa.OnSaveClothChanges += SaveClothingIndex;
+            LoadClothingIndex();
+            
+            ActivateComponent(hairComponents, _clothingIndex.headIdx);
+            ActivateComponent(shirtComponents, _clothingIndex.shirtIdx);
+            ActivateComponent(gloveComponents, _clothingIndex.gloveIdx);
+            ActivateComponent(pantsComponents, _clothingIndex.pantsIdx);
+            ActivateComponent(shoesComponents, _clothingIndex.shoesIdx);
 
             foreach (var itemContainer in clothButtons)
             {
                 switch (itemContainer.key)
                 {
                     case BodyPart.Hair:
-                        SetItemColor(itemContainer.collection, currentHairIdx + 1 );
+                        SetItemColor(itemContainer.collection, _clothingIndex.headIdx + 1 );
                         break;
                     
                     case BodyPart.Shirt:
-                        SetItemColor(itemContainer.collection, currentShirtIdx + 1 );
+                        SetItemColor(itemContainer.collection, _clothingIndex.shirtIdx + 1 );
                         break;
                     
                     case BodyPart.Glove:
-                        SetItemColor(itemContainer.collection, currentGloveIdx + 1 );
+                        SetItemColor(itemContainer.collection, _clothingIndex.gloveIdx + 1 );
                         break;
                     
                     case BodyPart.Pants:
-                        SetItemColor(itemContainer.collection, currentPantsIdx + 1);
+                        SetItemColor(itemContainer.collection, _clothingIndex.pantsIdx + 1);
                         break;
                     
                     case BodyPart.Shoes:
-                        SetItemColor(itemContainer.collection, currentShoesIdx);
+                        SetItemColor(itemContainer.collection, _clothingIndex.shoesIdx);
                         break;
                 }
             }
+        }
+        
+        /// <summary>
+        /// Guarda la ropa que ha seleccionado en un Json llamado clothingIndex.json
+        /// </summary>
+        public void SaveClothingIndex()
+        {
+            string json = JsonUtility.ToJson(_clothingIndex);
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/clothingIndex.json", json);
+        }
+
+        /// <summary>
+        /// Carga los indices de la ropa seleccionada del json en caso de que exista
+        /// </summary>
+        /// <returns>True si carga los datos</returns>
+        public bool LoadClothingIndex()
+        {
+            string path = Application.persistentDataPath + "/clothingIndex.json";
+            if (System.IO.File.Exists(path))
+            {
+                string json = System.IO.File.ReadAllText(path);
+                _clothingIndex = JsonUtility.FromJson<ClothingIndex>(json);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -87,7 +122,7 @@ namespace _Scripts.LevelScripts.Level_00
             foreach (var button in collection)
             {
                 Outline outline = button.gameObject.AddComponent<Outline>();
-                outline.effectColor = outlineColor;
+                outline.effectColor = _outlineColor;
                 outline.effectDistance = new Vector2(4, 4);
 
                 if (cont != currentIdx)
@@ -95,7 +130,7 @@ namespace _Scripts.LevelScripts.Level_00
                     outline.enabled = false;
                 }
                 
-                button.color = (cont == currentIdx) ? Color.white : desactivateColor;
+                button.color = (cont == currentIdx) ? Color.white : _desactivateColor;
                 cont++;
             }
         }
@@ -125,24 +160,24 @@ namespace _Scripts.LevelScripts.Level_00
             switch (bodyPart)
             {
                 case BodyPart.Hair:
-                    ItemSelectionColor(currentHairIdx + 1, idxSelected + 1, BodyPart.Hair);
-                    SelectionLogic(ref currentHairIdx, idxSelected, hairComponents);
+                    ItemSelectionColor(_clothingIndex.headIdx + 1, idxSelected + 1, BodyPart.Hair);
+                    SelectionLogic(ref _clothingIndex.headIdx, idxSelected, hairComponents);
                     break;
                 case BodyPart.Shirt:
-                    ItemSelectionColor(currentShirtIdx + 1, idxSelected + 1, BodyPart.Shirt);
-                    SelectionLogic(ref currentShirtIdx, idxSelected, shirtComponents);
+                    ItemSelectionColor(_clothingIndex.shirtIdx + 1, idxSelected + 1, BodyPart.Shirt);
+                    SelectionLogic(ref _clothingIndex.shirtIdx, idxSelected, shirtComponents);
                     break;
                 case BodyPart.Glove:
-                    ItemSelectionColor(currentGloveIdx + 1, idxSelected + 1, BodyPart.Glove);
-                    SelectionLogic(ref currentGloveIdx, idxSelected, gloveComponents);
+                    ItemSelectionColor(_clothingIndex.gloveIdx + 1, idxSelected + 1, BodyPart.Glove);
+                    SelectionLogic(ref _clothingIndex.gloveIdx, idxSelected, gloveComponents);
                     break;
                 case BodyPart.Pants:
-                    ItemSelectionColor(currentPantsIdx + 1, idxSelected + 1, BodyPart.Pants);
-                    SelectionLogic(ref currentPantsIdx, idxSelected, pantsComponents);
+                    ItemSelectionColor(_clothingIndex.pantsIdx + 1, idxSelected + 1, BodyPart.Pants);
+                    SelectionLogic(ref _clothingIndex.pantsIdx, idxSelected, pantsComponents);
                     break;
                 case BodyPart.Shoes:
-                    ItemSelectionColor(currentShoesIdx, idxSelected, BodyPart.Shoes);
-                    SelectionLogic(ref currentShoesIdx, idxSelected, shoesComponents);
+                    ItemSelectionColor(_clothingIndex.shoesIdx, idxSelected, BodyPart.Shoes);
+                    SelectionLogic(ref _clothingIndex.shoesIdx, idxSelected, shoesComponents);
                     break;
             }
         }
@@ -176,7 +211,7 @@ namespace _Scripts.LevelScripts.Level_00
         {
             var buttons = clothButtons[(int)bodyPart].collection;
 
-            buttons[currentIdx].color = desactivateColor;
+            buttons[currentIdx].color = _desactivateColor;
             buttons[currentIdx].gameObject.GetComponent<Outline>().enabled = false;
             
             buttons[newIdx].color = Color.white;

@@ -4,6 +4,7 @@ using _Scripts.Utilities;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts.LevelScripts.Level_00
 {
@@ -17,7 +18,8 @@ namespace _Scripts.LevelScripts.Level_00
         [SerializeField] private List<GameObject> bodyCameras;
         [SerializeField] private List<GameObject> bodyUIPanels;
         [SerializeField] private TextMeshProUGUI headerTitle;
-        
+
+        public static event Action OnSaveClothChanges;
         private string[] _bodyParts = { "Peinado", "Torso", "Manos", "Pantalones", "Calzado" };
         private int _currentBodyPart = 0;
         private bool _isCanvasOpen = true;
@@ -68,6 +70,8 @@ namespace _Scripts.LevelScripts.Level_00
         /// </summary>
         public void AcceptChanges()
         {
+            OnSaveClothChanges?.Invoke();
+            
             ChangeCurrentActiveCanvas(endEditCanvas);
 
             bodyUIPanels[_currentBodyPart].SetActive(false);
@@ -87,6 +91,15 @@ namespace _Scripts.LevelScripts.Level_00
             currentActiveCanvas = canvas;
 
             currentActiveCanvas.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Cambia la escena actual
+        /// </summary>
+        /// <param name="sceneName">Nombre de la escena a la que cambiar</param>
+        public void ChangeScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
         }
 
         protected override void OnPostPaused()

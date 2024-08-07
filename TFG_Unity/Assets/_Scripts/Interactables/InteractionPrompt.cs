@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Interactables
@@ -11,6 +12,7 @@ namespace _Scripts.Interactables
         /// </summary>
         private void LateUpdate()
         {
+            if(_camera.IsUnityNull()) return;
             Quaternion rotation = _camera.transform.rotation;
             
             transform.LookAt(transform.position + rotation * Vector3.forward, 
