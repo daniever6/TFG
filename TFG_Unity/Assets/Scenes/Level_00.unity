@@ -650,7 +650,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 2
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 384694149}
   m_Lens:
@@ -11009,6 +11009,14 @@ PrefabInstance:
     - target: {fileID: 5998586868283518301, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437884453665289415, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: moveSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437884453665289415, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: rotationSpeed
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7289129815381110095, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: _camera

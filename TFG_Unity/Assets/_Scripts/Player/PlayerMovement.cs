@@ -15,8 +15,8 @@ namespace _Scripts.Player
         private RaycastHit _hit;
     
         [Header("Properties")] 
-        [SerializeField] private float moveSpeed = 6f;
-        [SerializeField] private float rotationSpeed = 200f;
+        [SerializeField] private float moveSpeed = 3.5f;
+        [SerializeField] private float rotationSpeed = 400f;
 
         #endregion
 

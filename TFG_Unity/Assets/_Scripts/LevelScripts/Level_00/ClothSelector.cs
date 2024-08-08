@@ -1,34 +1,16 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace _Scripts.LevelScripts.Level_00
 {
-    public enum BodyPart
-    {
-        Hair,
-        Shirt,
-        Glove,
-        Pants,
-        Shoes
-    }
-    
     [Serializable]
     public class ClothItemContainer
     {
         public BodyPart key;
         public List<Image> collection;
-    }
-    
-    [System.Serializable]
-    public class ClothingIndex
-    {
-        public int headIdx = 2;
-        public int shirtIdx = -1;
-        public int gloveIdx = -1;
-        public int pantsIdx = -1;
-        public int shoesIdx = 0;
     }
     
     public class ClothSelector : MonoBehaviour
