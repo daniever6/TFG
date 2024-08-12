@@ -421,8 +421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbRigidbody: {fileID: 1615675833180760481}
-  moveSpeed: 5
-  rotationSpeed: 200
+  moveSpeed: 3.5
+  rotationSpeed: 400
 --- !u!114 &1375592249266341522
 MonoBehaviour:
   m_ObjectHideFlags: 0

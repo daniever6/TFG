@@ -5,11 +5,24 @@ using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public struct DeathReasonAndLevel
+{
+    public GameLevels GameLevel { get; set; } //Nivel donde reaparecerá
+    public string DeathReason { get; set; } //Causa de la muerte
+
+    public DeathReasonAndLevel(GameLevels gameLevel, string deathReason)
+    {
+        GameLevel = gameLevel;
+        DeathReason = deathReason;
+    }
+}
+
 namespace _Scripts.Managers
 {
     public class GameManager : Utilities.Singleton<GameManager>
     {
-        private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new Dictionary<string, Queue<Dialogue>>();
+        public static DeathReasonAndLevel PlayerDeathCause = new(GameLevels.Level0, "");
+        private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new ();
         public GameState PreviousGameState { get; private set; }
         public static GameState GameState { get; private set; }
         
@@ -98,7 +111,13 @@ namespace _Scripts.Managers
 
             DialogueManager.Instance.GetDialogues(_dialoguesDictionary["Tutorial"].ToArray());
         }
-
+        
+        public static void SetDeathReason(GameLevels gameLevel, string deathReason)
+        {
+            PlayerDeathCause.GameLevel = gameLevel;
+            PlayerDeathCause.DeathReason = deathReason;
+        }
+        
         #endregion
 
     }

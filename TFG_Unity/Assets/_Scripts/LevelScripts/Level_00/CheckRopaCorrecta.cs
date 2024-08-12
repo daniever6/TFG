@@ -14,7 +14,7 @@ namespace _Scripts.LevelScripts.Level_00
             headIdx = -1,
             shirtIdx = 2,
             gloveIdx = 0,
-            pantsIdx = 0,
+            pantsIdx = 1,
             shoesIdx = 2
         };
 
@@ -32,7 +32,7 @@ namespace _Scripts.LevelScripts.Level_00
         /// Comprueba si el personaje lleva la ropa correcta o no
         /// </summary>
         /// <returns>True si es correcta. False si no es correcta</returns>
-        private bool CheckClothes()
+        public bool CheckClothes()
         {
             if (_correctClothes.shirtIdx == _playerClothes.shirtIdx &&
                 _correctClothes.gloveIdx == _playerClothes.gloveIdx &&

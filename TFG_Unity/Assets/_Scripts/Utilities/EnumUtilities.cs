@@ -50,6 +50,14 @@
         Pants,
         Shoes
     }
+
+    public enum GameLevels
+    {
+        Level0,
+        Level1,
+        Level2,
+        Level3
+    }
     
     [System.Serializable]
     public class ClothingIndex

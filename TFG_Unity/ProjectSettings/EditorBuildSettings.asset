@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EscenaMainLevel_Gonzalo.unity
     guid: 811dcb42fa075844f86bb61fa45fe562
+  - enabled: 1
+    path: Assets/Scenes/DeathScene.unity
+    guid: 887fee1bb20d4174bac41b654cad008d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4105a388cb33c6d4e882863fb38b7578, type: 2}
