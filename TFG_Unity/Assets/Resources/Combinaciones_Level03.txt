@@ -1,0 +1,3 @@
+NH3_Bases : Correct
+Amoniaco_Acidos : Correct
+Metano_Bases : Correct

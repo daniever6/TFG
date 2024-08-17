@@ -14,7 +14,6 @@ namespace _Scripts.Managers
         [SerializeField] private GameObject panelPausa;
         [SerializeField] private GameObject panelOpcion;
         
-        
         protected override void Awake()
         {
             base.Awake();

@@ -34,6 +34,7 @@
         Alfombrilla,
         Npc,
         Interactable,
+        Contenedor,
     }
     
     public enum PlayerState
@@ -54,6 +55,7 @@
     public enum GameLevels
     {
         Level0,
+        Laboratory,
         Level1,
         Level2,
         Level3

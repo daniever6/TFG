@@ -16,7 +16,7 @@ namespace _Scripts.Player
     /// <summary>
     /// Clase que maneja define las manos del personaje en los niveles del juego
     /// </summary>
-    public class PlayerHand:MonoBehaviour
+    public class PlayerHand: MonoBehaviour
     {
         #region Definicion de la clase
 
@@ -29,7 +29,7 @@ namespace _Scripts.Player
         [SerializeField]private Vector3 handActionOffset;
         [SerializeField] private Vector3 handActionRotation;
 
-        public Vector3 HandInitialPosition { get; private set; }
+        public Vector3 HandInitialPosition { get; set; }
 
         public Vector3? ObjectInitialPosition => ObjectSelected.InitialPosition;
 

@@ -15,9 +15,9 @@ namespace _Scripts.LevelScripts
         
         public static int CurrentCombinationIndex = 0;
 
-        private List<List<string>> _levelCorrectCombinations = new List<List<string>>();
-        private List<string> _correctCombinations = new List<string>();
-        private Stack<string> _currentCombinations = new Stack<string>();
+        private List<List<string>> _levelCorrectCombinations = new ();
+        private List<string> _correctCombinations = new ();
+        private Stack<string> _currentCombinations = new ();
 
         #endregion
 
@@ -70,7 +70,7 @@ namespace _Scripts.LevelScripts
                 else
                 {
                     //Fin Level
-                    SceneManager.LoadScene("MainLevel");
+                    SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
                 }
             }
         }

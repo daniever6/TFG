@@ -8,6 +8,7 @@ TagManager:
   - Npc
   - Interactable
   - Alfombrilla
+  - Contenedor
   layers:
   - Default
   - TransparentFX

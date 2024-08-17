@@ -7,14 +7,13 @@ namespace _Scripts.Managers
 {
     public class CombinationsManager : Singleton<CombinationsManager>
     {
-        [SerializeField] private GameObject teacherHand;
-
-        public static event Action CombinationErrorEvent; 
-
-        private Dictionary<string, CombinationResult> _combinations = new Dictionary<string, CombinationResult>();
+        public static event Action CombinationErrorEvent;
+        
+        [SerializeField] private string combinationFilePath;
+        private Dictionary<string, CombinationResult> _combinations = new();
 
         private void Start() {
-            LoadCombinations("Combinaciones");
+            LoadCombinations(combinationFilePath);
         }
 
         /// <summary>
