@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 7202271454713460447, guid: a5bc094de3711f3418a8ad8fedc83194, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 29eca07a25c081b4e8b341b37540fc39, type: 2}
+      objectReference: {fileID: 2100000, guid: 0ef8672478b394e4f8041d28f1ab44dc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f28b1547a242e883937c045496fc9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabTransform: {fileID: 0}
