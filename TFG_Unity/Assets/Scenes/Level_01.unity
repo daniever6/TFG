@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5123,6 +5123,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8143710011712545758, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -6093592463355912122, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -5121963237698323616, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+    - target: {fileID: -4683669308469848369, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -1806680513116206669, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -1464156533226976372, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+    - target: {fileID: -1461304994638716399, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -1120989108687609925, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -804731622281664130, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -678588488315902003, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: -96379209188968325, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ef8672478b394e4f8041d28f1ab44dc, type: 2}
+    - target: {fileID: 384130471305486042, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
     - target: {fileID: 919132149155446097, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
       propertyPath: m_Name
       value: Mesa de trabajo
@@ -5135,6 +5183,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 3459193194213827910, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3554f5c756ff1c44284a1259fec579e6, type: 2}
+    - target: {fileID: 6745302439343835087, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03e171e4f33a5b842b9db3e12b5b9ebf, type: 2}
+    - target: {fileID: 7464467478714652440, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+    - target: {fileID: 7975172165557482324, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+    - target: {fileID: 8314556212536573196, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: 8d7d24af484bde24c8d248bdf5b438ee, type: 3}
@@ -5564,7 +5632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aad471b419477c49b9761251280a5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teacherHand: {fileID: 0}
+  combinationFilePath: 
 --- !u!114 &1701100180
 MonoBehaviour:
   m_ObjectHideFlags: 0
