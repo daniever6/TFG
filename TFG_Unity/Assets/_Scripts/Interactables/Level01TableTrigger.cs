@@ -1,4 +1,5 @@
 ﻿using System;
+using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -9,9 +10,11 @@ namespace _Scripts.Interactables
     public class Level01TableTrigger : Trigger
     {
         [SerializeField] private string levelName;
+        private GameObject _player;
 
-        private void Start()
+        private void Awake()
         {
+            _player = GameObject.FindGameObjectWithTag("Player");
         }
 
         /// <summary>
@@ -19,8 +22,7 @@ namespace _Scripts.Interactables
         /// </summary>
         public override void TriggerEvent()
         {
-            if(LevelManager.Instance.GetLevelState != LevelState.FirstLevel) return;
-            
+            SaveManager.SaveGameData(_player);
             SceneManager.LoadScene(levelName);
         }
     }

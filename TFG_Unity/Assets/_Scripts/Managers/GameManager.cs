@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
@@ -32,6 +33,31 @@ namespace _Scripts.Managers
 
         protected override void Awake()
         {
+            try
+            {
+                var a = Instance?.name;
+                
+                if (Instance != null)
+                {
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    var savePath = Application.persistentDataPath + "/gameState.save";
+                    var clothPath = Application.persistentDataPath + "/clothingIndex.json";
+                    
+                    if(File.Exists(savePath)) 
+                        File.Delete(savePath);
+                    if(File.Exists(clothPath))
+                        File.Delete(clothPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Destroy(this.gameObject);
+            }
+            
+            
             base.Awake();
             DontDestroyOnLoad(this.gameObject);
         }
@@ -79,6 +105,8 @@ namespace _Scripts.Managers
 
         private void HandleStarting()
         {
+            if (File.Exists(Application.persistentDataPath + "/gameState.save")) return;
+            
             DeserializeDialogues();
             ChangeState(GameState.Dialogue);
         }

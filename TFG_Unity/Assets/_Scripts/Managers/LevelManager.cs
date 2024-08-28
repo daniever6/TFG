@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.LevelScripts.SaveManager;
 using _Scripts.UI;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -23,12 +24,15 @@ namespace _Scripts.Managers
         [SerializeField] private List<ComponentList<GameObject>> levelComponents;
         [SerializeField] private List<ComponentList<MonoBehaviour>> levelScripts;
         
+        private SaveData _saveData;
+        private GameObject player;
+        
         private LevelState _levelState = LevelState.None;
-        public LevelState GetLevelState => _levelState;
+        public LevelState CurrentLevelState => _levelState;
         protected override void Awake()
         {
             base.Awake();
-            DontDestroyOnLoad(this);
+            // DontDestroyOnLoad(this);
             
             //Desactiva todos los componentes y scripts relacionados con los niveles
             for (int i = 0; i < 3; i++)
@@ -42,6 +46,8 @@ namespace _Scripts.Managers
                     script.enabled = false;
                 }
             }
+
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         /// <summary>
@@ -49,7 +55,18 @@ namespace _Scripts.Managers
         /// </summary>
         private void Start()
         {
-            ChangeLevelState(LevelState.FirstLevel);
+            _saveData = SaveManager.LoadGameData();
+
+            if (_saveData != null)
+            {
+                ChangeLevelState(_saveData.levelState);
+                 player.transform.position = new Vector3(_saveData.playerPosition[0], _saveData.playerPosition[1],
+                                                        _saveData.playerPosition[2]);
+            }
+            else
+            {
+                ChangeLevelState(LevelState.ThirdLevel);
+            }
         }
 
         /// <summary>

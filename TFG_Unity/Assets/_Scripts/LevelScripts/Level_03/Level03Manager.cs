@@ -8,7 +8,7 @@ using Random = System.Random;
 
 namespace _Scripts.LevelScripts.Level_03
 {
-    public class Level03Manager : Singleton<Level03Manager>
+    public class Level03Manager : MonoBehaviour
     {
         [SerializeField] private Vector3[] reactivosInitalPositions; //Posiciones por defecto en la caja
         [SerializeField] private List<GameObject> reactivos; //Prefabs de los reactivos a tirar

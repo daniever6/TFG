@@ -1,4 +1,5 @@
 using _Scripts.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.LevelScripts.Level_00
@@ -34,6 +35,8 @@ namespace _Scripts.LevelScripts.Level_00
         /// <returns>True si es correcta. False si no es correcta</returns>
         public bool CheckClothes()
         {
+            if (_playerClothes.IsUnityNull()) return false;
+            
             if (_correctClothes.shirtIdx == _playerClothes.shirtIdx &&
                 _correctClothes.gloveIdx == _playerClothes.gloveIdx &&
                 _correctClothes.pantsIdx == _playerClothes.pantsIdx &&

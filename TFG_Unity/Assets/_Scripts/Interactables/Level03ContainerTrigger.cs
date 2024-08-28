@@ -15,7 +15,7 @@ namespace _Scripts.Interactables
         /// </summary>
         public override void TriggerEvent()
         {
-            if(LevelManager.Instance.GetLevelState != LevelState.ThirdLevel) return;
+            if(LevelManager.Instance.CurrentLevelState != LevelState.ThirdLevel) return;
             
             Level03PlayerController.Instance.DropGarbage();
             SceneManager.LoadScene(levelName);
