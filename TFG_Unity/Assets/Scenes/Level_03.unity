@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1646,8 +1646,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2159,6 +2159,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Contenedor
       objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb24438c69c06fd46bc7fc69274ce059, type: 2}
+    - target: {fileID: 7202271454713460447, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb24438c69c06fd46bc7fc69274ce059, type: 2}
     - target: {fileID: 8513859187771203891, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -6117,7 +6125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7c6087ebf9f5a94e917b3fbbe5dc493, type: 2}
+  - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7518,8 +7526,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7662,7 +7670,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7c6087ebf9f5a94e917b3fbbe5dc493, type: 2}
+  - {fileID: -3907136747476808967, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8048,6 +8056,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Contenedor
       objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb24438c69c06fd46bc7fc69274ce059, type: 2}
+    - target: {fileID: 7202271454713460447, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb24438c69c06fd46bc7fc69274ce059, type: 2}
     - target: {fileID: 8513859187771203891, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}
       propertyPath: m_Layer
       value: 3
