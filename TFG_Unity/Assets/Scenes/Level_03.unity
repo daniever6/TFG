@@ -1664,8 +1664,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -66.71573, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6077,7 +6077,7 @@ Transform:
   m_GameObject: {fileID: 1684999569}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.000000029802, y: 0, z: 2.38}
+  m_LocalPosition: {x: 0.000000029802, y: 0, z: 3.38}
   m_LocalScale: {x: 1.9687, y: 1.9687, z: 1.9687}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6125,11 +6125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-<<<<<<< Updated upstream
   - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
-=======
-  - {fileID: 2100000, guid: a2baaf69cb490694d868f7db41fffd40, type: 2}
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6257,17 +6253,9 @@ MonoBehaviour:
   - {x: -0.2195892, y: 2.106, z: -0.772}
   - {x: -0.4105892, y: 2.106, z: -0.9010324}
   reactivos:
-  - {fileID: 8491347435255500911, guid: 31be399e3037e9548a44d7fd09e1df1d, type: 3}
   - {fileID: 3032671579038236784, guid: ef6f2c1c54aa50347a5f3cbda32bf1f9, type: 3}
-  - {fileID: 4747228818818207238, guid: 93a4b59893254a2478169f1d68ebac68, type: 3}
-  - {fileID: 3080150400197509345, guid: a04c0e7af42c62549a5517286248a85c, type: 3}
-  - {fileID: 7886171928775565311, guid: 5d2ef22bd85c48641a0add1ded4157ba, type: 3}
-  - {fileID: 7353458408805367148, guid: e898c168f1ef97b4bb2c291a43c6c2b9, type: 3}
-  - {fileID: 973252560274495024, guid: f7175f95f2b3e2d439ea5a92c7537557, type: 3}
-  - {fileID: 3184887599080831762, guid: 601636483c2499d4a97a55a36967d3e7, type: 3}
-  - {fileID: 4805500523587563916, guid: b8b078ffb23e712478158a42816048bd, type: 3}
-  - {fileID: 8758427603183890860, guid: e6ab287ec7ea5c74ab0959368d8bfb3e, type: 3}
-  - {fileID: 8185720572716525602, guid: 0dedd7792a56098498d049c83de46e37, type: 3}
+  - {fileID: 4359273499815386539, guid: 4da340561b2a9914aa2cdb480a721850, type: 3}
+  - {fileID: 6855023357499721013, guid: c5fb32d263b082646b33a5613d7d2c3a, type: 3}
   interactablesParent: {fileID: 252256609}
   reactivoText: {fileID: 768380458}
 --- !u!1 &1709659474 stripped
@@ -7556,8 +7544,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7592,7 +7580,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -194.73996, y: 0, z: -236.62802, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
