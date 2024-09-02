@@ -4,6 +4,7 @@ using _Scripts.LevelScripts.SaveManager;
 using _Scripts.UI;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts.Managers
 {
@@ -19,7 +20,7 @@ namespace _Scripts.Managers
     ///
     /// LevelState indica el nivel activo
     /// </summary>
-    public class LevelManager : GameplayMonoBehaviour<LevelManager>
+    public class LevelManager : Singleton<LevelManager>
     {
         [SerializeField] private List<ComponentList<GameObject>> levelComponents;
         [SerializeField] private List<ComponentList<MonoBehaviour>> levelScripts;
@@ -67,6 +68,22 @@ namespace _Scripts.Managers
             {
                 ChangeLevelState(LevelState.ThirdLevel);
             }
+        }
+
+        /// <summary>
+        /// Cambia el la escena del nivel cambiando a su vez el levelState
+        /// </summary>
+        /// <param name="sceneName"></param>
+        /// <param name="levelState"></param>
+        /// <param name="changeState"></param>
+        public void LoadNewScene(string sceneName, LevelState levelState, bool changeState = true)
+        {
+            if (changeState)
+            {
+                ChangeLevelState(levelState);
+            }
+
+            SceneManager.LoadScene(sceneName);
         }
 
         /// <summary>
