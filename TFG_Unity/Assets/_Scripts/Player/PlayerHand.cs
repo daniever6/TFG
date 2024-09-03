@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using _Scripts.Interactables;
 using _Scripts.LevelScripts;
+using _Scripts.LevelScripts.Level_01;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using DG.Tweening;
@@ -286,7 +288,9 @@ namespace _Scripts.Player
                 
                 case CombinationResult.Explosion:
                     await UseObjectsAnimation(secondaryObject);
-                    Debug.Log("Explosion");
+                    ParticleEffectManager.Instance.InstantiateParticle("Explosion");
+                    ParticleEffectManager.Instance.InstantiateParticle("Fuego");
+                    DeathInvoker.Instance.KillAnimation(GameLevels.Level1, "Has explotado");
                     break;
                 
                 case CombinationResult.Corrosion:

@@ -140,13 +140,12 @@ namespace _Scripts.Managers
             DialogueManager.Instance.GetDialogues(_dialoguesDictionary["Tutorial"].ToArray());
         }
         
+        #endregion
+
         public static void SetDeathReason(GameLevels gameLevel, string deathReason)
         {
             PlayerDeathCause.GameLevel = gameLevel;
             PlayerDeathCause.DeathReason = deathReason;
         }
-        
-        #endregion
-
     }
 }

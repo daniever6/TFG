@@ -30,6 +30,7 @@ namespace _Scripts.Managers
             
             string[] lines = file.text.Split('\n');
             foreach (string line in lines) {
+                if(string.IsNullOrWhiteSpace(line)) continue;
                 string[] parts = line.Split(':');
                 
                 string combination = parts[0].Trim();

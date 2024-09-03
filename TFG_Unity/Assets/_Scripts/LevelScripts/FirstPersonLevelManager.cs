@@ -54,6 +54,9 @@ namespace _Scripts.LevelScripts
             return true;
         }
 
+        /// <summary>
+        /// Metodo que se ejecuta despues de una combinacion correcta, lleva la orden de las combinaciones
+        /// </summary>
         public override void PostPerformCombination()
         {
             if (CheckCompletion())
