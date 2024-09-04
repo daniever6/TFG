@@ -11,13 +11,14 @@ namespace _Scripts.Managers
     {
         [SerializeField] private GameObject fadeCanvas;
         [SerializeField] private Image fadePanel;
+        private float animationDuration = 6;
 
         private static DeathInvoker _instance;
         public static DeathInvoker Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance.IsUnityNull())
                 {
                     _instance = new();
                 }
@@ -38,9 +39,14 @@ namespace _Scripts.Managers
         /// </summary>
         /// <param name="gameLevel">Nivel de respawn</param>
         /// <param name="deathReason">Causa de la muerte</param>
-        public void KillAnimation(GameLevels gameLevel, string deathReason)
+        public void KillAnimation(GameLevels gameLevel, string deathReason, float fadeDuration = -1)
         {
             GameManager.SetDeathReason(gameLevel, deathReason);
+
+            if (fadeDuration >= 0)
+            {
+                animationDuration = fadeDuration;
+            } 
             
             if (fadePanel.IsUnityNull())
             {
@@ -62,9 +68,9 @@ namespace _Scripts.Managers
             Color panelColor = fadePanel.color;
             float startAlpha = panelColor.a;
 
-            for (float t = 0; t < 6; t += Time.deltaTime)
+            for (float t = 0; t < animationDuration; t += Time.deltaTime)
             {
-                float alpha = Mathf.Lerp(startAlpha, 1f, t / 6);
+                float alpha = Mathf.Lerp(startAlpha, 1f, t / animationDuration);
                 panelColor.a = alpha;
                 fadePanel.color = panelColor;
                 yield return null; 

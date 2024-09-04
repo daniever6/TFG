@@ -3,6 +3,7 @@ using System.Collections;
 using _Scripts.Dialogues;
 using _Scripts.LevelScripts.Level_00;
 using _Scripts.Managers;
+using _Scripts.Player;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,12 +18,14 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         [SerializeField] private GameObject npc;
         [SerializeField] private ParticleSystem poisonParticleSystem;
         [SerializeField] private GameObject player;
+        private PlayerInteractor _playerInteractor;
         
         private NavMeshAgent _npcNavMeshAgent;
         private bool _isGamePaused = false;
 
         private void Start()
         {
+            player.TryGetComponent(out _playerInteractor);
             _npcNavMeshAgent = npc.GetComponent<NavMeshAgent>();
         }
         
@@ -50,7 +53,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             if(!other.CompareTag("Player")) return;
 
             Random random = new Random();
-            int timeBeforeChase = random.Next(2, 5);
+            int timeBeforeChase = random.Next(5, 10);
             
             if (checker.CheckClothes())
             {
@@ -58,6 +61,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             }
             else
             {
+                _playerInteractor.enabled = false;
                 this.enabled = false;
                 npc.layer = LayerMask.NameToLayer("Default");
                 
@@ -113,8 +117,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             var effect = Instantiate(poisonParticleSystem, player.transform.position, Quaternion.LookRotation(Vector3.up));
             effect.transform.parent = player.transform;
             npc.GetComponent<DialogueTrigger>().TriggerEvent();
-            
-            GameManager.SetDeathReason(GameLevels.Level0, "Te ha caido ácido encima");
+
             StartCoroutine(PlayerDeath());
         }
 
@@ -131,7 +134,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             
             yield return new WaitForSeconds(5f);
             
-            SceneManager.LoadScene("DeathScene");
+            DeathInvoker.Instance.KillAnimation(GameLevels.Level0, "Te ha caido ácido encima", 5);
             
             Destroy(this); 
         }
