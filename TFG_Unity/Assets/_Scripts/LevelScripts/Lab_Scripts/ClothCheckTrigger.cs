@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using _Scripts.Dialogues;
 using _Scripts.LevelScripts.Level_00;
@@ -7,7 +6,6 @@ using _Scripts.Player;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace _Scripts.LevelScripts.Lab_Scripts

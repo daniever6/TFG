@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Interactables
 {
-    public class InteractionPrompt : MonoBehaviour
+    public class LookAtCamera : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
 
