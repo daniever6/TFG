@@ -4,6 +4,7 @@ using _Scripts.LevelScripts.Level_00;
 using _Scripts.Managers;
 using _Scripts.Player;
 using _Scripts.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = System.Random;
@@ -31,14 +32,20 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         {
             base.OnPostPaused();
             _isGamePaused = true;
-            _npcNavMeshAgent.isStopped = true;
+            if (!_npcNavMeshAgent.IsUnityNull())
+            {
+                _npcNavMeshAgent.isStopped = true;
+            }
         }
 
         protected override void OnPostResumed()
         {
             base.OnPostResumed();
             _isGamePaused = false;
-            _npcNavMeshAgent.isStopped = false;
+            if (!_npcNavMeshAgent.IsUnityNull())
+            {
+                _npcNavMeshAgent.isStopped = false;
+            }
         }
 
         /// <summary>

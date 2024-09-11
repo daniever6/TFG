@@ -10,8 +10,6 @@ namespace _Scripts.Dialogues
     {
         [SerializeField] private DialogueManager dialogueManager;
         [SerializeField] private Dialogue dialogue;
-        
-        private float volume;
 
         public override void TriggerEvent()
         {
