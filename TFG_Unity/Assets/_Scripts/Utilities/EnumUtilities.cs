@@ -60,6 +60,16 @@
         Level2,
         Level3
     }
+
+    public enum BalanzaButtons
+    {
+        None, 
+        OnOff,
+        Get,
+        Set,
+        Zero,
+        Print
+    }
     
     [System.Serializable]
     public class ClothingIndex

@@ -3,6 +3,7 @@ using _Scripts.Utilities;
 using Facepunch;
 using JetBrains.Annotations;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +34,8 @@ namespace _Scripts.Player
         public void Use(InputAction.CallbackContext context)
         {
             if (!this.enabled) return;
+            if(playerGrab.IsUnityNull()) return;
+            
             playerGrab!.Grab(context);
         }
 
