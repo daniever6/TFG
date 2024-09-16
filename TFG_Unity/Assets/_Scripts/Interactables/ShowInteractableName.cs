@@ -11,18 +11,16 @@ namespace _Scripts.Interactables
     public class ShowInteractableName : GameplayMonoBehaviour<ShowInteractableName>
     {
         [SerializeField] private Canvas NameTextCanvas; //Canvas para mostrar el nombre del interactable
-        [SerializeField] private TextMeshProUGUI interactableName; //Texto del nombre del interactable
 
         private void Start()
         {
-            if (NameTextCanvas.IsUnityNull() || interactableName.IsUnityNull())
+            if (NameTextCanvas.IsUnityNull())
             {
                 Destroy(this);
                 return;
             }
 
             NameTextCanvas.enabled = false;
-            interactableName.text = name;
         }
 
         /// <summary>

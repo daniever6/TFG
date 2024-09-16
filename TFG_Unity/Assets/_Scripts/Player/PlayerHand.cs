@@ -10,6 +10,7 @@ using DG.Tweening;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Sequence = DG.Tweening.Sequence;
 using Vector3 = UnityEngine.Vector3;
 
@@ -254,6 +255,12 @@ namespace _Scripts.Player
             // Resultado de la accion
             CombinationResult result = CombinationsManager.Instance.GetCombinationResult(combinationName);
 
+            MakeReactiveVisible primaryMezcla; //MezclaManoPrincipal
+            ObjectSelected.gameObject.TryGetComponent(out primaryMezcla);
+
+            MakeReactiveVisible secondaryMezcla; //Mezcla mano secundaria
+            secondaryObject.gameObject.TryGetComponent(out secondaryMezcla);
+
             switch (result)
             {
                 case CombinationResult.None:
@@ -264,6 +271,7 @@ namespace _Scripts.Player
                 case CombinationResult.Error:
                     PlayerGrab.IsTweening = false;
                     await UseObjectsAnimation(secondaryObject);
+                    PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     await GoToInitialPosition();
                     Debug.Log("Error");
                     
@@ -284,10 +292,12 @@ namespace _Scripts.Player
                         PlayerGrab.IsTweening = false;
                         await GoToInitialPosition();
                     }
+                    PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     break;
                 
                 case CombinationResult.Explosion:
                     await UseObjectsAnimation(secondaryObject);
+                    PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject, Color.red);
                     ParticleEffectManager.Instance.InstantiateParticle("Explosion");
                     ParticleEffectManager.Instance.InstantiateParticle("Fuego");
                     DeathInvoker.Instance.KillAnimation(GameLevels.Level1, "Has explotado");
@@ -295,10 +305,69 @@ namespace _Scripts.Player
                 
                 case CombinationResult.Corrosion:
                     await UseObjectsAnimation(secondaryObject);
+                    PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     Debug.Log("Corrosion");
                     break;
             }
             
+        }
+
+        /// <summary>
+        /// Lleva la logica de la vision de las mezclas de los reactivos
+        /// </summary>
+        /// <param name="primaryObject">Objeto principal</param>
+        /// <param name="secondaryObject">Objeto secundario</param>
+        /// <param name="color">Color al que cambiar</param>
+        private void PerformMezclaAnimation(GameObject primaryObject, GameObject secondaryObject, Color color = default)
+        {
+            MakeReactiveVisible primaryMezcla; //Mezcla mano principal
+            primaryObject.gameObject.TryGetComponent(out primaryMezcla);
+
+            MakeReactiveVisible secondaryMezcla; //Mezcla mano secundaria
+            secondaryObject.gameObject.TryGetComponent(out secondaryMezcla);
+
+            if (primaryMezcla.IsUnityNull() && secondaryMezcla.IsUnityNull())
+            {
+                return;
+            }
+
+            //Color aleatorio si es no se especifica color
+            if (color == default)
+            {
+                color = new Color(
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f)
+                );
+            }
+
+            //Ocultar mezcla de la mano primaria
+            if (!primaryMezcla.IsUnityNull())
+            {
+                if (primaryMezcla.isMezclaVisible)
+                {
+                    primaryMezcla.HideMezcla();
+                }
+            }
+
+            //Hace visible la mezcla de la mano secundario o le cambia el color
+            if (!secondaryMezcla.IsUnityNull())
+            {
+                if (primaryObject.name == "Pipeta")
+                {
+                    secondaryMezcla.HideMezcla();
+                    return;
+                }
+                
+                if (secondaryMezcla.isMezclaVisible)
+                {
+                    secondaryMezcla.ChangeMezclaColor(color);
+                }
+                else
+                {
+                    secondaryMezcla.MakeMezclaVisible();
+                }
+            }
         }
         
         #endregion

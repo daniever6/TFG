@@ -4765,7 +4765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 1158169073}
-  interactableName: {fileID: 1498798907}
 --- !u!1 &773991611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5287,7 +5286,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0ef8672478b394e4f8041d28f1ab44dc, type: 2}
-  - {fileID: 2100000, guid: 29eca07a25c081b4e8b341b37540fc39, type: 2}
+  - {fileID: 2100000, guid: 4848d98b99b890340a2ef3c743435553, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5342,7 +5341,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 908744726}
-  interactableName: {fileID: 690900676}
+--- !u!114 &918171441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918171432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4c778430c88364488f09aafd507cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mezcla: {fileID: 594084159}
+  isMezclaVisible: 0
 --- !u!1 &920553452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6386,7 +6398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 365930228}
-  interactableName: {fileID: 1159334399}
 --- !u!1 &1081302133
 GameObject:
   m_ObjectHideFlags: 0
@@ -9488,7 +9499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 212161121}
-  interactableName: {fileID: 1036325271}
 --- !u!1 &1498798905
 GameObject:
   m_ObjectHideFlags: 0
@@ -12044,7 +12054,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 1102328605}
-  interactableName: {fileID: 861813168}
+--- !u!114 &1990300446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837514399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4c778430c88364488f09aafd507cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mezcla: {fileID: 1474008532}
+  isMezclaVisible: 0
 --- !u!1 &1999989922
 GameObject:
   m_ObjectHideFlags: 0
@@ -12658,7 +12681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010457391929259231, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_Name
-      value: Botella de bases
+      value: BotellaBases
       objectReference: {fileID: 0}
     - target: {fileID: 1010457391929259231, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_Layer
@@ -12817,7 +12840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091235282554556471, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_Name
-      value: Botella de agua
+      value: BotellaAgua
       objectReference: {fileID: 0}
     - target: {fileID: 6091235282554556471, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       propertyPath: m_Layer
@@ -13163,6 +13186,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6962945814887852143, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 918171440}
+    - targetCorrespondingSourceObject: {fileID: 6962945814887852143, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 918171441}
   m_SourcePrefab: {fileID: 100100000, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
 --- !u!33 &4507173840191416403
 MeshFilter:
@@ -13236,7 +13262,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_Name
-      value: Vaso de precipitacion
+      value: VasoPrecipitacion
       objectReference: {fileID: 0}
     - target: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       propertyPath: m_Layer
@@ -13298,6 +13324,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1990300441}
+    - targetCorrespondingSourceObject: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1990300446}
   m_SourcePrefab: {fileID: 100100000, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
 --- !u!23 &5664053842697027345
 MeshRenderer:
@@ -13478,7 +13507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Name
-      value: "Botella de \xE1cido"
+      value: BotellaAcido
       objectReference: {fileID: 0}
     - target: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Layer
@@ -13534,7 +13563,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 108571804617773598, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_Name
-      value: Vaso de medida
+      value: VasoMedidaCristal
       objectReference: {fileID: 0}
     - target: {fileID: 108571804617773598, guid: d5f59405c74256444acd12ad259a8fa1, type: 3}
       propertyPath: m_Layer
@@ -13743,7 +13772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 422563188}
-  interactableName: {fileID: 65241853}
 --- !u!4 &8015939594142548740
 Transform:
   m_ObjectHideFlags: 0

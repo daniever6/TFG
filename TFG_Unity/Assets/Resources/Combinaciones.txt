@@ -14,3 +14,4 @@ BotellaAgua_BotellaAcidos : Explosion
 BotellaAgua_BotellaBases : Explosion
 BotellaAcidos_Matraz : Explosion
 BotellaBases_Matraz : Explosion
+VasoPrecipitacion_Matraz: Corrosion
