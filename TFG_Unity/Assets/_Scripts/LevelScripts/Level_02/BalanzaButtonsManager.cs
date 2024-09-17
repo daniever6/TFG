@@ -12,9 +12,9 @@ namespace _Scripts.LevelScripts.Level_02
     {
         [SerializeField] private TextMeshProUGUI textoPantalla;
         
-        private bool isPaused = false;
-        private bool isBalanzaOn = false;
-        private bool isBalanzaReady = false;
+        private static bool isPaused = false;
+        private static bool isBalanzaOn = false;
+        private static bool isBalanzaReady = false;
 
         private void Start()
         {
@@ -54,6 +54,7 @@ namespace _Scripts.LevelScripts.Level_02
                 case BalanzaButtons.Set:
                     break;
                 case BalanzaButtons.Zero:
+                    SetPesoCero();
                     break;
                 case BalanzaButtons.Print:
                     break;
@@ -129,6 +130,20 @@ namespace _Scripts.LevelScripts.Level_02
             textoPantalla.text = "0ff";
             await Task.Delay(1000);
             textoPantalla.text = string.Empty;
+        }
+
+        
+        /// <summary>
+        /// Nivela el peso actual de la balanza a cero
+        /// </summary>
+        private void SetPesoCero()
+        {
+            if (!isBalanzaReady || !isBalanzaOn)
+            {
+                return;
+            }
+
+            textoPantalla.text = "0.00 g";
         }
 
         protected override void OnPostPaused()

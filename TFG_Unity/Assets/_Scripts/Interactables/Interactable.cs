@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Scripts.UI;
 using _Scripts.Utilities;
 using Facepunch;
@@ -12,10 +13,16 @@ namespace _Scripts.Interactables
     public class Interactable : GameplayMonoBehaviour<Interactable>
     {
         private Renderer _renderer;
+        [SerializeField] private List<GameObject> extraMeshes = new();
+        private List<Renderer> extraRenderers = new();
 
         private void Start()
         {
             _renderer = GetComponent<Renderer>();
+            foreach (var gameobject in extraMeshes)
+            {
+                extraRenderers.Add(gameobject.GetComponent<Renderer>());
+            }
         }
         
         /// <summary>
@@ -25,6 +32,10 @@ namespace _Scripts.Interactables
         {
             if(!enabled) return;
             Highlight.AddRenderer(_renderer);
+            foreach (var renderer in extraRenderers)
+            {
+                Highlight.AddRenderer(renderer);
+            }
             Highlight.Rebuild();
         }
 
