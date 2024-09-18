@@ -19,12 +19,18 @@ namespace _Scripts.Player
 
         [SerializeField] private GameObject interactablesParent;
 
-        [SerializeField] private PlayerHand rightHand;
-        [SerializeField] private PlayerHand leftHand;
+        [SerializeField] private GameObject manoDerecha;
+        [SerializeField] private GameObject manoIzquierda;
+
+        private IHand rightHand;
+        private IHand leftHand;
 
         private void Start()
         {
             _camera = Camera.main;
+
+            manoDerecha.TryGetComponent(out rightHand);
+            manoIzquierda.TryGetComponent(out leftHand);
         }
 
         /// <summary>
@@ -40,7 +46,7 @@ namespace _Scripts.Player
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {
                 Iteractables parsedEnum;
-                PlayerHand hand = ChoosePlayerHand(_hit.point);
+                IHand hand = ChoosePlayerHand(_hit.point);
                 Enum.TryParse(_hit.collider.tag, out parsedEnum);
                 switch(parsedEnum)
                 {
@@ -65,7 +71,7 @@ namespace _Scripts.Player
         /// </summary>
         /// <param name="clickedPoint">Punto a calcular la distancia de manos</param>
         /// <returns></returns>
-        private PlayerHand ChoosePlayerHand(Vector3 clickedPoint)
+        private IHand ChoosePlayerHand(Vector3 clickedPoint)
         {
             Vector3 rightHandPosition = rightHand.HandInitialPosition;
             Vector3 leftHandPosition = leftHand.HandInitialPosition;

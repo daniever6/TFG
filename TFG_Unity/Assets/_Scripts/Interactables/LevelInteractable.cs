@@ -11,12 +11,14 @@ namespace _Scripts.Interactables
         private Quaternion _initialRotation;
         private Vector3 _grabPosition;
         private Quaternion _grabRotation;
+        public Vector3 GrabLocalPosition = Vector3.zero;
         [SerializeField][CanBeNull] private Transform grabTransform;
 
         public Vector3 InitialPosition => _initialPosition;
         public Quaternion GrabRotation => _grabRotation;
         public Vector3 GrabLocalPos => _grabPosition;
         public Quaternion InitialRotation => _initialRotation;
+        public Vector3 GrabPos => grabTransform.position;
 
         private void Start()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -84,8 +85,10 @@ namespace _Scripts.Managers
                     HandleStarting();
                     break;
                 case GameState.Resume:
+                    DOTween.PlayAll();
                     break;
                 case GameState.Pause:
+                    DOTween.PauseAll();
                     break;
                 case GameState.Dialogue:
                     HandleDialogue();

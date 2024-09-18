@@ -19,7 +19,7 @@ namespace _Scripts.Player
     /// <summary>
     /// Clase que maneja define las manos del personaje en los niveles del juego
     /// </summary>
-    public class PlayerHand: MonoBehaviour
+    public class PlayerHand: MonoBehaviour, IHand
     {
         #region Definicion de la clase
 

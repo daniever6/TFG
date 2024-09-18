@@ -10,16 +10,7 @@ namespace _Scripts.LevelScripts.Level_02
 {
     public class BalanzaButtonsManager : GameplayMonoBehaviour<BalanzaButtonsManager>
     {
-        [SerializeField] private TextMeshProUGUI textoPantalla;
-        
         private static bool isPaused = false;
-        private static bool isBalanzaOn = false;
-        private static bool isBalanzaReady = false;
-
-        private void Start()
-        {
-            textoPantalla.text = string.Empty;
-        }
 
         /// <summary>
         /// Captura los eventos en los botones
@@ -69,21 +60,21 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private async void OnOffButton()
         {
-            if (!isBalanzaOn)
+            if (!BalanzaManager.IsBalanzaOn)
             {
-                isBalanzaOn = true;
+                BalanzaManager.IsBalanzaOn = true;
                 await TurnOnBehaviour();
             }
             else
             {
-                if (!isBalanzaReady)
+                if (!BalanzaManager.IsBalanzaReady)
                 {
                     return;
                 }
                 
                 await TurnOffBehaviour();
-                isBalanzaOn = false;
-                isBalanzaReady = false;
+                BalanzaManager.IsBalanzaOn = false;
+                BalanzaManager.IsBalanzaReady = false;
             }
         }
 
@@ -108,18 +99,19 @@ namespace _Scripts.LevelScripts.Level_02
                 
                 elapsedTime += Time.deltaTime;
 
-                textoPantalla.text = new string('.', cont);
+                BalanzaManager.Instance.SetBalanzaText(new string('.', cont));
                 cont = (cont + 1) % 4;
                 await Task.Delay(500);
                 elapsedTime += 0.5f;
                 await Task.Yield();
             }
 
-            textoPantalla.text = "On";
+            BalanzaManager.Instance.SetBalanzaText("On");
             await Task.Delay(2500);
-            textoPantalla.text = "---";
+            BalanzaManager.IsBalanzaReady = true;
+            BalanzaManager.Instance.CalculateCurrentPesos();
             
-            isBalanzaReady = true;
+            
         }
 
         /// <summary>
@@ -127,9 +119,9 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private async Task TurnOffBehaviour()
         {
-            textoPantalla.text = "0ff";
+            BalanzaManager.Instance.SetBalanzaText("0ff");
             await Task.Delay(1000);
-            textoPantalla.text = string.Empty;
+            BalanzaManager.Instance.SetBalanzaText(string.Empty);
         }
 
         
@@ -138,12 +130,12 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void SetPesoCero()
         {
-            if (!isBalanzaReady || !isBalanzaOn)
+            if (!BalanzaManager.IsBalanzaReady || !BalanzaManager.IsBalanzaOn)
             {
                 return;
             }
 
-            textoPantalla.text = "0.00 g";
+            BalanzaManager.Instance.SetPesoBalanza(0);
         }
 
         protected override void OnPostPaused()

@@ -36,6 +36,14 @@
         Interactable,
         Contenedor,
     }
+
+    public enum Level02Interactables
+    {
+        None,
+        Base,
+        Espatula,
+        PapelPesaje
+    }
     
     public enum PlayerState
     {

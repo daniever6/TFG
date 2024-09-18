@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.LevelScripts.Level_02
@@ -6,19 +7,18 @@ namespace _Scripts.LevelScripts.Level_02
     public class OpenBalanza : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        private static bool _isOpen;
 
         private void OnMouseUp()
         {
-            if (!_isOpen)
+            if (!BalanzaManager.IsBalanzaOpen)
             {
                 _animator.Play("OpenBalanza");
-                _isOpen = true;
+                BalanzaManager.IsBalanzaOpen = true;
             }
             else
             {
                 _animator.Play("CloseBalanza");
-                _isOpen = false;
+                BalanzaManager.IsBalanzaOpen = false;
             }
         }
     }
