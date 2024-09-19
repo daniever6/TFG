@@ -21,6 +21,8 @@ namespace _Scripts.LevelScripts.Level_02
         private bool isTweening = false;
         private static LevelInteractable ObjectSelected;
 
+        public static event Action OnReactivoAdded;
+        public static event Action OnReactivoRemoved;
         
 
         public Vector3 HandInitialPosition
@@ -68,7 +70,7 @@ namespace _Scripts.LevelScripts.Level_02
                         }
                         else
                         {
-                            EspatulaCombinations(ObjectSelected.gameObject, hit.collider.gameObject);
+                            Level02Combinations(ObjectSelected.gameObject, hit.collider.gameObject);
                         }
                         
                         return;
@@ -87,7 +89,7 @@ namespace _Scripts.LevelScripts.Level_02
                         
                         if (!alfombrillaIsEmpty && handHasObject) //Hacer combinacion
                         {
-                            EspatulaCombinations(ObjectSelected.gameObject, hit.collider.gameObject);
+                            Level02Combinations(ObjectSelected.gameObject, hit.collider.gameObject);
                             break;
                         }
 
@@ -141,6 +143,8 @@ namespace _Scripts.LevelScripts.Level_02
         /// <param name="newParent">Nuevo padre del interactable</param>
         public void GrabObject(LevelInteractable objectToGrab, GameObject newParent)
         {
+            if(PlayerGrab.IsTweening) return;
+            
             if (objectToGrab.IsUnityNull())
             {
                 return;
@@ -165,6 +169,8 @@ namespace _Scripts.LevelScripts.Level_02
         /// <param name="objectToGrab">Objeto a coger</param>
         public void Grab(LevelInteractable objectToGrab)
         {
+            if(PlayerGrab.IsTweening) return;
+            
             if (objectToGrab.IsUnityNull())
             {
                 return;
@@ -195,6 +201,7 @@ namespace _Scripts.LevelScripts.Level_02
         {
             try
             {
+                if(PlayerGrab.IsTweening) return;
                 if (ObjectSelected.IsUnityNull()) return;
 
                 Vector3 newPos = position.Equals(default) ? ObjectSelected.InitialPosition : position;
@@ -223,8 +230,31 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         /// <param name="objectGrabbed">Objeto que tenemos en la mano</param>
         /// <param name="secondaryObject">Objeto con el que interactuamos</param>
-        private void EspatulaCombinations(GameObject objectGrabbed, GameObject secondaryObject)
+        private void Level02Combinations(GameObject objectGrabbed, GameObject secondaryObject)
         {
+            if (objectGrabbed.name == "PapelPesaje")
+            {
+                Enum.TryParse(secondaryObject.name, out Level02Interactables second);
+                switch (second)
+                {
+                    case Level02Interactables.None:
+                        break;
+                    case Level02Interactables.Base:
+                        //Tirar todo el reactivo
+                        if (ReactivoPesaje.Instance.CurrentPesoReactivo() <= 0) break;
+                        ReactivoPesaje.Instance.SetReactivoCero();
+                        GoToInitialPosition();
+                        break;
+                    case Level02Interactables.Espatula:
+                        break;
+                    case Level02Interactables.PapelPesaje:
+                        break;
+                }
+
+                GoToInitialPosition();
+                return;
+            }
+            
             //Si no sujetamos la espatula no hacemos nada
             if(objectGrabbed.name != "Espatula") return;
             
@@ -235,6 +265,7 @@ namespace _Scripts.LevelScripts.Level_02
             if (BalanzaSetPosition.transform.childCount <= 0 ||
                 BalanzaSetPosition.transform.GetChild(0).gameObject.name != "PapelPesaje")
             {
+                GoToInitialPosition();
                 return;
             }
 
@@ -251,6 +282,11 @@ namespace _Scripts.LevelScripts.Level_02
                     break;
                 case Level02Interactables.PapelPesaje:
                     //Retirar peso del papel del pesaje
+                    if (ReactivoPesaje.Instance.CurrentPesoReactivo() <= 0)
+                    {
+                        GoToInitialPosition();
+                        return;
+                    }
                     EspatulaAnimation(PosInteraccionPapelPesaje, PosInteraccionBase, -0.25f);
                     break;
                 default:
@@ -267,16 +303,28 @@ namespace _Scripts.LevelScripts.Level_02
         /// <param name="acumPeso">Peso a acumular</param>
         private async Task EspatulaAnimation(Vector3 position1, Vector3 position2, float acumPeso)
         {
+            PlayerGrab.IsTweening = true;
+            
             Sequence mySequence = DOTween.Sequence();
             mySequence.Append(transform.DOLocalMove(position1, 2));
-            mySequence.AppendInterval(2f);
+            mySequence.AppendInterval(1f);
             mySequence.Append(transform.DOLocalMove(position2, 2));
             mySequence.Play();
 
             mySequence.OnComplete(async () =>
             {
-                BalanzaManager.Instance.AddSubPeso(acumPeso);
+                if (position1 == PosInteraccionBase)
+                {
+                    ReactivoPesaje.Instance.AddReactivo(acumPeso);
+                }
+                else
+                {
+                    ReactivoPesaje.Instance.RemoveReactivo(acumPeso);
+                }
+                
                 await GoToInitialPosition();
+
+                PlayerGrab.IsTweening = false;
             });
         }
     }

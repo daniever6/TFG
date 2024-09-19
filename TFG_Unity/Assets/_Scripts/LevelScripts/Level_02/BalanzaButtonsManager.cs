@@ -41,6 +41,7 @@ namespace _Scripts.LevelScripts.Level_02
                     OnOffButton();
                     break;
                 case BalanzaButtons.Get:
+                    BalanzaManager.Instance.CalculateCurrentPesos();
                     break;
                 case BalanzaButtons.Set:
                     break;
