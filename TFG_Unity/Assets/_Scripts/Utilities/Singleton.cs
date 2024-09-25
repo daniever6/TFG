@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Scripts.Utilities
 {
@@ -11,6 +12,11 @@ namespace _Scripts.Utilities
         {
             Instance = null;
             Destroy(gameObject);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            
         }
     }
 

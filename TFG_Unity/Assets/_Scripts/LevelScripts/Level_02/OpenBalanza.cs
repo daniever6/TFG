@@ -12,14 +12,24 @@ namespace _Scripts.LevelScripts.Level_02
         {
             if (!BalanzaManager.IsBalanzaOpen)
             {
-                _animator.Play("OpenBalanza");
-                BalanzaManager.IsBalanzaOpen = true;
+                OpenBalanzaAnimation();
             }
             else
             {
-                _animator.Play("CloseBalanza");
-                BalanzaManager.IsBalanzaOpen = false;
+                CloseBalanzaAnimation();
             }
+        }
+
+        public void OpenBalanzaAnimation()
+        {
+            _animator.Play("OpenBalanza");
+            BalanzaManager.IsBalanzaOpen = true;
+        }
+
+        public void CloseBalanzaAnimation()
+        {
+            _animator.Play("CloseBalanza");
+            BalanzaManager.IsBalanzaOpen = false;
         }
     }
 }

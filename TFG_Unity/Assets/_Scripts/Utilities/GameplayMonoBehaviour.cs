@@ -13,11 +13,6 @@ namespace _Scripts.Utilities
             GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
         }
 
-        private void OnDestroy()
-        {
-            GameManager.OnBeforeGameStateChanged -= HandleGameStatedChanged;
-        }
-
         /// <summary>
         /// Detiene los componentes que hijos cuando gameState es Pause o Dialogue
         /// </summary>

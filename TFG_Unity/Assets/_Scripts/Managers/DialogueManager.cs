@@ -5,6 +5,7 @@ using _Scripts.Dialogues;
 using _Scripts.UI.Scripts;
 using _Scripts.Utilities;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ using UnityEngine.UI;
 namespace _Scripts.Managers
 {
     
-    public class DialogueManager : Singleton<DialogueManager>
+    public class DialogueManager : Utilities.Singleton<DialogueManager>
     {
         #region Class implementation
 
@@ -25,14 +26,8 @@ namespace _Scripts.Managers
         [SerializeField] private TextMeshProUGUI dialogText;
         [SerializeField] private float lettersWaitVelocity = 0f;
         
-        private Queue<string> _sentences;
-        private Queue<Dialogue> _dialogues;
-
-        private void Start()
-        {
-            _sentences = new Queue<string>();
-            _dialogues = new Queue<Dialogue>();
-        }
+        private static Queue<string> _sentences = new();
+        private static Queue<Dialogue> _dialogues = new();
         
         #endregion
 
@@ -44,6 +39,11 @@ namespace _Scripts.Managers
         /// <param name="dialogues">Dialogos a almacenar</param>
         public void GetDialogues(Dialogue[] dialogues)
         {
+            if (UnityObjectUtility.IsUnityNull(dialogues))
+            {
+                return;
+            }
+            
             GameManager.Instance.ChangeState(GameState.Dialogue);
             
             dialogueCanvas.SetActive(true);
