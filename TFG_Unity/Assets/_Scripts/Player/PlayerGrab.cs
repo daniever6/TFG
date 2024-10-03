@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Interactables;
 using _Scripts.Utilities;
+using JetBrains.Annotations;
 using Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,8 +20,8 @@ namespace _Scripts.Player
 
         [SerializeField] private GameObject interactablesParent;
 
-        [SerializeField] private GameObject manoDerecha;
-        [SerializeField] private GameObject manoIzquierda;
+        [SerializeField][CanBeNull] private GameObject manoDerecha = null;
+        [SerializeField][CanBeNull] private GameObject manoIzquierda = null;
 
         private IHand rightHand;
         private IHand leftHand;
@@ -29,8 +30,8 @@ namespace _Scripts.Player
         {
             _camera = Camera.main;
 
-            manoDerecha.TryGetComponent(out rightHand);
-            manoIzquierda.TryGetComponent(out leftHand);
+            manoDerecha?.TryGetComponent(out rightHand);
+            manoIzquierda?.TryGetComponent(out leftHand);
         }
 
         /// <summary>

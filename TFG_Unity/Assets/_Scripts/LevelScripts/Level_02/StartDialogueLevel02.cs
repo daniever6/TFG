@@ -9,9 +9,12 @@ namespace _Scripts.LevelScripts.Level_02
     {
         [SerializeField] private CinemachineVirtualCamera npcCamera;
         [SerializeField] private DialogueTrigger startDialogue;
+        [SerializeField] private GameObject entregarButton;
 
         private void Start()
         {
+            enabled = true;
+            entregarButton.SetActive(false);
             DialogueManager.OnDialogueFinish += FinishStartDialogue;
             startDialogue.TriggerEvent();
         }
@@ -26,8 +29,10 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void FinishStartDialogue()
         {
+            DialogueManager.OnDialogueFinish -= FinishStartDialogue;
             npcCamera.enabled = false;
-            Destroy(this);
+            entregarButton.SetActive(true);
+            enabled = false;
         }
     }
 }

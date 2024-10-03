@@ -2,11 +2,14 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using _Scripts.Dialogues;
+using _Scripts.LevelScripts.Level_01;
 using _Scripts.Managers;
+using _Scripts.Player;
 using _Scripts.Utilities;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Sequence = DG.Tweening.Sequence;
 
 namespace _Scripts.LevelScripts.Level_02
@@ -19,6 +22,15 @@ namespace _Scripts.LevelScripts.Level_02
         [SerializeField] private OpenBalanza balanzaAnimator;
         [SerializeField] private Vector3 papelPesajeNewPos;
         [SerializeField] private DialogueTrigger npcDialogue;
+
+        [SerializeField] private PesoObjetos pesoReactivo;
+        [SerializeField] private Transform posicionMatraz;
+        [SerializeField] private float finalResult = 0.75f;
+
+        [SerializeField] private PlayerGrab playerGrab;
+        [SerializeField] private Collider pesajeCollider;
+
+        [SerializeField] private GameObject entregarButton;
 
         private bool HasBeenPaused = false;
         private bool HasBeenPlayed = false;
@@ -41,6 +53,10 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         public void EntregarPesaje()
         {
+            entregarButton.SetActive(false);
+            playerGrab.enabled = false;
+            pesajeCollider.enabled = false;
+            
             DialogueManager.OnDialogueFinish += NpcMakeCombination;
             
             if (!BalanzaManager.IsBalanzaOpen && papelPesaje.transform.parent.name == "PositionPesa")
@@ -88,7 +104,19 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void GetLevelResult()
         {
-            Destroy(this);
+            if (Math.Abs(pesoReactivo.Peso - finalResult) > 0.1)
+            {
+                ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", posicionMatraz);
+                ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", posicionMatraz);
+                
+                DeathInvoker.Instance.KillAnimation(GameLevels.Level2, 
+                    "Has muerto por un accidente al no pesar bien el reactivo", 
+                    3f);
+            }
+            else
+            {
+                SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+            }
         }
 
         /// <summary>

@@ -19,6 +19,7 @@ namespace _Scripts.Utilities
         /// <param name="gameState"></param>
         private void HandleGameStatedChanged(GameState gameState)
         {
+            if (gameState == null) return;
             enabled = (gameState != GameState.Pause && gameState != GameState.Dialogue);
             if (gameState == GameState.Pause || gameState == GameState.Dialogue)
             {

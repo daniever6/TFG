@@ -51,6 +51,11 @@ namespace _Scripts.Managers
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
         /// <summary>
         /// Establece el estado inicial del juego
         /// </summary>
