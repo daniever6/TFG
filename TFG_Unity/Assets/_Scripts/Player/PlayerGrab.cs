@@ -3,6 +3,7 @@ using _Scripts.Interactables;
 using _Scripts.Utilities;
 using JetBrains.Annotations;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -30,8 +31,15 @@ namespace _Scripts.Player
         {
             _camera = Camera.main;
 
-            manoDerecha?.TryGetComponent(out rightHand);
-            manoIzquierda?.TryGetComponent(out leftHand);
+            if (!manoDerecha.IsUnityNull())
+            {
+                manoDerecha.TryGetComponent(out rightHand);
+            }
+
+            if (!manoIzquierda.IsUnityNull())
+            {
+                manoIzquierda.TryGetComponent(out leftHand);
+            }
         }
 
         /// <summary>

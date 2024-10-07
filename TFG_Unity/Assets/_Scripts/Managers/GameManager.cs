@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.NetworkInformation;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
 using DG.Tweening;
@@ -27,6 +28,8 @@ namespace _Scripts.Managers
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new ();
         public GameState PreviousGameState { get; private set; }
         public static GameState GameState { get; private set; }
+
+        [SerializeField] private GameState StartGameState = GameState.Resume;
         
         //EVENTS
         public static event Action<GameState> OnBeforeGameStateChanged;
@@ -65,7 +68,7 @@ namespace _Scripts.Managers
         
         public void Start()
         {
-            ChangeState(GameState.Resume);
+            ChangeState(StartGameState);
         }
 
         /// <summary>

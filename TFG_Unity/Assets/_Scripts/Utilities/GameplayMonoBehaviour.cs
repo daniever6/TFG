@@ -1,4 +1,6 @@
+using System;
 using _Scripts.Managers;
+using Unity.VisualScripting;
 
 namespace _Scripts.Utilities
 {
@@ -7,10 +9,16 @@ namespace _Scripts.Utilities
     /// </summary>
     public abstract class GameplayMonoBehaviour<T> : StaticInstance<T> where T : GameplayMonoBehaviour<T>
     {
-        protected override void Awake()
+        private void OnEnable()
         {
-            base.Awake();
             GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            GameManager.OnBeforeGameStateChanged -= HandleGameStatedChanged;
         }
 
         /// <summary>
@@ -19,7 +27,9 @@ namespace _Scripts.Utilities
         /// <param name="gameState"></param>
         private void HandleGameStatedChanged(GameState gameState)
         {
+            if (this.IsUnityNull()) return;
             if (gameState == null) return;
+            
             enabled = (gameState != GameState.Pause && gameState != GameState.Dialogue);
             if (gameState == GameState.Pause || gameState == GameState.Dialogue)
             {
