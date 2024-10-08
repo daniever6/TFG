@@ -1,0 +1,14 @@
+﻿{
+  "LevelCombinationsList": [
+    {
+      "CombinationList":[
+        "BotellaAgua_Matraz",
+        "BotellaAcidos_VasoPrecision",
+        "Pipeta_VasoPrecision",
+        "Pipeta_Matraz",
+        "BotellaAgua_Matraz",
+        "CuentaGotas_Matraz"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 using System;
+using System.Threading.Tasks;
+using _Scripts.LevelScripts.Level_01;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using DG.Tweening;
@@ -68,7 +70,7 @@ namespace _Scripts.LevelScripts.Level_03
         /// <summary>
         /// Una vez que se haya tirado el objeto en el contenedor, lo cierra y destruye el objeto
         /// </summary>
-        private void DropOnContainer()
+        private async void DropOnContainer()
         {
             string combination = $"{name}_{_lastContainerName}";
             CombinationResult result = CombinationsManager.Instance.GetCombinationResult(combination);
@@ -80,10 +82,15 @@ namespace _Scripts.LevelScripts.Level_03
                     break;
                 
                 default:
-                    GameManager.PlayerDeathCause.DeathReason = "Has explotado";
-                    GameManager.PlayerDeathCause.GameLevel = GameLevels.Level3;
-                    SceneManager.LoadScene("DeathScene");
-                    break;
+                    Transform ParticlePos = _lastContainerInteracted.transform;
+                    
+                    ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", ParticlePos);
+                    ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", ParticlePos);
+                    _lastContainerInteracted.CloseContenedor();
+                    Destroy(this.gameObject);
+                    await Task.Delay(2000);
+                    DeathInvoker.Instance.KillAnimation(GameLevels.Level3, "El residuo ha reaccionado y explotado", 2f);
+                    return;
             }
             
             _lastContainerInteracted.CloseContenedor();
