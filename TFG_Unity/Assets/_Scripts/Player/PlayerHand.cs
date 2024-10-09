@@ -132,6 +132,11 @@ namespace _Scripts.Player
         /// <param name="newParent">Gameobject padre en el que soltar el objeto</param>
         public void GrabObject(LevelInteractable objectToGrab, GameObject newParent)
         {
+            if (objectToGrab.IsUnityNull())
+            {
+                return;
+            }
+            
             transform.DOMove(objectToGrab.transform.position, 1)
                 .OnComplete(async () =>
                 {
