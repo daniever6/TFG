@@ -17,7 +17,7 @@ namespace _Scripts.LevelScripts
 
         private List<List<string>> _levelCorrectCombinations = new ();
         private List<string> _correctCombinations = new ();
-        private Stack<string> _currentCombinations = new ();
+        private List<string> _currentCombinations = new ();
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace _Scripts.LevelScripts
         {
             if(!combination.Equals(GetCorrectCombinationAt(CurrentCombinationIndex))) return false;
 
-            _currentCombinations.Push(combination);
+            _currentCombinations.Add(combination);
             CurrentCombinationIndex++;
             return true;
         }

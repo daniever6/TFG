@@ -13327,7 +13327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Name
-      value: BotellaAcido
+      value: BotellaAcidos
       objectReference: {fileID: 0}
     - target: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Layer

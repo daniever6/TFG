@@ -3,11 +3,11 @@
     {
       "CombinationList":[
         "BotellaAgua_Matraz",
-        "BotellaAcidos_VasoPrecision",
-        "Pipeta_VasoPrecision",
+        "BotellaAcidos_VasoPrecipitacion",
+        "Pipeta_VasoPrecipitacion",
         "Pipeta_Matraz",
         "BotellaAgua_Matraz",
-        "CuentaGotas_Matraz"
+        "Pipeta_Matraz"
       ]
     }
   ]
