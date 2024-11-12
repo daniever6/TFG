@@ -78,6 +78,13 @@
         Zero,
         Print
     }
+
+    public enum LevelIcons
+    {
+        Default,
+        Correct,
+        Wrong,
+    }
     
     [System.Serializable]
     public class ClothingIndex

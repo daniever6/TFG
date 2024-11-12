@@ -20,12 +20,18 @@ namespace _Scripts.LevelScripts.Level_02
             }
         }
 
+        /// <summary>
+        /// Abre la puerta de la balanza
+        /// </summary>
         public void OpenBalanzaAnimation()
         {
             _animator.Play("OpenBalanza");
             BalanzaManager.IsBalanzaOpen = true;
         }
 
+        /// <summary>
+        /// Cierra la puerta de la balanza
+        /// </summary>
         public void CloseBalanzaAnimation()
         {
             _animator.Play("CloseBalanza");

@@ -274,21 +274,22 @@ namespace _Scripts.Player
                     break;
                 
                 case CombinationResult.Error:
+                    CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Wrong);
                     PlayerGrab.IsTweening = false;
                     await UseObjectsAnimation(secondaryObject);
                     PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     await GoToInitialPosition();
-                    Debug.Log("Error");
                     
                     _levelTeacher.GrabAndHide(secondaryObject);
                     
                     break;
                 
                 case CombinationResult.Correct:
-                    Debug.Log("Correcto");
+                    
                     var resul = ALevel.PerformCombinationCommand.Execute(combinationName);
                     if (resul)
                     {
+                        CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Correct);
                         await UseObjectsAnimation(secondaryObject);
                         FirstPersonLevelManager.Instance.PostPerformCombination();
                     }
@@ -301,14 +302,17 @@ namespace _Scripts.Player
                     break;
                 
                 case CombinationResult.Explosion:
+                    CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Wrong);
                     await UseObjectsAnimation(secondaryObject);
                     PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject, Color.red);
+
                     ParticleEffectManager.Instance.InstantiateParticle("Explosion");
                     ParticleEffectManager.Instance.InstantiateParticle("Fuego");
                     DeathInvoker.Instance.KillAnimation(GameLevels.Level1, "Has explotado");
                     break;
                 
                 case CombinationResult.Corrosion:
+                    CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Wrong);
                     await UseObjectsAnimation(secondaryObject);
                     PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     Debug.Log("Corrosion");
@@ -316,6 +320,8 @@ namespace _Scripts.Player
             }
             
         }
+
+        private static bool isPipetaLoaded = false;
 
         /// <summary>
         /// Lleva la logica de la vision de las mezclas de los reactivos
@@ -358,10 +364,15 @@ namespace _Scripts.Player
             //Hace visible la mezcla de la mano secundario o le cambia el color
             if (!secondaryMezcla.IsUnityNull())
             {
-                if (primaryObject.name == "Pipeta")
+                if (primaryObject.name == "Pipeta" && !isPipetaLoaded)
                 {
+                    isPipetaLoaded = true;
                     secondaryMezcla.HideMezcla();
                     return;
+                }
+                else if(primaryObject.name == "Pipeta" && isPipetaLoaded)
+                {
+                    isPipetaLoaded = false;
                 }
                 
                 if (secondaryMezcla.isMezclaVisible)
