@@ -45,7 +45,7 @@ namespace _Scripts.Player
         {
             UserInput.OnWalking -= ClearNavMeshAgentPath;
         }
-        
+
         /// <summary>
         /// Mueve el personaje a través de su navMeshAgent a la posicion indicada cuando se hace click con el ratón.
         /// Comprueba el objeto con el que interactuar y llama al evento correspondiente si hace falta.
@@ -58,7 +58,7 @@ namespace _Scripts.Player
             _navMeshAgent.isStopped = false;
 
             UserInput.OnWalking += ClearNavMeshAgentPath;
-            
+
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out _hit, Mathf.Infinity))
             {

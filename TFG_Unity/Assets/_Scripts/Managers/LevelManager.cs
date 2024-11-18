@@ -34,9 +34,18 @@ namespace _Scripts.Managers
         {
             base.Awake();
             // DontDestroyOnLoad(this);
-            
-            //Desactiva todos los componentes y scripts relacionados con los niveles
-            for (int i = 0; i < 3; i++)
+
+            DeactivateAllComponents();
+
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        /// <summary>
+        /// Desactiva todos los componentes y scripts relacionados con los niveles
+        /// </summary>
+        private void DeactivateAllComponents()
+        {
+            for (int i = 0; i < levelComponents.Count; i++)
             {
                 foreach (var component in levelComponents[i].List)
                 {
@@ -47,8 +56,6 @@ namespace _Scripts.Managers
                     script.enabled = false;
                 }
             }
-
-            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         public void LoadScene(string sceneName)
@@ -71,7 +78,7 @@ namespace _Scripts.Managers
             }
             else
             {
-                ChangeLevelState(LevelState.ThirdLevel);
+                ChangeLevelState(LevelState.FirstLevel);
             }
         }
 
@@ -83,6 +90,8 @@ namespace _Scripts.Managers
         /// <param name="changeState"></param>
         public void LoadNewScene(string sceneName, LevelState levelState, bool changeState = true)
         {
+            DeactivateAllComponents();
+
             if (changeState)
             {
                 ChangeLevelState(levelState);
@@ -120,6 +129,10 @@ namespace _Scripts.Managers
                 case LevelState.ThirdLevel:
                     HandleThirdLevel();
                     break;
+
+                case LevelState.FirstLevelPart2:
+                    HandleFirstLevelPart2();
+                    break;
             }
         }
 
@@ -151,10 +164,82 @@ namespace _Scripts.Managers
             
             InfoCanvas.Instance.ShowMessage("- Prepara los reactivos en las mesas de trabajo.");
         }
+
+        /// <summary>
+        /// CONTEXTO:
+        /// - El jugador tendra que interactuar con la extractora para realizar los
+        ///   reactivos correspondientes
+        ///
+        /// ACCIONES:
+        /// - Desactivar scripts y componentes del nivel anterior
+        /// - Al interactuar con las mesas de trabajo, no abrir niveles diferentes.
+        /// - Llevar a cabo la elaboracion de reactivos y combinaciones.
+        /// - Gestionar las combinaciones entre elementos
+        /// - Finalizar el nivel una vez terminado
+        /// 
+        /// </summary>
+        private void HandleFirstLevelPart2()
+        {
+            //Desactiva los compoenentes y scripts del nivel 1
+            foreach (var obj in levelComponents[0].List)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (var script in levelScripts[0].List)
+            {
+                script.enabled = false;
+            }
+
+            //Activa los componentes y scripts del nivel 2
+            foreach (var obj in levelComponents[1].List)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (var script in levelScripts[1].List)
+            {
+                script.enabled = true;
+            }
+
+            InfoCanvas.Instance.ShowMessage("- Usa la extractora para usar hacer un reactivo nuevo.");
+        }
         
+        /// <summary>
+        /// CONTEXTO:
+        /// - El jugador tendrá que hablar con un NPC para ayudarle a hacer los calculos necesarios
+        ///   para el correcto uso de la balanza
+        ///   
+        /// ACCIONES:
+        /// - Desactivar scripts y componentes del nivel anterior
+        /// - Activar al NPC para poder ayudarle a hacer los cálculos
+        /// </summary>
         private void HandleSecondLevel()
         {
-            
+            //Desactiva los compoenentes y scripts del nivel 1
+            foreach (var obj in levelComponents[1].List)
+            {
+                obj.SetActive(false);
+            }
+
+            foreach (var script in levelScripts[1].List)
+            {
+                script.enabled = false;
+            }
+
+            //Activa los componentes y scripts del nivel 2
+            foreach (var obj in levelComponents[2].List)
+            {
+                obj.SetActive(true);
+            }
+
+            foreach (var script in levelScripts[2].List)
+            {
+                script.enabled = true;
+            }
+
+            InfoCanvas.Instance.ShowMessage("- Busca a NPC1 para ayudarle a hacer los cálculos necesarios " +
+                                          "de los reactivos.");
         }
         
         /// <summary>
@@ -176,23 +261,23 @@ namespace _Scripts.Managers
         private void HandleThirdLevel()
         {
             //Desactiva los compoenentes y scripts del nivel 2
-            foreach (var obj in levelComponents[1].List)
+            foreach (var obj in levelComponents[2].List)
             {
                 obj.SetActive(false);
             }
 
-            foreach (var script in levelScripts[1].List)
+            foreach (var script in levelScripts[2].List)
             {
                 script.enabled = false;
             }
             
             //Activa los componentes y scripts del nivel 3
-            foreach (var obj in levelComponents[2].List)
+            foreach (var obj in levelComponents[3].List)
             {
                 obj.SetActive(true);
             }
 
-            foreach (var script in levelScripts[2].List)
+            foreach (var script in levelScripts[3].List)
             {
                 script.enabled = true;
             }

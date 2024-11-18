@@ -6,6 +6,7 @@
         Tutorial,
         FirstLevel,
         SecondLevel,
+        FirstLevelPart2,
         ThirdLevel
     }
     

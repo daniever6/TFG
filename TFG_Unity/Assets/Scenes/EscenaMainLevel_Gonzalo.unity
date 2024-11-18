@@ -2546,6 +2546,27 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 887151ff198d7014e8e5781bf4bb1320, type: 2}
   m_BuildHeightMesh: 0
+--- !u!65 &176316812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176316806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09800003, y: 0, z: 0.12300004}
+  m_Center: {x: -0.050000012, y: 4.656613e-10, z: -0.03750001}
 --- !u!1 &190260097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d520ea707511d84f9738976716d3584, type: 3}
@@ -6290,6 +6311,7 @@ MonoBehaviour:
   levelComponents:
   - List: []
   - List: []
+  - List: []
   - List:
     - {fileID: 2076891332}
     - {fileID: 171459126}
@@ -6299,7 +6321,13 @@ MonoBehaviour:
   levelScripts:
   - List:
     - {fileID: 1131262584}
-  - List: []
+  - List:
+    - {fileID: 2014785388}
+    - {fileID: 2014785390}
+  - List:
+    - {fileID: 656410123}
+    - {fileID: 656410122}
+    - {fileID: 656410119}
   - List:
     - {fileID: 1131262582}
     - {fileID: 2068403116}
@@ -10735,9 +10763,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 36db0896d7468284f9c769a5ff0ed1c4, type: 2}
+    - target: {fileID: -4549757445259455984, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
       propertyPath: m_Name
       value: LaboratorioConTecho
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573726282031660673, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4643330860819165402, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
       propertyPath: m_IsActive
@@ -10750,6 +10790,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2573726282031660673, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
       insertIndex: -1
       addedObject: {fileID: 176316808}
+    - targetCorrespondingSourceObject: {fileID: 2573726282031660673, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 176316812}
   m_SourcePrefab: {fileID: 100100000, guid: 0a5d543a7374e2f49bcec64e215c4411, type: 3}
 --- !u!1 &1150527524 stripped
 GameObject:
@@ -17337,6 +17380,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntoRecogidaUI: {fileID: 485326912}
+--- !u!114 &2014785390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3779563037950399520, guid: df11523c83b6d474ca7b9bd7033cd026, type: 3}
+  m_PrefabInstance: {fileID: 8956720766740155983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790072144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d6ab79827e4f25a2e6a0372733aa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2014969773
 GameObject:
   m_ObjectHideFlags: 0
