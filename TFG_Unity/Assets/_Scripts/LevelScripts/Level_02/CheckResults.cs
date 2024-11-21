@@ -21,20 +21,22 @@ namespace _Scripts.LevelScripts.Level_02
         [SerializeField] private CinemachineVirtualCamera npcCamera;
         [SerializeField] private OpenBalanza balanzaAnimator;
         [SerializeField] private Vector3 papelPesajeNewPos;
-        [SerializeField] private DialogueTrigger npcDialogue;
+        [SerializeField] private DialogueTrigger npcDialogueEntrega;
+        [SerializeField] private DialogueTrigger finishDialogue;
         [SerializeField] private Animator npcAnimator;
 
-        [SerializeField] private PesoObjetos pesoReactivo;
+        [SerializeField] private PesoObjetos pesoReactivo;  // Script del peso del reactivo
         [SerializeField] private Transform posicionMatraz;
-        [SerializeField] private float finalResult = 0.75f;
+        [SerializeField] private float finalResult = 0.75f; // Resultado final del peso para pasar el nivel
 
         [SerializeField] private PlayerGrab playerGrab;
         [SerializeField] private Collider pesajeCollider;
 
         [SerializeField] private GameObject entregarButton;
 
-        private Transform npcTransform;
-        private bool HasBeenPaused = false;
+        private float finalPeso = 0f;           //Peso final entregado
+        private Transform npcTransform;         //Transform del NPC
+        private bool HasBeenPaused = false;     
         private bool HasBeenPlayed = false;
         private Vector3 initialRotation;
         private Sequence mySequence;
@@ -49,6 +51,7 @@ namespace _Scripts.LevelScripts.Level_02
         {
             base.OnDestroy();
             DialogueManager.OnDialogueFinish -= NpcMakeCombination;
+            DialogueManager.OnDialogueFinish -= FinishLevel;
         }
 
         /// <summary>
@@ -79,7 +82,7 @@ namespace _Scripts.LevelScripts.Level_02
             transform.DOMove(papelPesajeNewPos, 4).OnComplete(async ()=>
             {
                 await Task.Delay(500);
-                npcDialogue.TriggerEvent();
+                npcDialogueEntrega.TriggerEvent();
             });
             npcCamera.enabled = true;
         }
@@ -89,17 +92,26 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void NpcMakeCombination()
         {
+            DialogueManager.OnDialogueFinish -= NpcMakeCombination;
+
             npcAnimator.Play("Idle");
             
 
             mySequence = DOTween.Sequence();
-            mySequence.Append(npcTransform.DORotate(new Vector3(0, 0), 1f)).OnComplete(()=> npcAnimator.Play("Search"));
-            mySequence.Append(papelPesaje.transform.DOMove(new Vector3(-2.06f,2.59f,-0.80f), 1.5f));
-            mySequence.Append(papelPesaje.transform.DORotate(new Vector3(327.16f,270f,90f), 0.5f));
+            mySequence.Append(npcTransform.DORotate(new Vector3(0, 0), 1f));
+            mySequence.AppendCallback(()=> npcAnimator.CrossFade("Search", 0.5f));
+            mySequence.Append(papelPesaje.transform.DOMove(new Vector3(-2.06f,2.59f,-0.80f), 2f));
+            mySequence.Append(papelPesaje.transform.DORotate(new Vector3(327.16f,270f,90f), 1f));
             mySequence.AppendInterval(1f);
-            mySequence.AppendCallback(() => _reactivoPesaje.SetReactivoCero());
-            mySequence.Append(papelPesaje.transform.DORotate(initialRotation, 0.5f));
-            mySequence.Append(papelPesaje.transform.DOMove(papelPesajeNewPos, 1.5f));
+            mySequence.AppendCallback(() => 
+            { 
+                finalPeso = _reactivoPesaje.CurrentPesoReactivo();
+                _reactivoPesaje.SetReactivoCero();
+            });
+            mySequence.Append(papelPesaje.transform.DORotate(initialRotation, 1f));
+            mySequence.Append(papelPesaje.transform.DOMove(papelPesajeNewPos, 2f));
+            mySequence.AppendCallback(() => npcAnimator.CrossFade("Sorpresa", 0.5f));
+            mySequence.AppendInterval(3f);
             mySequence.OnComplete(() => GetLevelResult());
             mySequence.Play();
             HasBeenPlayed = true;
@@ -111,7 +123,7 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void GetLevelResult()
         {
-            if (Math.Abs(pesoReactivo.Peso - finalResult) > 0.1)
+            if (Math.Abs(finalPeso - finalResult) > 0.1)
             {
                 ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", posicionMatraz);
                 ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", posicionMatraz); 
@@ -124,8 +136,30 @@ namespace _Scripts.LevelScripts.Level_02
             }
             else
             {
-                SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+                CongratulatePlayer();
             }
+        }
+
+        /// <summary>
+        /// Animacion y activacion del dialogo para felicitar al jugador por completar el nivel
+        /// </summary>
+        private void CongratulatePlayer()
+        {
+            npcAnimator.CrossFade("Clap", 0.5f);
+
+
+            mySequence = DOTween.Sequence();
+            mySequence.Append(npcTransform.DORotate(new Vector3(0f, 90f), 1f));
+            mySequence.AppendCallback(() => npcAnimator.CrossFade("Talk", 0.5f));
+            mySequence.OnComplete(() => finishDialogue.TriggerEvent());
+            mySequence.Play();
+
+            DialogueManager.OnDialogueFinish += FinishLevel;
+        }
+
+        private void FinishLevel()
+        {
+            SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
         }
 
         /// <summary>
