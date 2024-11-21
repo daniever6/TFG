@@ -22,6 +22,7 @@ namespace _Scripts.LevelScripts.Level_02
         [SerializeField] private OpenBalanza balanzaAnimator;
         [SerializeField] private Vector3 papelPesajeNewPos;
         [SerializeField] private DialogueTrigger npcDialogue;
+        [SerializeField] private Animator npcAnimator;
 
         [SerializeField] private PesoObjetos pesoReactivo;
         [SerializeField] private Transform posicionMatraz;
@@ -32,6 +33,7 @@ namespace _Scripts.LevelScripts.Level_02
 
         [SerializeField] private GameObject entregarButton;
 
+        private Transform npcTransform;
         private bool HasBeenPaused = false;
         private bool HasBeenPlayed = false;
         private Vector3 initialRotation;
@@ -40,6 +42,7 @@ namespace _Scripts.LevelScripts.Level_02
         private void Start()
         {
             initialRotation = papelPesaje.transform.rotation.eulerAngles;
+            npcTransform = npcAnimator.gameObject.transform;
         }
 
         protected override void OnDestroy()
@@ -86,7 +89,11 @@ namespace _Scripts.LevelScripts.Level_02
         /// </summary>
         private void NpcMakeCombination()
         {
+            npcAnimator.Play("Idle");
+            
+
             mySequence = DOTween.Sequence();
+            mySequence.Append(npcTransform.DORotate(new Vector3(0, 0), 1f)).OnComplete(()=> npcAnimator.Play("Search"));
             mySequence.Append(papelPesaje.transform.DOMove(new Vector3(-2.06f,2.59f,-0.80f), 1.5f));
             mySequence.Append(papelPesaje.transform.DORotate(new Vector3(327.16f,270f,90f), 0.5f));
             mySequence.AppendInterval(1f);
@@ -107,8 +114,10 @@ namespace _Scripts.LevelScripts.Level_02
             if (Math.Abs(pesoReactivo.Peso - finalResult) > 0.1)
             {
                 ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", posicionMatraz);
-                ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", posicionMatraz);
+                ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", posicionMatraz); 
                 
+                npcAnimator.Play("Die");
+
                 DeathInvoker.Instance.KillAnimation(GameLevels.Level2, 
                     "Has muerto por un accidente al no pesar bien el reactivo", 
                     3f);
@@ -126,6 +135,11 @@ namespace _Scripts.LevelScripts.Level_02
         {
             base.OnPostPaused();
 
+            if (GameManager.GameState == GameState.Pause)
+            {
+                npcAnimator.speed = 0f;
+            }
+
             if (HasBeenPlayed)
             {
                 mySequence.Pause();
@@ -139,6 +153,12 @@ namespace _Scripts.LevelScripts.Level_02
         protected override void OnPostResumed()
         {
             base.OnPostResumed();
+
+            if(GameManager.GameState != GameState.Pause)
+            {
+                npcAnimator.speed = 1f;
+            }
+
             if (HasBeenPaused)
             {
                 mySequence.Play();
