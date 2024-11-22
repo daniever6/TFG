@@ -11,14 +11,14 @@ namespace _Scripts.Utilities
     {
         private void OnEnable()
         {
-            GameManager.OnBeforeGameStateChanged += HandleGameStatedChanged;
+            GameManager.OnAfterGameStateChanged += HandleGameStatedChanged;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             
-            GameManager.OnBeforeGameStateChanged -= HandleGameStatedChanged;
+            GameManager.OnAfterGameStateChanged -= HandleGameStatedChanged;
         }
 
         /// <summary>

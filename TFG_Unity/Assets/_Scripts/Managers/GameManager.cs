@@ -39,8 +39,6 @@ namespace _Scripts.Managers
         {
             try
             {
-                var a = Instance?.name;
-                
                 if (Instance != null)
                 {
                     Destroy(this.gameObject);

@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hablar
+  m_Name: Talk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -85,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle 01
+  m_Name: Idle 02
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -143,7 +143,7 @@ AnimatorStateMachine:
     m_Position: {x: 390, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8756953081753554052}
-    m_Position: {x: 390, y: 120, z: 0}
+    m_Position: {x: 390, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3139166394303910261}
     m_Position: {x: 390, y: 190, z: 0}
@@ -159,7 +159,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -1935201236934538134}
+  m_DefaultState: {fileID: 5355407798410383655}
 --- !u!1102 &5355407798410383655
 AnimatorState:
   serializedVersion: 6
@@ -167,7 +167,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle 02
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
