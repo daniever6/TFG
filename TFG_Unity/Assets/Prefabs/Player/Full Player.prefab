@@ -490,8 +490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactablesParent: {fileID: 0}
-  rightHand: {fileID: 4172593716437867029}
-  leftHand: {fileID: 6978659488473269472}
+  manoDerecha: {fileID: 0}
+  manoIzquierda: {fileID: 0}
 --- !u!114 &2484498238462093483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,7 +1613,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1300580388378695123, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4501027336852074298}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982207084439965148}
   m_SourcePrefab: {fileID: 100100000, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
 --- !u!4 &375793912660583485 stripped
 Transform:
@@ -1775,6 +1778,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8469591776931730629, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
   m_PrefabInstance: {fileID: 7152455353544005780}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8035488185538176453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  m_PrefabInstance: {fileID: 7152455353544005780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1982207084439965148
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035488185538176453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b4f084ba4da7da488511fc799f1f2d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8498780012762582663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1635681167576634899, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}

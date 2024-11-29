@@ -1,4 +1,5 @@
 using _Scripts.Utilities;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _Scripts.Player
@@ -13,10 +14,17 @@ namespace _Scripts.Player
         [Header("References")] 
         [SerializeField] private Rigidbody rbRigidbody;
         private RaycastHit _hit;
-    
-        [Header("Properties")] 
+
+        [Header("Properties")]
+        private float MaxWalkVelocity = 10f;
         [SerializeField] private float moveSpeed = 3.5f;
         [SerializeField] private float rotationSpeed = 400f;
+
+        [SerializeField][CanBeNull] private Animator playerAnimator;
+
+        public float acceleration = 10f; // Aceleración
+        private Vector2 direction;
+        private float currentSpeed = 0f; // Velocidad actual del jugador
 
         #endregion
 
@@ -28,7 +36,24 @@ namespace _Scripts.Player
         /// <param name="direction">Direccion recibida mediante inputActionReference Move(WASD)</param>
         public void Move(Vector2 direction)
         {
-            rbRigidbody.velocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed);
+            playerAnimator?.SetBool("ManualWalking", direction != Vector2.zero);
+
+            Vector3 moveDirection = new Vector3(direction.x, 0, direction.y).normalized;
+
+            // Acelera suavemente hasta la velocidad máxima
+            if (direction != Vector2.zero)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
+            }
+            else
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, 0f, acceleration * Time.fixedDeltaTime);
+            }
+
+            // Aplica la velocidad calculada
+            rbRigidbody.velocity = moveDirection * currentSpeed;
+
+            //rbRigidbody.velocity = new Vector3(direction.x * moveSpeed, 0, direction.y * moveSpeed);
             if (direction != Vector2.zero)
             {
                 Rotate(direction);

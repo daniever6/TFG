@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Linq;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -19,6 +21,7 @@ namespace _Scripts.Player
 
         [SerializeField] private Camera _camera;
         [SerializeField] private NavMeshAgent _navMeshAgent;
+        [SerializeField][CanBeNull] private Animator playerAnimator;
         private RaycastHit _hit;
 
         #endregion
@@ -44,6 +47,11 @@ namespace _Scripts.Player
         private void OnDisable()
         {
             UserInput.OnWalking -= ClearNavMeshAgentPath;
+        }
+
+        private void Update()
+        {
+            playerAnimator?.SetBool("ClickWalking", _navMeshAgent.hasPath);
         }
 
         /// <summary>
@@ -87,10 +95,21 @@ namespace _Scripts.Player
         }
 
         /// <summary>
+        /// Establece el IsWalking del animator a True y el destino del NavMeshAgent
+        /// </summary>
+        /// <param name="point">Punto de destino</param>
+        private void SetPlayerDestination(Vector3 point)
+        {
+            _navMeshAgent.SetDestination(point);
+        }
+
+        /// <summary>
         /// Detiene el movimiento del navMeshAgent. Se detiene cuando llamamos el evento OnWalking.
         /// </summary>
         public void ClearNavMeshAgentPath()
         {
+            playerAnimator?.SetBool("ClickWalking", false);
+
             UserInput.OnWalking -= ClearNavMeshAgentPath;
             if (_navMeshAgent.hasPath)
             {
