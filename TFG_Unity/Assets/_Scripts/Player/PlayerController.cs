@@ -28,7 +28,7 @@ namespace _Scripts.Player
         public void WalkToPoint(InputAction.CallbackContext context)
         {
             if (!this.enabled) return;
-            playerMovementOnClick!.WalkToPoint(context);
+            StartCoroutine(playerMovementOnClick!.WalkToPoint(context));
         }
 
         public void Use(InputAction.CallbackContext context)

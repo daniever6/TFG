@@ -2,6 +2,7 @@
 using _Scripts.NPCs;
 using _Scripts.Utilities;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,14 +12,14 @@ namespace _Scripts.Dialogues
     {
         [SerializeField] private DialogueManager dialogueManager;
         [SerializeField] private Dialogue dialogue;
+
+        private NpcState npcState;
         private NpcRotator npcRotator;
 
         private void Start()
         {
-            if(TryGetComponent<NpcRotator>(out var rotator))
-            {
-                npcRotator = rotator;
-            }
+            TryGetComponent<NpcRotator>(out npcRotator);
+            TryGetComponent<NpcState>(out npcState);
 
             DialogueManager.OnDialogueFinish += EndDialogue;
         }
@@ -33,6 +34,13 @@ namespace _Scripts.Dialogues
         /// </summary>
         public override void TriggerEvent()
         {
+            // Si el NPC se esta quemando no abre el dialogo
+            if(!npcState.IsUnityNull() && npcState.State == NpcStates.Burning)
+            {
+                return;
+            }
+
+            // Accion de hablar con el jugador
             if(npcRotator != null)
             {
                 npcRotator.RotateToPlayer();

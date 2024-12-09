@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -59,9 +61,9 @@ namespace _Scripts.Player
         /// Comprueba el objeto con el que interactuar y llama al evento correspondiente si hace falta.
         /// </summary>
         /// <param name="context"></param>
-        public void WalkToPoint(InputAction.CallbackContext context)
+        public IEnumerator WalkToPoint(InputAction.CallbackContext context)
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject()) yield break;
             
             _navMeshAgent.isStopped = false;
 
@@ -76,18 +78,38 @@ namespace _Scripts.Player
                 {
                     case Iteractables.None:
                         break;
+
                     case Iteractables.Ground:
                         _navMeshAgent.SetDestination(_hit.point);
                         break;
+
                     case Iteractables.Npc:
                         _navMeshAgent.SetDestination(_hit.point);
-                        StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
+
+                        GameObject npc = _hit.collider.gameObject;
+
+                        //Espera a llegar a destino
+                        yield return StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
+
+                        if(isAwaiting == false)
+                        {
+                            npc.TryGetComponent<NpcState>(out NpcState npcState);
+
+                            // Si se esta quemando coge al npc
+                            if (!npcState.IsUnityNull() && npcState.State == NpcStates.Burning)
+                            {
+                                CarryNPC.Instance.Carry(npc);
+                            }
+                        }
+
                         break;
+
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
                         StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
                             .Where(t => t.enabled)?.FirstOrDefault()));
                         break;
+
                     default:
                         break;
                 }
@@ -119,6 +141,8 @@ namespace _Scripts.Player
             _navMeshAgent.path.ClearCorners();
 
         }
+
+        private bool isAwaiting = false;
         
         /// <summary>
         /// Espera a que el jugador llegue al destino para realizar la accion
@@ -128,12 +152,14 @@ namespace _Scripts.Player
         /// <returns>Acaba la corrutina si la distancia restante <= 0.1f</returns>
         IEnumerator WaitForDestination<T> (T trigger) where T : Trigger
         {
+            isAwaiting = true;
             while (_navMeshAgent.remainingDistance > 0f)
             {
                 if (_navMeshAgent.remainingDistance <= 1f)
                 {
                     trigger?.TriggerEvent();
                     ClearNavMeshAgentPath();
+                    isAwaiting = false;
                     yield break;
                 }
                 yield return null;

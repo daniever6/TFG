@@ -86,6 +86,14 @@
         Correct,
         Wrong,
     }
+
+    public enum NpcStates
+    {
+        None,
+        Burning,
+        Carry,
+        Die
+    }
     
     [System.Serializable]
     public class ClothingIndex
