@@ -34,8 +34,7 @@ namespace _Scripts.Dialogues
         /// </summary>
         public override void TriggerEvent()
         {
-            // Si el NPC se esta quemando no abre el dialogo
-            if(!npcState.IsUnityNull() && npcState.State == NpcStates.Burning)
+            if(dialogueManager.IsUnityNull() || npcState.State != NpcStates.None)
             {
                 return;
             }
@@ -57,7 +56,6 @@ namespace _Scripts.Dialogues
             if(npcRotator != null)
             {
                 npcRotator.RotateToInitial();
-
             }
         }
     }

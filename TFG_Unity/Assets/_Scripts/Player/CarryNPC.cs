@@ -6,13 +6,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
+/// <summary>
+/// Clase para agarrar o soltar NPCs
+/// </summary>
 public class CarryNPC : Singleton<CarryNPC>
 {
     [SerializeField] private GameObject carryPosition;
     [SerializeField] private GameObject NpcParent;
 
+    private GameObject currentNpc = null;
     private Vector3 initialNpcPos = Vector3.zero;
     private bool isCarrying = false;
+
+    public bool IsCarrying { get => isCarrying; }
 
     /// <summary>
     /// El jugador coge al jugador en brazos
@@ -26,6 +32,7 @@ public class CarryNPC : Singleton<CarryNPC>
         }
 
         isCarrying = true;
+        currentNpc = npc;
 
         initialNpcPos = npc.transform.position;
 
@@ -60,9 +67,8 @@ public class CarryNPC : Singleton<CarryNPC>
     /// <summary>
     /// Suelta al NPC en la posicion indicada
     /// </summary>
-    /// <param name="npc">Npc al que soltar</param>
     /// <param name="dropPosition">Posicion en la que soltar al npc</param>
-    public void DropNPC(GameObject npc, Vector3 dropPosition)
+    public void DropNPC(Vector3 dropPosition)
     {
         if (!isCarrying)
         {
@@ -71,22 +77,22 @@ public class CarryNPC : Singleton<CarryNPC>
 
         isCarrying = false;
 
-        npc.TryGetComponent<Animator>(out Animator npcAnimator);
+        currentNpc.TryGetComponent<Animator>(out Animator npcAnimator);
 
         if (npcAnimator == null)
         {
-            npcAnimator = npc.GetComponentInChildren<Animator>();
+            npcAnimator = currentNpc.GetComponentInChildren<Animator>();
         }
 
         // Establece la nueva posicion del NPC
-        npc.gameObject.transform.SetParent(NpcParent.transform);
-        npc.transform.position = new Vector3(dropPosition.x, initialNpcPos.y, dropPosition.z);
+        currentNpc.gameObject.transform.SetParent(NpcParent.transform);
+        currentNpc.transform.position = new Vector3(dropPosition.x, initialNpcPos.y, dropPosition.z);
 
         //Activamos los componentes conflictivos del NPC
         try
         {
-            npc.GetComponent<Collider>().enabled = true;
-            npc.GetComponent<NavMeshObstacle>().enabled = true;
+            currentNpc.GetComponent<Collider>().enabled = true;
+            currentNpc.GetComponent<NavMeshObstacle>().enabled = true;
         }
         catch (Exception ex)
         {
@@ -95,5 +101,6 @@ public class CarryNPC : Singleton<CarryNPC>
 
         npcAnimator.Play("Idle");
 
+        currentNpc = null;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NpcState : MonoBehaviour
 {
-    private NpcStates state = NpcStates.Burning;
+    private NpcStates state = NpcStates.None;
 
     public event Action OnChangeStateNpc;
 

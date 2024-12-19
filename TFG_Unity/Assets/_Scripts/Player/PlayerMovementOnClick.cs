@@ -106,8 +106,18 @@ namespace _Scripts.Player
 
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
-                        StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
+                        yield return StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
                             .Where(t => t.enabled)?.FirstOrDefault()));
+
+                        //Suelta al NPC en al ducha
+                        if(isAwaiting == false)
+                        {
+                            if (CarryNPC.Instance.IsCarrying && _hit.collider.gameObject.name == "Ducha")
+                            {
+                                CarryNPC.Instance.DropNPC(_hit.point);
+                            }
+                        }
+                        
                         break;
 
                     default:

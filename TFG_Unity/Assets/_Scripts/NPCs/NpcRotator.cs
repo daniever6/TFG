@@ -73,14 +73,18 @@ namespace _Scripts.NPCs
         {
             base.OnPostPaused();
 
-            if(GameManager.GameState == GameState.Pause)
+            if (!animator.IsUnityNull())
             {
-                animator.speed = 0f;
+                if (GameManager.GameState == GameState.Pause)
+                {
+                    animator.speed = 0f;
+                }
+                else if (GameManager.GameState == GameState.Dialogue)
+                {
+                    animator.speed = 1f;
+                }
             }
-            else if(GameManager.GameState == GameState.Dialogue)
-            {
-                animator.speed = 1f;
-            }
+            
 
             PlayerController.Instance.enabled = true;
         }
@@ -93,9 +97,12 @@ namespace _Scripts.NPCs
         {
             base.OnPostResumed();
 
-            if(GameManager.GameState != GameState.Pause)
+            if (!animator.IsUnityNull())
             {
-                animator.speed = 1f;
+                if (GameManager.GameState != GameState.Pause)
+                {
+                    animator.speed = 1f;
+                }
             }
 
             PlayerController.Instance.enabled = true;

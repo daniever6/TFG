@@ -78,15 +78,17 @@ namespace _Scripts.LevelScripts.Level_01
         /// </summary>
         /// <param name="particleName">Nombre del Key de la particula</param>
         /// <param name="pos">Posicion en la que instanciar el gameobject</param>
-        public void InstantiateParticleInPos(string particleName, Transform pos)
+        public GameObject InstantiateParticleInPos(string particleName, Transform pos)
         {
             if (!particles.Contains(particleName))
             {
-                return;
+                return null;
             }
             
             var particle = particles[particleName];
-            Instantiate(particle, pos.position, Quaternion.LookRotation(Vector3.up), pos);
+            var particleInstance = Instantiate(particle, pos.position, Quaternion.LookRotation(Vector3.up), pos);
+
+            return particleInstance;
         }
     }
 }
