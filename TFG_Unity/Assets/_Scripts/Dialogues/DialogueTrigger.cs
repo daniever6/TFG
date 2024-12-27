@@ -13,6 +13,8 @@ namespace _Scripts.Dialogues
         [SerializeField] private DialogueManager dialogueManager;
         [SerializeField] private Dialogue dialogue;
 
+        private NpcStates npcPreviousState = NpcStates.None;
+
         private NpcState npcState;
         private NpcRotator npcRotator;
 
@@ -34,7 +36,7 @@ namespace _Scripts.Dialogues
         /// </summary>
         public override void TriggerEvent()
         {
-            if(dialogueManager.IsUnityNull() || npcState.State != NpcStates.None)
+            if(dialogueManager.IsUnityNull() || (npcState != null && npcState?.State != NpcStates.None))
             {
                 return;
             }
@@ -44,6 +46,10 @@ namespace _Scripts.Dialogues
             {
                 npcRotator.RotateToPlayer();
             }
+
+            npcPreviousState = npcState.State;
+
+            npcState?.ChangeState(NpcStates.Talking);
 
             dialogueManager.GetDialogues(new []{dialogue});
         }
@@ -57,6 +63,8 @@ namespace _Scripts.Dialogues
             {
                 npcRotator.RotateToInitial();
             }
+
+            npcState?.ChangeState(npcPreviousState);
         }
     }
 }

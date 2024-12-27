@@ -1,4 +1,5 @@
 using _Scripts.Utilities;
+using Assets._Scripts.NPCs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ public class CarryNPC : Singleton<CarryNPC>
 {
     [SerializeField] private GameObject carryPosition;
     [SerializeField] private GameObject NpcParent;
+
+    [SerializeField] private Transform duchaPos;
 
     private GameObject currentNpc = null;
     private Vector3 initialNpcPos = Vector3.zero;
@@ -102,5 +105,17 @@ public class CarryNPC : Singleton<CarryNPC>
         npcAnimator.Play("Idle");
 
         currentNpc = null;
+    }
+
+    /// <summary>
+    /// Suelta al NPC en la posicion de la ducha
+    /// </summary>
+    public void DropOnDucha()
+    {
+        Vector3 newPos = new Vector3(duchaPos.position.x, duchaPos.position.y, duchaPos.position.z);
+        
+        DropNPC(newPos);
+
+        BurnNpc.Instance.StopBurning();
     }
 }

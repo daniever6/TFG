@@ -11,9 +11,8 @@ using UnityEngine;
 
 namespace Assets._Scripts.NPCs
 {
-    public class BurnNpc : MonoBehaviour
+    public class BurnNpc : GameplayMonoBehaviour<BurnNpc>
     {
-        [SerializeField] private Animator npcAnimator;                      // Animator del npc
         [SerializeField] private NpcState state;                            // Estado del NPC
         [SerializeField] private ParticleEffectManager particlesManager;    // Instanciador de particulas
         [SerializeField] private CinemachineVirtualCamera npcCamera;        // Camara que apunta al NPC
@@ -24,19 +23,6 @@ namespace Assets._Scripts.NPCs
         private bool isTalking = false;
         private static bool isActivate = false;
         private GameObject activeVFX;
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartBurning();
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                StopBurning();
-            }
-        }
 
         private void Start()
         {
@@ -73,12 +59,6 @@ namespace Assets._Scripts.NPCs
             activeVFX = particlesManager.InstantiateParticleInPos("Fuego", transform);
 
             activeVFX.SetActive(true);
-
-            //Cambia la animacion del npc
-            if (npcAnimator.HasState(0, Animator.StringToHash("Fire")))
-            {
-                npcAnimator.CrossFade("Fire", 0.2f);
-            }
         }
 
         /// <summary>
@@ -124,7 +104,7 @@ namespace Assets._Scripts.NPCs
 
             isActivate = false;
 
-            state.ChangeState(NpcStates.None);
+            state.ChangeState(NpcStates.Idle);
 
             // Detiene el sistema de particulas
             if (!activeVFX.IsUnityNull())
@@ -138,18 +118,10 @@ namespace Assets._Scripts.NPCs
 
                 activeVFX = null;
             }
-
-            //Cambia la animacion del npc
-            if (npcAnimator.HasState(0, Animator.StringToHash("Idle")))
-            {
-                npcAnimator.CrossFade("Idle", 0.2f);
-            }
             
 
             if (!thanksDialogue.IsUnityNull())
             {
-                npcCamera.enabled = true;
-
                 isTalking = true;
                 
                 thanksDialogue.TriggerEvent();

@@ -2,6 +2,8 @@
 using System.Linq;
 using _Scripts.Managers;
 using _Scripts.Utilities;
+using Assets._Scripts.NPCs;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -47,10 +49,35 @@ namespace _Scripts.Player
                 }
             }
 
-            if (!closestObject.IsUnityNull())
+            if (closestObject.IsUnityNull())
             {
+                return;
+            }
+
+            closestObject.TryGetComponent<NpcState>(out NpcState npcState);
+
+            //Gestion si el npc se esta quemando
+            if(npcState != null && npcState.State == NpcStates.Burning)
+            {
+                if(CarryNPC.Instance.IsCarrying == false)
+                {
+                    CarryNPC.Instance.Carry(closestObject);
+                }
+            }
+            else
+            {
+
+                if (CarryNPC.Instance.IsCarrying == true && closestObject.name == "Ducha")
+                {
+                    CarryNPC.Instance.DropOnDucha();
+                }
+
+                // Activa el trigger mas cercano
                 closestObject.GetComponents<Trigger>()?.Where(t => t.enabled)?.FirstOrDefault()?.TriggerEvent();
             }
+
+           
+
         }
     }
 }

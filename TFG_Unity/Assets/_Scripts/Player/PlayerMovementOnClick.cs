@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using _Scripts.Dialogues;
 using _Scripts.Utilities;
+using Assets._Scripts.NPCs;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -114,7 +115,7 @@ namespace _Scripts.Player
                         {
                             if (CarryNPC.Instance.IsCarrying && _hit.collider.gameObject.name == "Ducha")
                             {
-                                CarryNPC.Instance.DropNPC(_hit.point);
+                                CarryNPC.Instance.DropOnDucha();
                             }
                         }
                         

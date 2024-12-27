@@ -90,6 +90,9 @@
     public enum NpcStates
     {
         None,
+        Idle,
+        Walking,
+        Talking,
         Burning,
         Carry,
         Die
