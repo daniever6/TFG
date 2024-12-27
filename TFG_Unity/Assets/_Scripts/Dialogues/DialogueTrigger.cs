@@ -47,9 +47,12 @@ namespace _Scripts.Dialogues
                 npcRotator.RotateToPlayer();
             }
 
-            npcPreviousState = npcState.State;
+            if (!npcState.IsUnityNull()) 
+            {
+                npcPreviousState = npcState.State;
 
-            npcState?.ChangeState(NpcStates.Talking);
+                npcState.ChangeState(NpcStates.Talking);
+            }
 
             dialogueManager.GetDialogues(new []{dialogue});
         }
