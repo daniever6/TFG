@@ -14531,6 +14531,7 @@ MonoBehaviour:
   unitNameText: {fileID: 130218457}
   dialogText: {fileID: 846151877}
   lettersWaitVelocity: 0.02
+  CurrentCharacter: 
 --- !u!1001 &1085121395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20657,7 +20658,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677498601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -24143,7 +24144,7 @@ Transform:
   m_GameObject: {fileID: 1964260228}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38590595, y: -0.00027380642, z: 0.00011453567, w: 0.9225381}
-  m_LocalPosition: {x: 10.44, y: 9.009999, z: 9.620001}
+  m_LocalPosition: {x: 11.704822, y: 9.07, z: -11.419998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

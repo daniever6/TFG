@@ -2,12 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Dialogues;
-using _Scripts.UI.Scripts;
 using _Scripts.Utilities;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace _Scripts.Managers
@@ -17,9 +15,11 @@ namespace _Scripts.Managers
     {
         #region Class implementation
 
-        public static event Action OnDialogueFinish; 
+        public static event Action OnDialogueFinish;                    // Evento que notifica que ha acabado el dialogo
+        public static event Action<string> OnCharacterChanged;          // Evento que notifica un cambio de personaje al hablar
 
         [SerializeField] private GameObject dialogueCanvas;
+
         
         [SerializeField] private Image unitImage;
         [SerializeField] private TextMeshProUGUI unitNameText;
@@ -28,6 +28,8 @@ namespace _Scripts.Managers
         
         private static Queue<string> _sentences = new();
         private static Queue<Dialogue> _dialogues = new();
+
+        public string CurrentCharacter = ""; //Personaje actual que esta hablando
         
         #endregion
 
@@ -78,8 +80,14 @@ namespace _Scripts.Managers
         /// <param name="dialogue"></param>
         private void StartDialogue(Dialogue dialogue)
         {
+            if (unitNameText.text != dialogue.UnitName)
+            {
+                OnCharacterChanged?.Invoke(dialogue.UnitName);
+            }
+
             //_unitImage.sprite = dialogue.UnitImage;
             unitNameText.text = dialogue.UnitName;
+
             _sentences.Clear();
             
             foreach (string sentence in dialogue.Sentences)

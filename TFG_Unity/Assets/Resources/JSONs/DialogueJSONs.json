@@ -4,29 +4,149 @@
       "Stage":"Tutorial",
       "Dialogues": [
         {
-          "UnitName": "Alumno desconocido 1",
+          "UnitName": "Profesor",
           "UnitImage": "",
-          "Sentences": ["¿Habéis visto sobre el nuevo virus que se está expandiendo por el mundo? Llevaos mascarillas para el próximo día tío, es que si me infectáis os mato."]
+          "Sentences": 
+          [
+            "Muy bien, equipo. Gracias por venir en este momento crítico. Sé que las cosas allá afuera no pintan nada bien.", 
+            "El virus Omega está causando estragos. Los hospitales están saturados, las personas están desesperadas.",
+            "Las esperanzas de la humanidad…",
+            "¡Recaen en este laboratorio!"
+          ]
         },
         {
-          "UnitName": "Alumno desconocido 2",
+          "UnitName": "Alumno 1",
           "UnitImage": "",
-          "Sentences": ["Pero qué fantasma eres, ese virus será como todos los virus de gripe que se ha ocasionado, con el que tenemos seguramente no pasará nada."]
+          "Sentences": 
+          [
+            "¡¿Q-QUEEEEEE?! ¡¿Nosotros?! ",
+            "¡Somos solo estudiantes, profesor! ¡Esto es una locura!"
+          ]
         },
         {
-          "UnitName": "Protagonista",
+          "UnitName": "Alumno 2",
           "UnitImage": "",
-          "Sentences":["... (¿Qué hay de comer cuando llegue a casa?)"]
+          "Sentences": 
+          [
+            "No seas tan pesimista. Si alguien puede marcar la diferencia, ¡somos nosotros!",
+            "Técnicamente sabemos más de química que la mayoría de la gente. Quizá podamos ayudar."
+          ]
+        },
+        {
+          "UnitName": "Alumno 3",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡JAJAJAJA! ¡Por supuesto que somos nosotros! ¡No hay nadie más adecuado que yo para salvar el mundo!",
+            "¡Inclínense ante mi genio químico! ¡Soy un prodigio natural!"
+          ]
+        },
+        {
+          "UnitName": "Alumno 2",
+          "UnitImage": "",
+          "Sentences":["Oh no… este desastre acaba de empeorar."]
+        },
+        {
+          "UnitName": "Alumno 1",
+          "UnitImage": "",
+          "Sentences":["¿Prodigio químico? La última vez casi explotas el laboratorio al mezclar sal con azúcar."]
+        },
+        {
+          "UnitName": "Alumno 3",
+          "UnitImage": "",
+          "Sentences":["¡Esas eran meras pruebas! ¡Esta vez demostraré mi verdadero poder!"]
         },
         {
           "UnitName": "Profesor",
           "UnitImage": "",
-          "Sentences": ["Antes de irnos a la clase de laboratorio, veamos un video de demostración sobre qué pautas hay que tomar y cómo sería el proceso de hacer las cosas"]
+          "Sentences": 
+          [
+            "¡Basta ya!",
+            "Esto no es un juego, chicos. Antes de que puedan salvar al mundo, deben demostrar que son dignos de estar aquí."
+          ]
+        },
+        {
+          "UnitName": "Tú",
+          "UnitImage": "",
+          "Sentences": ["¿Qué necesitamos hacer, profesor?"]
         },
         {
           "UnitName": "Profesor",
           "UnitImage": "",
-          "Sentences": ["BIEN."]
+          "Sentences": 
+          [
+            "Aquí enfrentarán pruebas para perfeccionar su conocimiento de seguridad en el laboratorio.",
+            "¡Solo quienes puedan manejar la presión, prevenir accidentes y trabajar en equipo tendrán la capacidad de crear una cura para el virus!"
+          ]
+        },
+        {
+          "UnitName": "Alumno 1",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡¿Qué pasa si fallamos?!"
+          ]
+        },
+        {
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "Si fallan… no solo arriesgarán sus vidas… ¡sino las vidas de millones de personas allá afuera!"
+          ]
+        },
+        {
+          "UnitName": "Alumno 3",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡¿CÓMO TE ATREVES A DUDAR DE MÍ?! ¡Yo soy una genio natural, un prodigio entre mortales!",
+            "¡Estas pruebas no son más que juegos de niños para alguien tan magnífico como yo! ¡Haré que el laboratorio mismo se arrodille ante mi grandeza!"
+          ]
+        }
+        ,
+        {
+          "UnitName": "Alumno 2",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "Sí, claro. Aunque la última vez que “demostraste tu grandeza” nos pasamos una semana limpiando explosiones de gelatina química de las paredes."
+          ]
+        },
+        {
+          "UnitName": "Alumno 3",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡CALLA, PLEBEYO! ¡Ese fue un experimento perfectamente calculado para probar los límites de este laboratorio!",
+            "¡Y lo volvería a hacer si fuera necesario! MUAJAJAJA"
+          ]
+        },
+        {
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡Suficiente! Este laboratorio no es un campo de batalla ni un espectáculo. Cada segundo cuenta, y no podemos permitirnos errores.",
+            "Delegado, todo dependerá de ti.Necesitamos disciplina, enfoque y trabajo en equipo.",
+            "Haz que este grupo funcione como una máquina perfectamente engrasada. ¿Estás listo para esta misión?"
+          ]
+        },
+        {
+          "UnitName": "Tú",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "¡Por supuesto que sí, profesor! ¡Vamos a demostrar de qué estamos hechos!"
+          ]
+        },
+        {
+          "UnitName": "Profesor",
+          "UnitImage": "",
+          "Sentences": 
+          [
+            "Sabía que puedo contar contigo. Primero vistete para entrar al laboratorio. Los demás, dividiros las tareas y entrar al laboratorio."
+          ]
         }
       ]
     },

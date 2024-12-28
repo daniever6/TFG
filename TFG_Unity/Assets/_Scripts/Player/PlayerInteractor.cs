@@ -67,7 +67,7 @@ namespace _Scripts.Player
             else
             {
 
-                if (CarryNPC.Instance.IsCarrying == true && closestObject.name == "Ducha")
+                if (closestObject?.name == "Ducha" && CarryNPC.Instance?.IsCarrying == true)
                 {
                     CarryNPC.Instance.DropOnDucha();
                 }

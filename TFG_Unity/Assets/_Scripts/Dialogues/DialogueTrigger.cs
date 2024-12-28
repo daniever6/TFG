@@ -24,6 +24,11 @@ namespace _Scripts.Dialogues
             TryGetComponent<NpcState>(out npcState);
 
             DialogueManager.OnDialogueFinish += EndDialogue;
+
+            if (dialogueManager.IsUnityNull())
+            {
+                dialogueManager = DialogueManager.Instance;
+            }
         }
 
         private void OnDisable()

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace _Scripts.LevelScripts.Level_00
@@ -31,8 +32,9 @@ namespace _Scripts.LevelScripts.Level_00
         private void Start()
         {
             UISelectorRopa.OnSaveClothChanges += SaveClothingIndex;
+
             LoadClothingIndex();
-            
+
             ActivateComponent(hairComponents, _clothingIndex.headIdx);
             ActivateComponent(shirtComponents, _clothingIndex.shirtIdx);
             ActivateComponent(gloveComponents, _clothingIndex.gloveIdx);
@@ -87,6 +89,17 @@ namespace _Scripts.LevelScripts.Level_00
                 string json = System.IO.File.ReadAllText(path);
                 _clothingIndex = JsonUtility.FromJson<ClothingIndex>(json);
                 return true;
+            }
+            else
+            {
+                //Valores por defecto
+                _clothingIndex.headIdx = 1;
+                _clothingIndex.pantsIdx = 1;
+                _clothingIndex.shirtIdx = 0;
+                _clothingIndex.gloveIdx = -1;
+                _clothingIndex.shoesIdx = 2;
+
+                SaveClothingIndex();
             }
 
             return false;
