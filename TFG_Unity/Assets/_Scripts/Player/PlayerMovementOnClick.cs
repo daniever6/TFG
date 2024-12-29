@@ -113,10 +113,17 @@ namespace _Scripts.Player
                         //Suelta al NPC en al ducha
                         if(isAwaiting == false)
                         {
-                            if (CarryNPC.Instance.IsCarrying && _hit.collider.gameObject.name == "Ducha")
+                            try
                             {
-                                CarryNPC.Instance.DropOnDucha();
+                                if (CarryNPC.Instance.IsCarrying && _hit.collider.gameObject.name == "Ducha")
+                                {
+                                    CarryNPC.Instance.DropOnDucha();
+                                }
+                            }catch(Exception e)
+                            {
+
                             }
+                            
                         }
                         
                         break;

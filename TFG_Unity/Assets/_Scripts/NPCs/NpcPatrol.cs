@@ -56,7 +56,7 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
     {
         npcState?.ChangeState(NpcStates.Walking);
 
-        npcNavMeshAgent.SetDestination(patrolPoints[targetIdx].transform.position);
+        npcNavMeshAgent?.SetDestination(patrolPoints[targetIdx].transform.position);
     }
 
     private void IncreaseTargetIdx()

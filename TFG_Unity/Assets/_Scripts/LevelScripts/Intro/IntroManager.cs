@@ -2,6 +2,7 @@ using _Scripts.Dialogues;
 using _Scripts.Managers;
 using Cinemachine;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -49,8 +50,9 @@ public class IntroManager : _Scripts.Utilities.Singleton<IntroManager>
     }
 
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
+        await Task.Delay(1000);
         startCamera.enabled = false;
         DeserializeDialogues();
     }
