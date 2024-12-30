@@ -21,6 +21,15 @@ public class NpcState : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Devuelve true si el npc tiene algun problema y false en caso contrario
+    /// </summary>
+    /// <returns></returns>
+    public bool IsDying()
+    {
+        return state == NpcStates.Burning || state == NpcStates.Acid || state == NpcStates.Carry;
+    }
+
 
     public NpcStates State
     {
@@ -33,6 +42,17 @@ public class NpcState : MonoBehaviour
     /// <param name="newState">Nuevo estado del npc</param>
     public void ChangeState(NpcStates newState)
     {
+        // Evita que si se esta muriendo cambie su estado si no se salva
+        if(IsDying() && (newState != NpcStates.Save || newState == NpcStates.Carry)) 
+        {
+            return;
+        }
+
+        if(newState == NpcStates.Save)
+        {
+            newState = NpcStates.Idle;
+        }
+
         state = newState;
 
         // Si tiene animator controlar sus animaciones
@@ -57,6 +77,10 @@ public class NpcState : MonoBehaviour
                     break;
 
                 case NpcStates.Burning:
+                    npcAnimator.CrossFade("Fire", 0.2f);
+                    break;
+
+                case NpcStates.Acid:
                     npcAnimator.CrossFade("Fire", 0.2f);
                     break;
 

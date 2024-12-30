@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Managers;
 using _Scripts.Utilities;
 using Facepunch;
 using JetBrains.Annotations;
@@ -22,12 +23,23 @@ namespace _Scripts.Player
         public void Move(Vector2 direction)
         {
             if (!this.enabled) return;
+
+            if (GameManager.GameState == GameState.Dialogue || GameManager.GameState == GameState.Pause)
+            {
+                return;
+            }
+
             playerMovement!.Move(direction);
         }
 
         public void WalkToPoint(InputAction.CallbackContext context)
         {
             if (!this.enabled) return;
+            if (GameManager.GameState == GameState.Dialogue || GameManager.GameState == GameState.Pause)
+            {
+                return;
+            }
+
             StartCoroutine(playerMovementOnClick!.WalkToPoint(context));
         }
 

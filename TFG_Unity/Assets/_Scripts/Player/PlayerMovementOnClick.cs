@@ -96,8 +96,8 @@ namespace _Scripts.Player
                         {
                             npc.TryGetComponent<NpcState>(out NpcState npcState);
 
-                            // Si se esta quemando coge al npc
-                            if (!npcState.IsUnityNull() && npcState.State == NpcStates.Burning)
+                            // Si le ha caido ácido encima coge al npc
+                            if (!npcState.IsUnityNull() && npcState.State == NpcStates.Acid)
                             {
                                 CarryNPC.Instance.Carry(npc);
                             }

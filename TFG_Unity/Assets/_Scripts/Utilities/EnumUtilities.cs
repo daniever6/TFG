@@ -94,7 +94,9 @@
         Walking,
         Talking,
         Burning,
+        Acid,
         Carry,
+        Save,
         Die
     }
     

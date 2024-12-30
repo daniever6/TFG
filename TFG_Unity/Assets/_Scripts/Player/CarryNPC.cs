@@ -22,7 +22,6 @@ public class CarryNPC : Singleton<CarryNPC>
     private bool isCarrying = false;
 
     public bool IsCarrying { get => isCarrying; }
-
     /// <summary>
     /// El jugador coge al jugador en brazos
     /// </summary>
@@ -39,9 +38,27 @@ public class CarryNPC : Singleton<CarryNPC>
 
         initialNpcPos = npc.transform.position;
 
+        // Desactiva los colider y el NavmeshAgent
+        if(npc.TryGetComponent<Collider>(out Collider npcCollider))
+        {
+            npcCollider.enabled = false;
+        }
+        
+        if(npc.TryGetComponent<Rigidbody>(out Rigidbody npcRigidbody))
+        {
+            npcRigidbody.isKinematic = true;
+            npcRigidbody.useGravity = false;
+        }
+
+        if (npc.TryGetComponent<NavMeshAgent>(out NavMeshAgent npcNavMeshAgent))
+        {
+            npcNavMeshAgent.enabled = false;
+        }
+
+        // Busca el Animator en el GameObject principal y si no dentro de su jerarquia
         npc.TryGetComponent<Animator>(out Animator npcAnimator);
 
-        if(npcAnimator == null)
+        if (npcAnimator == null)
         {
             npcAnimator = npc.GetComponentInChildren<Animator>();
         }
@@ -80,6 +97,24 @@ public class CarryNPC : Singleton<CarryNPC>
 
         isCarrying = false;
 
+        // Activa de nuevo su collider y su navMeshAgent
+        if (currentNpc.TryGetComponent<Collider>(out Collider npcCollider))
+        {
+            npcCollider.enabled = true;
+        }
+
+        if (currentNpc.TryGetComponent<Rigidbody>(out Rigidbody npcRigidbody))
+        {
+            npcRigidbody.isKinematic = false;
+            npcRigidbody.useGravity = true;
+        }
+
+        if (currentNpc.TryGetComponent<NavMeshAgent>(out NavMeshAgent npcNavMeshAgent))
+        {
+            npcNavMeshAgent.enabled = true;
+        }
+
+        // Busca el Animator en su Gameobject y si no en su jerarquia
         currentNpc.TryGetComponent<Animator>(out Animator npcAnimator);
 
         if (npcAnimator == null)
@@ -116,6 +151,6 @@ public class CarryNPC : Singleton<CarryNPC>
         
         DropNPC(newPos);
 
-        BurnNpc.Instance.StopBurning();
+        AcidNPC.Instance.StopAcid();
     }
 }

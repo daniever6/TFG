@@ -41,7 +41,7 @@ namespace _Scripts.Dialogues
         /// </summary>
         public override void TriggerEvent()
         {
-            if(dialogueManager.IsUnityNull() || (npcState != null && npcState?.State == NpcStates.Burning && npcState.State == NpcStates.Carry))
+            if(dialogueManager.IsUnityNull() || (npcState != null && npcState.IsDying()))
             {
                 return;
             }

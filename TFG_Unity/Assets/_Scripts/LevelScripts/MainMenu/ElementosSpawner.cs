@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,14 +8,18 @@ using UnityEngine.UI;
 public class ElementosSpawner : MonoBehaviour
 {
     [SerializeField] private Sprite[] spritePrefabs;  // Lista de sprites
+    [SerializeField] private GameObject[] spawnPositions;
     [SerializeField] private GameObject SpriteParent;
 
     public float secondSpawn = 0.5f;
     public float minTras;
     public float maxTras;
 
-    void Start()
+    public int timeBeforeStart = 0;
+
+    async void Start()
     {
+        await Task.Delay(timeBeforeStart);
         StartCoroutine(SpriteSpawner());
     }
 
@@ -22,8 +27,9 @@ public class ElementosSpawner : MonoBehaviour
     {
         while (true)
         {
-            var wanted = Random.Range(minTras, maxTras);
-            var position = new Vector3(wanted, SpriteParent.transform.position.y, SpriteParent.transform.position.z);
+            var position = spawnPositions[Random.Range(0, spawnPositions.Length)].transform.position;
+            //var wanted = Random.Range(minTras, maxTras);
+            //var position = new Vector3(wanted, SpriteParent.transform.position.y, SpriteParent.transform.position.z);
 
             // Seleccionamos el sprite aleatorio del arreglo de sprites
             var spriteSelected = spritePrefabs[Random.Range(0, spritePrefabs.Length)];
@@ -39,7 +45,7 @@ public class ElementosSpawner : MonoBehaviour
 
             // Dimensiones del sprite
             RectTransform spriteRectTransfrom = spriteGameObject.GetComponent<RectTransform>();
-            spriteRectTransfrom.localScale /= Random.Range(1.5f, 3.5f);
+            spriteRectTransfrom.localScale /= Random.Range(1.5f, 4.5f);
 
             // Agregar un Rigidbody2D
             Rigidbody2D rb = spriteGameObject.AddComponent<Rigidbody2D>();
@@ -51,7 +57,7 @@ public class ElementosSpawner : MonoBehaviour
             // Establecer la posición
             spriteGameObject.transform.position = position;
 
-            Destroy(spriteGameObject, 12f);
+            Destroy(spriteGameObject, 15f);
 
             yield return new WaitForSeconds(secondSpawn);
         }

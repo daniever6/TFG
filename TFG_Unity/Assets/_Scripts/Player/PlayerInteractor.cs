@@ -56,8 +56,8 @@ namespace _Scripts.Player
 
             closestObject.TryGetComponent<NpcState>(out NpcState npcState);
 
-            //Gestion si el npc se esta quemando
-            if(npcState != null && npcState.State == NpcStates.Burning)
+            //Gestion si al NPC le ha caido acido encima
+            if(npcState != null && npcState.State == NpcStates.Acid)
             {
                 if(CarryNPC.Instance.IsCarrying == false)
                 {

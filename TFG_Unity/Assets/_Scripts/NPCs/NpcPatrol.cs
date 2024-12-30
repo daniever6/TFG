@@ -32,6 +32,16 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
 
     private async void Update()
     {
+        if(npcState.IsDying())
+        {
+            return;
+        }
+        
+        if(npcNavMeshAgent.hasPath == false)
+        {
+            MoveToTarget();
+        }
+
         if (Vector3.Distance(transform.position, patrolPoints[targetIdx].transform.position) < 1f)
         {
             IncreaseTargetIdx();
@@ -47,34 +57,73 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
 
     private void Start()
     {
+        npcState.OnChangeStateNpc += CheckNpcHealth;
+
         MoveToTarget();
 
         npcAnimator.CrossFade("Walk", 0f);
     }
 
-    private void MoveToTarget()
+    /// <summary>
+    /// Metodo que se llama cada vez que el npc cambia de estado,
+    /// si el npc tiene algun problema detiene su movimiento
+    /// </summary>
+    private void CheckNpcHealth()
     {
-        npcState?.ChangeState(NpcStates.Walking);
-
-        npcNavMeshAgent?.SetDestination(patrolPoints[targetIdx].transform.position);
+        if (npcState.IsDying()) 
+        {
+            npcNavMeshAgent.isStopped = true;
+        }
+        else
+        {
+            npcNavMeshAgent.isStopped = false;
+        }
     }
 
+    /// <summary>
+    /// Mueve al NPC al siguiente punto de patruya
+    /// </summary>
+    private void MoveToTarget()
+    {
+        try
+        {
+            npcState?.ChangeState(NpcStates.Walking);
+
+            npcNavMeshAgent?.SetDestination(patrolPoints[targetIdx].transform.position);
+        }
+        catch(Exception Ex)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Pasa al siguiente punto de patruya
+    /// </summary>
     private void IncreaseTargetIdx()
     {
         targetIdx++;
         targetIdx %= (patrolPoints.Length);
     }
 
+    /// <summary>
+    /// Detiene el movimiento del NPC
+    /// </summary>
     protected override void OnPostPaused()
     {
         npcNavMeshAgent.isStopped = true;
     }
 
+    /// <summary>
+    /// Despues de la pausa devuelve el recorrido al NPC
+    /// </summary>
     protected override void OnPostResumed()
     {
-        npcNavMeshAgent.isStopped = false;
-
-        if (npcNavMeshAgent.hasPath) 
+        if (npcNavMeshAgent.hasPath && npcState.IsDying() == false)
+        {
+            npcNavMeshAgent.isStopped = false;
             npcNavMeshAgent.SetDestination(npcNavMeshAgent.pathEndPosition);
+        }
+            
     }
 }
