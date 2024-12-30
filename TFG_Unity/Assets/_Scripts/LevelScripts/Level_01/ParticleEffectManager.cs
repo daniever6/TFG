@@ -62,15 +62,17 @@ namespace _Scripts.LevelScripts.Level_01
         /// Instancia un prefab de particulas en la posicion de particlePosition indicado
         /// </summary>
         /// <param name="particleName">Nombre del Key la particula</param>
-        public void InstantiateParticle(string particleName)
+        public GameObject InstantiateParticle(string particleName)
         {
             if (!particles.Contains(particleName))
             {
-                return;
+                return null;
             }
             
             var particle = particles[particleName];
             Instantiate(particle, particlePosition.position, Quaternion.LookRotation(Vector3.up), particlePosition);
+
+            return particle;
         }
         
         /// <summary>

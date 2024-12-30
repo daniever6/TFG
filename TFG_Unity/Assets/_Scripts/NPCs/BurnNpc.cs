@@ -104,7 +104,7 @@ public class BurnNPC : MonoBehaviour
 
         isActivate = false;
 
-        state.ChangeState(NpcStates.Idle);
+        state.ChangeState(NpcStates.Save);
 
         // Detiene el sistema de particulas
         if (!activeVFX.IsUnityNull())
@@ -128,7 +128,5 @@ public class BurnNPC : MonoBehaviour
         }
 
         this.enabled = false;
-
-
     }
 }

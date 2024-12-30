@@ -96,11 +96,20 @@ namespace _Scripts.Player
                         {
                             npc.TryGetComponent<NpcState>(out NpcState npcState);
 
-                            // Si le ha caido ácido encima coge al npc
-                            if (!npcState.IsUnityNull() && npcState.State == NpcStates.Acid)
+                            if (!npcState.IsUnityNull())
                             {
-                                CarryNPC.Instance.Carry(npc);
+                                // Si le ha caido ácido encima coge al npc
+                                if (npcState.State == NpcStates.Acid)
+                                {
+                                    CarryNPC.Instance.Carry(npc);
+                                }
+                                else if(npcState.State == NpcStates.Burning && MantaIgnifugaManager.IsCarried)
+                                {
+                                    MantaIgnifugaManager.Instance.DropMantaOnNpc();
+                                }
+                                
                             }
+                            
                         }
 
                         break;

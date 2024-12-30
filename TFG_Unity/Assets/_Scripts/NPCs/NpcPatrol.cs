@@ -1,11 +1,5 @@
-using _Scripts.Player;
 using _Scripts.Utilities;
-using JetBrains.Annotations;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -70,6 +64,11 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
     /// </summary>
     private void CheckNpcHealth()
     {
+        if (npcNavMeshAgent != null && npcNavMeshAgent.isActiveAndEnabled && npcNavMeshAgent.isOnNavMesh)
+        {
+            return;
+        }
+            
         if (npcState.IsDying()) 
         {
             npcNavMeshAgent.isStopped = true;
@@ -85,15 +84,11 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
     /// </summary>
     private void MoveToTarget()
     {
-        try
-        {
-            npcState?.ChangeState(NpcStates.Walking);
+        npcState?.ChangeState(NpcStates.Walking);
 
+        if (npcNavMeshAgent != null && npcNavMeshAgent.isActiveAndEnabled && npcNavMeshAgent.isOnNavMesh)
+        {
             npcNavMeshAgent?.SetDestination(patrolPoints[targetIdx].transform.position);
-        }
-        catch(Exception Ex)
-        {
-
         }
     }
 
@@ -123,7 +118,6 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
         {
             npcNavMeshAgent.isStopped = false;
             npcNavMeshAgent.SetDestination(npcNavMeshAgent.pathEndPosition);
-        }
-            
+        }       
     }
 }

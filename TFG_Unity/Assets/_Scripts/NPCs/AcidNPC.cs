@@ -39,20 +39,6 @@ namespace Assets._Scripts.NPCs
             DialogueManager.OnDialogueFinish -= PointAtPlayer;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartAcid();
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                StopAcid();
-            }
-
-        }
-
         /// <summary>
         /// Activa el evento de NPC ardiendo
         /// </summary>
