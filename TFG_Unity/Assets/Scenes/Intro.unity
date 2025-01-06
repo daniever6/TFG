@@ -7396,6 +7396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2992721181805395908, guid: f5a68cd381425b344a7c39e2c84baa3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5a68cd381425b344a7c39e2c84baa3c, type: 3}
       propertyPath: m_Name
       value: Alumno 1
@@ -7409,6 +7413,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3519053131460482614, guid: f5a68cd381425b344a7c39e2c84baa3c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012822813827941920, guid: f5a68cd381425b344a7c39e2c84baa3c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

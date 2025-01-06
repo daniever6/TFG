@@ -34,6 +34,10 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
         if(npcNavMeshAgent.hasPath == false)
         {
             MoveToTarget();
+            if (!npcState.IsDying())
+            {
+                npcNavMeshAgent.isStopped = false;
+            }
         }
 
         if (Vector3.Distance(transform.position, patrolPoints[targetIdx].transform.position) < 1f)
