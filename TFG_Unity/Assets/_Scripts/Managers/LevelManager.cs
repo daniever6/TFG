@@ -73,7 +73,8 @@ namespace _Scripts.Managers
             if (_saveData != null)
             {
                 ChangeLevelState(_saveData.levelState);
-                 player.transform.position = new Vector3(_saveData.playerPosition[0], _saveData.playerPosition[1],
+
+                player.transform.position = new Vector3(_saveData.playerPosition[0], _saveData.playerPosition[1],
                                                         _saveData.playerPosition[2]);
             }
             else

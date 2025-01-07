@@ -17,6 +17,7 @@ namespace _Scripts.LevelScripts.SaveManager
             playerPosition[0] = playerPos.x;
             playerPosition[1] = playerPos.y;
             playerPosition[2] = playerPos.z;
+
             gameState = GameManager.GameState;
             levelState = LevelManager.Instance.CurrentLevelState;
             

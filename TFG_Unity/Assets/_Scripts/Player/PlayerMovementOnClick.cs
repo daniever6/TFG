@@ -157,9 +157,18 @@ namespace _Scripts.Player
         /// </summary>
         public void ClearNavMeshAgentPath()
         {
-            playerAnimator?.SetBool("ClickWalking", false);
+            if (!playerAnimator.IsUnityNull())
+            {
+                playerAnimator?.SetBool("ClickWalking", false);
+            }
 
             UserInput.OnWalking -= ClearNavMeshAgentPath;
+
+            if (_navMeshAgent.IsUnityNull())
+            {
+                return;
+            }
+
             if (_navMeshAgent.hasPath)
             {
                 _navMeshAgent.isStopped = true;
