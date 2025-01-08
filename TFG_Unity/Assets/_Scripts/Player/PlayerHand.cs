@@ -294,7 +294,14 @@ namespace _Scripts.Player
                     var resul = ALevel.PerformCombinationCommand.Execute(combinationName);
                     if (resul)
                     {
-                        CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Correct);
+                        try
+                        {
+                            CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Correct);
+
+                        }
+                        catch (Exception ex) 
+                        {
+                        }
                         await UseObjectsAnimation(secondaryObject);
                         FirstPersonLevelManager.Instance.PostPerformCombination();
                     }

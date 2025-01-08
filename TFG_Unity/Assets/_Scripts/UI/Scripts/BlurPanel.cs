@@ -13,7 +13,7 @@ namespace _Scripts.UI
 
         private CanvasGroup _canvasGroup;
 
-        protected override void Reset()
+        protected new void Reset()
         {
             color = Color.black * 0.1f;
         }

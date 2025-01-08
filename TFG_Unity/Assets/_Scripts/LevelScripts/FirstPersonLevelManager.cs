@@ -1,12 +1,10 @@
 using _Scripts.LevelScripts.SaveManager;
-using _Scripts.Managers;
 using _Scripts.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace _Scripts.LevelScripts
 {
