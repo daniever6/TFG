@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 96e47720eabdfc74b833b540ab683825, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -6335,6 +6335,7 @@ MonoBehaviour:
   unitNameText: {fileID: 1318359955}
   dialogText: {fileID: 1291519013}
   lettersWaitVelocity: 0.02
+  CurrentCharacter: 
 --- !u!114 &1701100183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7591,7 +7592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3907136747476808967, guid: 1b74d93680481cd43b446421cef5e6f0, type: 3}
+  - {fileID: 2100000, guid: 6ce687bdbd02936459c0fbd1c9680c2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

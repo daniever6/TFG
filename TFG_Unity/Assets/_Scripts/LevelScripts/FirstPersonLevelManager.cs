@@ -18,6 +18,7 @@ namespace _Scripts.LevelScripts
         [SerializeField] private TextAsset levelCombinationsTextAsset;
         
         public static int CurrentCombinationIndex = 0;
+        public bool isAcidLevel = false;
 
         private List<List<string>> _levelCorrectCombinations = new ();
         private List<string> _correctCombinations = new ();
@@ -83,7 +84,14 @@ namespace _Scripts.LevelScripts
                     //Fin Level
                     SaveData saveData = SaveManager.SaveManager.LoadGameData();
 
-                    SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.SecondLevel);
+                    if (isAcidLevel)
+                    {
+                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelResiduos);
+                    }
+                    else
+                    {
+                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelBalanza);
+                    }
 
                     SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
                 }

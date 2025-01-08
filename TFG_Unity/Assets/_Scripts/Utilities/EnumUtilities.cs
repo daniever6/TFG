@@ -5,9 +5,9 @@
         None,
         NivelRecibidor,
         NivelBases,
-        SecondLevel,
-        FirstLevelPart2,
-        ThirdLevel
+        NivelBalanza,
+        NivelAcidos,
+        NivelResiduos
     }
     
     public enum GameState

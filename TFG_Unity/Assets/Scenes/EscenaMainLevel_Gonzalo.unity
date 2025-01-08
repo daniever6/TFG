@@ -8227,7 +8227,7 @@ MonoBehaviour:
   - List:
     - {fileID: 1131262584}
   - List:
-    - {fileID: 2014785388}
+    - {fileID: 2014785391}
     - {fileID: 2014785390}
   - List:
     - {fileID: 656410123}
@@ -8238,6 +8238,8 @@ MonoBehaviour:
     - {fileID: 2068403116}
     - {fileID: 594244352}
     - {fileID: 2014785388}
+  burnNPC: {fileID: 1889942353}
+  acidNPC: {fileID: 1545076019}
 --- !u!1 &556173207
 GameObject:
   m_ObjectHideFlags: 0
@@ -21822,8 +21824,8 @@ MonoBehaviour:
     UnitName: Alumno 3
     UnitImage: {fileID: 0}
     Sentences:
-    - "El mayor peligro en un laboratorio no son los qu\xEDmicos\u2026 es confiarte
-      demasiado. \xA1Mantente alerta!"
+    - "\xBFSabes por qu\xE9 llevo bata? No es por estilo, es porque una vez mezcl\xE9
+      cosas sin leer las etiquetas. Spoiler: no sali\xF3 bien."
 --- !u!114 &1889942353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23499,6 +23501,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6ab79827e4f25a2e6a0372733aa35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2014785391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790072144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4cf6e623654695af57653bcfd0db42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Level_02.1
 --- !u!1 &2014969773
 GameObject:
   m_ObjectHideFlags: 0
@@ -25592,6 +25607,19 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1074090071}
+    - target: {fileID: 8524712130940182283, guid: 447296c53f260324fae5d7be46da738d, type: 3}
+      propertyPath: dialogue.Sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524712130940182283, guid: 447296c53f260324fae5d7be46da738d, type: 3}
+      propertyPath: dialogue.Sentences.Array.data[0]
+      value: "\xBFTe pusiste la bata? Porque no quiero que despu\xE9s me digas que
+        tu camiseta favorita tiene un agujero causado por \xE1cido."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524712130940182283, guid: 447296c53f260324fae5d7be46da738d, type: 3}
+      propertyPath: dialogue.Sentences.Array.data[1]
+      value: Ponte a trabajar, tenemos que encontrar una cura.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25880,6 +25908,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7920043263547634823, guid: df11523c83b6d474ca7b9bd7033cd026, type: 3}
       insertIndex: 4
       addedObject: {fileID: 2014785388}
+    - targetCorrespondingSourceObject: {fileID: 7920043263547634823, guid: df11523c83b6d474ca7b9bd7033cd026, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 2014785391}
   m_SourcePrefab: {fileID: 100100000, guid: df11523c83b6d474ca7b9bd7033cd026, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

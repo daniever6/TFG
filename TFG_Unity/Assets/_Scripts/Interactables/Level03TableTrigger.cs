@@ -18,7 +18,7 @@ namespace _Scripts.Interactables
         /// </summary>
         public override void TriggerEvent()
         {
-            if (LevelManager.Instance.CurrentLevelState != LevelState.ThirdLevel) return;
+            if (LevelManager.Instance.CurrentLevelState != LevelState.NivelResiduos) return;
             
             if (Level03PlayerController.Instance.GetGarbageFromTable())
             {

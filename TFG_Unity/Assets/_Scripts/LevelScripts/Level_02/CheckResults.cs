@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using _Scripts.Dialogues;
 using _Scripts.LevelScripts.Level_01;
+using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Managers;
 using _Scripts.Player;
 using _Scripts.Utilities;
@@ -159,6 +160,13 @@ namespace _Scripts.LevelScripts.Level_02
 
         private void FinishLevel()
         {
+            SaveData saveData = SaveManager.SaveManager.LoadGameData();
+
+            if(saveData != null)
+            {
+                SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelAcidos);
+            }
+
             SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
         }
 

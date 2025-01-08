@@ -3433,6 +3433,8 @@ MonoBehaviour:
     - {fileID: 2068403116}
     - {fileID: 594244352}
     - {fileID: 2014785388}
+  burnNPC: {fileID: 0}
+  acidNPC: {fileID: 0}
 --- !u!1 &570280071
 GameObject:
   m_ObjectHideFlags: 0

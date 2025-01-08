@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using _Scripts.LevelScripts.SaveManager;
 using _Scripts.UI;
 using _Scripts.Utilities;
+using Assets._Scripts.NPCs;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +27,9 @@ namespace _Scripts.Managers
     {
         [SerializeField] private List<ComponentList<GameObject>> levelComponents;
         [SerializeField] private List<ComponentList<MonoBehaviour>> levelScripts;
+
+        [SerializeField][CanBeNull] private BurnNPC burnNPC;
+        [SerializeField][CanBeNull] private AcidNPC acidNPC;
         
         private SaveData _saveData;
         private GameObject player;
@@ -121,16 +127,16 @@ namespace _Scripts.Managers
                     HandleNivelBases();
                     break;
                 
-                case LevelState.SecondLevel:
-                    HandleSecondLevel();
+                case LevelState.NivelBalanza:
+                    HandleNivelBalanza();
                     break;
                 
-                case LevelState.ThirdLevel:
-                    HandleThirdLevel();
+                case LevelState.NivelResiduos:
+                    HandleNivelResiduos();
                     break;
 
-                case LevelState.FirstLevelPart2:
-                    HandleFirstLevelPart2();
+                case LevelState.NivelAcidos:
+                    HandleNivelAcidos();
                     break;
             }
         }
@@ -148,7 +154,7 @@ namespace _Scripts.Managers
         /// - Finalizar el nivel una vez terminado
         /// 
         /// </summary>
-        private void HandleNivelBases()
+        private async void HandleNivelBases()
         {
             //Activa los componentes y scripts del nivel 1
             foreach (var obj in levelComponents[0].List)
@@ -177,7 +183,7 @@ namespace _Scripts.Managers
         /// - Finalizar el nivel una vez terminado
         /// 
         /// </summary>
-        private void HandleFirstLevelPart2()
+        private async void HandleNivelAcidos()
         {
             //Desactiva los compoenentes y scripts del nivel 1
             foreach (var obj in levelComponents[0].List)
@@ -202,6 +208,13 @@ namespace _Scripts.Managers
             }
 
             InfoCanvas.Instance.ShowMessage("- Usa la extractora para usar hacer un reactivo nuevo.");
+
+            await Task.Delay(4000);
+
+            if (acidNPC != null)
+            {
+                acidNPC.StartAcid();
+            }
         }
         
         /// <summary>
@@ -213,7 +226,7 @@ namespace _Scripts.Managers
         /// - Desactivar scripts y componentes del nivel anterior
         /// - Activar al NPC para poder ayudarle a hacer los cálculos
         /// </summary>
-        private void HandleSecondLevel()
+        private async void HandleNivelBalanza()
         {
             //Desactiva los compoenentes y scripts del nivel 1
             foreach (var obj in levelComponents[1].List)
@@ -239,8 +252,15 @@ namespace _Scripts.Managers
                 script.enabled = true;
             }
 
-            InfoCanvas.Instance.ShowMessage("- Busca a NPC1 para ayudarle a hacer los cálculos necesarios " +
+            InfoCanvas.Instance.ShowMessage("- Busca al alumno 2 para ayudarle a hacer los cálculos necesarios " +
                                           "de los reactivos.");
+
+            await Task.Delay(4000);
+            
+            if(burnNPC != null)
+            {
+                burnNPC.StartBurning();
+            }
         }
         
         /// <summary>
@@ -259,7 +279,7 @@ namespace _Scripts.Managers
         /// - Finalizar el nivel una vez terminado
         /// 
         /// </summary>
-        private void HandleThirdLevel()
+        private void HandleNivelResiduos()
         {
             //Desactiva los compoenentes y scripts del nivel 2
             foreach (var obj in levelComponents[2].List)

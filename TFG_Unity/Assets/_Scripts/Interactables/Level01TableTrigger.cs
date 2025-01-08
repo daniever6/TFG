@@ -1,6 +1,9 @@
+using _Scripts.LevelScripts.SaveManager;
+using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Level01TableTrigger : MonoBehaviour
+public class Level01TableTrigger : Trigger
 {
     [SerializeField] private string levelName;
     private GameObject _player;
@@ -13,11 +16,11 @@ public class Level01TableTrigger : MonoBehaviour
     /// <summary>
     /// Carga la escena indicada
     /// </summary>
-    //public override void TriggerEvent()
-    //{
-    //    SaveManager.SaveGameData(_player);
-    //    SceneManager.LoadScene(levelName);
-    //}
+    public override void TriggerEvent()
+    {
+        SaveManager.SaveGameData(_player);
+        SceneManager.LoadScene(levelName);
+    }
 }
 
 
