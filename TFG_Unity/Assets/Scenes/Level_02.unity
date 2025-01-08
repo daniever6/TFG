@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4128d02ba218bdb45b807c1bf9738e43, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -7504,6 +7504,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539505886}
   m_CullTransparentMesh: 1
+--- !u!1 &560868069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560868070}
+  m_Layer: 0
+  m_Name: RayInvoker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560868070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560868069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.304, z: 0.946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4517343648243160999}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560870751
 GameObject:
   m_ObjectHideFlags: 0
@@ -18052,6 +18083,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7770485496374728875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1599455160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599455161}
+  m_Layer: 0
+  m_Name: RayInvoker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1599455161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599455160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.27, z: 0.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5872105507169479047}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601004557
 GameObject:
   m_ObjectHideFlags: 0
@@ -24570,7 +24632,7 @@ GameObject:
   - component: {fileID: 6457846952758331196}
   - component: {fileID: 6560913908326105203}
   - component: {fileID: 4669872186973985500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Derecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25067,6 +25129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7350896149685382144}
+  - {fileID: 560868070}
   m_Father: {fileID: 612035754584340645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4539702728624657976
@@ -25317,7 +25380,7 @@ GameObject:
   - component: {fileID: 7350896149685382144}
   - component: {fileID: 7960054986839443419}
   - component: {fileID: 4439439474546897376}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Izquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25417,6 +25480,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6457846952758331196}
+  - {fileID: 1599455161}
   m_Father: {fileID: 612035754584340645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5895677122423339511
@@ -26090,6 +26154,7 @@ MonoBehaviour:
   BalanzaSetPosition: {fileID: 1235074066}
   PosInteraccionPapelPesaje: {x: -0.234, y: 1.099, z: 0.071}
   PosInteraccionBase: {x: 0.17, y: 1.121, z: 0.281}
+  rayInvoker: {fileID: 560868069}
 --- !u!65 &8944491675011430325
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26204,6 +26269,7 @@ MonoBehaviour:
   BalanzaSetPosition: {fileID: 1235074066}
   PosInteraccionPapelPesaje: {x: -0.234, y: 1.099, z: 0.071}
   PosInteraccionBase: {x: 0.17, y: 1.121, z: 0.281}
+  rayInvoker: {fileID: 1599455160}
 --- !u!65 &9200930985475326856
 BoxCollider:
   m_ObjectHideFlags: 0

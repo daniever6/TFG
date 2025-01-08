@@ -3927,7 +3927,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 626966031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4cf6e623654695af57653bcfd0db42, type: 3}
+  m_Script: {fileID: 11500000, guid: 4962779b0c8f8914ea0c918837bbe39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: EscenaMainLevel_Gonzalo
@@ -6692,6 +6692,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1787787476}
     m_Modifications:
+    - target: {fileID: 3816451143692495631, guid: 447296c53f260324fae5d7be46da738d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4696934514594806066, guid: 447296c53f260324fae5d7be46da738d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.020854127
@@ -6771,6 +6775,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5360705923591545736, guid: 447296c53f260324fae5d7be46da738d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1171855815}
+    - targetCorrespondingSourceObject: {fileID: 5360705923591545736, guid: 447296c53f260324fae5d7be46da738d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1171855820}
   m_SourcePrefab: {fileID: 100100000, guid: 447296c53f260324fae5d7be46da738d, type: 3}
 --- !u!4 &1171855813 stripped
 Transform:
@@ -6794,6 +6801,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eba73e4132c4047915e99650b751d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1171855820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171855814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d6ab79827e4f25a2e6a0372733aa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraMeshes: []
 --- !u!1 &1176799270
 GameObject:
   m_ObjectHideFlags: 0

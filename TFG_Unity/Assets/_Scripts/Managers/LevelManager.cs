@@ -28,7 +28,7 @@ namespace _Scripts.Managers
         private SaveData _saveData;
         private GameObject player;
         
-        private LevelState _levelState = LevelState.None;
+        private static LevelState _levelState = LevelState.None;
         public LevelState CurrentLevelState => _levelState;
         protected override void Awake()
         {
@@ -79,7 +79,7 @@ namespace _Scripts.Managers
             }
             else
             {
-                ChangeLevelState(LevelState.FirstLevel);
+                ChangeLevelState(_levelState);
             }
         }
 
@@ -107,8 +107,6 @@ namespace _Scripts.Managers
         /// <param name="newState">Estado nuevo</param>
         public void ChangeLevelState(LevelState newState)
         {
-            if (newState == _levelState) return;
-            
             _levelState = newState;
 
             switch (_levelState)
@@ -116,11 +114,11 @@ namespace _Scripts.Managers
                 case LevelState.None:
                     break;
                 
-                case LevelState.Tutorial:
+                case LevelState.NivelRecibidor:
                     break;
                 
-                case LevelState.FirstLevel:
-                    HandleFirstLevel();
+                case LevelState.NivelBases:
+                    HandleNivelBases();
                     break;
                 
                 case LevelState.SecondLevel:
@@ -150,7 +148,7 @@ namespace _Scripts.Managers
         /// - Finalizar el nivel una vez terminado
         /// 
         /// </summary>
-        private void HandleFirstLevel()
+        private void HandleNivelBases()
         {
             //Activa los componentes y scripts del nivel 1
             foreach (var obj in levelComponents[0].List)
@@ -220,12 +218,14 @@ namespace _Scripts.Managers
             //Desactiva los compoenentes y scripts del nivel 1
             foreach (var obj in levelComponents[1].List)
             {
-                obj.SetActive(false);
+                if(obj != null)
+                    obj.SetActive(false);
             }
 
             foreach (var script in levelScripts[1].List)
             {
-                script.enabled = false;
+                if(script.isActiveAndEnabled)
+                    script.enabled = false;
             }
 
             //Activa los componentes y scripts del nivel 2

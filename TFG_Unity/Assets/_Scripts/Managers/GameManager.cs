@@ -43,16 +43,6 @@ namespace _Scripts.Managers
                 {
                     Destroy(this.gameObject);
                 }
-                else
-                {
-                    var savePath = Application.persistentDataPath + "/gameState.save";
-                    var clothPath = Application.persistentDataPath + "/clothingIndex.json";
-                    
-                    if(File.Exists(savePath)) 
-                        File.Delete(savePath);
-                    if(File.Exists(clothPath))
-                        File.Delete(clothPath);
-                }
             }
             catch (Exception ex)
             {

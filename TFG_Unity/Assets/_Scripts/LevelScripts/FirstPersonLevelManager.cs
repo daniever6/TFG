@@ -1,8 +1,12 @@
+using _Scripts.LevelScripts.SaveManager;
+using _Scripts.Managers;
+using _Scripts.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace _Scripts.LevelScripts
 {
@@ -37,6 +41,10 @@ namespace _Scripts.LevelScripts
         /// <returns>Nombre de la combinacion</returns>
         public string GetCorrectCombinationAt(int idx)
         {
+            if(idx > _correctCombinations.Count)
+            {
+                SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+            }
             return _correctCombinations[idx];
         }
     
@@ -73,6 +81,10 @@ namespace _Scripts.LevelScripts
                 else
                 {
                     //Fin Level
+                    SaveData saveData = SaveManager.SaveManager.LoadGameData();
+
+                    SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.SecondLevel);
+
                     SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
                 }
             }

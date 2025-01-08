@@ -9353,6 +9353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcDialogueCanvas: {fileID: 381981259}
   npcRotator: {fileID: 656410122}
+  player: {fileID: 378778188}
 --- !u!208 &656410124
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13896,8 +13897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6ab79827e4f25a2e6a0372733aa35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraMeshes:
-  - {fileID: 1201225899}
+  extraMeshes: []
 --- !u!1 &1053714923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d520ea707511d84f9738976716d3584, type: 3}
@@ -14983,11 +14983,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44835501aa42c1449e04383a10751c1, type: 3}
---- !u!1 &1201225899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3303256725428563285, guid: 447296c53f260324fae5d7be46da738d, type: 3}
-  m_PrefabInstance: {fileID: 7850859444969686957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204921885
 GameObject:
   m_ObjectHideFlags: 0
@@ -22478,7 +22473,6 @@ GameObject:
   - component: {fileID: 1943207865}
   - component: {fileID: 1943207867}
   - component: {fileID: 1943207864}
-  - component: {fileID: 1943207868}
   m_Layer: 0
   m_Name: Pared
   m_TagString: Wall
@@ -22588,27 +22582,6 @@ MonoBehaviour:
   _fadeAmout: 0
   spritesToFade: []
   DoFade: 0
---- !u!65 &1943207868
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943207862}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.00000011920929, y: 0, z: 0}
 --- !u!1 &1944202969
 GameObject:
   m_ObjectHideFlags: 0
@@ -24203,10 +24176,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 548363397}
-        m_TargetAssemblyTypeName: _Scripts.Managers.LevelManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 656410123}
+        m_TargetAssemblyTypeName: _Scripts.Dialogues.DialogueInteractive, Assembly-CSharp
+        m_MethodName: AcceptButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

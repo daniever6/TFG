@@ -20,7 +20,16 @@ namespace _Scripts.LevelScripts.SaveManager
 
             gameState = GameManager.GameState;
             levelState = LevelManager.Instance.CurrentLevelState;
-            
+        }
+
+        public SaveData(float[] position, GameState _gameState, LevelState _levelState) 
+        {
+            playerPosition[0] = position[0];
+            playerPosition[1] = position[1];
+            playerPosition[2] = position[2];
+
+            gameState = _gameState;
+            levelState = _levelState;
         }
     }
 }

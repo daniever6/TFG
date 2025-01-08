@@ -1,5 +1,7 @@
+using _Scripts.LevelScripts.SaveManager;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +22,14 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void StartNewGame()
     {
+        var savePath = Application.persistentDataPath + "/gameState.save";
+        var clothPath = Application.persistentDataPath + "/clothingIndex.json";
+
+        if (File.Exists(savePath))
+            File.Delete(savePath);
+        if (File.Exists(clothPath))
+            File.Delete(clothPath);
+
         SceneManager.LoadScene("Intro");
     }
 
@@ -28,7 +38,22 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
+        SaveData saveData = SaveManager.LoadGameData();
 
+        if(saveData == null)
+        {
+            SceneManager.LoadScene("Intro");
+            return;
+        }
+
+        if(saveData.levelState <= _Scripts.Utilities.LevelState.NivelRecibidor)
+        {
+            SceneManager.LoadScene("Level_00");
+        }
+        else
+        {
+            SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+        }
     }
 
     /// <summary>

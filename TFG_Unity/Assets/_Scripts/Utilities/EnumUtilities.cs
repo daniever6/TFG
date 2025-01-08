@@ -3,8 +3,8 @@
     public enum LevelState
     {
         None,
-        Tutorial,
-        FirstLevel,
+        NivelRecibidor,
+        NivelBases,
         SecondLevel,
         FirstLevelPart2,
         ThirdLevel

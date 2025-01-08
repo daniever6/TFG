@@ -156,9 +156,14 @@ namespace _Scripts.Player
         /// <param name="objectToGrab">Objeto a agarrar</param>
         public void Grab(LevelInteractable objectToGrab)
         {
+            if(objectToGrab == null)
+            {
+                return;
+            }
+
             ObjectSelected = objectToGrab;
 
-            var objectTransform = objectToGrab.transform;
+            var objectTransform = objectToGrab?.transform;
             
             objectTransform.SetParent(transform);
             objectTransform.localPosition = Vector3.zero;

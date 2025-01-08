@@ -16,6 +16,7 @@ namespace _Scripts.LevelScripts.Level_02
         [SerializeField] private GameObject BalanzaSetPosition;
         [SerializeField] private Vector3 PosInteraccionPapelPesaje;
         [SerializeField] private Vector3 PosInteraccionBase;
+        [SerializeField] private GameObject rayInvoker;
         
         private Vector3 initialPosition;
         private bool isTweening = false;
@@ -56,6 +57,11 @@ namespace _Scripts.LevelScripts.Level_02
             // }
             
             // Accion entre objetos interactables de la escena
+            if(rayInvoker != null)
+            {
+                rayOrigin = rayInvoker.transform.position;
+            }
+
             if (Physics.Raycast(rayOrigin, rayDirection, out hit, Mathf.Infinity))
             {
                 Iteractables parsedEnum;
