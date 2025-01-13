@@ -14,18 +14,27 @@ namespace _Scripts.LevelScripts.Lab_Scripts
     public class ClothCheckTrigger : GameplayMonoBehaviour<ClothCheckTrigger>
     {
         [SerializeField] private CheckRopaCorrecta checker;
-        [SerializeField] private GameObject npc;
         [SerializeField] private ParticleSystem poisonParticleSystem;
         [SerializeField] private GameObject player;
         private PlayerInteractor _playerInteractor;
-        
+
+        [SerializeField] private GameObject alumno;
+        [SerializeField] private GameObject bandeja;
+        [SerializeField] private GameObject bandejaPosition;
+        [SerializeField] private GameObject propParent;
+        [SerializeField] private DialogueTrigger dropAcidDialogue;
+
+        private NpcState alumnoState;
+
         private NavMeshAgent _npcNavMeshAgent;
         private bool _isGamePaused = false;
 
         private void Start()
         {
+            alumno.TryGetComponent<NpcState>(out alumnoState);
+
             player.TryGetComponent(out _playerInteractor);
-            _npcNavMeshAgent = npc.GetComponent<NavMeshAgent>();
+            alumno.TryGetComponent<NavMeshAgent>(out _npcNavMeshAgent);
         }
         
         protected override void OnPostPaused()
@@ -62,16 +71,40 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             
             if (checker.CheckClothes())
             {
-                Destroy(this);
+                CancelChase();
             }
             else
             {
+                SetAlumnoChaser();
+
                 _playerInteractor.enabled = false;
                 this.enabled = false;
-                npc.layer = LayerMask.NameToLayer("Default");
+                alumno.layer = LayerMask.NameToLayer("Default");
                 
                 StartCoroutine(WaitBeforeChase(timeBeforeChase));
             }
+        }
+
+        /// <summary>
+        /// Prepara al NPC previamente a tirarle el acido al jugador
+        /// </summary>
+        public void SetAlumnoChaser()
+        {
+            // Establece la posicion de la bandeja
+            bandeja.transform.parent = bandejaPosition.transform;
+            bandeja.transform.localPosition = Vector3.zero;
+
+            // Añade el NavMeshAgent al NPC
+            _npcNavMeshAgent = alumno.AddComponent<NavMeshAgent>();
+        }
+
+        /// <summary>
+        /// Desactiva el script si el NPC esta bien vestido
+        /// </summary>
+        public void CancelChase()
+        {
+            bandejaPosition.transform.parent = propParent.transform;
+            Destroy(this);
         }
         
         /// <summary>
@@ -88,6 +121,8 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             }
             
             yield return new WaitForSeconds(delayBeforeChase);
+
+            alumnoState?.ChangeState(NpcStates.Walking);
             
             StartCoroutine(ChasePlayer());
         }
@@ -106,9 +141,9 @@ namespace _Scripts.LevelScripts.Lab_Scripts
                     yield return null;
                 }
                 
-                float distanceToPlayer = Vector3.Distance(player.transform.position, npc.transform.position);
+                float distanceToPlayer = Vector3.Distance(player.transform.position, alumno.transform.position);
 
-                _npcNavMeshAgent.SetDestination(player.transform.position);
+                _npcNavMeshAgent?.SetDestination(player.transform.position);
 
                 if (distanceToPlayer < 2)
                 {
@@ -121,7 +156,9 @@ namespace _Scripts.LevelScripts.Lab_Scripts
 
             var effect = Instantiate(poisonParticleSystem, player.transform.position, Quaternion.LookRotation(Vector3.up));
             effect.transform.parent = player.transform;
-            npc.GetComponent<DialogueTrigger>().TriggerEvent();
+            dropAcidDialogue?.TriggerEvent();
+            
+            alumnoState.ChangeState(NpcStates.Idle);
 
             StartCoroutine(PlayerDeath());
         }
