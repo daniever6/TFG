@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +14,17 @@ namespace _Scripts.LevelScripts.Level_03
         [SerializeField] private GameObject interactablesParent;
         [SerializeField] private TextMeshProUGUI reactivoText;
         private int _reactivosCount = 3;
+
+        private void OnEnable()
+        {
+            _reactivosCount = 3;
+            InteractableLevel03.OnReactivoCorrectDropped += OnReactivoDropped;
+        }
+
+        private void OnDisable()
+        {
+            InteractableLevel03.OnReactivoCorrectDropped -= OnReactivoDropped;
+        }
 
         private void Start()
         {
@@ -34,7 +44,6 @@ namespace _Scripts.LevelScripts.Level_03
                 }
             }
 
-            InteractableLevel03.OnReactivoCorrectDropped += OnReactivoDropped;
         }
 
         /// <summary>
@@ -45,7 +54,9 @@ namespace _Scripts.LevelScripts.Level_03
             _reactivosCount--;
             if (_reactivosCount == 0)
             {
-                InteractableLevel03.OnReactivoCorrectDropped -= OnReactivoDropped;
+                ResiduosDroppedManager.ResiduosDropped[ResiduosDroppedManager.CurrentResiduoIdx] = true;
+                SaveManager.SaveManager.SaveResiduosData();
+
                 SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
             }
         }

@@ -11,6 +11,8 @@ namespace _Scripts.Interactables
     {
         [SerializeField] private GameObject puntoRecogidaUI;
 
+        public int ResiduoIdx;
+
         private void Start(){}
 
         /// <summary>
@@ -22,9 +24,24 @@ namespace _Scripts.Interactables
             
             if (Level03PlayerController.Instance.GetGarbageFromTable())
             {
-                puntoRecogidaUI.SetActive(false);
-                Destroy(this);
+                ResiduosDroppedManager.CurrentResiduoIdx = ResiduoIdx;
+
+                DesactivateComponent();
             }
+        }
+
+        /// <summary>
+        /// Elimina el script y desactiva la ui
+        /// </summary>
+        public void DesactivateComponent()
+        {
+            gameObject.TryGetComponent<Interactable>(out var interactableMesa);
+            interactableMesa.enabled = false;
+
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+            puntoRecogidaUI.SetActive(false);
+            Destroy(this);
         }
     }
 }

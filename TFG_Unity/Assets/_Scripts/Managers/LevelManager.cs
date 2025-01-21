@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using _Scripts.Interactables;
 using _Scripts.LevelScripts.SaveManager;
 using _Scripts.UI;
 using _Scripts.Utilities;
@@ -27,6 +28,7 @@ namespace _Scripts.Managers
     {
         [SerializeField] private List<ComponentList<GameObject>> levelComponents;
         [SerializeField] private List<ComponentList<MonoBehaviour>> levelScripts;
+        [SerializeField] private List<Level03TableTrigger> residuoTriggers;
 
         [SerializeField][CanBeNull] private BurnNPC burnNPC;
         [SerializeField][CanBeNull] private AcidNPC acidNPC;
@@ -34,7 +36,7 @@ namespace _Scripts.Managers
         private SaveData _saveData;
         private GameObject player;
         
-        private static LevelState _levelState = LevelState.None;
+        private static LevelState _levelState = LevelState.NivelResiduos;
         public LevelState CurrentLevelState => _levelState;
         protected override void Awake()
         {
@@ -82,6 +84,8 @@ namespace _Scripts.Managers
 
                 player.transform.position = new Vector3(_saveData.playerPosition[0], _saveData.playerPosition[1],
                                                         _saveData.playerPosition[2]);
+
+                ResiduosDroppedManager.ResiduosDropped = _saveData.residuosTirados;
             }
             else
             {
@@ -278,6 +282,9 @@ namespace _Scripts.Managers
         /// - Llevar a cabo la gestion de residuos.
         /// - Finalizar el nivel una vez terminado
         /// 
+        /// - Guardar los residuos tirados con exito
+        /// - Desactivar los residuos que ya han sido desechados
+        /// 
         /// </summary>
         private void HandleNivelResiduos()
         {
@@ -301,6 +308,18 @@ namespace _Scripts.Managers
             foreach (var script in levelScripts[3].List)
             {
                 script.enabled = true;
+            }
+
+            _saveData = SaveManager.LoadGameData();
+            ResiduosDroppedManager.ResiduosDropped = _saveData.residuosTirados;
+
+            // Desactiva los residuos ya tirados
+            foreach(var residuo in residuoTriggers)
+            {
+                if (ResiduosDroppedManager.ResiduosDropped[residuo.ResiduoIdx])
+                {
+                    residuo.DesactivateComponent(); //Si ya ha sido tirado se desactiva
+                }
             }
             
             InfoCanvas.Instance.ShowMessage("- Recoge los residuos de las mesas de trabajo y tiralos en " +

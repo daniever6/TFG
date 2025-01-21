@@ -3856,7 +3856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &224098709
 Transform:
   m_ObjectHideFlags: 0
@@ -8378,6 +8378,10 @@ MonoBehaviour:
     - {fileID: 2068403116}
     - {fileID: 594244352}
     - {fileID: 2014785388}
+  residuoTriggers:
+  - {fileID: 1131262582}
+  - {fileID: 2068403116}
+  - {fileID: 2014785388}
   burnNPC: {fileID: 1889942353}
   acidNPC: {fileID: 1545076019}
 --- !u!1 &556173207
@@ -15360,6 +15364,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5ba081209663864da1deb324ca2b893, type: 2}
+    - target: {fileID: 6931807232840579333, guid: a44835501aa42c1449e04383a10751c1, type: 3}
+      propertyPath: ResiduoIdx
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7278445091761846299, guid: a44835501aa42c1449e04383a10751c1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -23824,6 +23832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntoRecogidaUI: {fileID: 485326912}
+  ResiduoIdx: 2
 --- !u!114 &2014785390 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3779563037950399520, guid: df11523c83b6d474ca7b9bd7033cd026, type: 3}

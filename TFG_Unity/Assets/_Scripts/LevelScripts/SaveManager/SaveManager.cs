@@ -45,6 +45,22 @@ namespace _Scripts.LevelScripts.SaveManager
             
         }
 
+        /// <summary>
+        /// Guarda los residuos que han sido desechados en los contenedores manteniendo
+        /// los demas valores guardados
+        /// </summary>
+        public static void SaveResiduosData()
+        {
+            SaveData saveData = new SaveData(ResiduosDroppedManager.ResiduosDropped);
+            string dataPath = Application.persistentDataPath + "/gameState.save";
+            using (FileStream fileStream = new FileStream(dataPath, FileMode.Create))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(fileStream, saveData);
+                fileStream.Close();
+            }
+        }
+
         public static SaveData LoadGameData()
         {
             string datapath = Application.persistentDataPath + "/gameState.save";
