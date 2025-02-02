@@ -5928,7 +5928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8271b681602223f41a08a508e047bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
+  mainPanel: {fileID: 727186681}
   optionsPanel: {fileID: 777948486}
 --- !u!4 &1586577553
 Transform:

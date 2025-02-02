@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using _Scripts.Interactables;
 using _Scripts.LevelScripts.SaveManager;
@@ -36,7 +37,7 @@ namespace _Scripts.Managers
         private SaveData _saveData;
         private GameObject player;
         
-        private static LevelState _levelState = LevelState.NivelResiduos;
+        private static LevelState _levelState = LevelState.NivelRecibidor;
         public LevelState CurrentLevelState => _levelState;
         protected override void Awake()
         {
@@ -80,12 +81,14 @@ namespace _Scripts.Managers
 
             if (_saveData != null)
             {
-                ChangeLevelState(_saveData.levelState);
-
+                var levelState = _saveData.levelState;
+                
                 player.transform.position = new Vector3(_saveData.playerPosition[0], _saveData.playerPosition[1],
                                                         _saveData.playerPosition[2]);
 
                 ResiduosDroppedManager.ResiduosDropped = _saveData.residuosTirados;
+
+                ChangeLevelState(levelState);
             }
             else
             {
@@ -134,13 +137,17 @@ namespace _Scripts.Managers
                 case LevelState.NivelBalanza:
                     HandleNivelBalanza();
                     break;
-                
+
+                case LevelState.NivelAcidos:
+                    HandleNivelAcidos();
+                    break;
+
                 case LevelState.NivelResiduos:
                     HandleNivelResiduos();
                     break;
 
-                case LevelState.NivelAcidos:
-                    HandleNivelAcidos();
+                case LevelState.NivelEmergencia:
+                    HandleNivelEmergencia();
                     break;
             }
         }
@@ -311,7 +318,7 @@ namespace _Scripts.Managers
             }
 
             _saveData = SaveManager.LoadGameData();
-            ResiduosDroppedManager.ResiduosDropped = _saveData.residuosTirados;
+            ResiduosDroppedManager.ResiduosDropped = _saveData?.residuosTirados;
 
             // Desactiva los residuos ya tirados
             foreach(var residuo in residuoTriggers)
@@ -321,9 +328,65 @@ namespace _Scripts.Managers
                     residuo.DesactivateComponent(); //Si ya ha sido tirado se desactiva
                 }
             }
-            
+
+            if (_saveData.residuosTirados.Any(x => true))
+            {
+                ChangeLevelState(LevelState.NivelEmergencia);
+                return;
+            }
+
             InfoCanvas.Instance.ShowMessage("- Recoge los residuos de las mesas de trabajo y tiralos en " +
                                           "sus contenedores correspondientes.");
+        }
+        
+        /// <summary>
+        /// CONTEXTO:
+        /// - Surge una emergencia en el laboratorio que hace que los personajes tengan
+        ///   que huir por la puerta de salida de emergencia del laboratorio
+        ///
+        /// ACCIONES:
+        /// - Desactivar scripts y componentes del nivel anterior
+        /// - Activar los scripts y componentes de este nivel
+        /// - Activar el dialogo de emergencia
+        /// - Evacuar a los NPCs
+        /// - Finalizar el juego al terminar
+        /// 
+        /// </summary>
+        private void HandleNivelEmergencia()
+        {
+            //Desactiva los compoenentes y scripts del nivel de residuos
+            foreach (var obj in levelComponents[3].List)
+            {
+                obj?.SetActive(false);
+            }
+
+            foreach (var script in levelScripts[3].List)
+            {
+                if (script == null)
+                {
+                    continue;
+                }
+                script.enabled = false;
+            }
+            
+            //Activa los componentes y scripts del nivel de emergencia
+            foreach (var obj in levelComponents[4].List)
+            {
+                obj?.SetActive(true);
+            }
+
+            foreach (var script in levelScripts[4].List)
+            {
+                if (script == null)
+                {
+                    continue;
+                }
+                script.enabled = true;
+            }
+
+            EmergencyManager.Instance.StartEmergency();
+            
+            InfoCanvas.Instance.ShowMessage("- Evacua el laboratorio por la puerta de emergencia.");
         }
     }
 }

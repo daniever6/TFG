@@ -68,8 +68,6 @@ public class BurnNPC : MonoBehaviour
     {
         npcCamera.enabled = true;
 
-        InfoCanvas.Instance.ShowMessage("Ayuda al compañero que se está quemando");
-
         if (!helpDialogue.IsUnityNull())
         {
             helpDialogue.TriggerEvent();

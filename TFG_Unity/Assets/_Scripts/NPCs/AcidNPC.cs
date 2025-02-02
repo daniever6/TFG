@@ -68,8 +68,6 @@ namespace Assets._Scripts.NPCs
         {
             npcCamera.enabled = true;
 
-            InfoCanvas.Instance.ShowMessage("Ayuda al compañero al que le ha caido ácido encima");
-
             if (!helpDialogue.IsUnityNull())
             {
                 helpDialogue.TriggerEvent();

@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using _Scripts.Utilities;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -68,11 +69,16 @@ public class NpcPatrol : GameplayMonoBehaviour<NpcPatrol>
     /// </summary>
     private void CheckNpcHealth()
     {
+        if (npcNavMeshAgent == null)
+        {
+            return;
+        }
+
         if (npcNavMeshAgent != null && npcNavMeshAgent.isActiveAndEnabled && npcNavMeshAgent.isOnNavMesh)
         {
             return;
         }
-            
+
         if (npcState.IsDying()) 
         {
             npcNavMeshAgent.isStopped = true;

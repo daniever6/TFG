@@ -8672,6 +8672,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5287441953879181802, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.39873433
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287441953879181802, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
+      propertyPath: m_Size.z
+      value: 0.23702998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287441953879181802, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00016671784
+      objectReference: {fileID: 0}
     - target: {fileID: 6133992060568478462, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -15857,8 +15869,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.017699227, y: 0.10987658, z: 0.042663295}
-  m_Center: {x: 0.000000011641532, y: 0.039423212, z: 0.011065528}
+  m_Size: {x: 0.040427014, y: 0.10987659, z: 0.070306785}
+  m_Center: {x: 0.00032813894, y: 0.039423212, z: -0.0027562135}
 --- !u!114 &1385930446
 MonoBehaviour:
   m_ObjectHideFlags: 0

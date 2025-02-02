@@ -8,6 +8,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
     {
         private ObjectFader _fader;
         private GameObject player;
+        [SerializeField] private GameObject playerPos;
 
         private void Awake()
         {
@@ -25,7 +26,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
                 return;
             }
 
-            Vector3 rayDirection = player.transform.position - transform.position;
+            Vector3 rayDirection = playerPos.transform.position - transform.position;
             Ray ray = new Ray(transform.position, rayDirection);
 
             if (Physics.Raycast(ray, out var hit))

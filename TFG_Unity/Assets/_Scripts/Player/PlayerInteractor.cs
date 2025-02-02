@@ -56,8 +56,16 @@ namespace _Scripts.Player
 
             closestObject.TryGetComponent<NpcState>(out NpcState npcState);
 
+            // Si el npc se esta quemando tirarle la manta encima
+            if (npcState != null && npcState.State == NpcStates.Burning)
+            {
+                if (MantaIgnifugaManager.IsCarried)
+                {
+                    MantaIgnifugaManager.Instance.DropMantaOnNpc();
+                }
+            }
             //Gestion si al NPC le ha caido acido encima
-            if(npcState != null && npcState.State == NpcStates.Acid)
+            else if (npcState != null && npcState.State == NpcStates.Acid)
             {
                 if(CarryNPC.Instance.IsCarrying == false)
                 {

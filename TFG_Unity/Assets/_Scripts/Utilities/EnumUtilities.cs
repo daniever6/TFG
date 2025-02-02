@@ -7,7 +7,8 @@
         NivelBases,
         NivelBalanza,
         NivelAcidos,
-        NivelResiduos
+        NivelResiduos,
+        NivelEmergencia
     }
     
     public enum GameState
@@ -97,7 +98,8 @@
         Acid,
         Carry,
         Save,
-        Die
+        Die,
+        Runing
     }
     
     [System.Serializable]

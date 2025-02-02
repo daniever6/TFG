@@ -97,7 +97,8 @@ namespace _Scripts.Player
                         }
                         if (!alfombrillaIsEmpty && handHasObject) //Hacer combinacion
                         {
-                            UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            await UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            await GoToInitialPosition();
                             break;
                         }
 
@@ -255,7 +256,7 @@ namespace _Scripts.Player
         /// interactuar con el otro objeto (secondaryObject)
         /// </summary>
         /// <param name="secondaryObject">Objeto secundario</param>
-        private async void UseObjects(LevelInteractable secondaryObject)
+        private async Task UseObjects(LevelInteractable secondaryObject)
         {
             if (ObjectSelected.IsUnityNull() || secondaryObject.IsUnityNull() || PlayerGrab.IsTweening) return;
             PlayerGrab.IsTweening = true;
