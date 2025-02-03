@@ -7,6 +7,8 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         [SerializeField] private float _fadeSpeed = 10;
         [SerializeField] private float _fadeAmout = 0;
         [SerializeField] private SpriteRenderer[] spritesToFade;
+        [SerializeField] private Color finalColor = Color.black;
+        private Color _initialColor;
         private float _originalOpacity;
 
         private Renderer _renderer;
@@ -18,6 +20,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             _renderer = GetComponent<Renderer>();
             _material = _renderer.material;
             _originalOpacity = _material.color.a;
+            _initialColor = _material.color;
         }
 
         private void Update()
@@ -38,20 +41,14 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         private void FadeNow()
         {
             Color currentColor = _material.color;
-            Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b,
-                Mathf.Lerp(currentColor.a, _fadeAmout, _fadeSpeed * Time.deltaTime));
+            Color smoothColor = Color.Lerp(currentColor, new Color(finalColor.r, finalColor.g, finalColor.b, _fadeAmout), _fadeSpeed * Time.deltaTime);
 
             foreach (var sprite in spritesToFade)
             {
-                Color currentSpriteColor = sprite.color;
-                Color smoothSpriteColor = new Color(currentSpriteColor.r, currentSpriteColor.g, currentSpriteColor.b,
-                 Mathf.Lerp(currentSpriteColor.a, _fadeAmout, _fadeSpeed * Time.deltaTime));
-                
-                sprite.color = smoothSpriteColor;
+                sprite.color = Color.Lerp(sprite.color, new Color(finalColor.r, finalColor.g, finalColor.b, _fadeAmout), _fadeSpeed * Time.deltaTime);
             }
 
             _material.color = smoothColor;
-
         }
 
         /// <summary>
@@ -61,16 +58,11 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         private void ResetFade()
         {
             Color currentColor = _material.color;
-            Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b,
-                Mathf.Lerp(currentColor.a, _originalOpacity, _fadeSpeed * Time.deltaTime));
+            Color smoothColor = Color.Lerp(currentColor, _initialColor, _fadeSpeed * Time.deltaTime);
 
             foreach (var sprite in spritesToFade)
             {
-                Color currentSpriteColor = sprite.color;
-                Color smoothSpriteColor = new Color(currentSpriteColor.r, currentSpriteColor.g, currentSpriteColor.b,
-                    Mathf.Lerp(currentSpriteColor.a, _originalOpacity, _fadeSpeed * Time.deltaTime));
-
-                sprite.color = smoothSpriteColor;
+                sprite.color = Color.Lerp(sprite.color, _initialColor, _fadeSpeed * Time.deltaTime);
             }
 
             _material.color = smoothColor;

@@ -26,7 +26,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
 
             if(triggersActivated > 0 && isDoorOpen == false)
             {
-                doorAnimator.Play("AbrirPuertaLab");
+                doorAnimator.CrossFade("AbrirPuertaLab", 1f);
                 isDoorOpen = true;
             }
         }
@@ -41,7 +41,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
 
             if(triggersActivated <= 0 && isDoorOpen)
             {
-                doorAnimator.Play("CerrarPuertaLab");
+                doorAnimator.CrossFade("CerrarPuertaLab", 1f);
                 isDoorOpen = false;
             }
         }
