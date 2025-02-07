@@ -41,7 +41,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         {
             base.OnPostPaused();
             _isGamePaused = true;
-            if (!_npcNavMeshAgent.IsUnityNull())
+            if (!_npcNavMeshAgent.IsUnityNull() && _npcNavMeshAgent.isActiveAndEnabled)
             {
                 _npcNavMeshAgent.isStopped = true;
             }
@@ -51,7 +51,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         {
             base.OnPostResumed();
             _isGamePaused = false;
-            if (!_npcNavMeshAgent.IsUnityNull())
+            if (!_npcNavMeshAgent.IsUnityNull() && _npcNavMeshAgent.isActiveAndEnabled)
             {
                 _npcNavMeshAgent.isStopped = false;
             }

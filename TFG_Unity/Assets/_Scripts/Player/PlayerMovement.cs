@@ -1,6 +1,7 @@
 using _Scripts.Utilities;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _Scripts.Player
 {
@@ -26,6 +27,10 @@ namespace _Scripts.Player
         private Vector2 direction;
         private float currentSpeed = 0f; // Velocidad actual del jugador
 
+        //Sonidos
+        private float nextStepTime = 0f;
+        private float stepCooldown = 0.65f;
+
         #endregion
 
         #region Lifecycle Methods
@@ -44,6 +49,13 @@ namespace _Scripts.Player
             if (direction != Vector2.zero)
             {
                 currentSpeed = Mathf.Lerp(currentSpeed, moveSpeed, acceleration * Time.fixedDeltaTime);
+
+                //Sonido de caminar
+                if (Time.time >= nextStepTime)
+                {
+                    SoundManager.Instance.Play("Caminar");
+                    nextStepTime = Time.time + stepCooldown;  // Establece el próximo tiempo permitido
+                }
             }
             else
             {

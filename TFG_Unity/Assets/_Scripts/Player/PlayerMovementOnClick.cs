@@ -27,6 +27,9 @@ namespace _Scripts.Player
         [SerializeField][CanBeNull] private Animator playerAnimator;
         private RaycastHit _hit;
 
+        private float stepCooldown = 0.65f; // Tiempo entre sonidos de pasos
+        private float nextStepTime = 0f;
+
         #endregion
 
         #region Inheritance Methods
@@ -55,6 +58,12 @@ namespace _Scripts.Player
         private void Update()
         {
             playerAnimator?.SetBool("ClickWalking", _navMeshAgent.hasPath);
+
+            if (_navMeshAgent.hasPath && Time.time >= nextStepTime)
+            {
+                SoundManager.Instance.Play("Caminar");
+                nextStepTime = Time.time + stepCooldown;  // Establece el próximo tiempo permitido
+            }
         }
 
         /// <summary>

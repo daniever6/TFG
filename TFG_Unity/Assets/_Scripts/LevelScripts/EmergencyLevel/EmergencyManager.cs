@@ -80,9 +80,19 @@ public class EmergencyManager : GameplayMonoBehaviour<EmergencyManager>
             return;
         }
 
-        foreach (var npc in npcs) 
+        foreach (var npc in npcs)
         {
             await Task.Delay(200);
+
+            if(npc.TryGetComponent<NavMeshObstacle>(out var navObstacle))
+            {
+                navObstacle.enabled = false;
+            }
+
+            if(!npc.TryGetComponent<Rigidbody>(out var rb))
+            {
+                npc.AddComponent<Rigidbody>();
+            }
 
             if (npc.TryGetComponent<NavMeshAgent>(out var navMeshAgent))
             {

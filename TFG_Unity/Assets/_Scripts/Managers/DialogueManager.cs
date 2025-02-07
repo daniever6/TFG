@@ -18,6 +18,8 @@ namespace _Scripts.Managers
         public static event Action OnDialogueFinish;                    // Evento que notifica que ha acabado el dialogo
         public static event Action<string> OnCharacterChanged;          // Evento que notifica un cambio de personaje al hablar
 
+        private AudioSource currentAudioSource;
+
         [SerializeField] private GameObject dialogueCanvas;
 
         
@@ -100,6 +102,8 @@ namespace _Scripts.Managers
 
         public void DisplayDialogueSentence()
         {
+            currentAudioSource?.Stop(); //Detiene los sonidos de dialogo anteriores
+
             if (_sentences.Count == 0)
             {
                 DisplayNextDialogue();
@@ -131,11 +135,16 @@ namespace _Scripts.Managers
         private IEnumerator TypeSentence(string sentence)
         {
             dialogText.text = "";
+
+            currentAudioSource = SoundManager.Instance.Play("Hablar");
+
             foreach (char letter in sentence.ToCharArray())
             {
                 dialogText.text += letter;
                 yield return new WaitForSeconds(lettersWaitVelocity);
             }
+
+            currentAudioSource.Stop();
         }
         
         #endregion
