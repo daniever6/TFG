@@ -9876,7 +9876,6 @@ GameObject:
   - component: {fileID: 656410121}
   - component: {fileID: 656410119}
   - component: {fileID: 656410122}
-  - component: {fileID: 656410125}
   - component: {fileID: 656410123}
   - component: {fileID: 656410126}
   - component: {fileID: 656410129}
@@ -9970,19 +9969,6 @@ MonoBehaviour:
   npcDialogueCanvas: {fileID: 381981259}
   npcRotator: {fileID: 656410122}
   player: {fileID: 378778188}
---- !u!114 &656410125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656410116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0eb5629060eff74dbe3c1e5502aec1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcAnimator: {fileID: 0}
 --- !u!114 &656410126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14604,6 +14590,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b1807199cfd6e384cb68510a28d63723, type: 3}
   - key: Hablar
     clip: {fileID: 8300000, guid: 55f291bf5dfc759408d153697db1f8a6, type: 3}
+  - key: HablarProfesor
+    clip: {fileID: 8300000, guid: a690c5b29138b8d4cbc21d116c1cfb36, type: 3}
+  - key: HablarAlumno1
+    clip: {fileID: 8300000, guid: 0ead4fcf98ffbc44ba7ded48c7ee4af7, type: 3}
+  - key: HablarAlumno2
+    clip: {fileID: 8300000, guid: 647d57aa0cb54c3479bd501103345f9d, type: 3}
+  - key: HablarAlumno3
+    clip: {fileID: 8300000, guid: fd5bc31727623bc46b7ca63af32f26b6, type: 3}
   AudioSource: {fileID: 459612072}
 --- !u!1 &998815053
 GameObject:
@@ -24801,7 +24795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1074090071}
   dialogue:
-    UnitName: Alumno 3
+    UnitName: Alumno 1
     UnitImage: {fileID: 0}
     Sentences:
     - "\xA1\xA1\xA1\xA1AYUDAAAAA!!!!"
@@ -24820,7 +24814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1074090071}
   dialogue:
-    UnitName: Alumno 3
+    UnitName: Alumno 1
     UnitImage: {fileID: 0}
     Sentences:
     - Muchas gracias por salvarme la vida.
@@ -24839,7 +24833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1074090071}
   dialogue:
-    UnitName: Alumno 3
+    UnitName: Alumno 1
     UnitImage: {fileID: 0}
     Sentences:
     - "\xBFSabes por qu\xE9 llevo bata? No es por estilo, es porque una vez mezcl\xE9

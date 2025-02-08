@@ -3145,6 +3145,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b1807199cfd6e384cb68510a28d63723, type: 3}
   - key: Hablar
     clip: {fileID: 8300000, guid: 55f291bf5dfc759408d153697db1f8a6, type: 3}
+  - key: HablarProfesor
+    clip: {fileID: 8300000, guid: a690c5b29138b8d4cbc21d116c1cfb36, type: 3}
+  - key: HablarAlumno1
+    clip: {fileID: 8300000, guid: 0ead4fcf98ffbc44ba7ded48c7ee4af7, type: 3}
+  - key: HablarAlumno2
+    clip: {fileID: 8300000, guid: 647d57aa0cb54c3479bd501103345f9d, type: 3}
+  - key: HablarAlumno3
+    clip: {fileID: 8300000, guid: fd5bc31727623bc46b7ca63af32f26b6, type: 3}
   AudioSource: {fileID: 510682485}
 --- !u!1 &560870751
 GameObject:

@@ -85,6 +85,7 @@ namespace _Scripts.Managers
             if (unitNameText.text != dialogue.UnitName)
             {
                 OnCharacterChanged?.Invoke(dialogue.UnitName);
+                CurrentCharacter = dialogue.UnitName;
             }
 
             //_unitImage.sprite = dialogue.UnitImage;
@@ -136,7 +137,29 @@ namespace _Scripts.Managers
         {
             dialogText.text = "";
 
-            currentAudioSource = SoundManager.Instance.Play("Hablar");
+            string clipName = "Hablar";
+            switch (CurrentCharacter)
+            {
+                case "Profesor":
+                    clipName = "HablarProfesor";
+                    break;
+
+                case "Alumno 1":
+                    clipName = "HablarAlumno1";
+                    break;
+
+                case "Alumno 2":
+                    clipName = "HablarAlumno2";
+                    break;
+
+                case "Alumno 3":
+                    clipName = "HablarAlumno3";
+                    break;
+
+                default:
+                    break;
+            }
+            currentAudioSource = SoundManager.Instance.Play(clipName);
 
             foreach (char letter in sentence.ToCharArray())
             {
@@ -144,7 +167,7 @@ namespace _Scripts.Managers
                 yield return new WaitForSeconds(lettersWaitVelocity);
             }
 
-            currentAudioSource.Stop();
+            currentAudioSource?.Stop();
         }
         
         #endregion
