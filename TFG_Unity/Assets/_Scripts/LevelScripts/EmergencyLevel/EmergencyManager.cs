@@ -49,6 +49,8 @@ public class EmergencyManager : GameplayMonoBehaviour<EmergencyManager>
     {
         npcPatrol.enabled = false;
         npcPatrol.gameObject.TryGetComponent<NpcState>(out var npcState);
+
+        SoundManager.Instance.Play("Alarma");
         
         if(npcState != null)
         {

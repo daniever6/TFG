@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
+  m_IndirectSpecularColor: {r: 0.17929119, g: 0.22449914, b: 0.30621, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: ab04dfdeed995f349aa16b308d56cefb, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: fa1925bf8f1fd324da50bb36069801ad, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -5807,6 +5807,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 647d57aa0cb54c3479bd501103345f9d, type: 3}
   - key: HablarAlumno3
     clip: {fileID: 8300000, guid: fd5bc31727623bc46b7ca63af32f26b6, type: 3}
+  - key: Alarma
+    clip: {fileID: 8300000, guid: ce72aa5ffa1eab8438547f1a60d4823e, type: 3}
+  - key: Basura
+    clip: {fileID: 8300000, guid: 04080bc306247ca4182b31cdbe169dbf, type: 3}
+  - key: Burbujas
+    clip: {fileID: 8300000, guid: e135aa4f66fbe8747903585afbbdb052, type: 3}
+  - key: Encender
+    clip: {fileID: 8300000, guid: dd0d957c7dd7c284b910b5d6361bdd47, type: 3}
+  - key: Explosion
+    clip: {fileID: 8300000, guid: 7fba9cd22d697af4eb0cd70ec39ccd48, type: 3}
+  - key: Fuego
+    clip: {fileID: 8300000, guid: 6efd8fe8b0f13aa4abf6b5a22f69fead, type: 3}
   AudioSource: {fileID: 8035488185046807133}
 --- !u!1 &979744279 stripped
 GameObject:

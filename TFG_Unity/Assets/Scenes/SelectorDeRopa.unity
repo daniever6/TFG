@@ -894,7 +894,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.5
+  m_fontSize: 27.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10790,6 +10790,26 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b1807199cfd6e384cb68510a28d63723, type: 3}
   - key: Hablar
     clip: {fileID: 8300000, guid: 55f291bf5dfc759408d153697db1f8a6, type: 3}
+  - key: HablarProfesor
+    clip: {fileID: 8300000, guid: a690c5b29138b8d4cbc21d116c1cfb36, type: 3}
+  - key: HablarAlumno1
+    clip: {fileID: 8300000, guid: 0ead4fcf98ffbc44ba7ded48c7ee4af7, type: 3}
+  - key: HablarAlumno2
+    clip: {fileID: 8300000, guid: 647d57aa0cb54c3479bd501103345f9d, type: 3}
+  - key: HablarAlumno3
+    clip: {fileID: 8300000, guid: fd5bc31727623bc46b7ca63af32f26b6, type: 3}
+  - key: Alarma
+    clip: {fileID: 8300000, guid: ce72aa5ffa1eab8438547f1a60d4823e, type: 3}
+  - key: Basura
+    clip: {fileID: 8300000, guid: 04080bc306247ca4182b31cdbe169dbf, type: 3}
+  - key: Burbujas
+    clip: {fileID: 8300000, guid: e135aa4f66fbe8747903585afbbdb052, type: 3}
+  - key: Encender
+    clip: {fileID: 8300000, guid: dd0d957c7dd7c284b910b5d6361bdd47, type: 3}
+  - key: Explosion
+    clip: {fileID: 8300000, guid: 7fba9cd22d697af4eb0cd70ec39ccd48, type: 3}
+  - key: Fuego
+    clip: {fileID: 8300000, guid: 6efd8fe8b0f13aa4abf6b5a22f69fead, type: 3}
   AudioSource: {fileID: 7155107718622437885}
 --- !u!1 &1613541345 stripped
 GameObject:

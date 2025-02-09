@@ -68,7 +68,8 @@ namespace _Scripts.LevelScripts.Level_01
             {
                 return null;
             }
-            
+
+            SoundManager.Instance.Play(particleName);
             var particle = particles[particleName];
             Instantiate(particle, particlePosition.position, Quaternion.LookRotation(Vector3.up), particlePosition);
 
@@ -86,7 +87,8 @@ namespace _Scripts.LevelScripts.Level_01
             {
                 return null;
             }
-            
+
+            SoundManager.Instance.Play(particleName);
             var particle = particles[particleName];
             var particleInstance = Instantiate(particle, pos.position, Quaternion.LookRotation(Vector3.up), pos);
 

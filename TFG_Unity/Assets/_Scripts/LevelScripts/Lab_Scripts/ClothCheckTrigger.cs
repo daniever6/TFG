@@ -95,7 +95,11 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             bandeja.transform.localPosition = Vector3.zero;
 
             // Añade el NavMeshAgent al NPC
-            _npcNavMeshAgent = alumno.AddComponent<NavMeshAgent>();
+            if(!TryGetComponent<NavMeshAgent>(out _npcNavMeshAgent))
+            {
+                _npcNavMeshAgent = alumno.AddComponent<NavMeshAgent>();
+            }
+
         }
 
         /// <summary>
@@ -134,6 +138,8 @@ namespace _Scripts.LevelScripts.Lab_Scripts
         /// <returns></returns>
         private IEnumerator ChasePlayer()
         {
+            _npcNavMeshAgent.enabled = true;
+
             while (true)
             {
                 if (_isGamePaused)

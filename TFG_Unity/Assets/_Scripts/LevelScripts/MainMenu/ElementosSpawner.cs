@@ -45,7 +45,9 @@ public class ElementosSpawner : MonoBehaviour
 
             // Dimensiones del sprite
             RectTransform spriteRectTransfrom = spriteGameObject.GetComponent<RectTransform>();
-            spriteRectTransfrom.localScale /= Random.Range(1.5f, 4.5f);
+
+            AdjustSpriteScale(spriteRectTransfrom);
+            //spriteRectTransfrom.localScale /= Random.Range(1.5f, 4.5f);
 
             // Agregar un Rigidbody2D
             Rigidbody2D rb = spriteGameObject.AddComponent<Rigidbody2D>();
@@ -62,4 +64,36 @@ public class ElementosSpawner : MonoBehaviour
             yield return new WaitForSeconds(secondSpawn);
         }
     }
+
+    private void AdjustSpriteScale(RectTransform spriteRectTransform)
+    {
+        // Porcentaje deseado del tamaño de la pantalla que quieres ocupar (3% en este caso)
+        float desiredScreenPercentage = 0.25f; 
+
+        // Obtener el tamaño de la pantalla en píxeles
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // Obtener el tamaño original del sprite en píxeles (asumiendo que ya tiene un tamaño base)
+        float spriteOriginalWidth = spriteRectTransform.rect.width;
+        float spriteOriginalHeight = spriteRectTransform.rect.height;
+
+        // Calcular el nuevo ancho y alto que debe tener el sprite para mantener el mismo porcentaje
+        float targetWidth = screenWidth * desiredScreenPercentage;
+        float targetHeight = screenHeight * desiredScreenPercentage;
+
+        // Calcular el factor de escala necesario para alcanzar ese tamaño
+        float scaleX = targetWidth / spriteOriginalWidth;
+        float scaleY = targetHeight / spriteOriginalHeight;
+
+        // Usar la escala más pequeña para mantener la proporción (por si la pantalla es más ancha o alta)
+        float uniformScale = Mathf.Min(scaleX, scaleY);
+
+        // Aplicar la escala al sprite
+        spriteRectTransform.localScale = Vector3.one * uniformScale;
+
+        // Si quieres un poco de variación aleatoria, como en tu ejemplo:
+        spriteRectTransform.localScale /= (Random.Range(1.5f, 3f) * (screenWidth / 1920));
+    }
+
 }
