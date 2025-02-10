@@ -36,10 +36,12 @@ public class CombinationResultUI : GameplayMonoBehaviour<CombinationResultUI>
         switch (icon)
         {
             case LevelIcons.Correct:
+                SoundManager.Instance.Play("Correcto");
                 sprite = correctIcon;
                 break;
 
             case LevelIcons.Wrong:
+                SoundManager.Instance.Play("Error");
                 sprite = wrongIcon; 
                 break;
 

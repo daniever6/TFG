@@ -995,11 +995,11 @@ Transform:
   m_GameObject: {fileID: 198571478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.57, y: 2.81631, z: -2.41}
+  m_LocalPosition: {x: -4.080411, y: 1.2800001, z: -1.3439677}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1722196372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213233681
 GameObject:
@@ -1899,11 +1899,11 @@ Transform:
   m_GameObject: {fileID: 346469136}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 2.81631, z: 10.29}
+  m_LocalPosition: {x: 0.43958917, y: 1.2800001, z: 11.356032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1722196372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &351745472
 GameObject:
@@ -3201,6 +3201,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7fba9cd22d697af4eb0cd70ec39ccd48, type: 3}
   - key: Fuego
     clip: {fileID: 8300000, guid: 6efd8fe8b0f13aa4abf6b5a22f69fead, type: 3}
+  - key: Error
+    clip: {fileID: 8300000, guid: 26276d959c38ce640abca621c09c979a, type: 3}
+  - key: Correcto
+    clip: {fileID: 8300000, guid: 9501e7c6590c9ac419e77eb63cf8179f, type: 3}
   AudioSource: {fileID: 510682485}
 --- !u!1 &560870751
 GameObject:
@@ -7107,6 +7111,9 @@ Transform:
   - {fileID: 351745474}
   - {fileID: 430745160}
   - {fileID: 699885051}
+  - {fileID: 2106495944}
+  - {fileID: 198571481}
+  - {fileID: 346469139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733153152
@@ -8430,11 +8437,11 @@ Transform:
   m_GameObject: {fileID: 2106495941}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.99, y: 2.81631, z: -1.39}
+  m_LocalPosition: {x: 4.479589, y: 1.2800001, z: -0.32396758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1722196372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2118121592
 GameObject:
@@ -8728,6 +8735,3 @@ SceneRoots:
   - {fileID: 439831874}
   - {fileID: 1023661036}
   - {fileID: 639415384}
-  - {fileID: 2106495944}
-  - {fileID: 198571481}
-  - {fileID: 346469139}

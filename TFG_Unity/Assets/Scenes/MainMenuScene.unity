@@ -3686,6 +3686,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7fba9cd22d697af4eb0cd70ec39ccd48, type: 3}
   - key: Fuego
     clip: {fileID: 8300000, guid: 6efd8fe8b0f13aa4abf6b5a22f69fead, type: 3}
+  - key: Error
+    clip: {fileID: 8300000, guid: 26276d959c38ce640abca621c09c979a, type: 3}
+  - key: Correcto
+    clip: {fileID: 8300000, guid: 9501e7c6590c9ac419e77eb63cf8179f, type: 3}
   AudioSource: {fileID: 898311437}
 --- !u!82 &898311437
 AudioSource:

@@ -108,6 +108,7 @@ namespace _Scripts.LevelScripts.Level_02
             { 
                 finalPeso = _reactivoPesaje.CurrentPesoReactivo();
                 _reactivoPesaje.SetReactivoCero();
+                SoundManager.Instance.Play("Burbujas");
             });
             mySequence.Append(papelPesaje.transform.DORotate(initialRotation, 1f));
             mySequence.Append(papelPesaje.transform.DOMove(papelPesajeNewPos, 2f));
