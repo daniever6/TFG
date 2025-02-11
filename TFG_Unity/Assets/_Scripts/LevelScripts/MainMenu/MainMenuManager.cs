@@ -9,11 +9,15 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject soundPanel;
+    [SerializeField] private GameObject creditosPanel;
 
     private void Start()
     {
         mainPanel.SetActive(true);
         optionsPanel.SetActive(false);
+        soundPanel.SetActive(false);
+        creditosPanel.SetActive(false);
     }
 
 
@@ -63,6 +67,30 @@ public class MainMenuManager : MonoBehaviour
     {
         optionsPanel.SetActive(true);
         mainPanel.SetActive(false);
+        soundPanel.SetActive(false);
+        creditosPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Abre el panel de sonido
+    /// </summary>
+    public void OpenSoundPanel()
+    {
+        soundPanel.SetActive(true);
+        optionsPanel.SetActive(false);
+        creditosPanel.SetActive(false);
+        mainPanel.SetActive(false);
+    }
+
+    /// <summary>
+    /// Abre el panel de los creditos
+    /// </summary>
+    public void OpenCreditosPanel()
+    {
+        creditosPanel.SetActive(true);
+        soundPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        mainPanel.SetActive(false);
     }
 
     /// <summary>
@@ -71,6 +99,8 @@ public class MainMenuManager : MonoBehaviour
     public void CloseOptionsPanel()
     {
         optionsPanel.SetActive(false);
+        soundPanel.SetActive(false);
+        creditosPanel.SetActive(false);
         mainPanel.SetActive(true);
     }
 

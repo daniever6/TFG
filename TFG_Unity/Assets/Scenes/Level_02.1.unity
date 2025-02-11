@@ -16850,6 +16850,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+  - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16959,6 +16960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8452323849191535221}
   - component: {fileID: 5043824820489918713}
+  - component: {fileID: 8969609293396641922}
   - component: {fileID: 8969609293396641918}
   - component: {fileID: 8969609293396641920}
   - component: {fileID: 8969609293396641919}
@@ -17116,6 +17118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9031072415857934206}
   - component: {fileID: 924606555925061832}
+  - component: {fileID: 9031072415857934210}
   - component: {fileID: 2396309371295358154}
   - component: {fileID: 9031072415857934208}
   - component: {fileID: 9031072415857934207}
@@ -19329,6 +19332,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
+  - {fileID: 2100000, guid: c768d4b5ef2c1f94ea07393df9d7fa26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19402,6 +19406,20 @@ MonoBehaviour:
   ventanaCollider: {fileID: 8528178145710887008}
   materialesVentana:
   - {fileID: 2100000, guid: 887073e6397659a4b9fd41428b18fb82, type: 2}
+--- !u!114 &8969609293396641922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208147696727971698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5a7ec44ba612643ab249b395120700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMatIdx: 1
+  outlineMaterial: {fileID: 2100000, guid: 07ec4ff1717d44f419306d2ab08b9242, type: 2}
 --- !u!1001 &8986277463969614740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19554,6 +19572,20 @@ MonoBehaviour:
   ventanaCollider: {fileID: 8528178145710887008}
   materialesVentana:
   - {fileID: 2100000, guid: 887073e6397659a4b9fd41428b18fb82, type: 2}
+--- !u!114 &9031072415857934210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4018891797722610389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5a7ec44ba612643ab249b395120700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMatIdx: 1
+  outlineMaterial: {fileID: 2100000, guid: 07ec4ff1717d44f419306d2ab08b9242, type: 2}
 --- !u!23 &9094533723934294631
 MeshRenderer:
   m_ObjectHideFlags: 0
