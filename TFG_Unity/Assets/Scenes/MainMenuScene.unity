@@ -964,25 +964,13 @@ MonoBehaviour:
   m_FillRect: {fileID: 1998736639}
   m_HandleRect: {fileID: 1923940272}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MinValue: -35
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
-        m_MethodName: SetMusicVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &173339582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,7 +2426,6 @@ GameObject:
   m_Component:
   - component: {fileID: 506181550}
   - component: {fileID: 506181552}
-  - component: {fileID: 506181551}
   m_Layer: 0
   m_Name: SliderMusicaGeneral
   m_TagString: Untagged
@@ -2468,18 +2455,6 @@ RectTransform:
   m_AnchoredPosition: {x: 334.4719, y: -69.360855}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &506181551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506181549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce03811cab055f94eb1aba20e25e89d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &506181552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,25 +2499,13 @@ MonoBehaviour:
   m_FillRect: {fileID: 1594485344}
   m_HandleRect: {fileID: 1819224920}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MinValue: -35
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.001
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
-        m_MethodName: SetMasterVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &508458323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4646,25 +4609,13 @@ MonoBehaviour:
   m_FillRect: {fileID: 1968613599}
   m_HandleRect: {fileID: 1253485249}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MinValue: -35
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.001
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
-        m_MethodName: SetSfxVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &856337558
 GameObject:
   m_ObjectHideFlags: 0

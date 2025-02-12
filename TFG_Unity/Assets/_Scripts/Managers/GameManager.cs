@@ -7,6 +7,7 @@ using _Scripts.Utilities;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public struct DeathReasonAndLevel
 {
@@ -56,7 +57,14 @@ namespace _Scripts.Managers
         
         public void Start()
         {
-            ChangeState(StartGameState);
+            if (SceneManager.GetActiveScene().name == "Intro")
+            {
+                ChangeState(GameState.Starting);
+            }
+            else
+            {
+                ChangeState(GameState.Resume);
+            }
         }
 
         /// <summary>
@@ -65,6 +73,11 @@ namespace _Scripts.Managers
         /// <param name="newState">Estado al que se cambia</param>
         public void ChangeState(GameState newState)
         {
+            if(newState == GameState.Starting && SceneManager.GetActiveScene().name != "Intro")
+            {
+                newState = GameState.Resume;
+            }
+
             OnBeforeGameStateChanged?.Invoke(newState);
 
             if (newState != GameState.Pause) PreviousGameState = newState;

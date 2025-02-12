@@ -1,3 +1,4 @@
+using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,18 @@ namespace _Scripts.Managers
         [SerializeField] private GameObject pauseCanvas;
         [SerializeField] private GameObject panelPausa;
         [SerializeField] private GameObject panelOpcion;
-        
+
+        private GameObject player;
+
         protected override void Awake()
         {
             base.Awake();
             GameManager.OnAfterGameStateChanged += HandlePauseGameState;
+        }
+
+        private void Start()
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         private void OnDestroy()
@@ -44,6 +52,12 @@ namespace _Scripts.Managers
             GameState gameState = GameManager.GameState != GameState.Pause
                 ? GameState.Pause
                 : GameManager.Instance.PreviousGameState;
+
+            if (GameManager.GameState == GameState.Starting && SceneManager.GetActiveScene().name != "Intro")
+            {
+                GameManager.Instance.ChangeState(GameState.Resume);
+            }
+
             GameManager.Instance.ChangeState(gameState);
         }
 
@@ -53,9 +67,20 @@ namespace _Scripts.Managers
         /// <param name="sceneName">Nombre de la escena a la que cambiar</param>
         public void ChangeLevelScene(string sceneName)
         {
+            SaveManager.SaveGameData(player); // Guarda la posicion del jugador
+
             SceneManager.LoadScene(sceneName);
         }
-        
+
+        /// <summary>
+        /// Cambia la escena del juego sin guardar
+        /// </summary>
+        /// <param name="sceneName"></param>
+        public void ChangeSceneNoSave(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
         /// <summary>
         ///  Evento donde si se hace clic en el boton 
         /// </summary>
