@@ -10,6 +10,7 @@ using DG.Tweening;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using Sequence = DG.Tweening.Sequence;
 using Vector3 = UnityEngine.Vector3;
@@ -321,7 +322,16 @@ namespace _Scripts.Player
 
                     ParticleEffectManager.Instance.InstantiateParticle("Explosion");
                     ParticleEffectManager.Instance.InstantiateParticle("Fuego");
-                    DeathInvoker.Instance.KillAnimation(GameLevels.Level1, "Has explotado");
+
+                    if (SceneManager.GetActiveScene().name == "Level_02.1")
+                    {
+                        DeathInvoker.Instance.KillAnimation(GameLevels.LevelAcidos, "Has explotado");
+                    }
+                    else
+                    {
+                        DeathInvoker.Instance.KillAnimation(GameLevels.LevelBases, "Has explotado");
+                    }
+
                     break;
                 
                 case CombinationResult.Corrosion:

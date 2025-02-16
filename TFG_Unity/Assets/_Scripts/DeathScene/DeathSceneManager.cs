@@ -33,7 +33,7 @@ namespace _Scripts.DeathScene
 
             switch (level)
             {
-                case GameLevels.Level0:
+                case GameLevels.LevelRecibidor:
                     SceneManager.LoadScene("Level_00");
                     break;
                 
@@ -41,15 +41,19 @@ namespace _Scripts.DeathScene
                     SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
                     break;
                 
-                case GameLevels.Level1:
+                case GameLevels.LevelBases:
                     SceneManager.LoadScene("Level_01");
                     break;
                 
-                case GameLevels.Level2:
+                case GameLevels.LevelAcidos:
+                    SceneManager.LoadScene("Level_02.1");
+                    break;
+                
+                case GameLevels.LevelBalanza:
                     SceneManager.LoadScene("Level_02");
                     break;
                 
-                case GameLevels.Level3:
+                case GameLevels.LevelResiduos:
                     SceneManager.LoadScene("Level_03");
                     break;
             }

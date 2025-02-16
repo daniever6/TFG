@@ -64,11 +64,12 @@
 
     public enum GameLevels
     {
-        Level0,
+        LevelRecibidor,
         Laboratory,
-        Level1,
-        Level2,
-        Level3
+        LevelBases,
+        LevelAcidos,
+        LevelBalanza,
+        LevelResiduos
     }
 
     public enum BalanzaButtons

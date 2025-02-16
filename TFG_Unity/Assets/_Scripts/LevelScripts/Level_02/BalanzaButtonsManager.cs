@@ -41,6 +41,7 @@ namespace _Scripts.LevelScripts.Level_02
                     OnOffButton();
                     break;
                 case BalanzaButtons.Get:
+                    SoundManager.Instance.Play("Encender");
                     BalanzaManager.Instance.CalculateCurrentPesos();
                     break;
                 case BalanzaButtons.Set:
@@ -63,6 +64,8 @@ namespace _Scripts.LevelScripts.Level_02
         {
             if (!BalanzaManager.IsBalanzaOn)
             {
+                SoundManager.Instance.Play("Encender");
+
                 BalanzaManager.IsBalanzaOn = true;
                 await TurnOnBehaviour();
             }
@@ -136,6 +139,7 @@ namespace _Scripts.LevelScripts.Level_02
                 return;
             }
 
+            SoundManager.Instance.Play("Encender");
             BalanzaManager.Instance.SetPesoBalanza(0);
         }
 

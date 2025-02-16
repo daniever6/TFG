@@ -189,7 +189,7 @@ namespace _Scripts.LevelScripts.Lab_Scripts
             
             yield return new WaitForSeconds(5f);
             
-            DeathInvoker.Instance.KillAnimation(GameLevels.Level0, "Te ha caido ácido encima", 5);
+            DeathInvoker.Instance.KillAnimation(GameLevels.LevelRecibidor, "Te ha caido ácido encima", 5);
             
             Destroy(this); 
         }

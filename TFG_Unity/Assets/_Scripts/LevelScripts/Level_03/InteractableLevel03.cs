@@ -89,7 +89,7 @@ namespace _Scripts.LevelScripts.Level_03
                     _lastContainerInteracted.CloseContenedor();
                     Destroy(this.gameObject);
                     await Task.Delay(2000);
-                    DeathInvoker.Instance.KillAnimation(GameLevels.Level3, "El residuo ha reaccionado y explotado", 2f);
+                    DeathInvoker.Instance.KillAnimation(GameLevels.LevelResiduos, "El residuo ha reaccionado y explotado", 2f);
                     return;
             }
             

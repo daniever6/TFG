@@ -1,5 +1,6 @@
 using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace _Scripts.LevelScripts
         #region Class definition
 
         [SerializeField] private TextAsset levelCombinationsTextAsset;
+
+        public static event Action<string> OnCombinationPerformed;
         
         public static int CurrentCombinationIndex = 0;
         public bool isAcidLevel = false;
@@ -55,6 +58,8 @@ namespace _Scripts.LevelScripts
         public override bool PerformCombination(string combination)
         {
             if(!combination.Equals(GetCorrectCombinationAt(CurrentCombinationIndex))) return false;
+
+            OnCombinationPerformed?.Invoke(combination);
 
             _currentCombinations.Add(combination);
             CurrentCombinationIndex++;

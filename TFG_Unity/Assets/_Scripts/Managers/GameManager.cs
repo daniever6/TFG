@@ -25,7 +25,7 @@ namespace _Scripts.Managers
 {
     public class GameManager : Utilities.Singleton<GameManager>
     {
-        public static DeathReasonAndLevel PlayerDeathCause = new(GameLevels.Level0, "");
+        public static DeathReasonAndLevel PlayerDeathCause = new(GameLevels.LevelRecibidor, "");
         private Dictionary<string, Queue<Dialogue>> _dialoguesDictionary = new ();
         public GameState PreviousGameState { get; private set; }
         public static GameState GameState { get; private set; }

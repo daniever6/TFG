@@ -49,6 +49,8 @@ namespace Assets._Scripts.NPCs
                 return;
             }
 
+            MusicSwitcher.Instance.SetEmergency();
+
             isActivate = true;
 
             PointAtNPC();
@@ -99,6 +101,8 @@ namespace Assets._Scripts.NPCs
             {
                 return;
             }
+
+            MusicSwitcher.Instance.SetBackground();
 
             isActivate = false;
 

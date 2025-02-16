@@ -49,6 +49,8 @@ public class BurnNPC : MonoBehaviour
             return;
         }
 
+        MusicSwitcher.Instance.SetEmergency();
+
         isActivate = true;
 
         PointAtNPC();
@@ -99,6 +101,8 @@ public class BurnNPC : MonoBehaviour
         {
             return;
         }
+
+        MusicSwitcher.Instance.SetBackground();
 
         isActivate = false;
 

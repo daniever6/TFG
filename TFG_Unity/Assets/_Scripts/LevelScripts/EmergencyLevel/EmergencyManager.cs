@@ -47,6 +47,8 @@ public class EmergencyManager : GameplayMonoBehaviour<EmergencyManager>
     /// </summary>
     public void StartEmergency()
     {
+        MusicSwitcher.Instance.SetEmergency();
+
         npcPatrol.enabled = false;
         npcPatrol.gameObject.TryGetComponent<NpcState>(out var npcState);
 

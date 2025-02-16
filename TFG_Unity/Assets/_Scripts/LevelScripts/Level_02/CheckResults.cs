@@ -132,7 +132,7 @@ namespace _Scripts.LevelScripts.Level_02
                 
                 npcAnimator.Play("Die");
 
-                DeathInvoker.Instance.KillAnimation(GameLevels.Level2, 
+                DeathInvoker.Instance.KillAnimation(GameLevels.LevelBalanza, 
                     "Has muerto por un accidente al no pesar bien el reactivo", 
                     3f);
             }
