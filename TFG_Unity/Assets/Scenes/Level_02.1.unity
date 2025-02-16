@@ -7200,6 +7200,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mezcla: {fileID: 594084159}
   isMezclaVisible: 0
+--- !u!114 &918171442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918171432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1 &918961848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8844,6 +8858,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 365930228}
+--- !u!114 &1068672421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440683966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1 &1081302133
 GameObject:
   m_ObjectHideFlags: 0
@@ -10165,6 +10193,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927448506}
   m_Mesh: {fileID: 1388131267}
+--- !u!114 &1189042247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927448506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1 &1190808682
 GameObject:
   m_ObjectHideFlags: 0
@@ -12228,6 +12270,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 212161121}
+--- !u!114 &1486224229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486224218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1 &1516339604
 GameObject:
   m_ObjectHideFlags: 0
@@ -15609,6 +15665,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mezcla: {fileID: 1474008532}
   isMezclaVisible: 0
+--- !u!114 &1990300447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837514399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1 &1997371438
 GameObject:
   m_ObjectHideFlags: 0
@@ -16399,6 +16469,7 @@ GameObject:
   - component: {fileID: 376075366}
   - component: {fileID: 376075367}
   - component: {fileID: 7831149673500408152}
+  - component: {fileID: 7831149673500408153}
   m_Layer: 3
   m_Name: Pipeta
   m_TagString: Interactable
@@ -16519,6 +16590,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1010457391929259231, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486224228}
+    - targetCorrespondingSourceObject: {fileID: 1010457391929259231, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486224229}
   m_SourcePrefab: {fileID: 100100000, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
 --- !u!33 &481629676696812160
 MeshFilter:
@@ -16610,6 +16684,7 @@ GameObject:
   - component: {fileID: 5616555197173805089}
   - component: {fileID: 5616555197173805091}
   - component: {fileID: 5616555197173805090}
+  - component: {fileID: 5616555197173805092}
   m_Layer: 3
   m_Name: BOTON ENCENDER
   m_TagString: Untagged
@@ -17127,6 +17202,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6091235282554556471, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1189042243}
+    - targetCorrespondingSourceObject: {fileID: 6091235282554556471, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189042247}
   m_SourcePrefab: {fileID: 100100000, guid: bbe2d84cc3f63ac45b240ae35be62e0a, type: 3}
 --- !u!1 &1966500354741927881
 GameObject:
@@ -17349,6 +17427,7 @@ GameObject:
   - component: {fileID: 8969609293396641920}
   - component: {fileID: 8969609293396641919}
   - component: {fileID: 8969609293396641921}
+  - component: {fileID: 8969609293396641923}
   m_Layer: 3
   m_Name: Agarre Izquierdo
   m_TagString: Interactable
@@ -17507,6 +17586,7 @@ GameObject:
   - component: {fileID: 9031072415857934208}
   - component: {fileID: 9031072415857934207}
   - component: {fileID: 9031072415857934209}
+  - component: {fileID: 9031072415857934211}
   m_Layer: 3
   m_Name: Agarre Derecho
   m_TagString: Interactable
@@ -17684,6 +17764,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6962945814887852143, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 918171441}
+    - targetCorrespondingSourceObject: {fileID: 6962945814887852143, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 918171442}
   m_SourcePrefab: {fileID: 100100000, guid: 4c766291f1477da4e8ff48f72ca6a1b5, type: 3}
 --- !u!23 &4338134633826577164
 MeshRenderer:
@@ -18109,6 +18192,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extractoraAudioSource: {fileID: 5616555197173805090}
+--- !u!114 &5616555197173805092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750866221080746503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1001 &5624055062638618248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18204,6 +18301,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1990300446}
+    - targetCorrespondingSourceObject: {fileID: 3849510425178109468, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1990300447}
   m_SourcePrefab: {fileID: 100100000, guid: 76fbbd4d713c69e43965d2c2d19bfa5b, type: 3}
 --- !u!4 &5633247450058366644
 Transform:
@@ -18690,6 +18790,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1068672420}
+    - targetCorrespondingSourceObject: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1068672421}
   m_SourcePrefab: {fileID: 100100000, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
 --- !u!23 &6703810423497369781
 MeshRenderer:
@@ -19171,6 +19274,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameTextCanvas: {fileID: 422563188}
+--- !u!114 &7831149673500408153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397862660349442527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!4 &8015939594142548740
 Transform:
   m_ObjectHideFlags: 0
@@ -19971,6 +20088,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMatIdx: 1
   outlineMaterial: {fileID: 2100000, guid: 07ec4ff1717d44f419306d2ab08b9242, type: 2}
+--- !u!114 &8969609293396641923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208147696727971698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!1001 &8986277463969614740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20137,6 +20268,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMatIdx: 1
   outlineMaterial: {fileID: 2100000, guid: 07ec4ff1717d44f419306d2ab08b9242, type: 2}
+--- !u!114 &9031072415857934211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4018891797722610389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd59d301aa49d4648a2f6b103c4ffc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalCursor: {fileID: 2800000, guid: 30ced8f906dba304f838f1194c6d67d3, type: 3}
+  groundcursor: {fileID: 2800000, guid: f10bb736677939e42915449d21d894b8, type: 3}
 --- !u!23 &9094533723934294631
 MeshRenderer:
   m_ObjectHideFlags: 0
