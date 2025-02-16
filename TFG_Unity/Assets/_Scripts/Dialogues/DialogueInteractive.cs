@@ -27,12 +27,14 @@ namespace _Scripts.Dialogues
         /// </summary>
         public override void TriggerEvent()
         {
+            if (BurnNPC.isActivated)
+            {
+                return;
+            }
             PlayerController.Instance.enabled = false;
             
             npcRotator.RotateToPlayer();
             npcDialogueCanvas.gameObject.SetActive(true);
-
-            SoundManager.Instance.Play("HablarAlumno3");
         }
 
         /// <summary>

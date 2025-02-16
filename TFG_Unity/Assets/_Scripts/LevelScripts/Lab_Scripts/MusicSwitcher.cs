@@ -61,8 +61,8 @@ public class MusicSwitcher : Singleton<MusicSwitcher>
     /// </summary>
     public void SetBackground()
     {
-        backgroundMusic.Play();
-        emergencyMusic.Stop();
+        backgroundMusic?.Play();
+        emergencyMusic?.Stop();
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class MusicSwitcher : Singleton<MusicSwitcher>
     /// </summary>
     public void SetEmergency()
     {
-        backgroundMusic.Stop();
-        emergencyMusic.Play();
+        backgroundMusic?.Stop();
+        emergencyMusic?.Play();
     }
 }

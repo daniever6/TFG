@@ -11,17 +11,18 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BurnNPC : MonoBehaviour
+public class BurnNPC : GameplayMonoBehaviour<BurnNPC>
 {
     [SerializeField] private NpcState state;                            // Estado del NPC
     [SerializeField] private ParticleEffectManager particlesManager;    // Instanciador de particulas
     [SerializeField] private CinemachineVirtualCamera npcCamera;        // Camara que apunta al NPC
+    [SerializeField] private AudioSource burnAudioSource;               // Audio de fuego del NPC
 
     [SerializeField][CanBeNull] private DialogueTrigger helpDialogue;      // Dialogo del npc 
     [SerializeField][CanBeNull] private DialogueTrigger thanksDialogue;    // Dialogo del npc 
 
     private bool isTalking = false;
-    private static bool isActivate = false;
+    public static bool isActivated = false;
     private GameObject activeVFX;
 
     private void Start()
@@ -44,14 +45,14 @@ public class BurnNPC : MonoBehaviour
     /// </summary>
     public void StartBurning()
     {
-        if (isActivate)
+        if (isActivated)
         {
             return;
         }
 
         MusicSwitcher.Instance.SetEmergency();
 
-        isActivate = true;
+        isActivated = true;
 
         PointAtNPC();
 
@@ -59,6 +60,7 @@ public class BurnNPC : MonoBehaviour
 
         //Instancia particulas
         activeVFX = particlesManager.InstantiateParticleInPos("Fuego", transform);
+        burnAudioSource.Play();
 
         activeVFX.SetActive(true);
     }
@@ -97,14 +99,17 @@ public class BurnNPC : MonoBehaviour
     /// </summary>
     public void StopBurning()
     {
-        if (!isActivate)
+        if (!isActivated)
         {
             return;
         }
 
+        burnAudioSource.Stop();
+
+
         MusicSwitcher.Instance.SetBackground();
 
-        isActivate = false;
+        isActivated = false;
 
         state.ChangeState(NpcStates.Save);
 
@@ -130,5 +135,20 @@ public class BurnNPC : MonoBehaviour
         }
 
         this.enabled = false;
+    }
+
+    protected override void OnPostPaused()
+    {
+        base.OnPostPaused();
+        burnAudioSource.Stop();
+    }
+
+    protected override void OnPostResumed()
+    {
+        base.OnPostResumed();
+        if (isActivated)
+        {
+            burnAudioSource.Play();
+        }
     }
 }
