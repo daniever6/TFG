@@ -35,6 +35,8 @@ namespace _Scripts.Dialogues
             
             npcRotator.RotateToPlayer();
             npcDialogueCanvas.gameObject.SetActive(true);
+
+            SoundManager.Instance.Play("HablarAlumno2");
         }
 
         /// <summary>
