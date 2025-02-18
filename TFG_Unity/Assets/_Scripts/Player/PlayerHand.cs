@@ -98,7 +98,25 @@ namespace _Scripts.Player
                         }
                         if (!alfombrillaIsEmpty && handHasObject) //Hacer combinacion
                         {
-                            await UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            try
+                            {
+                                var alfombrillaObject = hit.collider.gameObject.GetComponent<LevelInteractable>();
+                                if (alfombrillaObject == null)
+                                {
+                                    alfombrillaObject = hit.transform.GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+                                if (alfombrillaObject == null)
+                                {
+                                    alfombrillaObject = hit.transform.GetChild(0).GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+
+                                await UseObjects(alfombrillaObject);
+                            }
+                            catch(Exception ex)
+                            {
+
+                            }
+                            
                             await GoToInitialPosition();
                             break;
                         }
