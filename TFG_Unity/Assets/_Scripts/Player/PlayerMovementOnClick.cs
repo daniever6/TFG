@@ -27,6 +27,8 @@ namespace _Scripts.Player
         [SerializeField][CanBeNull] private Animator playerAnimator;
         private RaycastHit _hit;
 
+        private Coroutine currentCorroutine = null;
+
         private float stepCooldown = 0.65f; // Tiempo entre sonidos de pasos
         private float nextStepTime = 0f;
 
@@ -73,6 +75,12 @@ namespace _Scripts.Player
         /// <param name="context"></param>
         public IEnumerator WalkToPoint(InputAction.CallbackContext context)
         {
+            if(currentCorroutine != null)
+            {
+                StopCoroutine(currentCorroutine);
+                currentCorroutine = null;
+            }
+
             if (EventSystem.current.IsPointerOverGameObject()) yield break;
             
             _navMeshAgent.isStopped = false;
@@ -99,7 +107,9 @@ namespace _Scripts.Player
                         GameObject npc = _hit.collider.gameObject;
 
                         //Espera a llegar a destino
-                        yield return StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
+                        currentCorroutine = StartCoroutine(WaitForDestination(_hit.collider.GetComponent<DialogueTrigger>()));
+
+                        yield return currentCorroutine;
 
                         if(isAwaiting == false)
                         {
@@ -125,8 +135,10 @@ namespace _Scripts.Player
 
                     case Iteractables.Interactable:
                         _navMeshAgent.SetDestination(_hit.point);
-                        yield return StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
+                        currentCorroutine = StartCoroutine(WaitForDestination(_hit.collider.GetComponents<Trigger>()
                             .Where(t => t.enabled)?.FirstOrDefault()));
+
+                        yield return currentCorroutine;
 
                         //Suelta al NPC en al ducha
                         if(isAwaiting == false)

@@ -329,7 +329,16 @@ namespace _Scripts.Managers
                 }
             }
 
-            if (_saveData.residuosTirados.Any(x => true))
+            int residuosTirados = 0;
+            foreach(var residuoTirado in _saveData.residuosTirados)
+            {
+                if(residuoTirado == true)
+                {
+                    residuosTirados++;
+                }
+            }
+
+            if(residuosTirados == 3)
             {
                 ChangeLevelState(LevelState.NivelEmergencia);
                 return;

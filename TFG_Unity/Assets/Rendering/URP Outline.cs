@@ -30,14 +30,14 @@ public class URPOutline : MonoBehaviour
     {
         if (!rendererActive) objRenderer.enabled = true;
 
-        objRenderer.SetMaterials(outlineList);
+        objRenderer?.SetMaterials(outlineList);
     }
 
     private void OnMouseExit()
     {
         if (!rendererActive) objRenderer.enabled = false;
 
-        objRenderer.SetMaterials(originalList);
+        objRenderer?.SetMaterials(originalList);
 
     }
 }

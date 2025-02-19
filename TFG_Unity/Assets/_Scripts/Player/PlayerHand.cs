@@ -41,6 +41,7 @@ namespace _Scripts.Player
 
         private void Start()
         {
+            PlayerGrab.IsTweening = false;
             HandInitialPosition = hand.transform.position;
             _camera = Camera.main;
         }
@@ -203,7 +204,8 @@ namespace _Scripts.Player
         /// </summary>
         public async Task GoToInitialPosition()
         {
-            await transform.DOMove(HandInitialPosition, 1).AsyncWaitForCompletion();;
+            await transform.DOMove(HandInitialPosition, 1).AsyncWaitForCompletion();
+            PlayerGrab.IsTweening = false;
         }
 
         /// <summary>

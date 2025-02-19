@@ -87,16 +87,29 @@ namespace _Scripts.LevelScripts
                     //Fin Level
                     SaveData saveData = SaveManager.SaveManager.LoadGameData();
 
-                    if (isAcidLevel)
-                    {
-                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelResiduos);
-                    }
-                    else
-                    {
-                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelBalanza);
-                    }
+                    LevelState nextLevelState = LevelState.NivelBalanza;
 
-                    SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+                    try
+                    {
+                        if (isAcidLevel)
+                        {
+                            nextLevelState = LevelState.NivelResiduos;
+                            SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelResiduos);
+                        }
+                        else
+                        {
+                            nextLevelState = LevelState.NivelBalanza;
+                            SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelBalanza);
+                        }
+                    }
+                    finally
+                    {
+                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, nextLevelState);
+                        ResiduosDroppedManager.ResiduosDropped = new[] { false, false, false };
+                        SaveManager.SaveManager.SaveResiduosData();
+
+                        SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+                    }
                 }
             }
         }

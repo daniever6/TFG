@@ -5,6 +5,7 @@ using _Scripts.UI;
 using _Scripts.Utilities;
 using Cinemachine;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -50,7 +51,14 @@ public class BurnNPC : GameplayMonoBehaviour<BurnNPC>
             return;
         }
 
-        MusicSwitcher.Instance.SetEmergency();
+        try
+        {
+            MusicSwitcher.Instance.SetEmergency();
+        }
+        catch (Exception ex)
+        {
+
+        }
 
         isActivated = true;
 
@@ -106,8 +114,14 @@ public class BurnNPC : GameplayMonoBehaviour<BurnNPC>
 
         burnAudioSource.Stop();
 
-
-        MusicSwitcher.Instance.SetBackground();
+        try
+        {
+            MusicSwitcher.Instance.SetBackground();
+        }
+        catch (Exception ex) 
+        {
+        
+        }
 
         isActivated = false;
 
