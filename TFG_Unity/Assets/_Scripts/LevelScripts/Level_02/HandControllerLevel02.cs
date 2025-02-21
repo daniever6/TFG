@@ -87,7 +87,25 @@ namespace _Scripts.LevelScripts.Level_02
 
                         if (!alfombrillaIsEmpty && !handHasObject) //Coger objeto de balanza
                         {
-                            Grab(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            try
+                            {
+                                var objectBalanza = hit.collider.gameObject.GetComponent<LevelInteractable>();
+                                if (objectBalanza == null)
+                                {
+                                    objectBalanza = hit.transform.GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+                                if (objectBalanza == null)
+                                {
+                                    objectBalanza = hit.transform.GetChild(0).GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+
+
+                                Grab(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            }
+                            catch(Exception ex)
+                            {
+
+                            }
                             BalanzaManager.Instance.SetPesoBalanza(0);
                             await GoToInitialPosition();
                             break;

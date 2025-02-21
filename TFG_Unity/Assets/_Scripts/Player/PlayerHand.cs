@@ -41,6 +41,7 @@ namespace _Scripts.Player
 
         private void Start()
         {
+            PlayerGrab.IsTweening = false;
             HandInitialPosition = hand.transform.position;
             _camera = Camera.main;
         }
@@ -98,7 +99,25 @@ namespace _Scripts.Player
                         }
                         if (!alfombrillaIsEmpty && handHasObject) //Hacer combinacion
                         {
-                            await UseObjects(hit.collider.gameObject.GetComponent<LevelInteractable>());
+                            try
+                            {
+                                var alfombrillaObject = hit.collider.gameObject.GetComponent<LevelInteractable>();
+                                if (alfombrillaObject == null)
+                                {
+                                    alfombrillaObject = hit.transform.GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+                                if (alfombrillaObject == null)
+                                {
+                                    alfombrillaObject = hit.transform.GetChild(0).GetChild(0).gameObject.GetComponent<LevelInteractable>();
+                                }
+
+                                await UseObjects(alfombrillaObject);
+                            }
+                            catch(Exception ex)
+                            {
+
+                            }
+                            
                             await GoToInitialPosition();
                             break;
                         }
@@ -185,7 +204,8 @@ namespace _Scripts.Player
         /// </summary>
         public async Task GoToInitialPosition()
         {
-            await transform.DOMove(HandInitialPosition, 1).AsyncWaitForCompletion();;
+            await transform.DOMove(HandInitialPosition, 1).AsyncWaitForCompletion();
+            PlayerGrab.IsTweening = false;
         }
 
         /// <summary>

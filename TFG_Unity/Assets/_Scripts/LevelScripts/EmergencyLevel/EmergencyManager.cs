@@ -88,6 +88,11 @@ public class EmergencyManager : GameplayMonoBehaviour<EmergencyManager>
         {
             await Task.Delay(200);
 
+            if(npc == null)
+            {
+                continue;
+            }
+
             if(npc.TryGetComponent<NavMeshObstacle>(out var navObstacle))
             {
                 navObstacle.enabled = false;

@@ -36,22 +36,19 @@ namespace _Scripts.Managers
         public static event Action<GameState> OnBeforeGameStateChanged;
         public static event Action<GameState> OnAfterGameStateChanged;
 
+        private static int _gameStateInstancesCount = 0;
+
         protected override void Awake()
         {
-            try
-            {
-                if (Instance != null)
-                {
-                    Destroy(this.gameObject);
-                }
-            }
-            catch (Exception ex)
-            {
-                Destroy(this.gameObject);
-            }
-            
-            
             base.Awake();
+            _gameStateInstancesCount++;
+
+            if(_gameStateInstancesCount > 1)
+            {
+                _gameStateInstancesCount--;
+                Destroy(gameObject);
+            }
+
             DontDestroyOnLoad(this.gameObject);
         }
         

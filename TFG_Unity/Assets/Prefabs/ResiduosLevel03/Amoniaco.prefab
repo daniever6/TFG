@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6574585266278869624, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574585266278869624, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687710345133931794, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6777761429472774126, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -86,7 +98,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4492140539665002350, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8324663058317206618, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+    - {fileID: 6777761429472774126, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
+    - {fileID: 3454157889260961102, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2928087499820249723, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}

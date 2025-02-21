@@ -5,6 +5,7 @@ using _Scripts.UI;
 using _Scripts.Utilities;
 using Cinemachine;
 using JetBrains.Annotations;
+using System;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,7 +50,14 @@ namespace Assets._Scripts.NPCs
                 return;
             }
 
-            MusicSwitcher.Instance.SetEmergency();
+            try
+            {
+                MusicSwitcher.Instance.SetEmergency();
+            }
+            catch (Exception ex) 
+            {
+
+            }
 
             isActivate = true;
 
@@ -102,7 +110,14 @@ namespace Assets._Scripts.NPCs
                 return;
             }
 
-            MusicSwitcher.Instance.SetBackground();
+            try
+            {
+                MusicSwitcher.Instance.SetBackground();
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             isActivate = false;
 
