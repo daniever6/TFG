@@ -7896,7 +7896,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7584905, g: 0.7584905, b: 0.7584905, a: 1}
@@ -7906,10 +7906,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 02d8ffb752e1b5f4ca5f2e7a370da9fe, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 02d8ffb752e1b5f4ca5f2e7a370da9fe, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -7965,7 +7965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e7d99bef591cba04abc11ea3efec3c58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9278,7 +9278,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3032499389525591420, guid: f6c85eecb4a5ddd4b85b793fce166713, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 403c916e1c7c6764abb0883f65b21a6d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3b4b2e4e681059248b0a93575e963822, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -10664,7 +10664,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11055,7 +11055,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13613,6 +13613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCombinationsTextAsset: {fileID: 4900000, guid: 1e09d13e260f44eaae752f6ec40cc768, type: 3}
+  teacherCamera: {fileID: 947744271}
+  EndDialogue: {fileID: 7770485496374728879}
+  teacherState: {fileID: 7770485496374728878}
   isAcidLevel: 1
 --- !u!114 &1701100181
 MonoBehaviour:
@@ -15583,7 +15586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.13333334, g: 0.12941177, b: 0.12941177, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18697,6 +18700,7 @@ GameObject:
   - component: {fileID: 5964750096985816630}
   - component: {fileID: 7770485496374728877}
   - component: {fileID: 7770485496374728878}
+  - component: {fileID: 7770485496374728879}
   m_Layer: 3
   m_Name: Teacher
   m_TagString: Npc
@@ -19264,6 +19268,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1309507380}
+--- !u!114 &7770485496374728879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277041364339590456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348d846993c44709bc4314f04ae10f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1701100182}
+  dialogue:
+    UnitName: Profesor
+    UnitImage: {fileID: 0}
+    Sentences:
+    - "Gran trabajo con la disoluci\xF3n. Ya puedes seguir con la siguiente prueba."
 --- !u!114 &7831149673500408151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20087,10 +20109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 347100659}
-  ventana: {fileID: 935344447}
+  ventanaParent: {fileID: 935344447}
+  ventana: {fileID: 8528178145710887006}
+  ventanaSuperior: {fileID: 360354886556951082}
   ventanaCollider: {fileID: 8528178145710887008}
-  materialesVentana:
-  - {fileID: 2100000, guid: 887073e6397659a4b9fd41428b18fb82, type: 2}
+  materialVentanaOriginal: {fileID: 2100000, guid: ceceb62e24cc0074bacb55d041d21f5c, type: 2}
+  materialVentanaTransparente: {fileID: 2100000, guid: 0ef8672478b394e4f8041d28f1ab44dc, type: 2}
 --- !u!114 &8969609293396641922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20267,10 +20291,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 1372962988}
-  ventana: {fileID: 935344447}
+  ventanaParent: {fileID: 935344447}
+  ventana: {fileID: 8528178145710887006}
+  ventanaSuperior: {fileID: 360354886556951082}
   ventanaCollider: {fileID: 8528178145710887008}
-  materialesVentana:
-  - {fileID: 2100000, guid: 887073e6397659a4b9fd41428b18fb82, type: 2}
+  materialVentanaOriginal: {fileID: 2100000, guid: ceceb62e24cc0074bacb55d041d21f5c, type: 2}
+  materialVentanaTransparente: {fileID: 2100000, guid: 0ef8672478b394e4f8041d28f1ab44dc, type: 2}
 --- !u!114 &9031072415857934210
 MonoBehaviour:
   m_ObjectHideFlags: 0

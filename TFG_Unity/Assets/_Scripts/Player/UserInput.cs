@@ -16,6 +16,8 @@ namespace _Scripts.Player
         #region Class implementation
         public static event Action<PlayerState> OnPlayerStateChanged;
         public static event Action OnWalking;
+
+        public static bool CanMove = true;
         
         private Vector2 _moveDirection;
         
@@ -65,11 +67,12 @@ namespace _Scripts.Player
         private void SetPlayerInputs()
         {
             //Third Person
-            if(move != null)move.action.performed += ctx =>
+            if (move != null) move.action.performed += ctx =>
             {
                 _moveCommand?.Execute();
                 OnWalking?.Invoke();
             };
+            
             if (walkOnClick != null) walkOnClick.action.performed += ctx => _walkOnClickCommand?.Execute(ctx);
             if (interact != null) interact.action.performed += ctx => _interactCommand?.Execute();
             
@@ -101,6 +104,7 @@ namespace _Scripts.Player
 
         private void FixedUpdate()
         {
+            if (!CanMove) return;
             _moveDirection = move!.action.ReadValue<Vector2>();
             _moveCommand?.Execute(_moveDirection);
         }

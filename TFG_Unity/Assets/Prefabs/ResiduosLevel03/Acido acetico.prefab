@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 5619346660232047500}
   - component: {fileID: 1425696738348037172}
   m_Layer: 3
-  m_Name: Cloruro
+  m_Name: Acido acetico
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeba2ab2a331a9449ae52c3c5121659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactivoName: Cloruro
+  reactivoName: CH<sub>3</sub>COOH
 --- !u!114 &1425696738348037172
 MonoBehaviour:
   m_ObjectHideFlags: 0

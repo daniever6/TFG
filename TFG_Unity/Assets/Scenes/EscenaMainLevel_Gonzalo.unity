@@ -5481,7 +5481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13a48fa071b0e2a488061686f86659f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.44
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13a48fa071b0e2a488061686f86659f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5489,7 +5489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13a48fa071b0e2a488061686f86659f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.006836
+      value: 17.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13a48fa071b0e2a488061686f86659f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29035,8 +29035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Toda esta situaci\xF3n es extresante y no me deja pensar con claridad.
-    \n\xBFMe ayudar\xEDas a utilizar la balanza?"
+  m_text: "\xA1Oh! \xA1Eres tu de nuevo! Ayudame con los calculos de la balanza."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d58383095883d9f479752bcdc59c0e38, type: 2}
   m_sharedMaterial: {fileID: 7454473982808408484, guid: d58383095883d9f479752bcdc59c0e38, type: 2}
@@ -29297,7 +29296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4962779b0c8f8914ea0c918837bbe39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: MainMenuScene
+  levelName: VictoryScene
 --- !u!114 &2145825152
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,12 @@
+﻿HCOOH_Acidos : Correct
+HCl_Acidos : Correct
+H<sub>2</sub>SO<sub>4</sub>_Acidos : Correct
+HNO<sub>3</sub>_Acidos : Correct
+H<sub>3</sub>PO<sub>4</sub>_Acidos : Correct
+CH<sub>3</sub>COOH_Acidos : Correct
+NaOH_Bases : Correct
+Na<sub>2</sub>S_Bases : Correct
+NH<sub>3</sub>_Bases : Correct
+OH-_Bases : Correct
+NO<sub>2</sub>-_Bases : Correct
+

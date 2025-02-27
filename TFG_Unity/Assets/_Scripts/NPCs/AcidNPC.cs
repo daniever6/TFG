@@ -22,7 +22,7 @@ namespace Assets._Scripts.NPCs
         [SerializeField][CanBeNull] private DialogueTrigger thanksDialogue;    // Dialogo del npc 
 
         private bool isTalking = false;
-        private static bool isActivate = false;
+        public static bool isActivate = false;
         private GameObject activeVFX;
 
         private void Start()

@@ -2515,7 +2515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: REACTIVO
+  m_text: Reactivo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e261ab91e8bf5140afe10eb142248d9, type: 2}
   m_sharedMaterial: {fileID: -7325285934620681717, guid: 6e261ab91e8bf5140afe10eb142248d9, type: 2}
@@ -3332,7 +3332,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7584905, g: 0.7584905, b: 0.7584905, a: 1}
@@ -3342,10 +3342,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 02d8ffb752e1b5f4ca5f2e7a370da9fe, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 02d8ffb752e1b5f4ca5f2e7a370da9fe, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3401,7 +3401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e7d99bef591cba04abc11ea3efec3c58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4604a1f5dc29a9a45ad15cc395d5952d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4857,7 +4857,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3032499389525591420, guid: f6c85eecb4a5ddd4b85b793fce166713, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 403c916e1c7c6764abb0883f65b21a6d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3b4b2e4e681059248b0a93575e963822, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -5127,7 +5127,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5261,7 +5261,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5680,7 +5680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.13333334, g: 0.12941177, b: 0.12941177, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6896,7 +6896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aad471b419477c49b9761251280a5bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combinationFilePath: Combinaciones_Level03
+  combinationFilePath: Combinaciones_Level03_v2
 --- !u!114 &1701100184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6914,17 +6914,17 @@ MonoBehaviour:
   - {x: -0.2195892, y: 2.106, z: -0.772}
   - {x: -0.4105892, y: 2.106, z: -0.9010324}
   reactivos:
-  - {fileID: 8491347435255500911, guid: 31be399e3037e9548a44d7fd09e1df1d, type: 3}
-  - {fileID: 3032671579038236784, guid: ef6f2c1c54aa50347a5f3cbda32bf1f9, type: 3}
-  - {fileID: 4747228818818207238, guid: 93a4b59893254a2478169f1d68ebac68, type: 3}
-  - {fileID: 3080150400197509345, guid: a04c0e7af42c62549a5517286248a85c, type: 3}
-  - {fileID: 7886171928775565311, guid: 5d2ef22bd85c48641a0add1ded4157ba, type: 3}
   - {fileID: 7353458408805367148, guid: e898c168f1ef97b4bb2c291a43c6c2b9, type: 3}
-  - {fileID: 973252560274495024, guid: f7175f95f2b3e2d439ea5a92c7537557, type: 3}
-  - {fileID: 3184887599080831762, guid: 601636483c2499d4a97a55a36967d3e7, type: 3}
+  - {fileID: 3032671579038236784, guid: ef6f2c1c54aa50347a5f3cbda32bf1f9, type: 3}
+  - {fileID: 7886171928775565311, guid: 5d2ef22bd85c48641a0add1ded4157ba, type: 3}
+  - {fileID: 3080150400197509345, guid: a04c0e7af42c62549a5517286248a85c, type: 3}
+  - {fileID: 4747228818818207238, guid: 93a4b59893254a2478169f1d68ebac68, type: 3}
   - {fileID: 4805500523587563916, guid: b8b078ffb23e712478158a42816048bd, type: 3}
+  - {fileID: 973252560274495024, guid: f7175f95f2b3e2d439ea5a92c7537557, type: 3}
+  - {fileID: 8491347435255500911, guid: 31be399e3037e9548a44d7fd09e1df1d, type: 3}
   - {fileID: 8758427603183890860, guid: e6ab287ec7ea5c74ab0959368d8bfb3e, type: 3}
   - {fileID: 8185720572716525602, guid: 0dedd7792a56098498d049c83de46e37, type: 3}
+  - {fileID: 3184887599080831762, guid: 601636483c2499d4a97a55a36967d3e7, type: 3}
   interactablesParent: {fileID: 252256609}
   reactivoText: {fileID: 768380458}
 --- !u!114 &1701100185

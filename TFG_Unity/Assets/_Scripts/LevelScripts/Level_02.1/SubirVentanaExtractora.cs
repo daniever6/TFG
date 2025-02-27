@@ -8,11 +8,18 @@ namespace _Scripts.LevelScripts.Level_02._1
     public class SubirVentanaExtractora : MonoBehaviour
     {
         [SerializeField] private PlayerHand hand;
+        [SerializeField] private GameObject ventanaParent;
         [SerializeField] private GameObject ventana;
+        [SerializeField] private GameObject ventanaSuperior;
         [SerializeField] private Collider ventanaCollider;
-        [SerializeField] private List<Material> materialesVentana;
+        [SerializeField] private Material materialVentanaOriginal;
+        [SerializeField] private Material materialVentanaTransparente;
+
+        private Renderer ventanaRenderer;
         private Vector3 _mousePosition;
         private Camera _camera;
+
+        public static bool IsTooHigh = false;
         
         private Vector3 initialPos; //Posicion inicial
         private float upperLimitY; //Limite de altura
@@ -23,14 +30,8 @@ namespace _Scripts.LevelScripts.Level_02._1
 
         private void Start()
         {
-            foreach (var material in materialesVentana)
-            {
-                Color currentColor = material.color;
-                Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+            ventanaRenderer = ventana.GetComponent<MeshRenderer>();
 
-                material.color = newColor;
-            }
-            
             _camera = Camera.main;
             initialPos = ventana.transform.position;
             
@@ -71,20 +72,16 @@ namespace _Scripts.LevelScripts.Level_02._1
             {
                 ventanaCollider.enabled = false;
                 alphaValue = 0f;
+
+                ventanaRenderer.material = materialVentanaTransparente;
+                ventanaSuperior.GetComponent<MeshRenderer>().material = materialVentanaTransparente;
             }
             else
             {
                 ventanaCollider.enabled = true;
                 alphaValue = 1;
-            }
-            
-            // Aplica el nuevo color
-            foreach (var material in materialesVentana)
-            {
-                Color currentColor = material.color;
-                Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alphaValue);
-
-                material.color = newColor;
+                ventanaRenderer.material = materialVentanaOriginal;
+                ventanaSuperior.GetComponent<MeshRenderer>().material = materialVentanaOriginal;
             }
         }
 
@@ -101,9 +98,11 @@ namespace _Scripts.LevelScripts.Level_02._1
             
             float clampedY = Mathf.Clamp(newPosition.y, initialPos.y, upperLimitY);
 
-            ventana.transform.position = new Vector3(initialPos.x, clampedY, initialPos.z);
+            ventanaParent.transform.position = new Vector3(initialPos.x, clampedY, initialPos.z);
             
             hand.transform.position = transform.position;
+
+            IsTooHigh = !IsAlturaSegura();
         }
 
         /// <summary>

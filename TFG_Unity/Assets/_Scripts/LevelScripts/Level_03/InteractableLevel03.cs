@@ -21,6 +21,7 @@ namespace _Scripts.LevelScripts.Level_03
         private Vector3 _initialPosition;
         private static BidonOnHover _lastContainerInteracted;
         private string _lastContainerName = "";
+        private Transform _lastTransform = null;
         
         void Start()
         {
@@ -82,18 +83,30 @@ namespace _Scripts.LevelScripts.Level_03
                     break;
                 
                 default:
-                    Transform ParticlePos = _lastContainerInteracted.transform;
+                    if(_lastContainerInteracted != null)
+                    {
+                        _lastTransform = _lastContainerInteracted.transform;
+                   
+                        Transform ParticlePos = _lastContainerInteracted.transform;
+
+                        ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", ParticlePos);
+                        ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", ParticlePos);
+
+                        _lastContainerInteracted.CloseContenedor();
+                    }
+                    else
+                    {
+                        ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", _lastTransform);
+                        ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", _lastTransform);
+                    }
                     
-                    ParticleEffectManager.Instance.InstantiateParticleInPos("Fuego", ParticlePos);
-                    ParticleEffectManager.Instance.InstantiateParticleInPos("Explosion", ParticlePos);
-                    _lastContainerInteracted.CloseContenedor();
                     Destroy(this.gameObject);
                     await Task.Delay(2000);
                     DeathInvoker.Instance.KillAnimation(GameLevels.LevelResiduos, "El residuo ha reaccionado y explotado", 2f);
                     return;
             }
             
-            _lastContainerInteracted.CloseContenedor();
+            _lastContainerInteracted?.CloseContenedor();
             _lastContainerInteracted = null;
             Destroy(this.gameObject);
         }
@@ -136,14 +149,17 @@ namespace _Scripts.LevelScripts.Level_03
                 if (_lastContainerInteracted.IsUnityNull())
                 {
                     _lastContainerInteracted = bidon;
+                    _lastTransform = bidon.transform;
                 }
                 else
                 {
                     // Si ya se habia abierto un contenedor, se cierra
                     _lastContainerInteracted.CloseContenedor();
                     _lastContainerInteracted = bidon;
+                    _lastTransform = bidon.transform;
+
                 }
-                
+
                 bidon.OpenContenedor();
             }
         }

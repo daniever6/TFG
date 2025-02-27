@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3184887599080831762
+--- !u!1 &973252560274495024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3328369186093487453}
-  - component: {fileID: 5877021181322638440}
-  - component: {fileID: 4703128726196167776}
-  - component: {fileID: 3027150830098769272}
+  - component: {fileID: 2147549087349036306}
+  - component: {fileID: 5271056452030481896}
+  - component: {fileID: 502012980864206892}
+  - component: {fileID: 594284634794014672}
   m_Layer: 3
-  m_Name: Hidroxido
+  m_Name: Hidroxido de sodio
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3328369186093487453
+--- !u!4 &2147549087349036306
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184887599080831762}
+  m_GameObject: {fileID: 973252560274495024}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.079, y: 0.5696901, z: 0.165}
+  m_LocalPosition: {x: -0.12841079, y: 1.528, z: 0.2940324}
   m_LocalScale: {x: 0.07908953, y: 0.07908953, z: 0.07908953}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2213287735158810091}
+  - {fileID: 950807293818425223}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5877021181322638440
+--- !u!65 &5271056452030481896
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184887599080831762}
+  m_GameObject: {fileID: 973252560274495024}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -56,38 +56,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5716214, y: 5.0261345, z: 2.3936613}
   m_Center: {x: 0.00000022835438, y: 0.0000022835438, z: -0.025807926}
---- !u!114 &4703128726196167776
+--- !u!114 &502012980864206892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184887599080831762}
+  m_GameObject: {fileID: 973252560274495024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b089b86688506ac4f936f1ab0cca03d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3027150830098769272
+--- !u!114 &594284634794014672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3184887599080831762}
+  m_GameObject: {fileID: 973252560274495024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aeba2ab2a331a9449ae52c3c5121659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactivoName: Hidroxido
---- !u!1001 &4422066210991164714
+  reactivoName: NaOH
+--- !u!1001 &3375600271481218886
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3328369186093487453}
+    m_TransformParent: {fileID: 2147549087349036306}
     m_Modifications:
     - target: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
       propertyPath: m_LocalScale.x
@@ -153,8 +153,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
---- !u!4 &2213287735158810091 stripped
+--- !u!4 &950807293818425223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2587732217681438913, guid: 2715876dbc290954b8c25d644ffabcee, type: 3}
-  m_PrefabInstance: {fileID: 4422066210991164714}
+  m_PrefabInstance: {fileID: 3375600271481218886}
   m_PrefabAsset: {fileID: 0}

@@ -1,5 +1,9 @@
+using _Scripts.Dialogues;
+using _Scripts.LevelScripts.Level_02._1;
 using _Scripts.LevelScripts.SaveManager;
+using _Scripts.Managers;
 using _Scripts.Utilities;
+using Cinemachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +19,10 @@ namespace _Scripts.LevelScripts
         #region Class definition
 
         [SerializeField] private TextAsset levelCombinationsTextAsset;
+
+        [SerializeField] private CinemachineVirtualCamera teacherCamera; 
+        [SerializeField] private DialogueTrigger EndDialogue;
+        [SerializeField] private NpcState teacherState;
 
         public static event Action<string> OnCombinationPerformed;
         
@@ -32,6 +40,7 @@ namespace _Scripts.LevelScripts
         protected override async void Start()
         {
             base.Start();
+            CurrentCombinationIndex = 0;
             await LoadCorrectCombinations();
             _correctCombinations = _levelCorrectCombinations[0].ToList();
         }
@@ -59,6 +68,16 @@ namespace _Scripts.LevelScripts
         {
             if(!combination.Equals(GetCorrectCombinationAt(CurrentCombinationIndex))) return false;
 
+            if(SceneManager.GetActiveScene().name == "Level_02.1")
+            {
+                if (SubirVentanaExtractora.IsTooHigh)
+                {
+                    DeathInvoker.Instance.KillAnimation(GameLevels.LevelAcidos, "Te has intoxicado con los ácidos " +
+                        "por tener la ventana demasiado subida");
+                    return false;
+                }
+            }
+
             OnCombinationPerformed?.Invoke(combination);
 
             _currentCombinations.Add(combination);
@@ -85,33 +104,62 @@ namespace _Scripts.LevelScripts
                 else
                 {
                     //Fin Level
-                    SaveData saveData = SaveManager.SaveManager.LoadGameData();
-
-                    LevelState nextLevelState = LevelState.NivelBalanza;
-
-                    try
-                    {
-                        if (isAcidLevel)
-                        {
-                            nextLevelState = LevelState.NivelResiduos;
-                            SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelResiduos);
-                        }
-                        else
-                        {
-                            nextLevelState = LevelState.NivelBalanza;
-                            SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelBalanza);
-                        }
-                    }
-                    finally
-                    {
-                        SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, nextLevelState);
-                        ResiduosDroppedManager.ResiduosDropped = new[] { false, false, false };
-                        SaveManager.SaveManager.SaveResiduosData();
-
-                        SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
-                    }
+                    ShowEndDialogue();
                 }
             }
+        }
+
+        /// <summary>
+        /// Activa el dialogo del final del nivel
+        /// </summary>
+        private void ShowEndDialogue()
+        {
+            teacherCamera.enabled = true;
+            teacherState.ChangeState(NpcStates.Talking);
+            EndDialogue.TriggerEvent();
+
+            DialogueManager.OnDialogueFinish += ExitLevel;
+        }
+
+        /// <summary>
+        /// Sale del nivel y guarda el progreso
+        /// </summary>
+        private void ExitLevel()
+        {
+            SaveData saveData = SaveManager.SaveManager.LoadGameData();
+
+            LevelState nextLevelState = LevelState.NivelBalanza;
+
+            try
+            {
+                if (isAcidLevel)
+                {
+                    nextLevelState = LevelState.NivelResiduos;
+                    SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelResiduos);
+                }
+                else
+                {
+                    nextLevelState = LevelState.NivelBalanza;
+                    SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, LevelState.NivelBalanza);
+                }
+            }
+            finally
+            {
+                SaveManager.SaveManager.SaveGameData(saveData.playerPosition, GameState.Resume, nextLevelState);
+                ResiduosDroppedManager.ResiduosDropped = new[] { false, false, false };
+                SaveManager.SaveManager.SaveResiduosData();
+
+                SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
+            }
+
+            DialogueManager.OnDialogueFinish -= ExitLevel;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            DialogueManager.OnDialogueFinish -= ExitLevel;
         }
 
         /// <summary>

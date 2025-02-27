@@ -2,6 +2,7 @@
 using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Managers;
 using _Scripts.Utilities;
+using Assets._Scripts.NPCs;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,11 @@ namespace _Scripts.Interactables
         /// </summary>
         public override void TriggerEvent()
         {
+            if(BurnNPC.isActivated || AcidNPC.isActivate)
+            {
+                return;
+            }
+
             SaveManager.SaveGameData(_player);
             SceneManager.LoadScene(levelName);
         }
