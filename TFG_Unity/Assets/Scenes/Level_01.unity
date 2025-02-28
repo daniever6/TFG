@@ -19695,6 +19695,7 @@ MonoBehaviour:
   resultIndicator: {fileID: 1703889334}
   correctIcon: {fileID: 21300000, guid: ad5870d8ba5dd3e47be776a74e53b06d, type: 3}
   wrongIcon: {fileID: 21300000, guid: 6efe58df2bf16514a852486e1939532b, type: 3}
+  nullIcon: {fileID: 21300000, guid: 50132731babdff94f8209f2ba15310a5, type: 3}
   defaultIcon: {fileID: 21300000, guid: e6e50c926f04ea746bdc9ef0adc468bd, type: 3}
 --- !u!1 &1710691058
 GameObject:
@@ -20025,8 +20026,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.019889079, y: 0.019889075, z: 0.018273013}
-  m_Center: {x: 9.586889e-20, y: -1.5983392e-12, z: -0.00086351}
+  m_Size: {x: 0.019889079, y: 0.09095171, z: 0.018273013}
+  m_Center: {x: -5.959386e-20, y: -0.035531327, z: -0.0008635099}
 --- !u!1 &1761822143
 GameObject:
   m_ObjectHideFlags: 0

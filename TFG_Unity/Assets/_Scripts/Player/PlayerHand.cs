@@ -297,6 +297,13 @@ namespace _Scripts.Player
             {
                 case CombinationResult.None:
                     PlayerGrab.IsTweening = false;
+                    try
+                    {
+                        CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Null);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                     await GoToInitialPosition();
                     break;
                 
@@ -319,7 +326,6 @@ namespace _Scripts.Player
                         try
                         {
                             CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Correct);
-
                         }
                         catch (Exception ex) 
                         {

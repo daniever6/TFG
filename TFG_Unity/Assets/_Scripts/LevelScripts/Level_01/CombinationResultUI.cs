@@ -15,6 +15,7 @@ public class CombinationResultUI : GameplayMonoBehaviour<CombinationResultUI>
 
     [SerializeField] private Sprite correctIcon;
     [SerializeField] private Sprite wrongIcon;
+    [SerializeField] private Sprite nullIcon;
     [SerializeField] private Sprite defaultIcon;
 
     private float spriteDuration = 4f;
@@ -38,6 +39,11 @@ public class CombinationResultUI : GameplayMonoBehaviour<CombinationResultUI>
             case LevelIcons.Correct:
                 SoundManager.Instance.Play("Correcto");
                 sprite = correctIcon;
+                break;
+
+            case LevelIcons.Null:
+                SoundManager.Instance.Play("Error");
+                sprite = nullIcon;
                 break;
 
             case LevelIcons.Wrong:

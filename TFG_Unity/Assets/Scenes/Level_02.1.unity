@@ -13991,6 +13991,7 @@ MonoBehaviour:
   resultIndicator: {fileID: 1725745994}
   correctIcon: {fileID: 21300000, guid: ad5870d8ba5dd3e47be776a74e53b06d, type: 3}
   wrongIcon: {fileID: 21300000, guid: 6efe58df2bf16514a852486e1939532b, type: 3}
+  nullIcon: {fileID: 21300000, guid: 50132731babdff94f8209f2ba15310a5, type: 3}
   defaultIcon: {fileID: 21300000, guid: e6e50c926f04ea746bdc9ef0adc468bd, type: 3}
 --- !u!114 &1725745994
 MonoBehaviour:
@@ -14252,8 +14253,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.019889079, y: 0.019889075, z: 0.07158645}
-  m_Center: {x: -7.8218685e-19, y: 6.308419e-19, z: -0.027520224}
+  m_Size: {x: 0.019889079, y: 0.0365635, z: 0.07158645}
+  m_Center: {x: -1.8272364e-18, y: -0.008337217, z: -0.027520226}
 --- !u!1 &1746727729
 GameObject:
   m_ObjectHideFlags: 0
@@ -16486,7 +16487,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.295
+      value: 0.318
       objectReference: {fileID: 0}
     - target: {fileID: 382257348131696229, guid: 96d7bdfc0e5bd06469ff6cfbaa89738a, type: 3}
       propertyPath: m_LocalPosition.y

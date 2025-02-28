@@ -2587,7 +2587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Para moverter utiliza las teclas WASD, o haz click en el suelo para desplazarte
+  m_text: "Para moverte utiliza las teclas WASD, o haz click en el suelo para desplazarte
     a un punto concreto.\n\nPara interacturar con personas o objetos, haz click encima
     de ellos, o pulsa la tecla E cuando est\xE9s cerca."
   m_isRightToLeft: 0

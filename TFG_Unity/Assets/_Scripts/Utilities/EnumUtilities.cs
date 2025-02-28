@@ -86,6 +86,7 @@
     {
         Default,
         Correct,
+        Null,
         Wrong,
     }
 
