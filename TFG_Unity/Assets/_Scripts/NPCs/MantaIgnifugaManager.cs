@@ -10,6 +10,7 @@ public class MantaIgnifugaManager : Trigger
 {
     [SerializeField] private GameObject npcToBurn;
     [SerializeField] private GameObject carryPos;
+    [SerializeField] private GameObject manta;
 
     private Interactable mantaInteractable;
     private Collider mantaCollider;
@@ -34,6 +35,7 @@ public class MantaIgnifugaManager : Trigger
     private void Awake()
     {
         instance = this;
+        manta.SetActive(false);
     }
 
     private void Start()
@@ -88,14 +90,22 @@ public class MantaIgnifugaManager : Trigger
     {
         transform.localPosition = Vector3.up * 10000; // Oculta el objeto 
 
-        var animacionManta = ParticleEffectManager.Instance.InstantiateParticleInPos("Manta", npcToBurn.transform);
+        manta.SetActive(true);
+        if(manta.TryGetComponent<Animator>(out var mantaAnim)) {
+            mantaAnim.Play("animacionPrueba");
+        }
 
-        animacionManta.transform.localRotation = Quaternion.identity;
-        animacionManta.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.5f);
+
+
+        //var animacionManta = ParticleEffectManager.Instance.InstantiateParticleInPos("Manta", npcToBurn.transform);
+
+        //animacionManta.transform.localRotation = Quaternion.identity;
+        //animacionManta.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.5f);
 
         await Task.Delay(3000);
 
-        Destroy(animacionManta);
+        //Destroy(animacionManta);
+        Destroy(manta);
 
         npcToBurn.GetComponent<BurnNPC>().StopBurning();
 

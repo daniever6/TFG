@@ -33,11 +33,11 @@ namespace _Scripts.LevelScripts.Level_02._1
             ventanaRenderer = ventana.GetComponent<MeshRenderer>();
 
             _camera = Camera.main;
-            initialPos = ventana.transform.position;
+            initialPos = ventanaParent.transform.position;
             
             upperLimitY = initialPos.y + 0.5f;
-            safeMinUpperPosY = initialPos.y + 0.15f;
-            safeMaxUpperPosY = initialPos.y + 0.25f;
+            safeMinUpperPosY = initialPos.y + 0.20f;
+            safeMaxUpperPosY = initialPos.y + 0.40f;
         }
         
         /// <summary>
@@ -68,7 +68,7 @@ namespace _Scripts.LevelScripts.Level_02._1
 
             ///Calcula el nuevo alpha del color
             float alphaValue = 1f;
-            if (ventana.transform.position.y >= safeMinUpperPosY)
+            if (ventanaParent.transform.position.y >= safeMinUpperPosY)
             {
                 ventanaCollider.enabled = false;
                 alphaValue = 0f;

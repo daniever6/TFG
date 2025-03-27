@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Scripts.UI;
 using _Scripts.Utilities;
 using Facepunch;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _Scripts.Interactables

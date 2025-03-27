@@ -13,6 +13,8 @@ namespace _Scripts.Interactables
         private Quaternion _grabRotation;
         public Vector3 GrabLocalPosition = Vector3.zero;
         [SerializeField][CanBeNull] private Transform grabTransform;
+        [SerializeField][CanBeNull] public GameObject tapon;
+
 
         public Vector3 InitialPosition => _initialPosition;
         public Quaternion GrabRotation => _grabRotation;

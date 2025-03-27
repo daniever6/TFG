@@ -59,7 +59,7 @@ public class ElementosSpawner : MonoBehaviour
             // Establecer la posición
             spriteGameObject.transform.position = position;
 
-            Destroy(spriteGameObject, 15f);
+            Destroy(spriteGameObject, 25f);
 
             yield return new WaitForSeconds(secondSpawn);
         }

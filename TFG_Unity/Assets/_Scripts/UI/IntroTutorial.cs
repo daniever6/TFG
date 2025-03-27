@@ -1,3 +1,4 @@
+using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Player;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ public class IntroTutorial : MonoBehaviour
 
     public void Start()
     {
+        var saveData = SaveManager.LoadGameData();
+
+        if(saveData != null)
+        {
+            return;
+        }
+
         tutorialCanvas.SetActive(true);
         UserInput.CanMove = false;
     }

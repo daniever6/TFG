@@ -7,6 +7,7 @@ using _Scripts.LevelScripts.Level_01;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using DG.Tweening;
+using JetBrains.Annotations;
 using Player;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace _Scripts.Player
         
         [SerializeField] private GameObject hand;
         [SerializeField] private GameObject alfombrillaContainer;
+        [SerializeField][CanBeNull] private GameObject pipetaContentracion;
         private Camera _camera;
 
         [SerializeField]private Vector3 handActionOffset;
@@ -43,6 +45,8 @@ namespace _Scripts.Player
         {
             PlayerGrab.IsTweening = false;
             HandInitialPosition = hand.transform.position;
+            pipetaContentracion?.SetActive(false);
+            isPipetaLoaded = false;
             _camera = Camera.main;
         }
 
@@ -184,6 +188,11 @@ namespace _Scripts.Player
 
             ObjectSelected = objectToGrab;
 
+            if (ObjectSelected.tapon != null)
+            {
+                ObjectSelected.tapon.SetActive(false);
+            }
+
             var objectTransform = objectToGrab?.transform;
             
             objectTransform.SetParent(transform);
@@ -233,7 +242,12 @@ namespace _Scripts.Player
                 droppedTransform.localRotation = droppedObject.InitialRotation;
                 droppedTransform.SetParent(newParent.transform);
                 droppedObject.gameObject.layer = LayerMask.NameToLayer("Default");
-            
+
+                if (ObjectSelected?.tapon != null && newParent.name != "ObjectContainer")
+                {
+                    ObjectSelected.tapon.SetActive(true);
+                }
+
                 ObjectSelected = null;
             }
             catch (Exception e)
@@ -337,6 +351,8 @@ namespace _Scripts.Player
                     {
                         PlayerGrab.IsTweening = false;
                         await GoToInitialPosition();
+                        CombinationResultUI.Instance.ChangeResultSprite(LevelIcons.Null);
+                        break;
                     }
                     PerformMezclaAnimation(ObjectSelected.gameObject, secondaryObject.gameObject);
                     break;
@@ -416,12 +432,14 @@ namespace _Scripts.Player
                 if (primaryObject.name == "Pipeta" && !isPipetaLoaded)
                 {
                     isPipetaLoaded = true;
+                    pipetaContentracion?.SetActive(true);
                     secondaryMezcla.HideMezcla();
                     return;
                 }
                 else if(primaryObject.name == "Pipeta" && isPipetaLoaded)
                 {
                     isPipetaLoaded = false;
+                    pipetaContentracion?.SetActive(false);
                 }
                 
                 if (secondaryMezcla.isMezclaVisible)
