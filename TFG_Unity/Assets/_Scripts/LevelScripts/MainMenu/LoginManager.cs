@@ -22,6 +22,9 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject MainCanvas;
     [SerializeField] private GameObject LoginCanvas;
 
+
+    [SerializeField] private Material skinMaterial;
+    
     private void Start()
     {
         try
@@ -151,6 +154,13 @@ public class LoginManager : MonoBehaviour
             File.Delete(savePath);
         if (File.Exists(clothPath))
             File.Delete(clothPath);
+
+        //Reseteamos los colores por defecto
+        if (ColorUtility.TryParseHtmlString($"#EFC088", out Color color))
+        {
+            skinMaterial.color = color;
+        }
+        
 
         SceneManager.LoadScene("Intro");
     }

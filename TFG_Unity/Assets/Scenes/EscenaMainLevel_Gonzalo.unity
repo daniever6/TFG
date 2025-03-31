@@ -23815,6 +23815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabLocalPosition: {x: 0, y: 0, z: 0}
   grabTransform: {fileID: 1735982266}
+  tapon: {fileID: 0}
 --- !u!1 &1738077996
 GameObject:
   m_ObjectHideFlags: 0
@@ -28846,12 +28847,32 @@ PrefabInstance:
       propertyPath: DuchaPosition
       value: 
       objectReference: {fileID: 760845892}
+    - target: {fileID: 632471954432925581, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
+    - target: {fileID: 682358384179644750, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 826616567314997204, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 865520319841453037, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865520319841453037, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
+    - target: {fileID: 1206445356189080558, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232373008776820241, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1375592249266341522, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
@@ -28878,14 +28899,34 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 498744690}
+    - target: {fileID: 1826784260828325300, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102921362466896871, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
     - target: {fileID: 2257736854300425459, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: m_Name
       value: Full Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2824902657790074749, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
+    - target: {fileID: 2824902657790074749, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
     - target: {fileID: 2979827083414188795, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2979827083414188795, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
     - target: {fileID: 3157721989893258842, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
       propertyPath: firstPersonCamera
       value: 
@@ -29014,6 +29055,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9180795699971080697, guid: 88dea9d4738a4d646b37d4a5cd827844, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5ac52f45cfce2b418477883828b050c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

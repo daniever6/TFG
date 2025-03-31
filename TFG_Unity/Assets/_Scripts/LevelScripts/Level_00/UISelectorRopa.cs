@@ -20,7 +20,7 @@ namespace _Scripts.LevelScripts.Level_00
         [SerializeField] private TextMeshProUGUI headerTitle;
 
         public static event Action OnSaveClothChanges;
-        private string[] _bodyParts = { "Peinado", "Torso", "Manos", "Pantalones", "Calzado" };
+        private string[] _bodyParts = { "Piel", "Peinado", "Torso", "Manos", "Pantalones", "Calzado" };
         private int _currentBodyPart = 0;
         private bool _isCanvasOpen = true;
 

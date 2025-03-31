@@ -23,6 +23,8 @@ namespace _Scripts.LevelScripts.Level_00
         [SerializeField] private List<GameObject> gloveComponents;
         [SerializeField] private List<GameObject> pantsComponents;
         [SerializeField] private List<GameObject> shoesComponents;
+
+        [SerializeField] private Material skinColor;
         
         private Color _desactivateColor = new Color(0.6f, 0.6f,0.6f, 1);
         private Color _outlineColor = Color.black;
@@ -149,6 +151,11 @@ namespace _Scripts.LevelScripts.Level_00
         /// <param name="item">String formado por "ParteCuerpo_IndiceSeleccionado"</param>
         public void SelectCloth(string item)
         {
+            if(item.Split("_").Length < 2)
+            {
+                return;
+            }
+
             BodyPart bodyPart = (BodyPart) Enum.Parse(typeof(BodyPart), item.Split("_")[0]);
             int idxSelected = Convert.ToInt32(item.Split("_")[1]);
 
@@ -211,6 +218,18 @@ namespace _Scripts.LevelScripts.Level_00
             
             buttons[newIdx].color = Color.white;
             buttons[newIdx].gameObject.GetComponent<Outline>().enabled = true;
+        }
+
+        /// <summary>
+        /// Cambia el color de la piel del personaje
+        /// </summary>
+        /// <param name="colorCode">Color al que cambiar</param>
+        public void SetSkinColor(string colorCode)
+        {
+            if(ColorUtility.TryParseHtmlString($"#{colorCode}", out Color color))
+            {
+                skinColor.color = color;
+            }
         }
 
     }
