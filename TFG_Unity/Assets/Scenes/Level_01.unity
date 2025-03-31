@@ -24107,7 +24107,7 @@ MonoBehaviour:
     UnitName: Profesor
     UnitImage: {fileID: 0}
     Sentences:
-    - Sabes que ese no es el paso correcto.
+    - Eso es muy peligroso, no lo vuelvas a hacer.
 --- !u!1 &5369899838180520146
 GameObject:
   m_ObjectHideFlags: 0
