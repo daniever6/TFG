@@ -24,6 +24,9 @@ namespace _Scripts.LevelScripts.Level_00
         [SerializeField] private List<GameObject> pantsComponents;
         [SerializeField] private List<GameObject> shoesComponents;
 
+        [SerializeField] private GameObject MainCanvas;
+        [SerializeField] private GameObject ColorHairCanvas;
+
         [SerializeField] private Material skinColor;
         
         private Color _desactivateColor = new Color(0.6f, 0.6f,0.6f, 1);
@@ -226,10 +229,22 @@ namespace _Scripts.LevelScripts.Level_00
         /// <param name="colorCode">Color al que cambiar</param>
         public void SetSkinColor(string colorCode)
         {
-            if(ColorUtility.TryParseHtmlString($"#{colorCode}", out Color color))
+            if (ColorUtility.TryParseHtmlString($"#{colorCode}", out Color color))
             {
                 skinColor.color = color;
             }
+        }
+
+        public void OpenChangeHairColorCanvas()
+        {
+            MainCanvas.SetActive(false);
+            ColorHairCanvas.SetActive(true);
+        }
+
+        public void CloseChangeHairColorCanvas()
+        {
+            MainCanvas.SetActive(true);
+            ColorHairCanvas.SetActive(false);
         }
 
     }

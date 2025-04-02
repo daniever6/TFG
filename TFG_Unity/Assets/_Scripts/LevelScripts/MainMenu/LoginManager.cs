@@ -24,7 +24,8 @@ public class LoginManager : MonoBehaviour
 
 
     [SerializeField] private Material skinMaterial;
-    
+    [SerializeField] private Material hairMaterial;
+
     private void Start()
     {
         try
@@ -160,6 +161,7 @@ public class LoginManager : MonoBehaviour
         {
             skinMaterial.color = color;
         }
+        hairMaterial.color = Color.black;
         
 
         SceneManager.LoadScene("Intro");
