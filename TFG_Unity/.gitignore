@@ -61,6 +61,10 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+#Secretos
+DatabaseKeys.json
+DatabaseKeys.json.meta
+
 # Crashlytics generated file
 crashlytics-build.properties
 

@@ -1,17 +1,21 @@
 using System;
+using System.Collections;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
     [SerializeField] private TMP_InputField userInput;
+    [SerializeField] private TMP_InputField nameInput;
     [SerializeField] private TMP_InputField edadInput;
 
     private bool userValid = false;
     private bool edadValid = false;
+    private bool nameValid = false;
 
     [SerializeField] private Animator startButtonAnim;
     [SerializeField] private Button startButton;
@@ -31,6 +35,7 @@ public class LoginManager : MonoBehaviour
         try
         {
             if(userInput != null) userInput.onValueChanged.AddListener(IsUserValid);
+            if(nameInput != null) nameInput.onValueChanged.AddListener(IsNameValid);
             if(edadInput != null) edadInput.onValueChanged.AddListener(IsEdadValid);
 
             startTextColor = startButtonText.color;
@@ -59,6 +64,17 @@ public class LoginManager : MonoBehaviour
     public void IsUserValid(string name)
     {
         userValid = !string.IsNullOrEmpty(name);
+
+        CanStartLevel();
+    }
+
+    /// <summary>
+    /// Comprueba si el nombre del jugador es valido
+    /// </summary>
+    /// <param name="name">Nombre del jugador</param>
+    public void IsNameValid(string name)
+    {
+        nameValid = !string.IsNullOrEmpty(name);
 
         CanStartLevel();
     }
@@ -105,7 +121,7 @@ public class LoginManager : MonoBehaviour
     {
         try
         {
-            if (edadValid && userValid)
+            if (edadValid && userValid && nameValid)
             {
                 startButton.enabled = true;
                 startButtonAnim.enabled = true;
@@ -156,6 +172,7 @@ public class LoginManager : MonoBehaviour
         if (File.Exists(clothPath))
             File.Delete(clothPath);
 
+
         //Reseteamos los colores por defecto
         if (ColorUtility.TryParseHtmlString($"#EFC088", out Color color))
         {
@@ -164,6 +181,207 @@ public class LoginManager : MonoBehaviour
         hairMaterial.color = Color.black;
         
 
-        SceneManager.LoadScene("Intro");
+        //StartCoroutine(DatabaseManager.GetData(CheckUserJson, HandleCheckUserResponse));
+        StartCoroutine(RequestToken());
+    }
+
+
+    [System.Serializable]
+    public class TokenResponse
+    {
+        public string result;
+        public string token;
+        public string until;
+    }
+
+    private IEnumerator RequestToken()
+    {
+        string jsonRequest = $@"
+        {{
+            ""username"": ""{DatabaseConfig.DbUser}"",
+            ""password"": ""{DatabaseConfig.DbPassword}""
+        }}";
+
+        using (UnityWebRequest webRequest = new UnityWebRequest("https://tfvj.etsii.urjc.es/rest/login", "POST"))
+        {
+            byte[] jsonData = System.Text.Encoding.UTF8.GetBytes(jsonRequest);
+            webRequest.uploadHandler = new UploadHandlerRaw(jsonData);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                string response = webRequest.downloadHandler.text;
+                Debug.Log("Respuesta del servidor: " + response);
+
+                TokenResponse tokenResponse = JsonUtility.FromJson<TokenResponse>(response);
+
+                if (tokenResponse.result == "Ok")
+                {
+                    PlayerPrefs.SetString("UserToken", tokenResponse.token);
+                    PlayerPrefs.Save();
+                    Debug.Log("Token guardado: " + tokenResponse.token);
+
+                    string CheckUserJson = $@"
+                    {{
+                        ""username"": ""{DatabaseConfig.DbUser}"",
+                        ""password"": ""{DatabaseConfig.DbPassword}"",
+                        ""table"": ""Usuarios"",
+                        ""filter"": {{
+                            ""Usuario"": ""{userInput.text}""
+                        }}
+                    }}";
+
+                    StartCoroutine(DatabaseManager.GetData(CheckUserJson, HandleCheckUserResponse));
+                }
+                else
+                {
+                    Debug.LogError("Error en autenticación: " + response);
+                }
+            }
+            else
+            {
+                Debug.LogError("Error en la solicitud: " + webRequest.error);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Comprueba si existe el usuario en la BD
+    /// </summary>
+    /// <param name="response"></param>
+    void HandleCheckUserResponse(string response)
+    {
+        if (response != null)
+        {
+            // Convertimos la respuesta JSON en un objeto
+            UserCheckResponse jsonResponse = JsonUtility.FromJson<UserCheckResponse>(response);
+
+            if (jsonResponse.result == "Ok" && jsonResponse.data.Length > 0)
+            {
+                //Si ya existe, actualiza el usuario
+                PlayerPrefs.SetString("NombreUsuario", userInput.text);
+                PlayerPrefs.Save();
+
+                string UserUpdateJson = $@"
+                {{
+                    ""username"": ""{DatabaseConfig.DbUser}"",
+                    ""token"": ""{PlayerPrefs.GetString("UserToken")}"",
+                    ""table"": ""Usuarios"",
+                    ""data"": {{
+                        ""Nombre"": ""{nameInput.text}"",
+                        ""Edad"": {Convert.ToInt32(edadInput.text)}
+                    }},
+                    ""filter"": {{
+                        ""Usuario"": ""{PlayerPrefs.GetString("NombreUsuario")}""
+                    }}
+                }}";
+
+                StartCoroutine(DatabaseManager.UpdateData(UserUpdateJson, HandleUserUpdateResponse));
+                return;
+            }
+        }
+
+        // Si el usuario NO existe, lo insertamos
+        InsertNewUser();
+    }
+
+    /// <summary>
+    /// Lleva la logica de respuesta de la actualizacion del usuario
+    /// </summary>
+    /// <param name="response"></param>
+    void HandleUserUpdateResponse(string response)
+    {
+        if (response != null)
+        {
+            Debug.Log("Usuario actualizado correctamente: " + response);
+            SceneManager.LoadScene("Intro");
+        }
+        else
+        {
+            Debug.LogError("Error al actualizar el usuario.");
+        }
+    }
+
+    /// <summary>
+    /// Guarda el usuario en la base de datos
+    /// </summary>
+    public void InsertNewUser()
+    {
+        string UserJson = $@"
+        {{
+            ""username"": ""{DatabaseConfig.DbUser}"",
+            ""password"": ""{DatabaseConfig.DbPassword}"",
+            ""table"": ""Usuarios"",
+            ""data"": {{
+                ""Usuario"": ""{userInput.text}"",
+                ""Nombre"": ""{nameInput.text}"",
+                ""Edad"": {edadInput.text}
+            }}
+        }}";
+
+        PlayerPrefs.SetString("NombreUsuario", userInput.text);
+        PlayerPrefs.Save();
+
+        StartCoroutine(DatabaseManager.InsertData(UserJson, HandleUserResponse));
+    }
+
+    /// <summary>
+    /// Inserta un nuevo progreso en la base de datos
+    /// </summary>
+    /// <param name="response"></param>
+    void HandleUserResponse(string response)
+    {
+        if (response != null)
+        {
+            string ProgressJson = $@"
+            {{
+                ""username"": ""{DatabaseConfig.DbUser}"",
+                ""password"": ""{DatabaseConfig.DbPassword}"",
+                ""table"": ""Puntuacion"",
+                ""data"": {{
+                    ""Usuario"": ""{userInput.text}"",
+                    ""Completado"": {Convert.ToInt32(false)},
+                    ""MuertesVestirseMal"": ""0"",
+                    ""MuertesNivelBase"": ""0"",
+                    ""MuertesNivelAcido"": ""0"",
+                    ""MuertesNivelBalanza"": ""0"",
+                    ""MuertesNivelResiduos"": ""0""
+                }}
+            }}";
+
+            StartCoroutine(DatabaseManager.InsertData(ProgressJson, HandleProgresoResponse));
+            Debug.Log("Respuesta user de insercion: " + response);
+        }
+        else
+        {
+            Debug.LogError("Error al insertar.");
+        }
+    }
+
+    /// <summary>
+    /// Respuesta de la insercion de fila de progreso
+    /// </summary>
+    /// <param name="response"></param>
+    void HandleProgresoResponse(string response)
+    {
+        if (response != null)
+        {
+            Debug.Log("Respuesta de progreso de insertar: " + response);
+            SceneManager.LoadScene("Intro");
+        }
+        else
+        {
+            Debug.LogError("Error al insertar.");
+        }
+    }
+
+    [System.Serializable]
+    public class UserCheckResponse
+    {
+        public string result;
+        public string[] data;
     }
 }

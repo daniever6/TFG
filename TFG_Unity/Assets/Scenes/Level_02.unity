@@ -3132,6 +3132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabLocalPosition: {x: 0, y: 0, z: 0}
   grabTransform: {fileID: 210960575}
+  tapon: {fileID: 0}
 --- !u!1 &213865783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f0545e465938d2943805400e1ab2ea86, type: 3}
@@ -14731,7 +14732,7 @@ MonoBehaviour:
   m_text: "Est\xE1s preparando una disoluci\xF3n de hidr\xF3xido de sodio (NaOH)
     para neutralizar una soluci\xF3n de \xE1cido ac\xE9tico (CH<sub>3</sub>COOH).\n\nLa
     f\xF3rmula requiere que la concentraci\xF3n final de la disoluci\xF3n sea de
-    0.25 M en un volumen de 50 mL. \nLa base tiene un peso molecular de 40 g/mol.
+    0.375 M en un volumen de 50 mL. La base tiene un peso molecular de 40 g/mol.
     \n\nCalcula la cantidad exacta de base que necesitas pesar en gramos para completar
     la disoluci\xF3n."
   m_isRightToLeft: 0
@@ -21092,6 +21093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabLocalPosition: {x: 0, y: 0, z: 1.193}
   grabTransform: {fileID: 210960575}
+  tapon: {fileID: 0}
 --- !u!114 &1385930447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27966,6 +27968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrabLocalPosition: {x: 0, y: 0, z: 0.859}
   grabTransform: {fileID: 1142442741}
+  tapon: {fileID: 0}
 --- !u!65 &1818515594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33662,9 +33665,8 @@ MonoBehaviour:
     Sentences:
     - "\xA1Escucha bien, plebeyo! Tenemos que realizar una disoluci\xF3n de hidr\xF3xido
       de sodio (NaOH) para neutralizar una soluci\xF3n de \xE1cido ac\xE9tico (CH<sub>3</sub>COOH)."
-    - "Necesitamos que la concentraci\xF3n final de la disoluci\xF3n sea de 0.25
-      M en un volumen de 50 mL. El peso molecular del hidr\xF3xido de sodio es de
-      40 g/mol."
+    - "La f\xF3rmula requiere que la concentraci\xF3n final de la disoluci\xF3n sea
+      de 0.375 M en un volumen de 50 mL. La base tiene un peso molecular de 40 g/mol. "
     - "Cuando tengas la cantidad exacta pesada entregamela para poder terminar la
       disoluci\xF3n. \xA1Cuento contigo para que no arruines mi momento \xE9pico!"
 --- !u!114 &7770485496374728877

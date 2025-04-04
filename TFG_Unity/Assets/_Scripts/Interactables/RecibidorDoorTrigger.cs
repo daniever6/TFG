@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using _Scripts.LevelScripts.SaveManager;
 using _Scripts.Managers;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using static LoginManager;
 
 public class RecibidorDoorTrigger : Trigger
 {
@@ -28,5 +33,6 @@ public class RecibidorDoorTrigger : Trigger
 
         SceneManager.LoadScene(levelName);
         LevelManager.Instance.ChangeLevelState(LevelState.NivelBases);
+       
     }
 }
