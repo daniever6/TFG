@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.9
+  m_fontSize: 19.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4504,7 +4504,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.9
+  m_fontSize: 22.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9796,10 +9796,10 @@ RectTransform:
   - {fileID: 540107074}
   m_Father: {fileID: 1212073854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7723914, y: 0.07648276}
-  m_AnchorMax: {x: 0.97300005, y: 0.14013247}
-  m_AnchoredPosition: {x: -188.6, y: -11.778305}
-  m_SizeDelta: {x: 69.28488, y: 14.237473}
+  m_AnchorMin: {x: 0.102000006, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0.12289539}
+  m_AnchoredPosition: {x: 1.3999939, y: -3.278305}
+  m_SizeDelta: {x: 3.2848816, y: 3.2374725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197188668
 MonoBehaviour:
