@@ -118,6 +118,8 @@ namespace _Scripts.LevelScripts
             teacherState.ChangeState(NpcStates.Talking);
             EndDialogue.TriggerEvent();
 
+            LevelDBManager.OnLevelCompleted?.Invoke();
+
             DialogueManager.OnDialogueFinish += ExitLevel;
         }
 
@@ -149,6 +151,7 @@ namespace _Scripts.LevelScripts
                 ResiduosDroppedManager.ResiduosDropped = new[] { false, false, false };
                 SaveManager.SaveManager.SaveResiduosData();
 
+                
                 SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
             }
 

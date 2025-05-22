@@ -65,6 +65,8 @@ public class TutorialManager : GameplayMonoBehaviour<TutorialManager>
     {
         isTutorialActivated = false;
         tutorialCanvas.enabled = false;
+
+        LevelDBManager.OnStartTimeCount?.Invoke();
     }
 
     /// <summary>

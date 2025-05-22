@@ -30,7 +30,7 @@ public class MantaIgnifugaManager : Trigger
         }
     }
 
-    public static bool IsCarried = true;
+    public static bool IsCarried = false;
 
     private void Awake()
     {

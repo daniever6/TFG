@@ -8,8 +8,16 @@ using UnityEngine;
 public class ExtractoraManager : MonoBehaviour
 {
     [SerializeField] private AudioSource extractoraAudioSource;
+    [SerializeField] private Renderer extractoraRenderer;
+    [SerializeField] private Material offMaterial;
+    [SerializeField] private Material onMaterial;
 
     private bool isOn = false;
+
+    private void Start()
+    {
+        extractoraRenderer.material = offMaterial;
+    }
 
     private void OnEnable()
     {
@@ -30,10 +38,13 @@ public class ExtractoraManager : MonoBehaviour
 
         if (isOn)
         {
+            extractoraRenderer.material = onMaterial;
+
             extractoraAudioSource.Play();
         }
         else
         {
+            extractoraRenderer.material = offMaterial;
             extractoraAudioSource.Stop();
         }
     }

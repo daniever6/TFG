@@ -112,6 +112,12 @@ public class BurnNPC : GameplayMonoBehaviour<BurnNPC>
             return;
         }
 
+        if (!MantaIgnifugaManager.IsCarried)
+        {
+            Debug.Log("NO TIENES MANTA");
+            return;
+        }
+
         burnAudioSource.Stop();
 
         try

@@ -1,3 +1,4 @@
+using _Scripts.LevelScripts.SaveManager;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -28,6 +29,8 @@ namespace _Scripts.LevelScripts.Level_03
 
         private void Start()
         {
+            LevelDBManager.OnStartTimeCount?.Invoke();
+
             Random random = new Random();
             foreach (var position in reactivosInitalPositions)
             {
@@ -56,6 +59,23 @@ namespace _Scripts.LevelScripts.Level_03
             {
                 ResiduosDroppedManager.ResiduosDropped[ResiduosDroppedManager.CurrentResiduoIdx] = true;
                 SaveManager.SaveManager.SaveResiduosData();
+
+                var _saveData = SaveManager.SaveManager.LoadGameData();
+                ResiduosDroppedManager.ResiduosDropped = _saveData?.residuosTirados;
+
+                int residuosTirados = 0;
+                foreach (var residuoTirado in _saveData.residuosTirados)
+                {
+                    if (residuoTirado == true)
+                    {
+                        residuosTirados++;
+                    }
+                }
+
+                if(residuosTirados == 3)
+                {
+                    LevelDBManager.OnLevelCompleted?.Invoke();
+                }
 
                 SceneManager.LoadScene("EscenaMainLevel_Gonzalo");
             }

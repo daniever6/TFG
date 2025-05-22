@@ -156,6 +156,8 @@ namespace _Scripts.LevelScripts.Level_02
             mySequence.OnComplete(() => finishDialogue.TriggerEvent());
             mySequence.Play();
 
+            LevelDBManager.OnLevelCompleted?.Invoke();
+
             DialogueManager.OnDialogueFinish += FinishLevel;
         }
 

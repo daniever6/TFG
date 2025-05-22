@@ -6826,6 +6826,7 @@ GameObject:
   - component: {fileID: 1701100184}
   - component: {fileID: 1701100185}
   - component: {fileID: 1701100186}
+  - component: {fileID: 1701100187}
   m_Layer: 0
   m_Name: LEVEL MANAGERS
   m_TagString: Untagged
@@ -6914,16 +6915,13 @@ MonoBehaviour:
   - {x: -0.2195892, y: 2.106, z: -0.772}
   - {x: -0.4105892, y: 2.106, z: -0.9010324}
   reactivos:
-  - {fileID: 7353458408805367148, guid: e898c168f1ef97b4bb2c291a43c6c2b9, type: 3}
   - {fileID: 3032671579038236784, guid: ef6f2c1c54aa50347a5f3cbda32bf1f9, type: 3}
   - {fileID: 7886171928775565311, guid: 5d2ef22bd85c48641a0add1ded4157ba, type: 3}
   - {fileID: 3080150400197509345, guid: a04c0e7af42c62549a5517286248a85c, type: 3}
   - {fileID: 4747228818818207238, guid: 93a4b59893254a2478169f1d68ebac68, type: 3}
   - {fileID: 4805500523587563916, guid: b8b078ffb23e712478158a42816048bd, type: 3}
-  - {fileID: 973252560274495024, guid: f7175f95f2b3e2d439ea5a92c7537557, type: 3}
-  - {fileID: 8491347435255500911, guid: 31be399e3037e9548a44d7fd09e1df1d, type: 3}
   - {fileID: 8758427603183890860, guid: e6ab287ec7ea5c74ab0959368d8bfb3e, type: 3}
-  - {fileID: 8185720572716525602, guid: 0dedd7792a56098498d049c83de46e37, type: 3}
+  - {fileID: 973252560274495024, guid: f7175f95f2b3e2d439ea5a92c7537557, type: 3}
   - {fileID: 3184887599080831762, guid: 601636483c2499d4a97a55a36967d3e7, type: 3}
   interactablesParent: {fileID: 252256609}
   reactivoText: {fileID: 768380458}
@@ -6964,6 +6962,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeCanvas: {fileID: 1256062234}
   fadePanel: {fileID: 1077230020}
+--- !u!114 &1701100187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701100176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d7835cdf3b0124daf06aec43fc5a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Residuos
 --- !u!1 &1709659474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8513859187771203891, guid: a341ceb5da9100646aa55f2ff7b3a447, type: 3}

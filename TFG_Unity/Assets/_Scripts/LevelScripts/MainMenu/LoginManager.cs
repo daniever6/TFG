@@ -345,9 +345,17 @@ public class LoginManager : MonoBehaviour
                     ""Usuario"": ""{userInput.text}"",
                     ""Completado"": {Convert.ToInt32(false)},
                     ""MuertesVestirseMal"": ""0"",
+                    ""TiempoNivelBases"": ""0"",
+                    ""NivelBasesCompletado"": ""0"",
                     ""MuertesNivelBase"": ""0"",
+                    ""TiempoNivelAcido"": ""0"",
+                    ""NivelAcidoCompletado"": ""0"",
                     ""MuertesNivelAcido"": ""0"",
+                    ""TiempoNivelBalanza"": ""0"",
+                    ""NivelBalanzaCompletado"": ""0"",
                     ""MuertesNivelBalanza"": ""0"",
+                    ""TiempoNivelResiduos"": ""0"",
+                    ""NivelResiduosCompletado"": ""0"",
                     ""MuertesNivelResiduos"": ""0""
                 }}
             }}";
